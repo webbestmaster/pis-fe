@@ -1,0 +1,34 @@
+$mainFontFamily: Roboto, sans-serif;
+$monospaceFontFamily: "Lucida Console", Monaco, monospace;
+
+.hidden {
+    display: none !important;
+}
+
+.disabled {
+    opacity: 0.2;
+    pointer-events: none; // see Can I Use
+}
+
+.clear-self {
+    &:after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+}
+
+.clear-full {
+    clear: both;
+    &:after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
