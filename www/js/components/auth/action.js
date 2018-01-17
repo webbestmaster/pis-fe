@@ -4,7 +4,7 @@ const authConst = require('./const.json');
 
 export function login(email, password) {
     if (!email || !password) {
-        return () => Promise.reject('no email or password');
+        return () => console.warn('No email or password');
     }
 
     return dispatch => fetch(

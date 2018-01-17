@@ -100,7 +100,7 @@ class Menu extends Component {
         const view = this;
         const {props} = view;
 
-        if (props.auth.login.data.user) {
+        if (props.auth.login.data && props.auth.login.data.user) {
             view.props.history.push('/user');
             return;
         }

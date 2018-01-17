@@ -6,7 +6,7 @@ import Login from './popup/login';
 import Restore from './popup/restore';
 import {connect} from 'react-redux';
 import * as authAction from './action';
-// import * as authApi from './api';
+import * as authApi from './api';
 
 const authConst = require('./const.json');
 
@@ -22,9 +22,21 @@ class Auth extends Component {
     componentDidMount() {
         const view = this;
 
-        view.props.login();
+        view.autoLogin();
 
         setTimeout(() => view.initPromoPopup(), 4 * 60 * 1000);
+    }
+
+    autoLogin() {
+        const view = this;
+        const {email, password} = authApi.getUserData();
+
+        if (email && password) {
+            view.props.login(email, password);
+            return;
+        }
+
+        console.log('No saved email or password');
     }
 
     initPromoPopup() {
