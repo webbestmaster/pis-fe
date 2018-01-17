@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import classnames from 'classnames';
 import {headerMaxHeight} from './index';
+import Search from './search';
 
 const backSlideImage = require('./../../../style/images/header/search.jpg');
 const leftSlideImage = require('./../../../style/images/header/clubs.jpg');
@@ -150,13 +151,12 @@ class Slider extends Component {
             {/* texts end */}
 
             {/* search, show only for backSlide, e. g. activeSlide: null */}
-            <form className={classnames('header-slider__search', {
+            <div className={classnames('header-slider__search', {
                 'header-slider__search--active': state.activeSlide === null
             })}
             style={{marginTop: deltaTop}}>
-                <input placeholder="Введите название клуба" type="text" className="header-slider__search-input"/>
-                <button type="submit" className="header-slider__search-button">Поиск клуба</button>
-            </form>
+                <Search />
+            </div>
         </div>;
     }
 }
