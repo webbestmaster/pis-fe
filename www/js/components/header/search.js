@@ -102,7 +102,7 @@ class Search extends Component {
         const {props, state} = view;
         const {isInProgress} = state;
 
-        return <form style={{display: 'block', height: '100%'}} ref="form">
+        return <div style={{display: 'block', height: '100%'}}>
             <input
                 ref="searchInput"
                 type="text"
@@ -125,7 +125,7 @@ class Search extends Component {
             <div className="header-slider__search-result-list-wrapper">
                 {view.renderList()}
             </div>
-        </form>;
+        </div>;
     }
 }
 
