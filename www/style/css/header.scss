@@ -1,0 +1,115 @@
+.header {
+    //height: 980px;
+    position: relative;
+}
+
+.header__logo {
+    float: left;
+    background-image: url('./../i/header/logo.png');
+    width: 270px;
+    height: 60px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 51px 0 0 18px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.header-slider__search {
+    pointer-events: none;
+    display: block;
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 831px;
+    position: relative;
+    z-index: 10;
+    top: 528px;
+    height: 60px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease-out;
+    &.header-slider__search--active {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-slider__search-input {
+    border-radius: 30px;
+    font-size: 14px;
+    height: 100%;
+    background-color: #fff;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px 210px 0 48px;
+}
+
+.header-slider__search-button {
+    border-radius: 30px;
+    font-size: 14px;
+    position: absolute;
+    right: 14px;
+    top: 0;
+    z-index: 1;
+    background-color: $mainColor;
+    height: 60px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: 200px;
+    padding-top: 4px;
+    cursor: pointer;
+    text-indent: 16px;
+}
+
+@media screen and (max-width: $tabletWidth) {
+    .header__logo {
+        margin: 26px 0 0 10px;
+    }
+}
+
+.header--mobile {
+    height: 640px;
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .header--mobile {
+        & + .header__logo {
+            margin: 25px 0 0 10px;
+            width: 159px;
+            height: 13px;
+            background-size: 159px 13px;
+            padding: 20px 0 10px;
+        }
+
+        .header-slider__search {
+            width: 300px;
+            top: 320px;
+            padding: 0 10px;
+        }
+
+        .header-slider__search-input {
+            padding-left: 25px;
+            padding-right: 65px;
+        }
+
+        .header-slider__search-button {
+            font-size: 0;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url(./../i/header/icon-search.svg);
+            background-size: 22px;
+            right: 10px;
+        }
+
+    }
+}
+
+

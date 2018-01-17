@@ -1,0 +1,248 @@
+@import "./var";
+
+.header-menu-wrapper--desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    //background-color: #c00;
+    .hug {
+        max-width: 1820px; // 1920 - 50 * 2
+    }
+}
+
+.header-menu {
+    margin: 0 0 0 323px;
+    position: relative;
+    z-index: 1;
+    right: 0;
+    top: 0;
+}
+
+.header-menu__link {
+    float: left;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px 0 3px;
+    margin: 65px 27px 0;
+    &.header-menu__link--active,
+    &:hover {
+        color: $mainColor;
+    }
+}
+
+.header-menu__button {
+    @extend .header-menu__link;
+    position: relative;
+    float: right;
+    font-weight: bold;
+    margin-left: 112px;
+    margin-right: 25px;
+    border-bottom: 1px dotted transparent;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: -69px;
+        top: -5px;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background-repeat: no-repeat;
+    }
+
+    &.header-menu__button--login {
+        &:before {
+            background-image: url('./../i/header/icon-signin.svg');
+            background-position: center 15px;
+            background-size: 13px auto;
+        }
+    }
+    &.header-menu__button--call {
+        &:before {
+            background-image: url('./../i/header/icon-phone.svg');
+            background-position: center center;
+            background-size: 13px auto;
+        }
+    }
+}
+
+// mobile part
+.header-mobile-menu__menu-button {
+    user-select: none;
+    position: absolute;
+    top: 28px;
+    right: 5px;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    z-index: 5;
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        width: 31px;
+        height: 3px;
+        top: 27px;
+        left: 10px;
+        box-shadow: 0 -8px 0 #fff, 0 8px 0 #fff;
+    }
+
+    &.header-mobile-menu__menu-button--open {
+        right: 3px;
+
+        &:after,
+        &:before {
+            box-shadow: none;
+            transform: rotateZ(45deg);
+        }
+        &:after {
+            transform: rotateZ(-45deg);
+        }
+    }
+}
+
+.header-mobile-menu {
+    padding-top: 91px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 272px;
+    background-color: #192839;
+    z-index: 4;
+}
+
+.header-mobile-menu__link-list {
+    display: block;
+    padding: 60px 0 10px;
+    clear: both;
+    min-height: 299px;
+}
+
+.header-mobile-menu__link {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 0 4px 88px;
+    padding: 11px;
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: transparent;
+        left: -60px;
+        top: 19px;
+        height: 2px;
+        width: 52px;
+    }
+    &:active,
+    &.header-mobile-menu__link--active {
+        color: $mainColor;
+        &:before {
+            background-color: $mainColor;
+        }
+    }
+}
+
+.header-mobile-menu__button {
+    //@extend .header-mobile-menu__link;
+    position: relative;
+    float: left;
+    font-weight: bold;
+    margin: 15px 20px 37px 102px;
+    color: #fff;
+    text-decoration: none;
+    clear: both;
+    font-size: 16px;
+    padding: 10px 0 10px;
+    cursor: pointer;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: -69px;
+        top: -6px;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background-repeat: no-repeat;
+    }
+
+    &.header-mobile-menu__button--login {
+        &:before {
+            background-image: url('./../i/header/icon-signin.svg');
+            background-position: center 15px;
+            background-size: 13px auto;
+        }
+    }
+    &.header-mobile-menu__button--call {
+        &:before {
+            background-image: url('./../i/header/icon-phone.svg');
+            background-position: center center;
+            background-size: 13px auto;
+        }
+    }
+}
+
+.header-mobile-menu__fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(29, 34, 40, 0.55);
+}
+
+@media screen and (max-width: $mobileWidth) {
+    //.header--mobile {
+    .header-mobile-menu__menu-button {
+        &.header-mobile-menu__menu-button--open {
+            right: 7px;
+            top: 22px;
+        }
+    }
+    //}
+}
+
+.header-menu-simple-wrapper {
+
+    background-color: #192739;
+    height: 101px;
+    .header__logo {
+        margin-top: 21px;
+    }
+
+    .header-menu__link {
+        margin-top: 31px;
+    }
+    .header,
+    .header.header--mobile {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .header-menu-simple-wrapper {
+        height: 90px;
+        .header__logo {
+            margin-top: 26px;
+        }
+    }
+
+}

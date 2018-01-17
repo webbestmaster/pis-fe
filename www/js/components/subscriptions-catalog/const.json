@@ -1,0 +1,9 @@
+{
+    "type": {
+        "setSort": "subscriptions-catalog__set-sort",
+        "setFilter": "subscriptions-catalog__set-filter",
+        "setSearch": "subscriptions-catalog__set-search",
+        "setFilterVisible": "subscriptions-catalog__set-filter-visible",
+        "setResultMode": "subscriptions-catalog__set-result-mode"
+    }
+}

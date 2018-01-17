@@ -1,0 +1,445 @@
+@import "./var";
+
+.clubs-catalog-filter {
+    width: 334px;
+    padding-bottom: 45px;
+}
+
+.clubs-catalog-filter__short-form {
+    padding: 30px 35px 1px 31px;
+    background-color: #f7f8fa;
+    border-radius: 4px;
+    //box-sizing: border-box;
+    margin-bottom: 34px;
+}
+
+.clubs-catalog-filter__header {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: $mainTextColor;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
+    position: relative;
+    clear: both;
+    &.clubs-catalog-filter__header--interactive {
+        cursor: pointer;
+    }
+}
+
+.clubs-catalog-filter__header-icon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-position: center center;
+    position: relative;
+    top: -6px;
+    left: -5px;
+    margin-right: 2px;
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+}
+
+.clubs-catalog-filter__header-opener {
+    float: right;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    right: -9px;
+    top: -6px;
+    cursor: pointer;
+    &:before,
+    &:after {
+        top: 13px;
+        content: '';
+        background-color: $mainTextColor;
+        width: 2px;
+        height: 8px;
+        position: absolute;
+    }
+
+    &:before {
+        left: 12px;
+        transform: rotateZ(-45deg);
+    }
+
+    &:after {
+        left: 17px;
+        transform: rotateZ(45deg);
+    }
+
+    &.clubs-catalog-filter__header-opener--open {
+        &:before,
+        &:after {
+            top: 11px;
+        }
+
+        &:before {
+            left: 17px;
+        }
+
+        &:after {
+            left: 12px;
+        }
+    }
+}
+
+.clubs-catalog-filter__input-plus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 40px;
+    &:before,
+    &:after {
+        content: '';
+        background-color: $mainColor;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+
+    &:after {
+        width: 14px;
+        height: 2px;
+        margin-left: -6px;
+    }
+
+    &:before {
+        width: 2px;
+        height: 14px;
+        margin-top: -6px;
+    }
+}
+
+.clubs-catalog-filter__input-drop-down {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 40px;
+
+    &:before,
+    &:after {
+        margin-top: 1px;
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background-color: $mainTextColor;
+        width: 10px;
+        height: 2px;
+    }
+
+    &:before {
+        transform: rotateZ(45deg);
+        margin-left: -7px;
+    }
+
+    &:after {
+        transform: rotateZ(-45deg);
+        margin-left: -1px;
+    }
+}
+
+.clubs-catalog-filter__select {
+    display: block;
+    background-color: #fff;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 27px;
+}
+
+.clubs-catalog-filter__select-placeholder {
+    color: $placeholderTextColor;
+    display: block;
+    font-size: 14px;
+    padding: 13px 0 0 18px;
+}
+
+.clubs-catalog-filter__select-node {
+    left: 0;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.clubs-catalog-filter__option-node {
+    color: $mainTextColor;
+    font-size: 14px;
+    display: block;
+}
+
+.clubs-catalog-filter__selected-item-list {
+    display: block;
+    border-bottom: 1px solid $mainBorderColor;
+    padding: 0 0 13px 0;
+    margin-bottom: 27px;
+    margin-top: -13px;
+}
+
+.clubs-catalog-filter__selected-item {
+    display: block;
+    font-size: 14px;
+    color: $mainTextColor;
+    padding: 5px 0 5px;
+}
+
+.clubs-catalog-filter__remove-selected-item {
+    position: relative;
+    float: left;
+    cursor: pointer;
+    width: 18px;
+    height: 24px;
+    margin: -5px 4px 0 0;
+    &:after,
+    &:before {
+        content: '';
+        background-color: $mainColor;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 2px;
+        height: 14px;
+        margin-top: -6px;
+        transform: rotateZ(-45deg);
+    }
+    &:after {
+        transform: rotateZ(45deg);
+    }
+}
+
+.clubs-catalog-filter__double-input-wrapper {
+    height: 40px;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 27px;
+    &:before {
+        content: '';
+        height: 100%;
+        width: 1px;
+        background-color: $mainBorderColor;
+        left: 50%;
+        top: 0;
+        position: absolute;
+    }
+}
+
+.clubs-catalog-filter__double-input-input-wrapper {
+    float: left;
+    width: 50%;
+    position: relative;
+}
+
+.clubs-catalog-filter__additional-parameters-form {
+    padding: 0 0 1px;
+    margin-bottom: 7px;
+}
+
+.clubs-catalog-filter__open-additional-parameters {
+    display: inline-block;
+    color: $secondaryTextColor;
+    text-align: center;
+    font-size: 16px;
+    padding: 0 0 3px;
+    border-bottom: 1px dotted $secondaryTextColor;
+    cursor: pointer;
+    margin-bottom: 22px;
+}
+
+.clubs-catalog-filter__additional-parameters {
+    margin-bottom: 35px;
+}
+
+.clubs-catalog-filter__additional-item {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 0 10px 10px 0;
+}
+
+.clubs-catalog-filter__main-parameters-form {
+    display: block;
+    & > .clubs-catalog-filter__header:first-child { // Основные категории should be bigger
+        font-size: 18px;
+    }
+}
+
+.clubs-catalog-filter__sub-category-wrapper {
+    display: block;
+    padding: 0 0 11px 32px;
+    clear: both;
+}
+
+.clubs-catalog-filter__clear-filter {
+    margin: 40px auto 0;
+    color: $mainTextColor;
+    border: 1px solid $mainBorderColor;
+    font-size: 14px;
+    text-align: center;
+    width: 190px;
+    padding: 15px 0 14px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.clubs-catalog-filter__mobile-header {
+    color: $mainColor;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 56px;
+    padding: 0 4px 0;
+
+    &:after {
+        content: '';
+        position: relative;
+        display: inline-block;
+        height: 16px;
+        width: 14px;
+        background-image: url('./../i/clubs/catalog-list-moble-active.svg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        top: 1px;
+        left: 9px;
+    }
+}
+
+.clubs-catalog-filter__mobile-close-filter {
+    position: absolute;
+    z-index: 1;
+    right: 8px;
+    top: 28px;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        background-color: $mainTextColor;
+        width: 24px;
+        height: 2px;
+        transform: rotateZ(45deg);
+        left: 50%;
+        top: 50%;
+        margin: -1px 0 0 -12px;
+    }
+    &:after {
+        transform: rotateZ(-45deg);
+    }
+}
+
+.clubs-catalog-filter__spec-price-at-first {
+    user-select: none;
+    display: block;
+    border: 2px solid $mainBorderColor;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 5px;
+    padding: 35px 62px 32px 80px;
+    cursor: pointer;
+    margin-bottom: 32px;
+
+    .clubs-catalog-filter__sale-label {
+        position: absolute;
+        background-color: $mainBorderColor;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        top: 29px;
+        padding: 4px 15px 4px 24px;
+        left: 0;
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            border: 14px transparent solid;
+            border-left-color: $mainBorderColor;
+            right: -24px;
+            top: 0;
+            border-left-width: 10px;
+        }
+    }
+
+    &.clubs-catalog-filter__spec-price-at-first--active {
+        border-color: $mainColor;
+        .clubs-catalog-filter__spec-price-at-first-switcher-state {
+            opacity: 1;
+            float: right;
+        }
+        .clubs-catalog-filter__sale-label {
+            background-color: $mainColor;
+            &:before {
+                border-left-color: $mainColor;
+            }
+        }
+
+    }
+}
+
+.clubs-catalog-filter__spec-price-at-first-text {
+    font-size: 14px;
+    color: $mainTextColor;
+    display: block;
+}
+
+.clubs-catalog-filter__spec-price-at-first-switcher {
+    width: 30px;
+    height: 13px;
+    position: absolute;
+    right: 32px;
+    top: 37px;
+    background-color: $mainBorderColor;
+    border-radius: 13px;
+}
+
+.clubs-catalog-filter__spec-price-at-first-switcher-state {
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: $mainColor;
+    float: left;
+    border-radius: 100%;
+    opacity: 0.5;
+}
+
+.lt-desktop-width {
+    .clubs-catalog-filter {
+        width: auto;
+        max-width: 334px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 5;
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 35px 10px 35px 15px;
+    }
+
+    .clubs-catalog-filter__short-form {
+        padding: 30px 20px 1px;
+    }
+
+    .clubs-catalog-filter__spec-price-at-first {
+        padding-left: 18px;
+        .clubs-catalog-filter__sale-label {
+            display: none;
+        }
+    }
+}
+

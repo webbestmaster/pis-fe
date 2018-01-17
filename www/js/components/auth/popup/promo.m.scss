@@ -1,0 +1,149 @@
+@import "../../../../style/css/var";
+@import "./style.m";
+
+body { // just add authority in front of swiper's classes
+
+    .promo {
+        width: 1130px;
+        padding: 10px;
+        height: 620px;
+    }
+
+    .left_block {
+        position: relative;
+        height: 100%;
+        float: left;
+        max-width: 204px;
+        border-radius: 4px;
+        background-color: #192639;
+        box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+        text-align: center;
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        h4 {
+            font-size: 14px;
+            line-height: 22px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            font-weight: bold;
+        }
+        p {
+            text-align: center;
+            color: #b7c4d7;
+            font-size: 14px;
+            display: block;
+        }
+    }
+
+    .left_path_1 {
+        padding: 61px 0 48px 0;
+        img {
+            padding-bottom: 24px;
+        }
+        h4 {
+            //display: block;
+        }
+        p {
+            //display: block;
+        }
+    }
+
+    .left_path_2 {
+        padding-bottom: 68px;
+        img {
+            padding-bottom: 6px;
+        }
+        h4 {
+            padding-bottom: 9px;
+        }
+        p {
+            //display: block;
+        }
+    }
+
+    .left_path_3 {
+        //display: block;
+        img {
+            //display: block;
+            padding-bottom: 9px;
+        }
+        h4 {
+            //display: block;
+        }
+        p {
+            //display: block;
+        }
+    }
+
+    .right_block {
+        background-color: #fff;
+        position: relative;
+        height: 100%;
+        margin-left: 220px;
+        border-radius: 4px;
+        box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+    }
+
+    .banner {
+        display: block;
+        width: 100%;
+        padding-bottom: 58px;
+    }
+
+    .promo_big_text {
+        color: $mainTextColor;
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+        padding-bottom: 40px;
+    }
+
+    .promo_button {
+        display: block;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+        width: 236px;
+        background-color: $mainColor;
+        color: #FFFFFF;
+        margin: 0 auto 31px;
+        padding: 21px 0 19px;
+        border-radius: 50px;
+    }
+
+    .promo_text {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        color: $mainTextColor;
+    }
+
+    .promo_enter {
+        @extend .popup__enter_link;
+        //color: #00a1fe;
+        //padding-bottom: 2px;
+        //display: inline-block;
+        //border-bottom: 1px dotted #00a1fe;
+        //margin-left: 8px;
+        //text-decoration: none;
+    }
+
+    :global .lt-desktop-width {
+        :local {
+
+        }
+    }
+
+    :global .lt-tablet-width {
+        :local {
+
+        }
+    }
+
+}

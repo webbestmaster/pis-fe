@@ -1,50 +1,53 @@
-// @flow
+/* global window */
 import React, {Component} from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
-// The Main component renders one of the three provided
-// Routes (provided that one matches). Both the /roster
-// and /schedule routes will match any pathname that starts
-// with /roster or /schedule. The / route will only match
-// when the pathname is exactly the string "/"
+import Home from './../../page/home';
+import Clubs from './../../page/clubs';
+import Club from './../../page/club';
+import Subscriptions from './../../page/subscriptions';
+import Subscription from './../../page/subscription';
+import Trainings from './../../page/trainings';
+import Training from './../../page/training';
+import User from './../../page/user';
+import ForgotPassword from './../../page/forgot-password';
+import Terms from './../../page/terms';
+import Auth from './../auth';
 
-type Props = {
-    foo: number,
-    children: any
-}
-
-type State = {
-    bar: 'sad' | 'asdsad'
-}
-
-class Home extends Component<Props, State> {
-    static defaultProps = {
-        foo: 23 + 'sad'
-    }
-
+/*
+export default class App extends Component {
     render() {
-        return <h1>
-            <div>{this.props.children}</div>
-            <div>{this.props.foo}</div>
-            <ul>
-                <li><Link to='/home1'>Home</Link></li>
-                <li><Link to='/roster'>Roster</Link></li>
-                <li><Link to='/schedule'>Schedule</Link></li>
-            </ul>
-        </h1>;
+        const view = this;
+        const {props, state} = view;
+
+        return <Switch>
+            <Route path='/' component={Home} exact/>
+            <Route path='/clubs' component={Clubs} exact/>
+            <Route path='/subscriptions' component={Subscriptions} exact/>
+            <Route path='/trainings' component={Trainings} exact/>
+
+            <Route path='/club/:clubId' component={Club} exact/>
+            <Route path='/subscription/:subscriptionId' component={Subscription} exact/>
+            <Route path='/training/:trainingId' component={Training} exact/>
+        </Switch>;
     }
 }
+*/
 
-class Home1 extends Component<{}, {}> {
-    render() {
-        return <h1>Home1</h1>;
-    }
-}
+export default () => [
+    <Switch key="switch">
+        <Route path='/' component={Home} exact/>
+        <Route path='/clubs' component={Clubs} exact/>
+        <Route path='/subscriptions' component={Subscriptions} exact/>
+        <Route path='/trainings' component={Trainings} exact/>
 
-export default () =>
-    <Switch>
-        <Home foo={122212321}>
-            <Route exact path='/' component={Home}/>
-            <Route path='/home1' component={Home1}/>
-        </Home>
-    </Switch>;
+        <Route path='/club/:clubId' component={Club} exact/>
+        <Route path='/club/:clubId/tab-index/:tabIndex' component={Club} exact/>
+        <Route path='/subscription/:subscriptionId' component={Subscription} exact/>
+        <Route path='/training/:trainingId' component={Training} exact/>
 
+        <Route path='/user/' component={User} exact/>
+        <Route path='/forgotPassword/' component={ForgotPassword} exact/>
+        <Route path='/terms/' component={Terms} exact/>
+    </Switch>,
+    <Auth key="auth"/>
+];

@@ -1,0 +1,10 @@
+{
+    "type": {
+        "setSort": "trainings-catalog__set-sort",
+        "setFilter": "trainings-catalog__set-filter",
+        "setSearch": "trainings-catalog__set-search",
+        "setFilterVisible": "trainings-catalog__set-filter-visible",
+        "setDateFilter": "trainings-catalog__set-data-filter",
+        "setResultMode": "trainings-catalog__set-result-mode"
+    }
+}

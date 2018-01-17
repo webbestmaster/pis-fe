@@ -1,0 +1,28 @@
+@import "./var";
+
+.bread-crumbs {
+    @extend .clear-full;
+    display: block;
+    //background-color: #c00;
+    font-size: 14px;
+    color: #fff;
+    padding: 61px 0 49px 102px;
+}
+
+.bread-crumbs__link {
+    float: left;
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        color: $mainColor;
+    }
+}
+
+.bread-crumbs__arrow {
+    padding: 0 10px;
+    float: left;
+    position: relative;
+    &:before {
+        content: '\02192';
+    }
+}

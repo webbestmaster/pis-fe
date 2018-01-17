@@ -1,0 +1,56 @@
+@import "var";
+
+body { // just add authority in front of swiper's classes
+    .tab_wrapper {
+        border-bottom: 1px solid $mainBorderColor;
+        margin-bottom: 82px;
+
+    }
+
+    .tab {
+        margin-right: 54px;
+        font-size: 14px;
+        color: $mainTextColor;
+        width: auto;
+        padding: 40px 0 37px;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        list-style: none;
+        display: block;
+        border-bottom: 2px solid transparent;
+        &:global.react-tabs__tab--selected {
+            border-bottom: 2px solid $mainColor;
+        }
+    }
+
+    :global .lt-desktop-width {
+        :local {
+
+            .tab_wrapper {
+                margin-bottom: 59px;
+            }
+
+            .tab {
+                padding: 27px 0 21px;
+                margin: 0 24px 0 16px;
+            }
+        }
+    }
+
+    :global .lt-tablet-width {
+        :local {
+
+            .tab_wrapper {
+                margin-bottom: 20px;
+            }
+
+            .tab {
+                padding: 27px 0 21px;
+                margin: 0 24px 0 16px;
+            }
+        }
+    }
+}
+
+

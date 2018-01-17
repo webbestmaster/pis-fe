@@ -1,0 +1,152 @@
+@import "./var";
+
+.clubs-catalog-date-filter {
+    display: block;
+    width: 100%;
+    margin-top: -16px;
+    position: relative;
+    padding-bottom: 75px;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 67px;
+        width: 100%;
+        height: 1px;
+        background-color: $mainBorderColor;
+        z-index: 0;
+    }
+}
+
+.clubs-catalog-date-filter__swipe-arrow {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: -35px;
+    width: 36px;
+    height: 110px;
+    pointer-events: none;
+    z-index: 1;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+    &:before,
+    &:after {
+        content: '';
+        width: 19px;
+        height: 1px;
+        background-color: $mainColor;
+        position: absolute;
+        right: -2px;
+        top: 10px;
+    }
+
+    &:before {
+        top: 46px;
+        transform: rotateZ(45deg);
+    }
+    &:after {
+        top: 59px;
+        transform: rotateZ(-45deg);
+    }
+}
+
+.clubs-catalog-date-filter__date {
+    width: 14.285714%;
+    min-height: 77px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+
+    &.clubs-catalog-date-filter__date--active {
+        &:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 66px;
+            left: 50%;
+            margin-left: -3px;
+            transform: rotateZ(45deg);
+            border: 3px solid $mainColor;
+            border-left-color: transparent;
+            border-top-color: transparent;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            //bottom: 8px;
+            top: 67px;
+            left: 50%;
+            width: 78px;
+            margin-left: -39px;
+            height: 2px;
+            background-color: $mainColor;
+        }
+
+        .clubs-catalog-date-filter__date-day {
+            font-weight: bold;
+            color: $mainTextColor;
+        }
+        .clubs-catalog-date-filter__date-date {
+            color: $mainColor;
+        }
+    }
+    .clubs-catalog-date-filter__date-content {
+        margin-top: 28px;
+    }
+
+    .clubs-catalog-date-filter__date-time-wrapper {
+        padding-top: 20px;
+    }
+
+    .clubs-catalog-date-filter__date-time {
+        font-size: 14px;
+        text-align: center;
+        color: $mainTextColor;
+        padding-bottom: 7px;
+        text-decoration: underline;
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+        &.clubs-catalog-date-filter__date-time--active {
+            color: $mainColor;
+        }
+    }
+}
+
+.clubs-catalog-date-filter__date-day {
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    color: $secondaryTextColor;
+    padding-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.clubs-catalog-date-filter__date-date {
+    font-size: 14px;
+    text-align: center;
+    color: $secondaryTextColor;
+    text-transform: capitalize;
+}
+
+.lt-desktop-width {
+    .clubs-catalog-date-filter {
+        padding-bottom: 26px;
+    }
+}
+
+.lt-tablet-width {
+    .clubs-catalog-date-filter {
+        margin-top: 0;
+    }
+    .clubs-catalog-date-filter__date {
+        width: 100px;
+    }
+    .clubs-catalog-date-filter__swipe-arrow {
+        display: block;
+    }
+}

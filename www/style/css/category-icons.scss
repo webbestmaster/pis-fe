@@ -1,0 +1,42 @@
+.category-icon {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url('./../i/category/strength.svg');
+}
+
+.category-icon:hover {
+    background-image: url('./../i/category/strength-active.svg');
+}
+
+$list: gym yoga cardio combat mind strength dancing games mothers after;
+
+@each $item in $list {
+    //$i: index($list, $item);
+    .category-icon--#{$item} {
+        background-image: url('./../i/category/#{$item}.svg');
+    }
+
+    .category-icon--#{$item}:hover {
+        background-image: url('./../i/category/#{$item}-active.svg');
+    }
+
+    .clubs-catalog-filter__header-icon--#{$item},
+    .clubs-catalog-list-item__header--icon-#{$item} {
+        background-image: url('./../i/category/#{$item}.svg');
+        &:before { // just preload 'hover' image
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            background-image: url('./../i/category/#{$item}-active.svg');
+        }
+    }
+
+    .clubs-catalog-filter__header:hover {
+        .clubs-catalog-filter__header-icon--#{$item} {
+            background-image: url('./../i/category/#{$item}-active.svg');
+        }
+    }
+}

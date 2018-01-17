@@ -1,0 +1,406 @@
+@import "./var";
+
+.clubs-catalog-list {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 62px 0 31px;
+}
+
+.clubs-catalog-list__load-more {
+    margin: -16px auto 0;
+    color: $mainTextColor;
+    border: 1px solid $mainBorderColor;
+    font-size: 14px;
+    text-align: center;
+    width: 190px;
+    padding: 15px 0 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    &:after {
+        content: '';
+        background-image: url('./../i/clubs/load-more.svg');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        width: 20px;
+        height: 12px;
+        display: inline-block;
+        background-size: contain;
+        margin: 0 0 0 8px;
+        position: relative;
+        top: 1px;
+    }
+}
+
+.clubs-catalog-list-item {
+    display: block;
+    position: relative;
+    padding-bottom: 28px;
+    margin-bottom: 83px;
+    border-bottom: 1px solid $mainBorderColor;
+}
+
+.clubs-catalog-list-item__image {
+    width: 270px;
+    height: 190px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.clubs-catalog-list-item__info {
+    margin: 0 0 0 300px;
+    position: relative;
+}
+
+.clubs-catalog-list-item__header {
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    margin-right: 180px;
+    &.clubs-catalog-list-item__header--icon {
+        padding-left: 49px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: auto 26px;
+    }
+}
+
+.clubs-catalog-list-item__address {
+    display: block;
+    font-size: 14px;
+    color: $mainColor;
+    padding-bottom: 29px;
+    margin-right: 180px;
+}
+
+.clubs-catalog-list-item__logo {
+    display: block;
+    width: 170px;
+    height: 70px;
+    background-position: right top;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.clubs-catalog-list-item__short-additional-info {
+    padding-bottom: 22px;
+}
+
+.clubs-catalog-list-item__short-additional-info-item {
+    float: left;
+    font-size: 14px;
+    color: $secondaryTextColor;
+    position: relative;
+    padding: 0 22px 5px 37px;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: -3px;
+        width: 22px;
+        height: 22px;
+        border: 1px solid $mainBorderColor;
+        border-radius: 2px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 50% auto;
+    }
+
+    &.clubs-catalog-list-item__short-additional-info-item--metro {
+        &:before {
+            background-image: url('./../i/clubs/metro.svg');
+            background-size: 13px auto;
+        }
+    }
+
+    &.clubs-catalog-list-item__short-additional-info-item--parking {
+        &:before {
+            background-image: url('./../i/clubs/parking.svg');
+            background-size: 8px auto;
+        }
+    }
+
+}
+
+.clubs-catalog-list-item__description {
+    font-size: 14px;
+    line-height: 20px;
+    color: $mainTextColor;
+    padding-bottom: 29px;
+}
+
+.clubs-catalog-list-item__available-training {
+    display: block;
+    position: relative;
+    border-top: 1px solid $mainBorderColor;
+    border-bottom: 1px solid $mainBorderColor;
+    margin-bottom: 27px;
+    padding: 9px 0 10px 0;
+
+    .clubs-catalog-list-item__available-training-item:first-child {
+        padding-right: 32px;
+        margin-right: 26px;
+        &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background-color: $mainBorderColor;
+        }
+    }
+}
+
+.clubs-catalog-list-item__available-training-item {
+    font-size: 16px;
+    font-weight: bold;
+    color: $mainTextColor;
+
+    width: auto;
+    box-sizing: border-box;
+    float: left;
+    padding: 16px 0 19px 42px;
+    background-repeat: no-repeat;
+    //max-width: 215px;
+    position: relative;
+
+    &.clubs-catalog-list-item__available-training-item--card-icon {
+        background-size: 28px auto;
+        background-position: 0 12px;
+        background-image: url('./../i/clubs/abonement.svg');
+    }
+
+    &.clubs-catalog-list-item__available-training-item--heart-icon {
+        background-image: url('./../i/clubs/traning.svg');
+        background-size: 28px auto;
+        background-position: 0 15px;
+    }
+
+    &.clubs-catalog-list-item__available-training-item--club-icon {
+        background-size: 30px auto;
+        background-position: 2px 11px;
+        background-image: url('./../i/clubs/club.svg');
+        padding-left: 52px;
+    }
+
+    &.clubs-catalog-list-item__available-training-item--review {
+        padding-left: 0;
+    }
+
+    .clubs-catalog-list-item__rating-stars {
+        margin-right: 0;
+        margin-top: -11px;
+    }
+
+    .clubs-catalog-list-item__reviews-count {
+        float: right;
+        clear: both;
+        padding-top: 5px;
+        max-width: 100%;
+        margin-bottom: -12px;
+    }
+}
+
+.clubs-catalog-list-item__shot-price-info {
+    float: left;
+
+}
+
+.clubs-catalog-list-item__shot-price-info-text {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 6px;
+}
+
+.clubs-catalog-list-item__shot-price-info-price {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 5px 0 9px;
+}
+
+.clubs-catalog-list-item__shot-price-info-subscription-text {
+    display: block;
+    color: $mainColor;
+    font-size: 14px;
+}
+
+.clubs-catalog-list-item__available-training-club-name {
+    @extend .ellipsis;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: $mainTextColor;
+    max-width: 288px;
+    margin-top: -9px;
+    padding-bottom: 4px;
+}
+
+.clubs-catalog-list-item__available-training-club-address {
+    @extend .ellipsis;
+    display: block;
+    font-size: 14px;
+    color: $mainTextColor;
+    max-width: 288px;
+    margin-bottom: -12px;
+    font-weight: bold;
+    .main-text-color {
+        color: $mainColor;
+    }
+}
+
+.clubs-catalog-list-item__rating {
+    padding: 15px 15px 0 0;
+    float: left;
+}
+
+.clubs-catalog-list-item__rating-stars {
+    display: block;
+    float: left;
+    width: 100px;
+    margin-right: 25px;
+}
+
+.clubs-catalog-list-item__rating-star {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('./../i/clubs/star.svg');
+    float: left;
+    background-size: 16px auto;
+
+    &.clubs-catalog-list-item__rating-star--active {
+        background-image: url('./../i/clubs/star-active.svg');
+    }
+}
+
+.clubs-catalog-list-item__reviews-count {
+    font-size: 14px;
+    color: $secondaryTextColor;
+    line-height: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    float: left;
+    padding: 3px 0 0 0;
+    border-bottom: 1px solid $secondaryTextColor;
+    &:hover {
+        border-bottom-color: transparent;
+    }
+}
+
+.clubs-catalog-list-item__more-info {
+    float: right;
+    text-align: center;
+    background-color: $mainColor;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 15px 56px;
+    text-decoration: none;
+}
+
+.lt-desktop-width {
+    .clubs-catalog-list {
+        padding-top: 6px;
+    }
+    .clubs-catalog-list-item__available-training-item {
+        margin-right: 0;
+        padding-right: 0;
+        &.clubs-catalog-list-item__available-training-item--heart-icon {
+            width: auto;
+            //margin-left: 20px;
+            float: left;
+        }
+    }
+    .clubs-catalog-list-item {
+        margin-bottom: 45px;
+    }
+
+    .clubs-catalog-list-item__header {
+        font-size: 18px;
+    }
+}
+
+.lt-tablet-width {
+    .clubs-catalog-list-item__header,
+    .clubs-catalog-list-item__address {
+        margin-right: 0;
+    }
+    .clubs-catalog-list-item__short-additional-info-item {
+        box-sizing: border-box;
+        min-width: 150px;
+        padding-right: 10px;
+    }
+    .clubs-catalog-list-item__description {
+        padding-bottom: 25px;
+    }
+    .clubs-catalog-list-item__available-training {
+        text-align: center;
+        padding-bottom: 24px;
+        margin-bottom: 4px;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        .clubs-catalog-list-item__available-training-item:first-child {
+            margin-right: 0;
+        }
+    }
+    .clubs-catalog-list-item__available-training-item {
+        float: none;
+        display: block;
+        width: auto;
+        margin: 0;
+        padding-bottom: 5px;
+        padding-right: 32px;
+        &.clubs-catalog-list-item__available-training-item--heart-icon {
+            width: auto;
+            margin-left: 0;
+            float: none;
+        }
+        &:before {
+            display: none;
+        }
+    }
+    .clubs-catalog-list-item__rating {
+        float: none;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .clubs-catalog-list-item__rating-stars {
+        display: inline-block;
+        float: none;
+        margin-right: 20px;
+        position: relative;
+        top: 5px;
+    }
+
+    .clubs-catalog-list-item__reviews-count {
+        display: inline-block;
+        float: none;
+    }
+
+    .clubs-catalog-list-item__more-info {
+        float: none;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .clubs-catalog-list-item__logo {
+        position: static;
+        margin: 0 auto 20px;
+        background-position: center center;
+    }
+}

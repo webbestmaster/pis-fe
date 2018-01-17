@@ -1,0 +1,23 @@
+{
+    "url": {
+        "emptyLogin": "/api/auth/login",
+        "login": "/api/auth/login?email={{email}}&password={{password}}",
+        "registration": "/api/auth/registration",
+        "forgotPassword": "/api/auth/forgotPassword",
+        "resetPassword": "/api/auth/resetPassword",
+        "logout": "api/auth/logout"
+    },
+    "type": {
+        "login": "auth__login",
+        "registration": "auth__registration",
+        "forgotPassword": "auth__forgot-password",
+        "resetPassword": "auth__reset-password",
+        "openPopup": "auth__open-popup"
+    },
+    "popup": {
+        "promo": "popup__promo",
+        "login": "popup__login",
+        "register": "popup__register",
+        "restore": "popup__restore"
+    }
+}

@@ -1,0 +1,35 @@
+@import "./var";
+
+.clubs-catalog-search {
+    position: relative;
+}
+
+.clubs-catalog-search__input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    font-size: 14px;
+    color: $mainTextColor;
+    padding: 13px 56px 12px 19px;
+}
+
+.clubs-catalog-search__input-icon {
+    background-image: url('./../i/search/icon-search.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    background-size: 20px auto;
+}
+
+.lt-desktop-width {
+    .clubs-catalog-search {
+        margin-bottom: 28px;
+    }
+}

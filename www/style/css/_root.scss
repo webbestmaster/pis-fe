@@ -1,5 +1,35 @@
 // use BEM like -> block-name__element-name--modifier-name
 @import "./reset";
 
+// libs
+@import "./../../js/lib/swiper.css";
+
 // my variables
 @import "./var";
+@import "./main";
+
+// main styles
+@import "./section";
+@import "./category-icons";
+@import "./map";
+
+// components
+@import "./header";
+@import "./header-menu";
+@import "./header-slider";
+@import "./sale";
+@import "./promo-steps";
+@import "./our-partners";
+@import "./promo-instagram";
+@import "./footer";
+@import "./top-big-banner";
+@import "./bread-crumbs";
+@import "./clubs-catalog";
+@import "./clubs-catalog-sort";
+@import "./clubs-catalog-filter";
+@import "./clubs-catalog-search";
+@import "./clubs-catalog-list";
+@import "./clubs-catalog-date-filter";
+@import "./subscriptions-catalog";
+@import "./trainings-catalog";
+@import "./header-part";

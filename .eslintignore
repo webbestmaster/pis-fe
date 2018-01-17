@@ -9,7 +9,11 @@ node_modules
 /prod/
 
 # polyfill
-/www/js/lib/polyfill
+/www/js/lib/
+
+# res
+
+/_res
 
 # example
 # /* eslint-disable no-unused-vars */

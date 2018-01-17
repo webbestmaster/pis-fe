@@ -1,0 +1,23 @@
+{
+    "tabletWidth": 1260,
+    "mobileWidth": 750,
+    "pageDataUrl": {
+        "host": "http://site.katran.by",
+        "home": "http://site.katran.by/api/home/index",
+        "clubs": "http://site.katran.by/api/club/index",
+        "club": "http://site.katran.by/api/club/getFullInfo?id={{clubId}}",
+        "subscriptions": "http://site.katran.by/api/subscription/index",
+        "subscription": "http://site.katran.by/api/subscription/getFullInfo?id={{subscriptionId}}",
+        "trainings": "http://site.katran.by/api/training/index",
+        "training": "http://site.katran.by/api/training/getFullInfo?id={{trainingId}}",
+        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}"
+    },
+    "searchUrl": {
+        "club": "http://site.katran.by/api/club/search",
+        "subscriptions": "http://site.katran.by/api/subscription/search",
+        "trainings": "http://site.katran.by/api/training/search"
+    },
+    "key": {
+        "googleMap": "AIzaSyCgl3fWrTUUYRtPM8WDsjnAlaI6OFdCK0Q"
+    }
+}

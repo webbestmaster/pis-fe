@@ -1,0 +1,59 @@
+/* global window */
+import {store} from '../../index';
+
+const appConst = require('./const.json');
+const globalAppConst = require('./../../app-const.json');
+
+function defineWrapperClassName() {
+    const {clientWidth} = window.document.documentElement;
+    const wrapper = window.document.querySelector('.js-app-wrapper');
+    const wrapperClassList = wrapper.classList;
+    const desktopCssClassName = 'desktop-width';
+    const tabletCssClassName = 'tablet-width';
+    const mobileCssClassName = 'mobile-width';
+    const ltCssClassPrefix = 'lt-';
+    const cssClassNameList = [
+        desktopCssClassName,
+        tabletCssClassName,
+        mobileCssClassName
+    ];
+
+    cssClassNameList.forEach(className => {
+        wrapperClassList.remove(className);
+        wrapperClassList.remove(ltCssClassPrefix + className);
+    });
+
+    if (clientWidth > globalAppConst.tabletWidth) {
+        wrapperClassList.add(desktopCssClassName);
+    } else {
+        wrapperClassList.add(ltCssClassPrefix + desktopCssClassName);
+
+        if (clientWidth > globalAppConst.mobileWidth) {
+            wrapperClassList.add(tabletCssClassName);
+        } else {
+            wrapperClassList.add(ltCssClassPrefix + tabletCssClassName);
+            wrapperClassList.add(mobileCssClassName);
+        }
+    }
+}
+
+function onWindowResize() {
+    defineWrapperClassName();
+
+    const {clientWidth, clientHeight} = window.document.documentElement;
+
+    store.dispatch({
+        type: appConst.type.setScreenSize,
+        payload: {
+            width: clientWidth,
+            height: clientHeight
+        }
+    });
+}
+
+export function initAppScreenHelper() {
+    onWindowResize();
+
+    window.addEventListener('resize', onWindowResize, false);
+}
+

@@ -1,0 +1,183 @@
+@import "./var";
+
+.promo-instagram {
+
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .promo-instagram__double-item {
+        width: 33.333333%;
+        //min-width: 33.333333%;
+        position: relative;
+        .square-image {
+            width: 50%;
+        }
+        .promo-instagram__double-item-container {
+            left: 0;
+            top: 0;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: #192639;
+            box-sizing: border-box;
+        }
+
+        .promo-instagram__double-item-header {
+            float: left;
+            padding: 14.5% 0 0 2.5%;
+            font-weight: bold;
+            font-size: 34px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        .promo-instagram__double-item-hash-tag {
+            float: left;
+            clear: left;
+            padding: 1.5% 0 0 2.5%;
+            font-size: 28px;
+            font-weight: bold;
+            box-sizing: border-box;
+            color: $mainColor;
+            word-break: break-all;
+        }
+
+        .promo-instagram__double-item-promo-text {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 53%;
+            padding: 24.5% 4% 0 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #fff;
+        }
+    }
+
+    .promo-instagram__item {
+        width: 16.666666%;
+        //min-width: 16.666666%;
+
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        //background-image: url(http://site.katran.by//images/partner/17cfe843834678bded528ac9a058bd530.jpg);
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background: rgba(32, 47, 70, 0.8);
+            transition: opacity 0.3s ease-out;
+        }
+
+        .promo-instagram__item-name {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 25px;
+            width: 200px;
+            max-width: 85%;
+            text-align: center;
+            font-size: 18px;
+            line-height: 25px;
+            padding: 10px;
+            transition: opacity 0.3s ease-out;
+            opacity: 0;
+            box-sizing: border-box;
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+            }
+            .promo-instagram__item-name {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .promo-instagram {
+        .promo-instagram__item {
+            width: 25%;
+        }
+        .promo-instagram__double-item {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .promo-instagram {
+        .promo-instagram__item {
+            width: 33.333333%;
+        }
+        .promo-instagram__double-item {
+            order: -1;
+            width: 66.666666%;
+        }
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .promo-instagram {
+        .promo-instagram__item {
+            width: 50%;
+        }
+        .promo-instagram__double-item {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .promo-instagram {
+        .promo-instagram__double-item {
+            .square-image {
+                display: none;
+            }
+            .promo-instagram__double-item-container {
+                min-height: 260px;
+                position: static;
+            }
+
+            .promo-instagram__double-item-header {
+                text-align: center;
+                padding: 63px 0 0;
+                float: none;
+            }
+
+            .promo-instagram__double-item-hash-tag {
+                text-align: center;
+                padding-left: 0;
+                padding-right: 0;
+                float: none;
+            }
+
+            .promo-instagram__double-item-promo-text {
+                width: auto;
+                position: static;
+                text-align: center;
+                float: none;
+                clear: both;
+                padding: 12px 25px 43px;
+
+            }
+        }
+
+    }
+}

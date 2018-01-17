@@ -1,0 +1,339 @@
+@import "../../../style/css/var";
+//@import "../../../style/css/helper";
+
+body { // just add authority in front of swiper's classes
+
+    .description {
+        margin-right: 390px;
+        padding: 0 0 0 100px;
+    }
+
+    .description_image {
+        float: left;
+        width: 268px;
+        height: 237px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 4px;
+    }
+
+    .description_short_info {
+        position: relative;
+        margin-left: 340px;
+        //margin-right: 110px;
+        padding-bottom: 25px;
+    }
+
+    .description_short_info_icon {
+        position: absolute;
+        left: -40px;
+        top: 5px;
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        box-sizing: border-box;
+        border: 1px solid $mainBorderColor;
+        border-radius: 3px;
+        &.description_short_info_icon__time {
+            background-image: url('./../../../style/i/subscription/time.svg');
+            background-size: 10px auto;
+        }
+        &.description_short_info_icon__map {
+            background-image: url('./../../../style/i/subscription/map-pin.svg');
+            background-size: 10px auto;
+        }
+        &.description_short_info_icon__metro {
+            background-image: url('./../../../style/i/subscription/metro.svg');
+            background-size: 13px auto;
+        }
+        &.description_short_info_icon__parking {
+            background-image: url('./../../../style/i/subscription/parking.svg');
+            background-size: 8px auto;
+            background-position: center 5px;
+        }
+    }
+
+    .description_info_item {
+        display: block;
+    }
+
+    .description_info_item_header {
+        color: $mainColor;
+        font-size: 16px;
+        font-weight: bold;
+        padding-bottom: 8px;
+    }
+
+    .description_info_item_text {
+        color: $mainTextColor;
+        font-size: 14px;
+    }
+
+    .description_text {
+        padding: 40px 0 40px 104px;
+        margin-right: 390px;
+        line-height: 20px;
+        font-size: 14px;
+        min-height: 244px;
+        clear: left;
+    }
+
+    .card {
+        position: sticky;
+        top: 30px;
+        float: right;
+        width: 370px;
+        box-sizing: border-box;
+        border: 1px solid $mainColor;
+        padding: 100px 36px 37px;
+        border-radius: 5px;
+        //position: relative;
+        &.card__no_promotion {
+            padding-top: 44px;
+        }
+    }
+
+    .card_percent {
+        background-color: $mainColor;
+        color: #fff;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: bold;
+        left: 0;
+        position: absolute;
+        top: 38px;
+        padding: 5px 24px 5px 31px;
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            border: 14px transparent solid;
+            border-left-color: $mainColor;
+            right: -24px;
+            top: 0;
+            border-left-width: 10px;
+        }
+    }
+
+    .card_short_info_wrapper {
+        display: block;
+        padding-bottom: 32px;
+    }
+
+    .card_short_info_number {
+        display: block;
+        color: $mainTextColor;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        width: 58px;
+        float: left;
+    }
+
+    .card_short_info_description {
+        display: block;
+        color: $mainTextColor;
+        font-size: 18px;
+        font-weight: bold;
+        border-left: 1px solid $mainBorderColor;
+        margin-left: 58px;
+        padding: 9px 0 15px 19px;
+    }
+
+    .card_short_additional_info {
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: $secondaryTextColor;
+        padding-bottom: 14px;
+    }
+
+    .card_cost {
+        color: $mainColor;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        padding-bottom: 10px;
+    }
+
+    .card_old_cost {
+        color: $secondaryTextColor;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        text-decoration: line-through;
+        padding-bottom: 32px;
+    }
+
+    .card_button {
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        background-color: $mainColor;
+        padding: 18px 10px 17px 10px;
+        position: relative;
+        cursor: pointer;
+        font-weight: bold;
+        text-indent: -19px;
+        border-radius: 50px;
+        margin-bottom: 35px;
+        display: block;
+        text-decoration: none;
+        &:before,
+        &:after {
+            content: '';
+            background-color: #fff;
+            width: 13px;
+            height: 2px;
+            position: absolute;
+            right: 22px;
+        }
+        &:before {
+            top: 23px;
+            transform: rotateZ(45deg);
+        }
+        &:after {
+            top: 31px;
+            transform: rotateZ(-45deg);
+        }
+    }
+
+    .card_cash_back {
+        display: block;
+        font-size: 16px;
+        color: $mainTextColor;
+        background-image: url('./../../../style/i/subscription/cash-back-label.svg');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 130px auto;
+        padding: 4px 0 9px 156px;
+        font-weight: bold;
+    }
+
+    .card_cash_back_value {
+        color: $mainColor;
+        font-size: 18px;
+        display: inline-block;
+        background-image: url('./../../../style/i/subscription/cash-back-small-label.png');
+        background-position: 8px 4px;
+        background-repeat: no-repeat;
+        background-size: 25px 14px;
+        padding: 0 0 0 38px;
+        font-weight: bold;
+    }
+
+    .club_info {
+        display: block;
+        padding: 0 0 0 100px;
+        border-bottom: none;
+
+        :global {
+            .clubs-catalog-list-item__image {
+                left: 100px;
+            }
+
+            .clubs-catalog-list-item__header,
+            .clubs-catalog-list-item__address {
+                margin-right: 0;
+            }
+
+            .clubs-catalog-list-item__address {
+                padding-bottom: 21px;
+            }
+        }
+    }
+
+    .club_info_rating {
+        padding-bottom: 15px;
+    }
+
+    :global .lt-desktop-width {
+        :local {
+            .description {
+                padding-left: 15px;
+            }
+
+            .description_image {
+                width: 376px;
+                height: 237px;
+                display: block;
+                float: none;
+                margin-bottom: 25px;
+            }
+
+            .description_short_info {
+                margin-left: 40px;
+            }
+
+            .card {
+                position: relative;
+                margin-right: 15px;
+                top: 0;
+                width: 313px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .card_cost {
+                font-size: 20px;
+            }
+
+            .card_cash_back {
+                background-position: center 0;
+                padding: 55px 0 0 0;
+                text-align: center;
+            }
+
+            .description_text {
+                margin-right: 0;
+                padding: 8px 15px 61px;
+                min-height: auto;
+            }
+
+            :global.clubs-catalog-list-item {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            :global.clubs-catalog-list-item__image {
+                left: 15px;
+            }
+        }
+    }
+
+    :global .lt-tablet-width {
+        :local {
+            .card {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 35px;
+                float: none;
+            }
+
+            .description {
+                margin-right: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .description_image {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                width: 300px;
+                height: 190px;
+            }
+
+            :global.clubs-catalog-list-item {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    }
+
+}
+
+

@@ -1,0 +1,26 @@
+@import "./var";
+
+body {
+    // todo: remove overflow-y: scroll; before deploy
+    overflow-y: scroll;
+}
+
+.hug {
+    @extend .clear-full;
+    margin: 0 auto;
+    max-width: 1170px;
+    &.hug--section {
+        padding-bottom: 100px;
+    }
+}
+
+.lt-tablet-width {
+    .hug {
+        &.hug--section {
+            padding-bottom: 40px;
+        }
+    }
+}
+
+
+

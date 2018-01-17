@@ -1,0 +1,112 @@
+.subscriptions-catalog {
+    .clubs-catalog-list-item__header,
+    .clubs-catalog-list-item__address {
+        margin-right: 0;
+    }
+}
+
+.desktop-width {
+    .subscriptions-catalog {
+        .clubs-catalog-list,
+        .clubs-catalog__right-part {
+            padding-top: 0;
+        }
+    }
+}
+
+.lt-desktop-width {
+    .subscriptions-catalog {
+        .clubs-catalog-list-item__available-training {
+            .clubs-catalog-list-item__available-training-item {
+                float: none;
+                clear: both;
+
+                .clubs-catalog-list-item__available-training-club-address,
+                .clubs-catalog-list-item__available-training-club-name {
+                    max-width: 100%;
+                    width: 100%;
+                }
+                &:first-child {
+                    margin-right: 0;
+                    padding-right: 0;
+                    &:before {
+                        display: none;
+                        margin-right: 26px;
+                    }
+                }
+
+                .clubs-catalog-list-item__rating-stars {
+                    padding: 11px 10px 10px 50px;
+                }
+
+                .clubs-catalog-list-item__reviews-count {
+                    float: left;
+                    clear: none;
+                    padding-top: 3px;
+                    margin-left: 22px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+.lt-tablet-width {
+    .subscriptions-catalog {
+        .clubs-catalog-list-item__available-training {
+            display: block;
+            text-align: left;
+            padding-bottom: 3px;
+            margin-bottom: 29px;
+
+            .clubs-catalog-list-item__available-training-item {
+
+                &:first-child {
+                    padding-bottom: 10px;
+                    &:before {
+                        display: none;
+                        margin-right: 26px;
+                    }
+                }
+
+                .clubs-catalog-list-item__available-training-club-address,
+                .clubs-catalog-list-item__available-training-club-name {
+                    white-space: initial;
+                }
+
+                .clubs-catalog-list-item__rating-stars {
+                    float: left;
+                }
+                .clubs-catalog-list-item__reviews-count {
+                    margin-left: 1px;
+                    padding-top: 7px;
+                }
+            }
+        }
+        .clubs-catalog-list-item__shot-price-info {
+            display: block;
+            width: 100%;
+            float: none;
+            padding-bottom: 58px;
+
+            .clubs-catalog-list-item__shot-price-info-subscription-text,
+            .clubs-catalog-list-item__shot-price-info-text {
+                float: left;
+            }
+
+            .clubs-catalog-list-item__shot-price-info-text {
+                margin-right: 31px;
+            }
+
+            .clubs-catalog-list-item__shot-price-info-subscription-text {
+                padding-top: 8px;
+            }
+        }
+        .clubs-catalog-list-item__more-info {
+            display: block;
+            clear: both;
+            float: none;
+        }
+    }
+
+}

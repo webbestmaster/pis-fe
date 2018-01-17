@@ -1,7 +1,7 @@
 /* global window, IS_PRODUCTION, IS_DEVELOPMENT */
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, HashRouter} from 'react-router-dom';
+import {BrowserRouter, HashRouter, hashRouter} from 'react-router-dom';
 import App from './components/app';
 
 import {createDevTools} from 'redux-devtools';
@@ -10,12 +10,19 @@ import DockMonitor from 'redux-devtools-dock-monitor';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {initAppScreenHelper} from './components/app/helper';
 
 import styles from 'style/css/_root.scss'; // do not remove me
 require('./lib/initialize-environment');
 
+// import * as reducers from './reducer';
 import * as reducers from './reducer';
 
+// c.log(reducers.default);
+
+// const reducer = combineReducers({
+//     ...reducers
+// });
 const reducer = combineReducers({
     ...reducers
 });
@@ -55,3 +62,7 @@ render(
     </Provider>,
     window.document.querySelector('.js-app-wrapper')
 );
+
+export {store};
+
+initAppScreenHelper();

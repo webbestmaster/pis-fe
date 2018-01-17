@@ -1,0 +1,10 @@
+<span className="hidden">--- FIXME:LINK ---</span>
+
+
+const promotion = XXX.promotion instanceof Array || !XXX.promotion ?
+                                null :
+                                XXX.promotion; // yes, if promotion is not exist: row.promotion === []
+
+style={{backgroundImage: 'url(' + resolveImagePath(promotion ? promotion.image : data.image) + ')'}}
+
+{promotion ? (data.price - promotion.discount).toFixed(2) : data.price}

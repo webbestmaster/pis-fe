@@ -1,0 +1,96 @@
+.gm-fullscreen-control {
+    display: none; // Hide default fullscreen button on react-google-maps
+}
+
+.map-point {
+    position: relative;
+    top: -32px;
+    left: 13px;
+    width: 26px;
+    height: 32px;
+    background-position: center bottom;
+    background-image: url('./../i/map/map-pin.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 0;
+
+}
+
+.map-point__content {
+    display: none;
+    position: absolute;
+    bottom: 16px;
+    box-sizing: border-box;
+    padding: 17px 14px 8px;
+    width: 500px;
+    min-height: 200px;
+    background-color: #fff;
+    //opacity: 0.5;
+    margin: 0 0 0 -241px;
+    box-shadow: 0 -3px 9px rgba(0, 0, 0, 0.5);
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #fff;
+        border-bottom-width: 0;
+        margin-left: -16px;
+    }
+
+    .clubs-catalog-list-item__available-training-item {
+        float: left;
+        clear: left;
+    }
+
+    .clubs-catalog-list-item__header,
+    .clubs-catalog-list-item__address {
+        margin-right: 0;
+        margin-left: 180px;
+    }
+
+    .clubs-catalog-list-item__address {
+        padding-bottom: 10px;
+    }
+
+    .clubs-catalog-list-item__description {
+        clear: both;
+        padding-bottom: 2px;
+    }
+
+    .clubs-catalog-list-item__logo {
+        left: 18px;
+        top: 18px;
+        background-position: left top;
+        position: static;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+    .clubs-catalog-list-item__available-training-club-address,
+    .clubs-catalog-list-item__available-training-club-name {
+        max-width: 100%;
+        width: 416px;
+    }
+}
+
+.map-point:hover {
+    z-index: 1;
+    background-image: none;
+    .map-point__content {
+        display: block;
+    }
+}
+
+.map-point--subscriptions {
+    .clubs-catalog-list-item__available-training-item {
+        padding-bottom: 28px;
+    }
+    .clubs-catalog-list-item__description {
+        padding-bottom: 12px;
+
+    }
+}

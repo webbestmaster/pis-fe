@@ -1,0 +1,389 @@
+@import "var";
+@import "helper";
+
+.sale {
+    .section__header {
+        .section__button {
+            position: relative;
+            top: -7px;
+            margin-left: 102px;
+        }
+    }
+
+    .sale-slider {
+        padding: 35px 0 0;
+    }
+
+    .sale-card-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .sale-swiper-card {
+            display: block;
+        }
+    }
+
+    .sale-swiper-card {
+        margin: 10px 0;
+        cursor: pointer;
+        width: 288px;
+        min-height: 423px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 10;
+        text-decoration: none;
+        color: $mainTextColor;
+        .sale-swiper-card__button {
+            opacity: 0;
+            margin-top: 31px;
+        }
+        &:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .swiper-container {
+        .swiper-wrapper {
+            .sale-swiper-card:first-child {
+                margin-left: 10px;
+            }
+            .sale-swiper-card:last-child {
+                margin-right: 10px;
+            }
+
+        }
+    }
+
+    .sale-swiper-card__week-schedule {
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid $mainBorderColor;
+        border-bottom: 1px solid $mainBorderColor;
+        padding: 11px 0 11px;
+        margin-top: 3px;
+        margin-bottom: 21px;
+        .sale-swiper-card__week-day {
+            display: block;
+            width: 14.285714%; // 100 / 7
+            text-transform: capitalize;
+            color: $mainBorderColor;
+            border-right: 1px solid $mainBorderColor;
+            font-size: 14px;
+            line-height: 19px;
+            box-sizing: border-box;
+            text-align: center;
+            &:last-child {
+                border-right-color: transparent;
+            }
+            &.sale-swiper-card__week-day--active {
+                color: $mainColor;
+            }
+        }
+    }
+
+    .sale-swiper-card__label {
+        position: absolute;
+        background-color: $mainColor;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        top: 35px;
+        padding: 4px 15px 4px 22px;
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            border: 14px transparent solid;
+            border-left-color: $mainColor;
+            right: -24px;
+            top: 0;
+            border-left-width: 10px;
+        }
+        &:after {
+            content: '';
+            width: 1px;
+            height: 312px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: $mainBorderColor;
+        }
+        &.sale-swiper-card__label--line-only {
+            width: 100%;
+            font-size: 0;
+            padding: 0;
+            &:before {
+                content: '';
+                width: 1px;
+                height: 312px;
+                position: absolute;
+                right: -1px;
+                top: 0;
+                background-color: $mainBorderColor;
+                border: none;
+            }
+
+        }
+    }
+
+    .sale-swiper-card__content {
+        width: 235px;
+        margin: 0 auto;
+        padding: 100px 0 20px;
+        position: relative;
+        height: 100%;
+        box-sizing: border-box;
+        transition: all ease-out 0.5s;
+        &:hover {
+            transform: translateY(-34px);
+            .sale-swiper-card__button {
+                opacity: 1;
+            }
+        }
+    }
+
+    .sale-swiper-card__static-content {
+        @extend .sale-swiper-card__content;
+        .sale-swiper-card__button {
+            opacity: 1;
+        }
+        &:hover {
+            transform: translateY(0);
+        }
+    }
+
+    .sale-swiper-card__subscription-data {
+        display: flex;
+        flex-direction: row;
+        .sale-swiper-card__subscription-count {
+            font-size: 36px;
+            font-weight: bold;
+            min-width: 51px;
+            color: $mainTextColor;
+        }
+        .sale-swiper-card__subscription-header {
+            font-size: 18px;
+            line-height: 20px;
+            color: $mainTextColor;
+            flex-grow: 1;
+            font-weight: bold;
+            border-left: 1px solid $mainBorderColor;
+            padding: 1px 0 2px 11px;
+            margin-bottom: 21px;
+            height: 60px; // 3 x line-height
+            @include line-cap(3);
+        }
+        .sale-swiper-card__subscription-single-header {
+            @extend .sale-swiper-card__subscription-header;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: none;
+        }
+    }
+
+    .sale-swiper-card__subscription-description p {
+        font-size: 14px;
+        line-height: 16px;
+        color: $secondaryTextColor;
+        @include line-cap(4);
+    }
+
+    .sale-swiper-card__subscription-description {
+        height: 67px;
+        //overflow: hidden;
+        font-size: 14px;
+        color: $secondaryTextColor;
+        padding-bottom: 27px;
+        position: relative;
+        margin-bottom: 24px;
+        text-align: center;
+        &:before {
+            content: '';
+            background-color: $mainBorderColor;
+            height: 1px;
+            width: 152px;
+            bottom: 0;
+            position: absolute;
+            left: 50%;
+            margin-left: -76px;
+        }
+    }
+
+    .sale-swiper-card__subscription-training-description {
+        @extend .sale-swiper-card__subscription-description;
+        padding-bottom: 0;
+        margin-bottom: 18px;
+        &:before {
+            display: none;
+        }
+    }
+
+    .sale-swiper-card__subscription-training-description {
+        p {
+            display: none;
+        }
+
+        p:first-child {
+            @include line-cap(4);
+        }
+    }
+
+    .sale-swiper-card__subscription-cost {
+        font-weight: bold;
+        text-align: center;
+        color: $mainTextColor;
+        font-size: 24px;
+        .sale-swiper-card__subscription-cost-currency {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .sale-swiper-card__subscription-old-cost {
+            color: $secondaryTextColor;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            left: -13px;
+            &:before {
+                content: '';
+                background-color: $secondaryTextColor;
+                position: absolute;
+                left: -5px;
+                top: 14px;
+                width: 100%;
+                height: 1px;
+                padding: 0 5px;
+            }
+            .sale-swiper-card__subscription-cost-currency {
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+
+    .sale-swiper-card__image {
+        //background-color: #ccc;
+        display: block;
+        width: 100%;
+        height: 88px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin-bottom: 21px;
+    }
+
+    .sale-swiper-card__training-image {
+        @extend .sale-swiper-card__image;
+        height: 160px;
+        background-size: cover;
+        position: relative;
+        margin-top: -65px;
+        margin-bottom: 26px;
+        &:before {
+            // FIXME: do it after login and other
+            opacity: 0;
+            content: '';
+            position: absolute;
+            right: 19px;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-image: url('./../../style/i/club/heart.svg');
+        }
+        &.sale-swiper-card__training-image--active {
+            &:before {
+                background-image: url('./../../style/i/club/heart-filled.svg');
+            }
+        }
+    }
+
+    .sale-swiper-card__stopwatch {
+        background-image: url('./../i/club/stopwatch.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 64px;
+        margin-top: -70px;
+        margin-bottom: 25px;
+    }
+
+    .sale-swiper-card__header {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 11px;
+    }
+
+    .sale-swiper-card__description {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: $secondaryTextColor;
+        margin-bottom: 14px;
+        min-height: 70px;
+    }
+
+    .sale-swiper-card__details {
+        font-size: 14px;
+        background-image: url('./../i/sale/details-tick.png');
+        background-repeat: no-repeat;
+        background-position: -2px 0;
+        padding-left: 18px;
+    }
+
+}
+
+.sale-swiper-card__button {
+    transition: all ease-out 0.5s;
+    color: #fff;
+    padding: 14px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 25px;
+    text-align: center;
+    display: block;
+    width: 166px;
+    margin: 0 auto;
+    background: $mainColor;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@media screen and (max-width: $tabletWidth) {
+    .sale {
+        .swiper-container {
+            position: relative;
+            &:after {
+                content: '';
+                width: 80px;
+                height: 100%;
+                background-image: linear-gradient(to right, hsla(0, 0%, 100%, 0), #fff);
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+        }
+        .section__header {
+            .section__button {
+                margin-left: 37px;
+                top: 2px;
+            }
+        }
+        .sale-slider {
+            padding-top: 0;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .sale {
+        .section__header {
+            .section__button {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+@import "./var";
+
+.our-partners {
+    display: block;
+    overflow: hidden;
+
+    .our-partners__partner-list {
+        @extend .clear-full;
+        display: block;
+        padding: 20px 0 37px;
+    }
+
+    .our-partners__partner-item {
+        height: 226px;
+        position: relative;
+        width: 25%;
+        float: left;
+        &:before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background-color: $mainBorderColor;
+        }
+        &:hover {
+            .our-partners__partner-image {
+                opacity: 1;
+                filter: grayscale(0);
+            }
+        }
+    }
+
+    .our-partners__partner-image {
+        transition: 0.5s ease-out all;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        opacity: 0.75;
+        filter: grayscale(1);
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    .our-partners__divider {
+        float: left;
+        clear: both;
+        height: 1px;
+        width: 100%;
+        background-color: $mainBorderColor;
+        margin: 19px 0;
+    }
+}
+
+@media screen and (max-width: $tabletWidth) {
+    .our-partners {
+        .our-partners__partner-list {
+            overflow: hidden;
+        }
+
+        .our-partners__divider {
+            display: none;
+        }
+
+        .our-partners__partner-item {
+            width: 50%;
+            height: 248px;
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: $mainBorderColor;
+                position: relative;
+                top: 248px;
+                box-sizing: border-box;
+                border-left: 19px solid #fff;
+                border-right: 19px solid #fff;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .our-partners {
+        .our-partners__partner-item {
+            width: 100%;
+        }
+    }
+}
+
+

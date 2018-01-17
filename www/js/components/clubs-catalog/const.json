@@ -1,0 +1,9 @@
+{
+    "type": {
+        "setSort": "clubs-catalog__set-sort",
+        "setFilter": "clubs-catalog__set-filter",
+        "setSearch": "clubs-catalog__set-search",
+        "setFilterVisible": "clubs-catalog__set-filter-visible",
+        "setResultMode": "clubs-catalog__set-result-mode"
+    }
+}

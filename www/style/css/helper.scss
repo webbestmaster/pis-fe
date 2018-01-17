@@ -1,0 +1,67 @@
+@mixin prefix-key($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$prefix + $property}: $value;
+    }
+}
+
+@mixin prefix-value($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$property}: #{$prefix + $value};
+    }
+}
+
+@mixin prefix-key-value($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$prefix + $property}: #{$prefix + $value};
+    }
+}
+
+@mixin line-cap($line) {
+    @include prefix-key(line-clamp, $line);
+    @include prefix-key(box-orient, vertical);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+
+    //@include prefix-value(display, box);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+}
+
+
+.line-cap-1 {
+    @include line-cap(1);
+    p, div {
+        @include line-cap(1);
+    }
+}
+
+.line-cap-2 {
+    @include line-cap(2);
+    p, div {
+        @include line-cap(2);
+    }
+}
+
+.line-cap-3 {
+    @include line-cap(3);
+    p, div {
+        @include line-cap(3);
+    }
+}
+
+.line-cap-4 {
+    @include line-cap(4);
+    p, div {
+        @include line-cap(4);
+    }
+}
+
+.line-cap-5 {
+    @include line-cap(5);
+    p, div {
+        @include line-cap(5);
+    }
+}

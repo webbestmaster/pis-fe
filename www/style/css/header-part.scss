@@ -1,0 +1,115 @@
+.club-header-rating {
+    display: block;
+    margin: -60px 0 0 98px;
+    float: left;
+}
+
+.club-header-rating__stars {
+    float: left;
+    width: 36 * 5px;
+}
+
+.club-header-rating__star {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('./../i/club/star.svg');
+    width: 36px;
+    height: 36px;
+    float: left;
+    background-size: 30px auto;
+    &.club-header-rating__star-active {
+        background-image: url('./../i/club/star-active.svg');
+    }
+}
+
+.club-header-reviews {
+    float: left;
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 0 0 31px;
+}
+
+.club-header__services {
+    float: right;
+    margin-top: -34px;
+
+    .club-header__service {
+        float: left;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        position: relative;
+        padding-left: 80px;
+        margin-left: 36px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -20px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: $mainColor;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+        }
+
+        &.club-header__service--subscriptions {
+            &:before {
+                background-image: url('./../i/club/icon_abonement_white.svg');
+                background-size: 30px auto;
+                background-position: center 14px;
+            }
+        }
+
+        &.club-header__service--trainings {
+            &:before {
+                background-image: url('./../i/club/icon_traning_white.svg');
+                background-size: 32px auto;
+                background-position: center 18px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: $tabletWidth) {
+    .club-header-rating {
+        margin: -6px 0 0 14px;
+    }
+
+    .club-header-rating__stars {
+        width: 30 * 5px;
+    }
+
+    .club-header-rating__star {
+        width: 30px;
+        height: 30px;
+        background-size: 24px auto;
+    }
+
+    .club-header-reviews {
+        font-size: 17px;
+        padding-left: 28px;
+    }
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .club-header-rating {
+        margin: -34px 0 0 6px;
+    }
+
+    .club-header-rating__stars {
+        width: 24 * 5px;
+    }
+
+    .club-header-rating__star {
+        width: 24px;
+        height: 24px;
+        background-size: 20px auto;
+    }
+
+    .club-header-reviews {
+        padding: 2px 0 0 12px;
+    }
+}

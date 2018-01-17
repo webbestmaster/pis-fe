@@ -6,6 +6,7 @@ const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
@@ -60,10 +61,12 @@ const webpackConfig = {
         common: './js/common.js',
         main: ['./js/index.js']
     },
-    output: {
-        path: path.join(CWD, 'dist'),
-        filename: '[name].js'
-    },
+    output: Object.assign(
+        {filename: '[name].js'},
+        IS_PRODUCTION ?
+            {path: path.join(CWD, './../public/assets'), publicPath: '/assets/'} :
+            {path: path.join(CWD, 'dist')}
+    ),
 
     watch: IS_DEVELOPMENT,
 
@@ -76,7 +79,7 @@ const webpackConfig = {
                 loader: 'babel-loader',
                 exclude: /(node_modules|bower_components)/,
                 options: {
-                    presets: ['es2015', 'stage-1', 'react', 'flow']
+                    presets: ['env', 'stage-1', 'react', 'flow']
                 }
             },
             {
@@ -87,15 +90,56 @@ const webpackConfig = {
                 test: /\.(png|jpg|jpeg|gif|svg)$/,
                 loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'
             },
+            // css module
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    use: 'css-loader?importLoaders=' + (styleLoaders.length - 1)
-                })
+                test: /\.m\.scss$/,
+                use: [
+                    {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
+                    {
+                        loader: 'css-loader', options: {
+                            sourceMap: IS_DEVELOPMENT,
+                            modules: true,
+                            localIdentName: '[local]----[path]--[name]--[hash:base64:5]',
+                            minimize: IS_PRODUCTION
+                        }
+                    },
+                    {loader: 'resolve-url-loader'},
+                    {
+                        loader: 'postcss-loader', options: {
+                            sourceMap: true,
+                            config: {
+                                path: './postcss.config.js'
+                            }
+                        }
+                    },
+                    {loader: 'sass-loader', options: {sourceMap: IS_DEVELOPMENT}}
+                ]
             },
+
+            // global styles
             {
-                test: /\.(sass|scss)$/,
-                loader: ExtractTextPlugin.extract(styleLoaders)
+                test: /_root\.scss$/,
+                use: [
+                    {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
+                    {
+                        loader: 'css-loader', options: {
+                            sourceMap: IS_DEVELOPMENT,
+                            modules: IS_DEVELOPMENT,
+                            localIdentName: '[local]',
+                            minimize: IS_PRODUCTION
+                        }
+                    },
+                    {loader: 'resolve-url-loader'},
+                    {
+                        loader: 'postcss-loader', options: {
+                            sourceMap: IS_DEVELOPMENT,
+                            config: {
+                                path: './postcss.config.js'
+                            }
+                        }
+                    },
+                    {loader: 'sass-loader', options: {sourceMap: IS_DEVELOPMENT}}
+                ]
             },
             {
                 test: /\.raw$/,
@@ -120,9 +164,10 @@ const webpackConfig = {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(definePluginParams),
-        new HtmlWebpackPlugin({
-            template: 'index.html'
-        }),
+        new HtmlWebpackPlugin(Object.assign(
+            {template: 'index.html'},
+            IS_PRODUCTION ? {filename: './../../public/index.html'} : null
+        )),
         new ExtractTextPlugin({
             filename: 'style.css',
             allChunks: true
@@ -132,7 +177,6 @@ const webpackConfig = {
             minChunks: 2
         })
     ]
-
 };
 
 if (IS_PRODUCTION) {
@@ -145,5 +189,7 @@ if (IS_PRODUCTION) {
         })
     );
 }
+
+// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
