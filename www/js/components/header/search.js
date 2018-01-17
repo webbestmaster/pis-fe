@@ -41,7 +41,7 @@ class Search extends Component {
         const {state} = view;
         const {result, hasFocus, query} = state;
 
-        if (/* !hasFocus ||*/ !query || query.length < 3) {
+        if (!hasFocus || !query || query.length < 3) {
             return null;
         }
 
