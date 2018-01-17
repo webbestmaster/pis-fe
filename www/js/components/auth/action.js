@@ -3,9 +3,15 @@ const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
 
 export function login(email, password) {
-    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.login
-        .replace('{{email}}', email || 'email@email.email')
-        .replace('{{password}}', password || 'password'))
+    if (!email || !password) {
+        return () => Promise.reject('no email or password');
+    }
+
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host +
+        authConst.url.login.replace('{{email}}', email).replace('{{password}}', password),
+        {method: 'POST'}
+    )
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.login, payload: {login: parsedData}}));
 }

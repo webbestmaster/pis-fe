@@ -4,6 +4,7 @@ import style from './style.m.scss';
 import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
+import * as authApi from './../api';
 
 class Login extends Component {
     constructor() {
@@ -20,8 +21,13 @@ class Login extends Component {
         const view = this;
         const {props, state} = view;
 
-        props.login(view.refs.email.value, view.refs.password.value).then(({type, payload}) => {
+        const email = view.refs.email.value;
+        const password = view.refs.password.value;
+
+        props.login(email, password).then(({type, payload}) => {
             if (payload.login.code === 200) {
+                authApi.setUserData({email, password});
+
                 view.props.closePopup();
 
                 view.props.history.push('/user');

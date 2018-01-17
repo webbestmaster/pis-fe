@@ -6,6 +6,7 @@ import Login from './popup/login';
 import Restore from './popup/restore';
 import {connect} from 'react-redux';
 import * as authAction from './action';
+// import * as authApi from './api';
 
 const authConst = require('./const.json');
 
