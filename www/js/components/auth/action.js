@@ -19,13 +19,15 @@ export function login(email, password) {
 export function registration(regData) {
     const registerStr = Object.keys(regData).map(key => key + '=' + regData[key]).join('&');
 
-    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.registration + '?' + registerStr)
+    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.registration + '?' + registerStr,
+        {method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.registration, payload: {registration: parsedData}}));
 }
 
 export function forgotPassword(email) {
-    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.forgotPassword + '?' + 'email=' + email)
+    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.forgotPassword + '?' + 'email=' + email,
+        {method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.forgotPassword, payload: {forgotPassword: parsedData}}));
 }
@@ -34,7 +36,8 @@ export function resetPassword(token, password) {
     return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.resetPassword + '?' +
         'token=' + token +
         '&password=' + password +
-        '&password_confirmation=' + password)
+        '&password_confirmation=' + password,
+    {method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.resetPassword, payload: {resetPassword: parsedData}}));
 }
@@ -80,4 +83,3 @@ export function openPopupPromo() {
         payload: {popupType: authConst.popup.promo}
     };
 }
-
