@@ -22,28 +22,6 @@ const IS_PRODUCTION = NODE_ENV === PRODUCTION;
 
 const CWD = __dirname;
 
-const IS_MOBILE = false;
-
-const autoprefixerOptions = {
-    browsers: IS_MOBILE ? [
-        'last 2 Samsung versions',
-        'last 2 UCAndroid versions',
-        'Android >= 4',
-        'iOS >= 8',
-        'ChromeAndroid > 4'
-    ] : [
-        'Chrome 20',
-        'Safari 5',
-        'Edge 12',
-        'Explorer 8',
-        'Firefox 15'
-    ]
-};
-
-const styleLoaders = ['css-loader?' + JSON.stringify({minimize: IS_PRODUCTION}),
-    'autoprefixer-loader?' + JSON.stringify(autoprefixerOptions),
-    'sass-loader'];
-
 const definePluginParams = {
     NODE_ENV: JSON.stringify(NODE_ENV),
     IS_PRODUCTION: JSON.stringify(IS_PRODUCTION),
