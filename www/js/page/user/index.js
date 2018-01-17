@@ -7,7 +7,8 @@ import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
 import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
-
+import UserShortInfo from './../../components/user-short-info';
+import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
 const topBanner = require('./../../../style/images/user/top-banner.png');
 
 import User from './../../components/user';
@@ -20,16 +21,17 @@ export default class UserPage extends Component {
 
         return <div>
             <HeaderSimple/>
-            <div style={{marginLeft: 300}}>
+            <UserShortInfo/>
+            <div className={userShortInfoStyle.left_padded_wrapper}>
                 <TopBigBanner backgroundImage={topBanner}>
                     <BreadCrumbs>
                         <Link to="/">Главная</Link>
-                        <Link to="/trainings">Личный кабинет</Link>
+                        <Link to="/user">Личный кабинет</Link>
                     </BreadCrumbs>
                     <h3 className="section__header">Личный кабинет</h3>
                 </TopBigBanner>
+                <User/>
             </div>
-            <User/>
             <Footer/>
         </div>;
     }

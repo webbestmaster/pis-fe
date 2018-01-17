@@ -1,10 +1,18 @@
 @import "./../../../style/css/var";
 
+$userInfoWidth: 372px;
+
+.left_padded_wrapper {
+    position: relative;
+    margin-left: $userInfoWidth;
+}
+
 .main_block {
     display: block;
     background-color: #111c2a;
-    width: 372px;
-
+    width: 100%;
+    max-width: $userInfoWidth;
+    float: left;
     min-height: 100px;
 }
 
