@@ -40,6 +40,11 @@
 .gender_label {
     float: left;
     width: 50%;
+    box-sizing: border-box;
+    padding-left: 25px;
+    .text_label__label {
+        padding-bottom: 27px;
+    }
 }
 
 .calendar_input {
@@ -53,4 +58,15 @@
     padding: 19px 18px 16px;
     box-sizing: border-box;
     background-position: right 18px top 22px;
+}
+
+.gender_label_container {
+    float: left;
+    clear: none;
+    width: auto;
+    margin-bottom: 0;
+    padding: 10px 0;
+    &:last-child {
+        float: right;
+    }
 }

@@ -101,7 +101,6 @@
 }
 */
 
-
 .lt-desktop-width {
     .section {
         //padding-left: 15px;
@@ -136,7 +135,6 @@
         }
     }
 }
-
 
 .lt-tablet-width {
     .section {
@@ -186,6 +184,43 @@
     }
 }
 
+.section__radio {
+    display: block;
+    width: 100%;
+    color: $mainTextColor;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    clear: both;
+    margin-bottom: 12px;
+    user-select: none;
+
+    .section__radio-node {
+        display: none;
+        &:checked + .section__radio-state {
+            &:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                background-color: $mainColor;
+                margin: 5px 0 0 5px;
+                display: block;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .section__radio-state {
+        margin-right: 11px;
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $mainBorderColor;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+}
+
 .section__input {
     color: $mainTextColor;
     display: block;
@@ -218,12 +253,15 @@
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: $placeholderTextColor;
 }
+
 ::-moz-placeholder { /* Firefox 19+ */
     color: $placeholderTextColor;
 }
+
 :-ms-input-placeholder { /* IE 10+ */
     color: $placeholderTextColor;
 }
+
 :-moz-placeholder { /* Firefox 18- */
     color: $placeholderTextColor;
 }

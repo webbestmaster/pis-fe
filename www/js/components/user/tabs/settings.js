@@ -5,6 +5,7 @@ import {resolveImagePath} from './../../../helper/path-x';
 import style from './../style.m.scss';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import RadioLabel from './../../util/radio';
 
 class Settings extends Component {
     render() {
@@ -47,10 +48,15 @@ class Settings extends Component {
                             dropdownMode="select"
                         />
                     </label>
-                    <label className={style.gender_label}>
+                    <div className={style.gender_label}>
                         <p className={style.text_label__label}>Пол</p>
-                        <input type="tel" className={style.input_text}/>
-                    </label>
+                        <RadioLabel input={{name: 'gender'}} label={{className: style.gender_label_container}}>
+                            Мужской
+                        </RadioLabel>
+                        <RadioLabel input={{name: 'gender'}} label={{className: style.gender_label_container}}>
+                            Женский
+                        </RadioLabel>
+                    </div>
                 </div>
             </div>
 
@@ -72,7 +78,6 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {
-    }
+    {}
 )(Settings);
 
