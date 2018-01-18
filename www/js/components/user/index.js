@@ -5,8 +5,9 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import tabsStyle from './../../../style/css/tabs.m.scss';
-import UserShortInfo from './../../components/user-short-info';
-import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
+import Favorite from './tabs/favorite';
+import MyTrainings from './tabs/my-trainings';
+import Settings from './tabs/settings';
 
 const Swiper = require('./../../lib/swiper');
 
@@ -63,13 +64,13 @@ export default class User extends Component {
                     </TabList>
                 </div>
                 <TabPanel>
-                    <h1>1</h1>
+                    <Settings/>
                 </TabPanel>
                 <TabPanel>
-                    <h1>2</h1>
+                    <MyTrainings/>
                 </TabPanel>
                 <TabPanel>
-                    <h1>3</h1>
+                    <Favorite/>
                 </TabPanel>
             </Tabs>
         </div>;

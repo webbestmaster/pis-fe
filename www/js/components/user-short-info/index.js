@@ -36,9 +36,6 @@ class UserShortInfo extends Component {
                     <p className={style.extra_info_key}>Завершённые</p>
                 </div>
             </div>
-            <div className="hidden">
-                {JSON.stringify(props.auth)}
-            </div>
         </div>;
     }
 }

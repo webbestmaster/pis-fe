@@ -1,6 +1,7 @@
 @import "./../../../style/css/var";
 
 $userInfoWidth: 372px;
+$paddingFonUserPanel: 105px;
 
 .left_padded_wrapper {
     position: relative;
@@ -8,6 +9,17 @@ $userInfoWidth: 372px;
     :global {
         .top-big-banner {
             background-position: right center;
+            padding-left: $paddingFonUserPanel;
+        }
+        .hug.swiper-container {
+            clear: none;
+        }
+        .hug.swiper-container {
+            margin-left: $paddingFonUserPanel;
+        }
+        .hug {
+            margin-left: $paddingFonUserPanel;
+            clear: none;
         }
     }
 }
