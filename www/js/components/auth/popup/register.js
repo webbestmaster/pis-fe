@@ -12,6 +12,7 @@ import CheckboxLabel from './../../util/checkbox';
 import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
+import * as authApi from './../api';
 
 class Register extends Component {
     constructor() {
@@ -377,7 +378,14 @@ class Register extends Component {
                 if (payload.registration.code === 200) {
                     view.props.closePopup();
 
-                    view.props.history.push('/user');
+                    authApi.setUserData({
+                        email: formData.email,
+                        password: formData.password
+                    });
+
+                    view.props
+                        .login(formData.email, formData.password)
+                        .then(() => view.props.history.push('/user'));
                     return;
                 }
 
@@ -520,7 +528,8 @@ export default withRouter(connect(
     {
         closePopup: authAction.closePopup,
         openPopupLogin: authAction.openPopupLogin,
-        registration: authAction.registration
+        registration: authAction.registration,
+        login: authAction.login
 
         // openPopupRestore: authAction.openPopupRestore,
         // openPopupRestore: authAction.openPopupRestore,
