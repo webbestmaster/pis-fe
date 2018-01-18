@@ -1,0 +1,38 @@
+@import "./../../../style/css/var";
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+.t_head {
+    background-color: $mainTextColor;
+    td {
+        padding: 28px 18px 24px;
+        text-align: left;
+        vertical-align: middle;
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+
+.t_body {
+    td {
+        padding: 28px 18px 26px;
+        text-align: left;
+        vertical-align: top;
+        color: $mainTextColor;
+        font-size: 14px;
+        &.vertical_free {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    tr:nth-child(even) {
+        background-color: #f7f8fa;
+    }
+}
+

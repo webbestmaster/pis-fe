@@ -113,3 +113,44 @@
     padding: 15px 0 16px;
     cursor: pointer;
 }
+
+.table__training_status {
+    background-color: $mainTextColor;
+    border-radius: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    width: 168px;
+    padding: 8px 0 11px;
+    margin-top: 15px;
+}
+
+.table__training_status_icon {
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    top: 0;
+    left: 0;
+    &.table__training_status_icon__done {
+        background-image: url('./../../../style/i/user/icon-status--done.png');
+        top: 4px;
+    }
+    &.table__training_status_icon__in_progress {
+        background-image: url('./../../../style/i/user/icon-status--in-progress.png');
+        top: 3px;
+    }
+    &.table__training_status_icon__rejected {
+        background-image: url('./../../../style/i/user/icon-status--rejected.png');
+        top: 4px;
+        left: 1px;
+    }
+    &.table__training_status_icon__taken {
+        background-image: url('./../../../style/i/user/icon-status--taken.png');
+        top: 3px;
+        left: 2px;
+    }
+}
