@@ -33,4 +33,5 @@ require('react-images');
 require('react-tabs');
 require('lodash/find');
 require('lodash/get');
-
+require('react-datepicker');
+require('moment');

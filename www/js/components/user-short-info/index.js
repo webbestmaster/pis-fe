@@ -27,8 +27,8 @@ class UserShortInfo extends Component {
                     <p className={style.extra_info_value}>12</p>
                     <p className={style.extra_info_key}>Бонусы</p>
                 </div>
-                <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>03</p>
+                <div className={style.extra_info_block + ' hidden'}>
+                    <p className={style.extra_info_value}>00</p>
                     <p className={style.extra_info_key}>Предстоящие</p>
                 </div>
                 <div className={style.extra_info_block}>

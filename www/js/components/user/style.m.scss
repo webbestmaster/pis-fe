@@ -1,2 +1,56 @@
 @import "./../../../style/css/var";
 
+.settings_form {
+    display: block;
+}
+
+.text_label {
+    display: block;
+    padding: 0 15px 39px 100px;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+}
+
+.text_label__label {
+    font-size: 16px;
+    color: $mainTextColor;
+    font-weight: bold;
+    padding-bottom: 19px;
+}
+
+.input_text {
+    font-size: 14px;
+    color: $mainTextColor;
+    padding: 19px 18px 16px;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.calendar_label {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-right: 33px;
+}
+
+.gender_label {
+    float: left;
+    width: 50%;
+}
+
+.calendar_input {
+    display: block;
+    height: 53px;
+    background-image: url('./../../../style/i/user/icon-calendar.png');
+    background-repeat: no-repeat;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    width: 202px;
+    padding: 19px 18px 16px;
+    box-sizing: border-box;
+    background-position: right 18px top 22px;
+}
