@@ -6,6 +6,7 @@ import style from './../style.m.scss';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import RadioLabel from './../../util/radio';
+import CheckboxLabel from './../../util/checkbox';
 
 class Settings extends Component {
     render() {
@@ -59,16 +60,32 @@ class Settings extends Component {
                     </div>
                 </div>
             </div>
-
-            <div className={'clear-self'}/>
-
+            <div className={style.settings_form_bottom_line}/>
 
             <div className={style.settings_form}>
-                <label className={style.text_label}>
-                    <p className={style.text_label__label}>Телефон</p>
-                    <input type="tel" className={style.input_text}/>
-                </label>
+                <div className={style.text_label}>
+                    <p className={style.text_label__label}>Коммуникация</p>
+                    <CheckboxLabel>Хочу получать новости и спецпредложения</CheckboxLabel>
+                </div>
             </div>
+            <div className={style.settings_form_bottom_line}/>
+
+            <div className={style.settings_form}>
+                <div className={style.text_label}>
+                    <p className={style.text_label__label}>Смена пароля</p>
+                    <div className={style.input_text__from_to}>
+                        <input type="password" placeholder="Старый пароль" className={style.input_text}/>
+                    </div>
+                    <span className={style.from_to_arrow}/>
+                    <div className={style.input_text__from_to}>
+                        <input type="password" placeholder="Новый пароль" className={style.input_text}/>
+                    </div>
+                </div>
+            </div>
+            <div className={style.settings_form_bottom_line}/>
+
+            <div className={style.settings_form__submit_button}>Обновить</div>
+
         </div>;
     }
 }

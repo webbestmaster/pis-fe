@@ -4,6 +4,14 @@
     display: block;
 }
 
+.settings_form_bottom_line {
+    background-color: $mainBorderColor;
+    clear: left;
+    height: 1px;
+    margin-left: 100px;
+    margin-bottom: 38px;
+}
+
 .text_label {
     display: block;
     padding: 0 15px 39px 100px;
@@ -28,6 +36,29 @@
     width: 100%;
     display: block;
     box-sizing: border-box;
+}
+
+.input_text__from_to {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-right: 22px;
+    &:last-child {
+        padding-right: 0;
+        padding-left: 22px;
+    }
+}
+
+.from_to_arrow {
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: block;
+    float: left;
+    width: 44px;
+    height: 52px;
+    background-image: url('./../../../style/i/user/arrow-from-to.png');
+    margin-left: -22px;
+    margin-right: -22px;
 }
 
 .calendar_label {
@@ -69,4 +100,16 @@
     &:last-child {
         float: right;
     }
+}
+
+.settings_form__submit_button {
+    font-size: 14px;
+    text-align: center;
+    min-width: 192px;
+    background-color: $mainColor;
+    border-radius: 40px;
+    color: #fff;
+    float: right;
+    padding: 15px 0 16px;
+    cursor: pointer;
 }
