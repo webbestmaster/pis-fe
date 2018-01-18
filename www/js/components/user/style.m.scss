@@ -154,3 +154,23 @@
         left: 2px;
     }
 }
+
+.favorite__description {
+    font-size: 14px;
+    color: $mainTextColor;
+    margin-left: 100px;
+    margin-top: -30px;
+}
+
+.favorite__description_heart {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 14px;
+    background-image: url('./../../../style/i/club/heart-filled.svg');
+    background-position: center center;
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
