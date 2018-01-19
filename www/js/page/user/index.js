@@ -9,20 +9,23 @@ import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
 import UserShortInfo from './../../components/user-short-info';
 import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
+import cnx from './../../helper/cnx';
+
+const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/user/top-banner.png');
 
 import User from './../../components/user';
 
-export default class UserPage extends Component {
+class UserPage extends Component {
     render() {
         const view = this;
-        // const {props, state} = view;
-        // const {app} = props;
+        const {props, state} = view;
+        const {app} = props;
 
         return <div>
             <HeaderSimple/>
-            <UserShortInfo/>
-            <div className={userShortInfoStyle.left_padded_wrapper}>
+            {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
+            <div {...cnx({[userShortInfoStyle.left_padded_wrapper]: app.screen.width > globalAppConst.tabletWidth})}>
                 <TopBigBanner backgroundImage={topBanner}>
                     <BreadCrumbs>
                         <Link to="/">Главная</Link>
@@ -36,3 +39,11 @@ export default class UserPage extends Component {
         </div>;
     }
 }
+
+export default connect(
+    state => ({
+        app: state.app
+    }),
+    {}
+)(UserPage);
+

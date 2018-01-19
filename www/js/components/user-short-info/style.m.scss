@@ -139,3 +139,28 @@ $paddingFonUserPanel: 105px;
     font-size: 18px;
     color: #fff;
 }
+
+
+:global {
+    .lt-desktop-width {
+        :local {
+            .main_block {
+                float: none;
+                margin-top: -48px;
+                background-color: transparent;
+                margin-bottom: -25px;
+            }
+            .extra_info_wrapper {
+                margin-top: 24px;
+                background-color: #111c2a;
+                padding-top: 0;
+            }
+            .extra_info_block {
+                min-height: 122px;
+                padding-top: 28px;
+
+            }
+        }
+    }
+}
+

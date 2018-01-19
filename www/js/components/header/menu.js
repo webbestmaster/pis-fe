@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import * as authAction from './../auth/action';
-
+import UserShortInfo from './../../components/user-short-info';
 import cnx from './../../helper/cnx';
 
+const globalAppConst = require('./../../app-const.json');
 const appConst = require('./../../app-const.json');
 
 class Menu extends Component {
@@ -50,6 +51,7 @@ class Menu extends Component {
         const view = this;
         const {props, state} = view;
         const {isOpen} = state;
+        const {app} = props;
 
         if (isOpen) {
             return [
@@ -59,6 +61,7 @@ class Menu extends Component {
                     onClick={() => view.setState({isOpen: false})}
                     className="header-mobile-menu__menu-button header-mobile-menu__menu-button--open"/>,
                 <nav key="header-mobile-menu" className="header-mobile-menu">
+                    {app.screen.width > globalAppConst.tabletWidth ? null : <UserShortInfo/>}
                     <a href="tel:84995770137" className="header-mobile-menu__button header-mobile-menu__button--call">
                         8 (499) 577-01-37
                     </a>
