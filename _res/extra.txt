@@ -1,3 +1,5 @@
+appConst.pageDataUrl.host
+
 <span className="hidden">--- FIXME:LINK ---</span>
 
 

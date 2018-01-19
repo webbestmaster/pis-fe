@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
+import {resolveImagePath} from './../../helper/path-x';
 
 const Swiper = require('./../../lib/swiper');
 
@@ -67,7 +68,7 @@ class Sale extends Component {
                                 <div className="sale-swiper-card__content">
                                     <div className="sale-swiper-card__image"
                                         style={{
-                                            backgroundImage: 'url(' + appConst.pageDataUrl.host + promotion.image + ')'
+                                            backgroundImage: 'url(' + resolveImagePath(promotion.image) + ')'
                                         }}/>
                                     <h3 className="sale-swiper-card__header">{promotion.title}</h3>
                                     <p className="sale-swiper-card__description">{promotion.description}</p>

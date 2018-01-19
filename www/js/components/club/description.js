@@ -123,12 +123,12 @@ export default class Description extends Component {
                         })}
                         key={ii}
                         {...cnx('swiper-slide', style.gallery_swiper_slide)}
-                        style={{backgroundImage: 'url(' + appConst.pageDataUrl.host + url + ')'}}
+                        style={{backgroundImage: 'url(' + resolveImagePath(url) + ')'}}
                     />)}
                 </div>
             </div>
             <Lightbox
-                images={images['1200x800'].map(url => ({src: appConst.pageDataUrl.host + url}))}
+                images={images['1200x800'].map(url => ({src: resolveImagePath(url)}))}
                 isOpen={state.lightboxGallery.isOpen}
                 currentImage={state.lightboxGallery.imageIndex}
                 onClickPrev={() => view.setState(prevState => {
@@ -218,7 +218,7 @@ export default class Description extends Component {
                             [<div
                                 key="title"
                                 className={style.filial_info_image}
-                                style={{backgroundImage: 'url(' + appConst.pageDataUrl.host + filial.image + ')'}}/>,
+                                style={{backgroundImage: 'url(' + resolveImagePath(filial.image) + ')'}}/>,
                             <div
                                 key="info"
                                 className={style.filial_details_block_wrapper}>

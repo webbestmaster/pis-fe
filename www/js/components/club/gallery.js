@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import cnx from '../../helper/cnx';
 import Lightbox from 'react-images';
 import style from './style.m.scss';
+import {resolveImagePath} from '../../helper/path-x';
 
 const appConst = require('./../../app-const.json');
 const {fetchX} = require('./../../helper/fetch-x');
@@ -73,13 +74,13 @@ export default class Gallery extends Component {
                     })}
                     key={ii}
                     {...cnx('swiper-slide', style.gallery_image)}
-                    style={{backgroundImage: 'url(' + appConst.pageDataUrl.host + url + ')'}}
+                    style={{backgroundImage: 'url(' + resolveImagePath(url) + ')'}}
                 />)}
             </div>
             {/* </div>*/}
             {/* </div>*/}
             <Lightbox
-                images={images['1200x800'].map(url => ({src: appConst.pageDataUrl.host + url}))}
+                images={images['1200x800'].map(url => ({src: resolveImagePath(url)}))}
                 isOpen={state.lightboxGallery.isOpen}
                 currentImage={state.lightboxGallery.imageIndex}
                 onClickPrev={() => view.setState(prevState => {
