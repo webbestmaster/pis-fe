@@ -8,10 +8,13 @@ import moment from 'moment';
 import RadioLabel from './../../util/radio';
 import CheckboxLabel from './../../util/checkbox';
 
+const globalAppConst = require('./../../../app-const.json');
+
 class Settings extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
 
         return <div className="hug">
             <h3 className="section__header">Редактировать данные</h3>
@@ -33,7 +36,7 @@ class Settings extends Component {
                     <p className={style.text_label__label}>Телефон</p>
                     <input type="tel" className={style.input_text}/>
                 </label>
-                <div className={style.text_label}>
+                <div className={style.text_label + ' ' + style.text_label__wide}>
                     <label className={style.calendar_label}>
                         <p className={style.text_label__label}>Дата рождения</p>
                         <DatePicker
@@ -63,26 +66,30 @@ class Settings extends Component {
             <div className={style.settings_form_bottom_line}/>
 
             <div className={style.settings_form}>
-                <div className={style.text_label}>
+                <div className={style.text_label + ' ' + style.text_label__mobile_wide}>
                     <p className={style.text_label__label}>Коммуникация</p>
                     <CheckboxLabel>Хочу получать новости и спецпредложения</CheckboxLabel>
                 </div>
             </div>
             <div className={style.settings_form_bottom_line}/>
 
-            <div className={style.settings_form}>
-                <div className={style.text_label}>
-                    <p className={style.text_label__label}>Смена пароля</p>
-                    <div className={style.input_text__from_to}>
-                        <input type="password" placeholder="Старый пароль" className={style.input_text}/>
+            {app.screen.width > globalAppConst.mobileWidth ?
+                <div>
+                    <div className={style.settings_form}>
+                        <div className={style.text_label + ' ' + style.text_label__mobile_wide}>
+                            <p className={style.text_label__label}>Смена пароля</p>
+                            <div className={style.input_text__from_to}>
+                                <input type="password" placeholder="Старый пароль" className={style.input_text}/>
+                            </div>
+                            <span className={style.from_to_arrow}/>
+                            <div className={style.input_text__from_to}>
+                                <input type="password" placeholder="Новый пароль" className={style.input_text}/>
+                            </div>
+                        </div>
                     </div>
-                    <span className={style.from_to_arrow}/>
-                    <div className={style.input_text__from_to}>
-                        <input type="password" placeholder="Новый пароль" className={style.input_text}/>
-                    </div>
-                </div>
-            </div>
-            <div className={style.settings_form_bottom_line}/>
+                    <div className={style.settings_form_bottom_line}/>
+                </div> :
+                null}
 
             <div className={style.settings_form__submit_button}>Обновить</div>
 

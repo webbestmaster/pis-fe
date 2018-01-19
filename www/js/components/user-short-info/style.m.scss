@@ -16,10 +16,12 @@ $paddingFonUserPanel: 105px;
         }
         .hug.swiper-container {
             margin-left: $paddingFonUserPanel;
+            margin-right: 15px;
         }
         .hug {
             margin-left: $paddingFonUserPanel;
             clear: none;
+            margin-right: 15px;
         }
     }
 }

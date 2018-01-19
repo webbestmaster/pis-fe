@@ -20,6 +20,14 @@
     float: left;
 }
 
+.text_label__wide {
+    width: 100%;
+}
+
+.text_label__mobile_wide {
+    display: block;
+}
+
 .text_label__label {
     font-size: 16px;
     color: $mainTextColor;
@@ -63,16 +71,13 @@
 
 .calendar_label {
     float: left;
-    width: 50%;
     box-sizing: border-box;
     padding-right: 33px;
 }
 
 .gender_label {
     float: left;
-    width: 50%;
     box-sizing: border-box;
-    padding-left: 25px;
     .text_label__label {
         padding-bottom: 27px;
     }
@@ -85,7 +90,7 @@
     background-repeat: no-repeat;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
-    width: 202px;
+    max-width: 202px;
     padding: 19px 18px 16px;
     box-sizing: border-box;
     background-position: right 18px top 22px;
@@ -98,7 +103,7 @@
     margin-bottom: 0;
     padding: 10px 0;
     &:last-child {
-        float: right;
+        margin-left: 15px;
     }
 }
 
@@ -174,3 +179,45 @@
     position: relative;
     top: 2px;
 }
+
+:global {
+    .lt-desktop-width {
+        :local {
+            .text_label {
+                padding-left: 15px;
+            }
+            .calendar_label {
+                padding-right: 15px;
+            }
+            .text_label__mobile_wide {
+                width: 100%;
+            }
+            .gender_label_container:last-child {
+                float: left;
+                margin-left: 15px;
+            }
+            .settings_form__submit_button {
+                margin-left: auto;
+                margin-right: auto;
+                float: none;
+                width: 192px;
+            }
+            .settings_form_bottom_line {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    .lt-tablet-width {
+        :local {
+            .text_label {
+                width: 100%;
+            }
+            .calendar_label {
+                padding-bottom: 39px;
+            }
+        }
+    }
+}
+
