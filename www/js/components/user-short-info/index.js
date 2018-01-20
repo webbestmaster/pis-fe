@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
+import * as authAction from './../auth/action';
 
 import style from './style.m.scss';
 
@@ -51,7 +52,9 @@ class UserShortInfo extends Component {
             </div>
             <h4 className={style.user_avatar__name}>Супер пупер клуб</h4>
             <div className="ta-center">
-                <h3 className={style.user_avatar__change_password}>Сменить пароль</h3>
+                <h3
+                    onClick={() => props.openPopupChangePassword()}
+                    className={style.user_avatar__change_password}>Сменить пароль</h3>
             </div>
             <div className={style.user_avatar__logout_button}>
                 Выход<span className={style.user_avatar__logout_icon}/>
@@ -60,15 +63,15 @@ class UserShortInfo extends Component {
             <div className={style.extra_info_wrapper}>
                 <div className={style.extra_info_block}>
                     <p className={style.extra_info_value}>12</p>
-                    <p className={style.extra_info_key}>Бонусы</p>
+                    <p className={style.extra_info_key}>Новые</p>
                 </div>
-                <div className={style.extra_info_block + ' hidden'}>
+                <div className={style.extra_info_block}>
                     <p className={style.extra_info_value}>00</p>
-                    <p className={style.extra_info_key}>Предстоящие</p>
+                    <p className={style.extra_info_key}>Подтвержденные</p>
                 </div>
                 <div className={style.extra_info_block}>
                     <p className={style.extra_info_value}>02</p>
-                    <p className={style.extra_info_key}>Завершённые</p>
+                    <p className={style.extra_info_key}>Отклоненные</p>
                 </div>
             </div>
         </div>;
@@ -88,6 +91,8 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {}
+    {
+        openPopupChangePassword: authAction.openPopupChangePassword
+    }
 )(UserShortInfo);
 

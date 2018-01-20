@@ -4,6 +4,7 @@ import Promo from './popup/promo';
 import Register from './popup/register';
 import Login from './popup/login';
 import Restore from './popup/restore';
+import ChangePassword from './popup/change-password';
 import {connect} from 'react-redux';
 import * as authAction from './action';
 import * as authApi from './api';
@@ -67,7 +68,8 @@ class Auth extends Component {
             <Promo key="promo" dialog={{open: authConst.popup.promo === popupType}}/>,
             <Register key="register" dialog={{open: authConst.popup.register === popupType}}/>,
             <Login key="login" dialog={{open: authConst.popup.login === popupType}}/>,
-            <Restore key="restore" dialog={{open: authConst.popup.restore === popupType}}/>
+            <Restore key="restore" dialog={{open: authConst.popup.restore === popupType}}/>,
+            <ChangePassword key="changePassword" dialog={{open: authConst.popup.changePassword === popupType}}/>
         ];
     }
 }

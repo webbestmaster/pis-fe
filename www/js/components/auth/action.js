@@ -77,6 +77,13 @@ export function openPopupRestore() {
     };
 }
 
+export function openPopupChangePassword() {
+    return {
+        type: authConst.type.openPopup,
+        payload: {popupType: authConst.popup.changePassword}
+    };
+}
+
 export function openPopupPromo() {
     return {
         type: authConst.type.openPopup,

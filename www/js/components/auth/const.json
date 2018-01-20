@@ -18,6 +18,7 @@
         "promo": "popup__promo",
         "login": "popup__login",
         "register": "popup__register",
-        "restore": "popup__restore"
+        "restore": "popup__restore",
+        "changePassword": "popup__change-password"
     }
 }
