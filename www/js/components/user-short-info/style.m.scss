@@ -23,6 +23,13 @@ $paddingFonUserPanel: 105px;
             clear: none;
             margin-right: 15px;
         }
+
+        .top-big-banner {
+            .hug {
+                margin-left: 0;
+            }
+        }
+
     }
 }
 
@@ -79,6 +86,26 @@ $paddingFonUserPanel: 105px;
     color: #8899ae;
     text-align: center;
     padding-bottom: 4px;
+}
+
+.user_avatar__change_password {
+    @extend .user_avatar__email;
+    border-bottom: 1px solid #8899ae;
+    margin-top: 14px;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 12px;
+    &:after {
+        content: '';
+        display: inline-block;
+        background-image: url('./../../../style/i/user/icon-lock.png');
+        width: 11px;
+        height: 14px;
+        margin-left: 10px;
+    }
+    &:hover {
+        border-bottom-color: transparent;
+    }
 }
 
 .user_avatar__logout_button {

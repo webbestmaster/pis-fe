@@ -17,7 +17,7 @@ const topBanner = require('./../../../style/images/user/top-banner.png');
 import User from './../../components/user';
 
 class UserPage extends Component {
-    renderUserPage() {
+    renderUser() {
         const view = this;
         const {props, state} = view;
         const {app} = props;
@@ -39,12 +39,13 @@ class UserPage extends Component {
         </div>;
     }
 
-    renderUserClubPage() {
+    renderUserClub() {
         const view = this;
         const {props, state} = view;
         const {app} = props;
 
         return <div>
+
             <HeaderSimple/>
             {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
             <div {...cnx({[userShortInfoStyle.left_padded_wrapper]: app.screen.width > globalAppConst.tabletWidth})}>
@@ -55,7 +56,9 @@ class UserPage extends Component {
                     </BreadCrumbs>
                     <h3 className="section__header">----------- Личный кабинет -----------</h3>
                 </TopBigBanner>
+
                 <User/>
+
             </div>
             <Footer/>
         </div>;
@@ -66,7 +69,9 @@ class UserPage extends Component {
         const {props, state} = view;
         const {app} = props;
 
-        return view.renderUserClubPage();
+        // return view.renderUser();
+
+        return view.renderUserClub();
     }
 }
 
