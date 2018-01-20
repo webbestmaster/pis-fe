@@ -22,6 +22,9 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 
+import Dialog from 'material-ui/Dialog';
+import {withStyles} from 'material-ui/styles';
+
 // dev tools
 import {createDevTools} from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
@@ -35,3 +38,4 @@ require('lodash/find');
 require('lodash/get');
 require('react-datepicker');
 require('moment');
+require('cryptr');
