@@ -24,6 +24,15 @@ body { // just add authority in front of swiper's classes
         }
     }
 
+    .tab_text_mark {
+        color: $mainColor;
+        font-size: 14px;
+        right: -12px;
+        top: 27px;
+        font-weight: bold;
+        position: absolute;
+    }
+
     :global .lt-desktop-width {
         :local {
 

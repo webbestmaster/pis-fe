@@ -15,6 +15,7 @@ const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/user/top-banner.png');
 
 import User from './../../components/user';
+import UserClub from './../../components/user/user-club';
 
 class UserPage extends Component {
     renderUser() {
@@ -57,7 +58,7 @@ class UserPage extends Component {
                     <h3 className="section__header">----------- Личный кабинет -----------</h3>
                 </TopBigBanner>
 
-                <User/>
+                <UserClub/>
 
             </div>
             <Footer/>
