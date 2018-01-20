@@ -48,6 +48,8 @@ export default () => [
         <Route path='/user/' component={User} exact/>
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
         <Route path='/terms/' component={Terms} exact/>
+
+        {/* <Route component={NoMatch}/> 404page*/}
     </Switch>,
     <Auth key="auth"/>
 ];

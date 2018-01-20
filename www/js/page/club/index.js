@@ -10,6 +10,7 @@ import Footer from './../../components/footer';
 import Rating from './../../components/util/rating';
 import {plural} from './../../helper/plural';
 import Club from './../../components/club';
+import * as appAction from './../../components/app/action';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const.json');
@@ -46,6 +47,8 @@ export default class ClubPage extends Component {
         const view = this;
         const {props, state} = view;
         const {clubId} = props.match.params;
+
+        appAction.scrollToTop();
 
         return fetchX(appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);

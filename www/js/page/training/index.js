@@ -8,6 +8,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import Training from './../../components/training';
+import * as appAction from '../../components/app/action';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const.json');
@@ -43,8 +44,9 @@ export default class TrainingPage extends Component {
     componentDidMount() {
         const view = this;
         const {props, state} = view;
-
         const {trainingId} = props.match.params;
+
+        appAction.scrollToTop();
 
         return fetchX(appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);

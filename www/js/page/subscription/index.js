@@ -8,6 +8,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import Subscription from './../../components/subscription';
+import * as appAction from '../../components/app/action';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const.json');
@@ -43,8 +44,9 @@ export default class SubscriptionPage extends Component {
     componentDidMount() {
         const view = this;
         const {props, state} = view;
-
         const {subscriptionId} = props.match.params;
+
+        appAction.scrollToTop();
 
         return fetchX(appConst.pageDataUrl.subscription.replace('{{subscriptionId}}', subscriptionId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);

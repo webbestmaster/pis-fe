@@ -1,5 +1,6 @@
 {
     "type": {
-        "setScreenSize": "app__set-screen-size"
+        "setScreenSize": "app__set-screen-size",
+        "scrollToTop": "app__scroll-to-top"
     }
 }
