@@ -8,6 +8,7 @@ import tabsStyle from './../../../style/css/tabs.m.scss';
 import AppliedOrder from './club-tabs/applied-order';
 import NewOrder from './club-tabs/new-order';
 import RejectedOrder from './club-tabs/rejected-order';
+import ReviewList from './club-tabs/review-list';
 import style from './style.m.scss';
 import cnx from '../../helper/cnx';
 
@@ -100,7 +101,7 @@ export default class UserClub extends Component {
                     <RejectedOrder/>
                 </TabPanel>
                 <TabPanel>
-                    <h1>reviews!!!</h1>
+                    <ReviewList/>
                 </TabPanel>
             </Tabs>
         </div>;
