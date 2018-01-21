@@ -111,7 +111,7 @@ export default class Reviews extends Component {
     }
 }
 
-export class ReviewText extends Component {
+class ReviewText extends Component {
     constructor() {
         super();
 
@@ -162,6 +162,7 @@ class LeaveReviewForm extends Component {
         const view = this;
         const {props, state} = view;
 
+        // FIXME: make workable
         return <form className={style.review_form + ' clear-full'}>
             <div className={style.review_form__avatar}/>
             <h4 className={style.review_form__header}>Оставить отзыв</h4>

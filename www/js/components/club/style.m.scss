@@ -292,6 +292,21 @@ body { // just add authority in front of swiper's classes
         float: left;
     }
 
+    .reply_to_review_button {
+        font-size: 14px;
+        color: $mainTextColor;
+        cursor: pointer;
+        border: 1px solid $mainBorderColor;
+        border-radius: 40px;
+        width: 192px;
+        box-sizing: border-box;
+        text-align: center;
+        padding-top: 14px;
+        padding-bottom: 11px;
+        float: right;
+        clear: both;
+    }
+
     // review form
     .review_form {
         display: block;
@@ -299,6 +314,15 @@ body { // just add authority in front of swiper's classes
         padding: 33px 38px 40px 36px;
         margin: 0 0 0 100px;
         border-radius: 4px;
+    }
+
+    .reply_form {
+        margin-left: 0;
+        margin-top: 27px;
+        clear: both;
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .review_form__avatar {
@@ -414,6 +438,11 @@ body { // just add authority in front of swiper's classes
                 margin-right: 15px;
             }
 
+            .reply_form {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
             .review_form__button {
                 right: 50%;
                 transform: translateX(50%);
@@ -490,6 +519,11 @@ body { // just add authority in front of swiper's classes
                 padding-bottom: 29px;
             }
 
+            .reply_form {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
             .review_form__header {
                 margin-left: 67px;
                 letter-spacing: 0;
@@ -528,6 +562,11 @@ body { // just add authority in front of swiper's classes
                 position: absolute;
                 right: 0;
                 top: 0;
+            }
+
+            .reply_to_review_button {
+                width: 100%;
+                margin-top: 11px;
             }
         }
     }

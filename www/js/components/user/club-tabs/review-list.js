@@ -10,7 +10,6 @@ import {plural} from '../../../helper/plural';
 import {getMonthAfterDayName} from '../../../helper/date';
 import cnx from './../../../helper/cnx';
 import Rating from './../../util/rating';
-import {ReviewText} from './../../club/reviews';
 
 const appConst = require('./../../../app-const.json');
 const {fetchX} = require('./../../../helper/fetch-x');
@@ -108,7 +107,7 @@ class ReviewList extends Component {
                                         {getMonthAfterDayName(new Date(reviewItem.created_at).getMonth())}&nbsp;
                                         {new Date(reviewItem.created_at).getFullYear()}
                                     </p>
-                                    <ReviewText text={reviewItem.answer}/>
+                                    <ReviewText text={reviewItem.answer} isAdmin={true}/>
                                 </div>
                             </div> :
                             null}
@@ -118,6 +117,74 @@ class ReviewList extends Component {
 
 
         </div>;
+    }
+}
+
+
+export class ReviewText extends Component {
+    constructor() {
+        super();
+
+        const view = this;
+
+        view.state = {
+            isOpenReview: false,
+            isReplyOpen: false
+        };
+    }
+
+    renderText() {
+        const view = this;
+        const maxPreviewTextLength = 273;
+        const {props, state} = view;
+
+        if (state.isOpenReview || props.text.length <= maxPreviewTextLength) {
+            return <p key="text" className={clubStyle.review_text}>{props.text}</p>;
+        }
+
+        return [
+            <p key="text" className={clubStyle.review_text}>{props.text.substring(0, maxPreviewTextLength) + '...'}</p>,
+            <span
+                key="show-full-text-button" onClick={() => view.setState({isOpenReview: true})}
+                className={clubStyle.review_show_full_review}>Показать полностью</span>
+        ];
+    }
+
+    renderReply() {
+        const view = this;
+        const {props, state} = view;
+        const replyButton = props.isAdmin || state.isReplyOpen ?
+            null :
+            <div
+                onClick={() => view.setState({isReplyOpen: true})}
+                key="reply-button" className={clubStyle.reply_to_review_button}>Ответить на отзыв</div>;
+
+        // FIXME: make workable
+        const replyForm = !props.isAdmin && state.isReplyOpen ?
+            <form
+                key="reply-form"
+                {...cnx(clubStyle.review_form, clubStyle.reply_form, 'clear-full')}>
+                <div className={clubStyle.review_form__avatar}/>
+                <h4 className={clubStyle.review_form__header}>Ответ администратора</h4>
+                <textarea className={clubStyle.review_form__text_area} rows="10" placeholder="Напишите Ваш ответ"/>
+                <div {...cnx(clubStyle.review_form__button)}>Ответить</div>
+            </form> :
+            null;
+
+        return [
+            replyForm,
+            replyButton
+        ];
+    }
+
+    render() {
+        const view = this;
+        const {props, state} = view;
+
+        return [
+            view.renderText(),
+            view.renderReply()
+        ];
     }
 }
 
