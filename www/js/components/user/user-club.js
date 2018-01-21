@@ -8,6 +8,8 @@ import tabsStyle from './../../../style/css/tabs.m.scss';
 import AppliedOrder from './club-tabs/applied-order';
 import NewOrder from './club-tabs/new-order';
 import RejectedOrder from './club-tabs/rejected-order';
+import style from './style.m.scss';
+import cnx from '../../helper/cnx';
 
 const Swiper = require('./../../lib/swiper');
 
@@ -22,7 +24,8 @@ export default class UserClub extends Component {
         };
 
         view.state = {
-            pageData: null
+            pageData: null,
+            tabIndex: 1
         };
     }
 
@@ -49,22 +52,44 @@ export default class UserClub extends Component {
 
     render() {
         const view = this;
-        // const {props, state} = view;
+        const {props, state} = view;
         // const {app} = props;
 
         return <div>
             <Tabs
-                defaultIndex={0}
+                // defaultIndex={state.tabIndex}
+                selectedIndex={state.tabIndex}
+                onSelect={() => console.log('on select')}
                 className="section__tabs-wrapper">
                 <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
                     <TabList className="swiper-wrapper">
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
+                        <Tab onClick={() => view.setState({tabIndex: 0})}
+                            className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
                             <span className={tabsStyle.tab_text_mark}>3</span>
                         </Tab>
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Подтвержденные</Tab>
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Отклоненные</Tab>
+                        <Tab
+                            onClick={() => view.setState({tabIndex: 1})}
+                            className={classnames('swiper-slide', tabsStyle.tab)}>Подтвержденные</Tab>
+                        <Tab
+                            onClick={() => view.setState({tabIndex: 2})}
+                            className={classnames('swiper-slide', tabsStyle.tab)}>Отклоненные</Tab>
+                        <Tab className="hidden"/>
                     </TabList>
                 </div>
+                <div className="hug hug--no-clear">
+                    <div
+                        onClick={() => view.setState({tabIndex: 3})}
+                        {...cnx(style.open_review_list_button, {
+                            [style.open_review_list_button__active]: state.tabIndex === 3
+                        })}>
+                        Отзывы
+                        <span className={style.open_review_list_button__icon}/>
+                        <span {...cnx(style.open_review_list_button__counter, {
+                            [style.open_review_list_button__counter__hidden]: state.tabIndex === 3
+                        })}>1</span>
+                    </div>
+                </div>
+
                 <TabPanel>
                     <NewOrder/>
                 </TabPanel>
@@ -73,6 +98,9 @@ export default class UserClub extends Component {
                 </TabPanel>
                 <TabPanel>
                     <RejectedOrder/>
+                </TabPanel>
+                <TabPanel>
+                    <h1>reviews!!!</h1>
                 </TabPanel>
             </Tabs>
         </div>;

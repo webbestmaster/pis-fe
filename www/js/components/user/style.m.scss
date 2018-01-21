@@ -194,6 +194,63 @@
     }
 }
 
+.open_review_list_button {
+    font-size: 14px;
+    color: $mainTextColor;
+    cursor: pointer;
+    border: 1px solid $mainBorderColor;
+    border-radius: 40px;
+    float: right;
+    margin-top: -10px;
+    width: 192px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 11px;
+    top: -141px;
+    position: relative;
+    z-index: 1;
+
+    &.open_review_list_button__active {
+        background-color: $mainColor;
+        border-color: $mainColor;
+        color: #fff;
+        .open_review_list_button__icon {
+            background-image: url('./../../../style/i/user/icon-review--active.png');
+        }
+    }
+}
+
+.open_review_list_button__icon {
+    background-image: url('./../../../style/i/user/icon-review.png');
+    width: 14px;
+    height: 13px;
+    display: inline-block;
+    position: relative;
+    margin-left: 11px;
+    top: 2px;
+}
+
+.open_review_list_button__counter {
+    background-color: $mainColor;
+    color: #fff;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    min-width: 19px;
+    height: 19px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    border: 2px solid #fff;
+    padding: 1px 4px 0;
+    text-align: center;
+    margin-left: -6px;
+    top: -10px;
+    &.open_review_list_button__counter__hidden {
+        visibility: hidden;
+    }
+}
+
 :global {
     .lt-desktop-width {
         :local {

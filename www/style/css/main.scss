@@ -12,6 +12,12 @@ body {
     &.hug--section {
         padding-bottom: 100px;
     }
+    &.hug--no-clear {
+        &:after {
+            clear: none;
+            display: none;
+        }
+    }
 }
 
 .lt-tablet-width {
