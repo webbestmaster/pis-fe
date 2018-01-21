@@ -33,6 +33,16 @@ $paddingFonUserPanel: 105px;
     }
 }
 
+:global {
+    .desktop-width {
+        :local .left_padded_wrapper {
+            :global .section__tabs-wrapper {
+                min-height: 750px;
+            }
+        }
+    }
+}
+
 .main_block {
     display: block;
     background-color: #111c2a;
@@ -41,6 +51,7 @@ $paddingFonUserPanel: 105px;
     float: left;
     min-height: 100px;
     padding: 54px 0 50px;
+    position: absolute;
 }
 
 .user_avatar {
@@ -178,6 +189,7 @@ $paddingFonUserPanel: 105px;
                 margin-top: -48px;
                 background-color: transparent;
                 margin-bottom: -25px;
+                position: static;
             }
             .extra_info_wrapper {
                 margin-top: 24px;
