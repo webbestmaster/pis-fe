@@ -111,7 +111,7 @@ export default class Reviews extends Component {
     }
 }
 
-class ReviewText extends Component {
+export class ReviewText extends Component {
     constructor() {
         super();
 

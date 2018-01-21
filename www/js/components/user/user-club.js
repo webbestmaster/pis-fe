@@ -26,7 +26,7 @@ export default class UserClub extends Component {
 
         view.state = {
             pageData: null,
-            tabIndex: 1
+            tabIndex: 0
         };
     }
 

@@ -35,11 +35,12 @@ body { // just add authority in front of swiper's classes
 
     :global .lt-desktop-width {
         :local {
-
+            .tab_text_mark {
+                top: 13px;
+            }
             .tab_wrapper {
                 margin-bottom: 59px;
             }
-
             .tab {
                 padding: 27px 0 21px;
                 margin: 0 24px 0 16px;
