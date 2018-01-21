@@ -79,7 +79,10 @@ class ReviewList extends Component {
                         style={{backgroundImage: 'url(' + (reviewItem.user.image || defaultUserAvatar) + ')'}}/>
 
                     <div className={clubStyle.review_text_holder + ' clear-self'}>
-                        <p className={clubStyle.review_user_name}>{reviewItem.user.name}</p>
+                        <p className={clubStyle.review_user_name}>
+                            {reviewItem.user.name || 'Аноним'}
+                            <span className={clubStyle.review_mark_as_new}>NEW</span>
+                        </p>
                         <p className={clubStyle.review_date}>
                             {new Date(reviewItem.user.created_at).getDate()}&nbsp;
                             {getMonthAfterDayName(new Date(reviewItem.user.created_at).getMonth())}&nbsp;
