@@ -81,8 +81,8 @@ class UserShortInfo extends Component {
         const view = this;
         const {props, state} = view;
 
-        // return view.renderUser();
-        return view.renderUserClub();
+        return view.renderUser();
+        // return view.renderUserClub();
     }
 }
 

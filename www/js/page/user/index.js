@@ -70,9 +70,9 @@ class UserPage extends Component {
         const {props, state} = view;
         const {app} = props;
 
-        // return view.renderUser();
-
-        return view.renderUserClub();
+        return view.renderUser();
+        //
+        // return view.renderUserClub();
     }
 }
 
