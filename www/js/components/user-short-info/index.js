@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
 import * as authAction from './../auth/action';
+
 const authConst = require('./../auth/const.json');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
 
@@ -20,8 +21,14 @@ class UserShortInfo extends Component {
 
         return <div className={style.main_block}>
             <div className={style.user_avatar}>
-                <div className={style.user_avatar_image}
+                <div
+                    className={style.user_avatar_image}
                     style={{backgroundImage: 'url(' + imagePath + ')'}}/>
+                <input
+                    ref="userAvatarFileInput"
+                    type="file"
+                    onChange={() => props.uploadUserAvatar(view.refs.userAvatarFileInput.files[0])}
+                    className={style.user_avatar__input_file}/>
                 <div className={style.user_avatar__edit_button}/>
             </div>
             <h4 className={style.user_avatar__name}>{user.first_name || ''} {user.last_name || ''}</h4>
@@ -62,8 +69,14 @@ class UserShortInfo extends Component {
 
         return <div className={style.main_block}>
             <div className={style.user_avatar}>
-                <div className={style.user_avatar_image}
+                <div
+                    className={style.user_avatar_image}
                     style={{backgroundImage: 'url(' + imagePath + ')'}}/>
+                <input
+                    ref="userAvatarFileInput"
+                    type="file"
+                    onChange={() => props.uploadUserAvatar(view.refs.userAvatarFileInput.files[0])}
+                    className={style.user_avatar__input_file}/>
                 <div className={style.user_avatar__edit_button}/>
             </div>
             <h4 className={style.user_avatar__name}>{user.first_name || ''} {user.last_name || ''}</h4>
@@ -124,7 +137,8 @@ export default connect(
     }),
     {
         openPopupChangePassword: authAction.openPopupChangePassword,
-        logout: authAction.logout
+        logout: authAction.logout,
+        uploadUserAvatar: authAction.uploadUserAvatar
     }
 )(UserShortInfo);
 

@@ -1,5 +1,6 @@
 /* global fetch, window */
 import * as authApi from './api';
+import {progressiveFetch} from './../../helper/file';
 
 const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
@@ -64,6 +65,18 @@ export function updateProfile(userData) {
         {method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.userProfile, payload: {userProfile: parsedData}}));
+}
+
+export function uploadUserAvatar(file) {
+    return dispatch => progressiveFetch(appGlobalConst.pageDataUrl.host + '/member/user/updateProfileImage',
+        {
+            method: 'post',
+            body: {
+                image: file
+            },
+            headers: {'Content-Disposition': 'attachment; filename=' + '"' + file.name + '"'}
+        },
+        console.log);
 }
 
 export function openPopup(popupType) {
