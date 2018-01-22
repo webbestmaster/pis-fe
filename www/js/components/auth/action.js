@@ -1,4 +1,6 @@
-/* global fetch */
+/* global fetch, window */
+import * as authApi from './api';
+
 const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
 
@@ -14,6 +16,19 @@ export function login(email, password) {
     )
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.login, payload: {login: parsedData}}));
+}
+
+export function logout() {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host +
+        authConst.url.logout,
+        {method: 'GET'}
+    )
+        .then(data => data.json())
+        .then(() => {
+            authApi.setUserData({email: null, password: null});
+            window.location.reload();
+        });
 }
 
 export function registration(regData) {

@@ -60,6 +60,12 @@ $paddingFonUserPanel: 105px;
     margin: 0 auto 19px;
     position: relative;
     cursor: pointer;
+    &:hover,
+    &:active {
+        .user_avatar__edit_button {
+            opacity: 1;
+        }
+    }
 }
 
 .user_avatar_image {
@@ -82,6 +88,7 @@ $paddingFonUserPanel: 105px;
     position: absolute;
     right: -10px;
     bottom: -3px;
+    opacity: 0;
 }
 
 .user_avatar__name {

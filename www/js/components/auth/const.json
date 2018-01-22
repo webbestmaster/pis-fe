@@ -5,7 +5,7 @@
         "registration": "/api/auth/registration",
         "forgotPassword": "/api/auth/forgotPassword",
         "resetPassword": "/api/auth/resetPassword",
-        "logout": "api/auth/logout"
+        "logout": "/api/auth/logout"
     },
     "type": {
         "login": "auth__login",
@@ -20,5 +20,9 @@
         "register": "popup__register",
         "restore": "popup__restore",
         "changePassword": "popup__change-password"
+    },
+    "userType": {
+        "user": "user",
+        "fitnessClub": "fitness_club"
     }
 }
