@@ -13,3 +13,37 @@ DAY_SUNDAY    = 128;
     const PERIOD_YEARS  = 4;
 
 http://via.placeholder.com/268x237
+
+
+const userDataData = {
+    'sig': '212cb4492a10edc9930c42777afa0da9d0fdff13',
+    'code': 200,
+    'data': {
+        'user': {
+            'id': 61,
+            'status': 1,
+            'role': 'user',
+            'fitness_club_id': 0,
+            'sex': 1,
+            'email': 'web.best.master@gmail.com',
+            'cashback': '0.00',
+            'first_name': '\u0414\u043c\u0438\u0442\u0440\u0438\u0439',
+            'last_name': '\u0422\u0443\u0440\u043e\u0432',
+            'birthday': '2018-01-16',
+            'phone': '+375 44 759 75 76',
+            'mailing_promotion': 0,
+            'mailing_blog': 0,
+            'image': '\/images\/profile\/6189f052ea6e663bb86667bb4c38553b83.png',
+            'created_at': '2018-01-16 17:18:44'
+        }
+    },
+    'debugInfo': {
+        'timer': {
+            'APP': '0.12126708',
+            'KERNEL': '0.00028896',
+            'ROUTING_API': '0.00123787',
+            'ROUTING_MEMBER': '0.00057483',
+            'CONTROLLER_ACTION': '0.10852599'
+        }, 'memory': {'memUse': '1.729 Mb', 'peakMemUse': '1.750 Mb'}
+    }
+};

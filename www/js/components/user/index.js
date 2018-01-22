@@ -8,10 +8,11 @@ import tabsStyle from './../../../style/css/tabs.m.scss';
 import Favorite from './tabs/favorite';
 import MyTrainings from './tabs/my-trainings';
 import Settings from './tabs/settings';
+import * as authAction from '../auth/action';
 
 const Swiper = require('./../../lib/swiper');
 
-export default class User extends Component {
+class User extends Component {
     constructor() {
         super();
 
@@ -49,8 +50,13 @@ export default class User extends Component {
 
     render() {
         const view = this;
-        // const {props, state} = view;
-        // const {app} = props;
+        const {props, state} = view;
+        const {auth} = props;
+        const {login} = auth;
+
+        if (login.code !== 200) {
+            return null;
+        }
 
         return <div>
             <Tabs
@@ -76,3 +82,13 @@ export default class User extends Component {
         </div>;
     }
 }
+
+export default connect(
+    state => ({
+        app: state.app,
+        auth: state.auth
+    }),
+    {
+    }
+)(User);
+

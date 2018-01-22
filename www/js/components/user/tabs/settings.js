@@ -14,7 +14,10 @@ class Settings extends Component {
     render() {
         const view = this;
         const {props, state} = view;
-        const {app} = props;
+        const {app, auth} = props;
+        const {login} = auth;
+
+        const {user} = login.data;
 
         return <div className="hug">
             <h3 className="section__header">Редактировать данные</h3>
@@ -22,27 +25,27 @@ class Settings extends Component {
             <div className={style.settings_form}>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Имя</p>
-                    <input type="text" className={style.input_text}/>
+                    <input type="text" defaultValue={user.first_name} className={style.input_text}/>
                 </label>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Email</p>
-                    <input type="email" className={style.input_text}/>
+                    <input type="email" defaultValue={user.email} className={style.input_text}/>
                 </label>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Фамилия</p>
-                    <input type="email" className={style.input_text}/>
+                    <input type="email" defaultValue={user.last_name} className={style.input_text}/>
                 </label>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Телефон</p>
-                    <input type="tel" className={style.input_text}/>
+                    <input type="tel" defaultValue={user.phone} className={style.input_text}/>
                 </label>
                 <div className={style.text_label + ' ' + style.text_label__wide}>
                     <label className={style.calendar_label}>
                         <p className={style.text_label__label}>Дата рождения</p>
                         <DatePicker
                             locale="ru-RU"
-                            startDate={moment()}
-                            selected={moment()}
+                            startDate={moment(user.birthday)}
+                            selected={moment(user.birthday)}
                             dateFormat="DD/MM/YYYY"
                             className={style.calendar_input}
                             onChange={() => console.log('calendar on change')}
@@ -54,10 +57,14 @@ class Settings extends Component {
                     </label>
                     <div className={style.gender_label}>
                         <p className={style.text_label__label}>Пол</p>
-                        <RadioLabel input={{name: 'gender'}} label={{className: style.gender_label_container}}>
+                        <RadioLabel
+                            input={{name: 'gender', defaultChecked: user.sex === 1}}
+                            label={{className: style.gender_label_container}}>
                             Мужской
                         </RadioLabel>
-                        <RadioLabel input={{name: 'gender'}} label={{className: style.gender_label_container}}>
+                        <RadioLabel
+                            input={{name: 'gender', defaultChecked: user.sex === 0}}
+                            label={{className: style.gender_label_container}}>
                             Женский
                         </RadioLabel>
                     </div>
@@ -68,7 +75,8 @@ class Settings extends Component {
             <div className={style.settings_form}>
                 <div className={style.text_label + ' ' + style.text_label__mobile_wide}>
                     <p className={style.text_label__label}>Коммуникация</p>
-                    <CheckboxLabel>Хочу получать новости и спецпредложения</CheckboxLabel>
+                    <CheckboxLabel>Скидки и акции</CheckboxLabel>
+                    <CheckboxLabel>Фитнес-блог</CheckboxLabel>
                 </div>
             </div>
             <div className={style.settings_form_bottom_line}/>
