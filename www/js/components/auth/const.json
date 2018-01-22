@@ -5,14 +5,16 @@
         "registration": "/api/auth/registration",
         "forgotPassword": "/api/auth/forgotPassword",
         "resetPassword": "/api/auth/resetPassword",
-        "logout": "/api/auth/logout"
+        "logout": "/api/auth/logout",
+        "updateProfile": "/member/user/updateProfile"
     },
     "type": {
         "login": "auth__login",
         "registration": "auth__registration",
         "forgotPassword": "auth__forgot-password",
         "resetPassword": "auth__reset-password",
-        "openPopup": "auth__open-popup"
+        "openPopup": "auth__open-popup",
+        "userProfile": "auth_user-profile"
     },
     "popup": {
         "promo": "popup__promo",

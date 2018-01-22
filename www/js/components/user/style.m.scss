@@ -44,6 +44,10 @@
     width: 100%;
     display: block;
     box-sizing: border-box;
+    &:invalid,
+    &.input_text__invalid {
+        border-color: $mainColor;
+    }
 }
 
 .input_text__from_to {
@@ -256,6 +260,15 @@
     &.open_review_list_button__counter__hidden {
         visibility: hidden;
     }
+}
+
+.user_form__error_p {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: $mainColor;
+    font-size: 16px;
+    padding-bottom: 16px;
 }
 
 :global {

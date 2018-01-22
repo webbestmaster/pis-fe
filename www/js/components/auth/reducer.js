@@ -32,6 +32,13 @@ export default combineReducers({
 
         return {...resetPassword, ...payload.resetPassword};
     },
+    userProfile: (userProfile = {}, {type, payload}) => {
+        if (type !== authConst.type.userProfile) {
+            return userProfile;
+        }
+
+        return {...userProfile, ...payload.userProfile};
+    },
     openPopup: (popupType = null, {type, payload}) => {
         if (type !== authConst.type.openPopup) {
             return popupType;

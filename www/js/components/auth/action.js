@@ -57,6 +57,15 @@ export function resetPassword(token, password) {
         .then(parsedData => dispatch({type: authConst.type.resetPassword, payload: {resetPassword: parsedData}}));
 }
 
+export function updateProfile(userData) {
+    const userDataStr = Object.keys(userData).map(key => key + '=' + userData[key]).join('&');
+
+    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.updateProfile + '?' + userDataStr,
+        {method: 'POST'})
+        .then(data => data.json())
+        .then(parsedData => dispatch({type: authConst.type.userProfile, payload: {userProfile: parsedData}}));
+}
+
 export function openPopup(popupType) {
     return {
         type: authConst.type.openPopup,
