@@ -405,8 +405,11 @@ class Settings extends Component {
                         authApi.setUserData({password: newUserData.password});
                     }
 
-                    // TODO: use data from payload.userProfile instead of props.getSessionState();
-                    props.getSessionState();
+                    const newLoginData = JSON.parse(JSON.stringify(props.auth.login));
+
+                    Object.assign(newLoginData.data.user, payload.userProfile.data);
+
+                    store.dispatch({type: authConst.type.login, payload: {login: newLoginData}});
 
                     refs.password.value = '';
                     refs.confirmPassword.value = '';
