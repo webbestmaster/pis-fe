@@ -30,14 +30,23 @@ class Auth extends Component {
 
     autoLogin() {
         const view = this;
-        const {email, password} = authApi.getUserData();
+        const {props} = view;
 
-        if (email && password) {
-            view.props.login(email, password);
-            return;
-        }
+        props.getSessionState().then(data => {
+            if (data !== null) {
+                return;
+            }
 
-        console.log('No saved email or password');
+            console.log('try to login from session storage');
+
+            const {email, password} = authApi.getUserData();
+
+            if (email && password) {
+                view.props.login(email, password);
+                return;
+            }
+            console.log('No saved email or password');
+        });
     }
 
     initPromoPopup() {
@@ -80,6 +89,7 @@ export default connect(
     }),
     {
         login: authAction.login,
+        getSessionState: authAction.getSessionState,
         openPopupPromo: authAction.openPopupPromo
     }
 )(Auth);

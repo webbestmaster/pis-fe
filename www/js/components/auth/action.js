@@ -5,6 +5,21 @@ import {progressiveFetch} from './../../helper/file';
 const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
 
+export function getSessionState() {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.sessionState,
+        {credentials: 'include', method: 'GET'})
+        .then(data => data.json())
+        .then(parsedData => {
+            if (!parsedData.data.user || parsedData.data.user instanceof Array && parsedData.data.user.length === 0) {
+                return null;
+            }
+
+            dispatch({type: authConst.type.login, payload: {login: parsedData}});
+            return parsedData;
+        });
+}
+
 export function login(email, password) {
     if (!email || !password) {
         return () => console.warn('No email or password');

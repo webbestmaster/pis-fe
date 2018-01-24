@@ -6,7 +6,8 @@
         "forgotPassword": "/api/auth/forgotPassword",
         "resetPassword": "/api/auth/resetPassword",
         "logout": "/api/auth/logout",
-        "updateProfile": "/member/user/updateProfile"
+        "updateProfile": "/member/user/updateProfile",
+        "sessionState": "/api/home/ping"
     },
     "type": {
         "login": "auth__login",
