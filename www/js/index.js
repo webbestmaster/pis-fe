@@ -47,9 +47,9 @@ render(
     <Provider store={store}>
         {
             IS_PRODUCTION ? // eslint-disable-line id-match
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter> :
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter> :
                 <div>
                     <HashRouter>
                         <App/>

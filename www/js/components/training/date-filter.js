@@ -71,7 +71,7 @@ export function prepareScheduleList(scheduleList) {
                 const currentDate = new Date(timeItem);
 
                 return scheduleItem.day & weekDaysMap[currentDate.getDay()].day ? // eslint-disable-line no-bitwise
-                scheduleItem :
+                    scheduleItem :
                     null;
             })
             .map((oldScheduleItem, scheduleItemIi) => {
@@ -230,7 +230,7 @@ class DateFilter extends Component {
                                                 preparedScheduleList.firstDayIndex === ii
                                             })}>
                                             {scheduleItem.day & weekDaysMap[currentDate.getDay()].day ? // eslint-disable-line no-bitwise
-                                            reduceSeconds(scheduleItem.time_from) +
+                                                reduceSeconds(scheduleItem.time_from) +
                                                 ' - ' +
                                                 reduceSeconds(scheduleItem.time_to) :
                                                 <br/>}

@@ -5,6 +5,7 @@ require('./polyfill/json3');
 require('./polyfill/es6-shim');
 require('./polyfill/es6-sham.min');
 require('./polyfill/es7-shim');
+import 'react-datepicker/dist/react-datepicker.css';
 
 // import 'typeface-roboto';
 

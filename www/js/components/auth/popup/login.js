@@ -61,9 +61,9 @@ class Login extends Component {
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Войти</h3>
                 <p className={style.popup__p}>Вы еще не зарегистрированы у нас?
-                    <span onClick={() => view.props.openPopupRegister()} className={style.popup__enter_link}>
+                <span onClick={() => view.props.openPopupRegister()} className={style.popup__enter_link}>
                         Зарегистрируйтесь
-                    </span>
+                </span>
                 </p>
                 <form className={style.popup__form}>
                     <input

@@ -12,7 +12,9 @@ function search(query) {
         return promiseCache[query];
     }
 
-    promiseCache[query] = fetch(appGlobalConst.pageDataUrl.host + '/api/search/full?query=' + query)
+    promiseCache[query] = fetch(
+        appGlobalConst.pageDataUrl.host + '/api/search/full?query=' + query,
+        {credentials: 'include', method: 'GET'})
         .then(rawResult => rawResult.json());
 
     return promiseCache[query];

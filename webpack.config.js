@@ -94,9 +94,9 @@ const webpackConfig = {
                 ]
             },
 
-            // global styles
+            // global styles and libraries
             {
-                test: /_root\.scss$/,
+                test: /(_root\.scss|\.css)$/,
                 use: [
                     {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
                     {

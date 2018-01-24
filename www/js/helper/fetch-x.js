@@ -9,7 +9,7 @@ function fetchX(url, options = {}) {
         return promiseCache[cacheProperty];
     }
 
-    promiseCache[cacheProperty] = fetch(url, options)
+    promiseCache[cacheProperty] = fetch(url, Object.assign({credentials: 'include', method: 'GET'}, options))
         .then(rawResult => rawResult.json());
 
     return promiseCache[cacheProperty];

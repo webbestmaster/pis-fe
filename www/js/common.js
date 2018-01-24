@@ -39,3 +39,4 @@ require('lodash/get');
 require('react-datepicker');
 require('moment');
 require('cryptr');
+import 'react-datepicker/dist/react-datepicker.css';

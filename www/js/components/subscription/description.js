@@ -72,7 +72,7 @@ class Description extends Component {
             <div className={style.card_short_info_wrapper}>
                 <p className={style.card_short_info_number}>1</p>
                 <p className={style.card_short_info_description}>Абонемент на&nbsp;
-                    {plural(1, getTimePeriodName(row.period_type))}
+                {plural(1, getTimePeriodName(row.period_type))}
                 </p>
             </div>
 
@@ -81,7 +81,7 @@ class Description extends Component {
             {promotion ?
                 <div>
                     <p className={style.card_cost}>Цена со скидкой:&nbsp;
-                        {(row.price - promotion.discount).toFixed(2)} руб.
+                    {(row.price - promotion.discount).toFixed(2)} руб.
                     </p>
                     <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
                 </div> :
@@ -93,7 +93,7 @@ class Description extends Component {
             <span className="hidden">--- FIXME:LINK ---</span>
             <Link to={'###'} className={style.card_button}>забронировать</Link>
             <p className={style.card_cash_back}>Бонус:&nbsp;
-                <span className={style.card_cash_back_value}>+0.00</span>
+            <span className={style.card_cash_back_value}>+0.00</span>
             </p>
         </div>;
     }
@@ -149,7 +149,7 @@ class Description extends Component {
                             <h3 className={style.description_info_item_header}>Метро:</h3>
                             <p className={style.description_info_item_text}>
                                 {fitnessClub.attributes.comfort & 2 ? // eslint-disable-line no-bitwise
-                                'Есть метро' :
+                                    'Есть метро' :
                                     'Нет метро'}
                             </p>
                         </div>
@@ -161,7 +161,7 @@ class Description extends Component {
                             <h3 className={style.description_info_item_header}>Парковка:</h3>
                             <p className={style.description_info_item_text}>
                                 {fitnessClub.attributes.comfort & 1024 ? // eslint-disable-line no-bitwise
-                                'Есть парковка' :
+                                    'Есть парковка' :
                                     'Нет парковки'}
                             </p>
                         </div>

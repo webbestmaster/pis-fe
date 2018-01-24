@@ -13,8 +13,7 @@ export function login(email, password) {
     return dispatch => fetch(
         appGlobalConst.pageDataUrl.host +
         authConst.url.login.replace('{{email}}', email).replace('{{password}}', password),
-        {method: 'POST'}
-    )
+        {credentials: 'include', method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.login, payload: {login: parsedData}}));
 }
@@ -23,8 +22,7 @@ export function logout() {
     return dispatch => fetch(
         appGlobalConst.pageDataUrl.host +
         authConst.url.logout,
-        {method: 'GET'}
-    )
+        {credentials: 'include', method: 'GET'})
         .then(data => data.json())
         .then(() => {
             authApi.setUserData({email: null, password: null});
@@ -36,14 +34,14 @@ export function registration(regData) {
     const registerStr = Object.keys(regData).map(key => key + '=' + regData[key]).join('&');
 
     return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.registration + '?' + registerStr,
-        {method: 'POST'})
+        {credentials: 'include', method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.registration, payload: {registration: parsedData}}));
 }
 
 export function forgotPassword(email) {
     return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.forgotPassword + '?' + 'email=' + email,
-        {method: 'POST'})
+        {credentials: 'include', method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.forgotPassword, payload: {forgotPassword: parsedData}}));
 }
@@ -53,7 +51,7 @@ export function resetPassword(token, password) {
         'token=' + token +
         '&password=' + password +
         '&password_confirmation=' + password,
-    {method: 'POST'})
+    {credentials: 'include', method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.resetPassword, payload: {resetPassword: parsedData}}));
 }
@@ -62,7 +60,7 @@ export function updateProfile(userData) {
     const userDataStr = Object.keys(userData).map(key => key + '=' + userData[key]).join('&');
 
     return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.updateProfile + '?' + userDataStr,
-        {method: 'POST'})
+        {credentials: 'include', method: 'POST'})
         .then(data => data.json())
         .then(parsedData => dispatch({type: authConst.type.userProfile, payload: {userProfile: parsedData}}));
 }
@@ -70,7 +68,8 @@ export function updateProfile(userData) {
 export function uploadUserAvatar(file) {
     return dispatch => progressiveFetch(appGlobalConst.pageDataUrl.host + '/member/user/updateProfileImage',
         {
-            method: 'post',
+            method: 'POST',
+            credentials: 'include',
             body: {
                 image: file
             },

@@ -25,11 +25,11 @@ class ListItem extends Component {
                 <p className="clubs-catalog-list-item__address">{data.address}</p>
                 <div className="clubs-catalog-list-item__short-additional-info clear-full">
                     {comfort & 2 ? // eslint-disable-line no-bitwise
-                    <p className="clubs-catalog-list-item__short-additional-info-item
+                        <p className="clubs-catalog-list-item__short-additional-info-item
                     clubs-catalog-list-item__short-additional-info-item--metro">Рядом метро</p> :
                         null}
                     {comfort & 1024 ? // eslint-disable-line no-bitwise
-                    <p className="clubs-catalog-list-item__short-additional-info-item
+                        <p className="clubs-catalog-list-item__short-additional-info-item
                     clubs-catalog-list-item__short-additional-info-item--parking">Есть парковка</p> :
                         null}
                 </div>
