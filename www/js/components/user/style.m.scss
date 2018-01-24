@@ -18,6 +18,18 @@
     box-sizing: border-box;
     width: 50%;
     float: left;
+    position: relative;
+}
+
+.input_error_text {
+    position: absolute;
+    right: 15px;
+    top: 69px;
+    font-size: 12px;
+    padding: 4px 8px;
+    background-color: $mainColor;
+    color: #fff;
+    border-radius: 4px 0;
 }
 
 .text_label__wide {
@@ -55,9 +67,17 @@
     width: 50%;
     box-sizing: border-box;
     padding-right: 22px;
+    position: relative;
+    .input_error_text {
+        top: 32px;
+        right: 22px;
+    }
     &:last-child {
         padding-right: 0;
         padding-left: 22px;
+        .input_error_text {
+            right: 0;
+        }
     }
 }
 

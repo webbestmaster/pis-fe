@@ -94,6 +94,8 @@ class Register extends Component {
 
                 return prevState;
             });
+
+            return false;
         }
 
         if (value.length < 3) {
