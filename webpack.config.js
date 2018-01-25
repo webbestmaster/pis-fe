@@ -72,6 +72,7 @@ const webpackConfig = {
             {
                 test: /\.m\.scss$/,
                 use: [
+                    {loader: 'css-hot-loader'},
                     {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
                     {
                         loader: 'css-loader', options: {
@@ -98,6 +99,7 @@ const webpackConfig = {
             {
                 test: /(_root\.scss|\.css)$/,
                 use: [
+                    {loader: 'css-hot-loader'},
                     {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
                     {
                         loader: 'css-loader', options: {
@@ -179,6 +181,6 @@ if (IS_PRODUCTION) {
     );
 }
 
-webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
