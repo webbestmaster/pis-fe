@@ -1,12 +1,17 @@
+/* global fetch */
 import React, {Component} from 'react';
 import style from './style.m.scss';
 import Rating from './../util/rating';
 import cnx from './../../helper/cnx';
 import {getMonthAfterDayName} from './../../helper/date';
+import {connect} from 'react-redux';
+import * as authAction from './../auth/action';
 
+const get = require('lodash/get');
 const appConst = require('./../../app-const.json');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
+const authConst = require('./../auth/const.json');
 
 const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
     ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
@@ -16,7 +21,7 @@ const fishText = 'Замечательный клуб В самом центре
     'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
     'nulla suscipit?';
 
-export default class Reviews extends Component {
+class Reviews extends Component {
     constructor() {
         super();
 
@@ -106,10 +111,27 @@ export default class Reviews extends Component {
                     </div>
                 </div>)}
             </div>
-            <LeaveReviewForm/>
+            {get(props.auth, 'login.data.user.id', false) ?
+                <LeaveReviewForm/> :
+                [
+                    <p key="review_enter" onClick={() => props.openPopupLogin()}
+                        className={style.review_enter_text}>Авторизуйтесь чтобы оставить отзыв</p>,
+                    <div key="form-wrapper" className="disabled"><LeaveReviewForm clubId={props.clubId}/></div>]
+
+            }
         </div>;
     }
 }
+
+export default connect(
+    state => ({
+        app: state.app,
+        auth: state.auth
+    }),
+    {
+        openPopupLogin: authAction.openPopupLogin
+    }
+)(Reviews);
 
 class ReviewText extends Component {
     constructor() {
@@ -148,7 +170,8 @@ class LeaveReviewForm extends Component {
         const view = this;
 
         view.state = {
-            overStarIndex: -1
+            overStarIndex: -1,
+            reviewText: ''
         };
     }
 
@@ -156,6 +179,24 @@ class LeaveReviewForm extends Component {
         const view = this;
 
         view.setState({overStarIndex: starIndex});
+    }
+
+    leaveReview() {
+        const view = this;
+        const {props, state} = view;
+        const description = state.reviewText;
+        const rating = state.overStarIndex + 1;
+        const {clubId} = props;
+
+        fetch(appConst.pageDataUrl.host + authConst.url.leaveReview
+            .replace('{{clubId}}', clubId)
+            .replace('{{description}}', description)
+            .replace('{{rating}}', rating),
+        {credentials: 'include', method: 'POST'})
+            .then(blobData => blobData.json())
+            .then(data => {
+                console.log(data);
+            });
     }
 
     render() {
@@ -168,15 +209,23 @@ class LeaveReviewForm extends Component {
             <h4 className={style.review_form__header}>Оставить отзыв</h4>
             <div className={style.review_form__stars_wrapper}>
                 {'     '.split('')
-                    .map((item, ii) => <div key={ii}
+                    .map((item, ii) => <div
+                        key={ii}
                         onClick={() => view.onStarOver(ii)}
                         {...cnx('clubs-catalog-list-item__rating-star', {
                             'clubs-catalog-list-item__rating-star--active': ii <= state.overStarIndex
                         })}/>)}
             </div>
             <p className={style.review_form__stars_label}>Выставите Вашу оценку</p>
-            <textarea className={style.review_form__text_area} rows="10" placeholder="Напишите Ваш ответ"/>
-            <div {...cnx(style.review_form__button, {disabled: state.overStarIndex === -1})}>Написать отзыв</div>
+            <textarea
+                ref="textArea"
+                onInput={() => view.setState({reviewText: view.refs.textArea.value.trim()})}
+                className={style.review_form__text_area} rows="10" placeholder="Напишите Ваш отзыв"/>
+            <div
+                onClick={() => view.leaveReview()}
+                {...cnx(style.review_form__button, {disabled: state.overStarIndex === -1 || !state.reviewText.length})}>
+                Написать отзыв
+            </div>
         </form>;
     }
 }

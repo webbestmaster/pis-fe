@@ -30,7 +30,7 @@ class Login extends Component {
 
                 view.props.closePopup();
 
-                view.props.history.push('/user');
+                // view.props.history.push('/user');
                 return;
             }
 
