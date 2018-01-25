@@ -19,6 +19,9 @@
     width: 50%;
     float: left;
     position: relative;
+    .text_label__wide {
+        width: 100%;
+    }
 }
 
 .input_error_text {

@@ -541,7 +541,7 @@ class Settings extends Component {
 
             <div {...cnx({hidden: globalAppConst.mobileWidth >= app.screen.width})}>
                 <div className={style.settings_form}>
-                    <div className={style.text_label + ' ' + style.text_label__mobile_wide}>
+                    <div className={style.text_label + ' ' + style.text_label__wide}>
                         <p className={style.text_label__label}>Смена пароля</p>
                         <div className={style.input_text__from_to}>
                             <input
