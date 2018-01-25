@@ -36,7 +36,7 @@ const webpackConfig = {
 
     context: path.join(CWD, 'www'),
     entry: {
-        common: './js/common.js',
+        // common: './js/common.js',
         main: ['./js/index.js']
     },
     output: Object.assign(
@@ -149,13 +149,24 @@ const webpackConfig = {
         new ExtractTextPlugin({
             filename: 'style.css',
             allChunks: true
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            minChunks: 2
         })
     ]
 };
+
+if (IS_DEVELOPMENT) {
+    webpackConfig.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            minChunks: (jsModule, count) => {
+                const {context} = jsModule;
+
+                return context === null ||
+                    ['\\node_modules\\', 'js\\lib']
+                        .some(partOfPath => context.indexOf(partOfPath) !== -1);
+            }
+        })
+    );
+}
 
 if (IS_PRODUCTION) {
     webpackConfig.plugins.push(
@@ -168,6 +179,6 @@ if (IS_PRODUCTION) {
     );
 }
 
-// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
