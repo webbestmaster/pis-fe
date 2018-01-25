@@ -417,7 +417,7 @@ class Register extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 770, minHeight: 746}}>
+            <div className={style.popup__paper} style={{width: 770}}>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Регистрация</h3>
                 <p className={style.popup__p}>Вы уже зарегистрированы?&nbsp;
@@ -495,13 +495,7 @@ class Register extends Component {
                     }}>Фитнес-блог</CheckboxLabel>
                 </div>
 
-                {state.error && <p className={style.popup__error_p}>{state.error}</p>}
-
-                <div onClick={() => view.register()} {...cnx(style.popup__button)}>
-                    Регистрация
-                </div>
-
-                <label {...cnx('section__checkbox')}>
+                <label {...cnx('section__checkbox', style.popup__terms_p)} style={{marginBottom: 26}}>
                     <input
                         ref="terms"
                         onChange={() => view.onChangeValidateTerms()}
@@ -510,10 +504,16 @@ class Register extends Component {
                     <span className="section__checkbox-state"/>
                     Принять условия
                     <span className="hidden">--- FIXME:LINK --- should be without #</span>
-                    <a href="#/terms/" target="_blank" className={style.popup__enter_link}>
+                    <Link to="/terms/" target="_blank" className={style.popup__enter_link}>
                         пользовательского соглашения
-                    </a>
+                    </Link>
                 </label>
+
+                {state.error && <p className={style.popup__error_p}>{state.error}</p>}
+
+                <div onClick={() => view.register()} {...cnx(style.popup__button)} style={{marginBottom: 0}}>
+                    Регистрация
+                </div>
 
                 {/* <CheckboxLabel input={{ref: () => 'terms', onChange: }}>*/}
                 {/* </CheckboxLabel>*/}
