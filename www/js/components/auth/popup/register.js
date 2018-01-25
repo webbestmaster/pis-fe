@@ -417,60 +417,77 @@ class Register extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 770}}>
+            <div className={style.popup__paper} style={{width: 770, paddingTop: 20, paddingBottom: 20}}>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Регистрация</h3>
                 <p className={style.popup__p}>Вы уже зарегистрированы?&nbsp;
                 <span onClick={() => view.props.openPopupLogin()} className={style.popup__enter_link}>Войти</span>
                 </p>
                 <form className={style.popup__form}>
-                    <input
-                        ref="name"
-                        onBlur={() => view.onBlurValidateName()}
-                        onInput={() => view.onBlurValidateName()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.name.isValid})}
-                        type="text" placeholder="Имя"/>
-                    <input
-                        ref="family"
-                        onBlur={() => view.onBlurValidateFamily()}
-                        onInput={() => view.onBlurValidateFamily()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.family.isValid})}
-                        type="text" placeholder="Фамилия"/>
-                    <input
-                        ref="phone"
-                        onBlur={() => view.onBlurValidatePhone()}
-                        onInput={() => view.onBlurValidatePhone()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.phone.isValid})}
-                        type="tel" placeholder="+375 (__) ___-__-__"/>
-                    <input
-                        ref="email"
-                        onBlur={() => view.onBlurValidateEmail()}
-                        onInput={() => view.onBlurValidateEmail()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.email.isValid})}
-                        type="email" placeholder="Email"/>
-                    <input
-                        ref="password"
-                        onBlur={() => {
-                            view.onBlurValidatePassword();
-                            view.onBlurValidateConfirmPassword();
-                        }}
-                        onInput={() => view.onBlurValidatePassword()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.password.isValid})}
-                        type="password" placeholder="Пароль"/>
-                    <input
-                        ref="confirmPassword"
-                        onBlur={() => view.onBlurValidateConfirmPassword()}
-                        onInput={() => view.onBlurValidateConfirmPassword()}
-                        {...cnx(style.popup__form_text_input,
-                            {[style.popup__form_text_input__invalid]: !state.form.input.confirmPassword.isValid})}
-                        type="password" placeholder="Повторите пароль"/>
+                    <label className={style.text_label}>
+                        <input
+                            ref="name"
+                            onBlur={() => view.onBlurValidateName()}
+                            onInput={() => view.onBlurValidateName()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.name.isValid})}
+                            type="text" placeholder="Имя"/>
+                        <ErrorLabel propName="name" form={state.form}/>
+                    </label>
+                    <label className={style.text_label}>
+                        <input
+                            ref="family"
+                            onBlur={() => view.onBlurValidateFamily()}
+                            onInput={() => view.onBlurValidateFamily()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.family.isValid})}
+                            type="text" placeholder="Фамилия"/>
+                        <ErrorLabel propName="family" form={state.form}/>
+                    </label>
+                    <label className={style.text_label}>
+                        <input
+                            ref="phone"
+                            onBlur={() => view.onBlurValidatePhone()}
+                            onInput={() => view.onBlurValidatePhone()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.phone.isValid})}
+                            type="tel" placeholder="+375 (__) ___-__-__"/>
+                        <ErrorLabel propName="phone" form={state.form}/>
+                    </label>
+                    <label className={style.text_label}>
+                        <input
+                            ref="email"
+                            onBlur={() => view.onBlurValidateEmail()}
+                            onInput={() => view.onBlurValidateEmail()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.email.isValid})}
+                            type="email" placeholder="Email"/>
+                        <ErrorLabel propName="email" form={state.form}/>
+                    </label>
+                    <label className={style.text_label}>
+                        <input
+                            ref="password"
+                            onBlur={() => {
+                                view.onBlurValidatePassword();
+                                view.onBlurValidateConfirmPassword();
+                            }}
+                            onInput={() => view.onBlurValidatePassword()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.password.isValid})}
+                            type="password" placeholder="Пароль"/>
+                        <ErrorLabel propName="password" form={state.form}/>
+                    </label>
+                    <label className={style.text_label}>
+                        <input
+                            ref="confirmPassword"
+                            onBlur={() => view.onBlurValidateConfirmPassword()}
+                            onInput={() => view.onBlurValidateConfirmPassword()}
+                            {...cnx(style.popup__form_text_input,
+                                {[style.popup__form_text_input__invalid]: !state.form.input.confirmPassword.isValid})}
+                            type="password" placeholder="Повторите пароль"/>
+                        <ErrorLabel propName="confirmPassword" form={state.form}/>
+                    </label>
                 </form>
-
                 <div className={style.popup__subscription + ' clear-self'}>
                     <h3 className={style.popup__subscription_header}>
                         Подписывайтесь на наши рассылки и получайте уникальные предложения и подарки
@@ -495,7 +512,7 @@ class Register extends Component {
                     }}>Фитнес-блог</CheckboxLabel>
                 </div>
 
-                <label {...cnx('section__checkbox', style.popup__terms_p)} style={{marginBottom: 26}}>
+                <label {...cnx('section__checkbox', style.popup__terms_p)}>
                     <input
                         ref="terms"
                         onChange={() => view.onChangeValidateTerms()}
@@ -514,10 +531,6 @@ class Register extends Component {
                 <div onClick={() => view.register()} {...cnx(style.popup__button)} style={{marginBottom: 0}}>
                     Регистрация
                 </div>
-
-                {/* <CheckboxLabel input={{ref: () => 'terms', onChange: }}>*/}
-                {/* </CheckboxLabel>*/}
-
             </div>
         </Dialog>;
     }
@@ -538,3 +551,17 @@ export default withRouter(connect(
         // login: authAction.login
     }
 )(Register));
+
+class ErrorLabel extends Component {
+    render() {
+        const view = this;
+        const {props, state} = view;
+        const {propName, form} = props;
+
+        if (form.input[propName].isValid) {
+            return null;
+        }
+
+        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
+    }
+}

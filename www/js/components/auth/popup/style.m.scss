@@ -67,10 +67,12 @@
 }
 
 .popup__terms_p {
-    @extend .popup__p;
+    color: $mainTextColor;
+    font-size: 16px;
+    padding-bottom: 4px;
     font-weight: bold;
     letter-spacing: 0.5px;
-    margin-bottom: 26px;
+    margin-bottom: 15px;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 
@@ -89,7 +91,12 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding-top: 13px;
-    padding-bottom: 6px;
+    padding-bottom: 2px;
+}
+
+.text_label {
+    width: 315px;
+    position: relative;
 }
 
 .popup__form_text_input {
@@ -99,8 +106,8 @@
     border-radius: 4px;
     border: 1px solid $mainBorderColor;
     box-sizing: border-box;
-    width: 315px;
-    margin-bottom: 23px;
+    width: 100%;
+    margin-bottom: 21px;
     &[type=tel] {
         letter-spacing: 1px;
     }
@@ -120,7 +127,7 @@
     background-color: $mainBorderColor;
     border-radius: 5px;
     padding: 15px 27px 4px;
-    margin-bottom: 32px;
+    margin-bottom: 17px;
     :global {
         .section__checkbox {
             float: left;
@@ -135,8 +142,8 @@
     font-weight: bold;
     color: $mainTextColor;
     font-size: 16px;
-    line-height: 24px;
-    padding-bottom: 19px;
+    line-height: 20px;
+    padding-bottom: 11px;
 }
 
 .popup__button {
@@ -157,4 +164,15 @@
     color: $mainColor;
     padding-bottom: 16px;
     text-align: center;
+}
+
+.input_error_text {
+    position: absolute;
+    right: 0;
+    top: 39px;
+    font-size: 12px;
+    padding: 1px 8px;
+    background-color: $mainColor;
+    color: #fff;
+    border-radius: 4px 0;
 }
