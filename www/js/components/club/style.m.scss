@@ -237,6 +237,13 @@ body { // just add authority in front of swiper's classes
         }
     }
 
+    .review_error_text {
+        color: $mainColor;
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 22px;
+    }
+
     .review_image {
         display: block;
         background-repeat: no-repeat;
@@ -338,6 +345,11 @@ body { // just add authority in front of swiper's classes
         float: left;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .review_wait_for_moderation {
+        text-align: center;
+        font-size: 18px;
     }
 
     .review_form__avatar {

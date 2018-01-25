@@ -6,6 +6,9 @@ import cnx from './../../helper/cnx';
 import {getMonthAfterDayName} from './../../helper/date';
 import {connect} from 'react-redux';
 import * as authAction from './../auth/action';
+import * as authApi from '../auth/api';
+import {store} from '../../index';
+import {resolveImagePath} from '../../helper/path-x';
 
 const get = require('lodash/get');
 const appConst = require('./../../app-const.json');
@@ -75,7 +78,8 @@ class Reviews extends Component {
             <div className={style.review_list + ' clear-full'}>
                 {feedbacks.map((reviewItem, ii) => <div key={ii} className={style.review_item}>
                     <div className={style.review_image}
-                        style={{backgroundImage: 'url(' + (reviewItem.user.image || defaultUserAvatar) + ')'}}/>
+                        style={{backgroundImage: 'url(' +
+                            resolveImagePath(reviewItem.user.image || defaultUserAvatar) + ')'}}/>
 
                     <div className={style.review_text_holder + ' clear-self'}>
                         <p className={style.review_user_name}>{reviewItem.user.name}</p>
@@ -111,12 +115,12 @@ class Reviews extends Component {
                     </div>
                 </div>)}
             </div>
+
             {get(props.auth, 'login.data.user.id', false) ?
-                <LeaveReviewForm/> :
-                [
-                    <p key="review_enter" onClick={() => props.openPopupLogin()}
-                        className={style.review_enter_text}>Авторизуйтесь чтобы оставить отзыв</p>,
-                    <div key="form-wrapper" className="disabled"><LeaveReviewForm clubId={props.clubId}/></div>]
+                <LeaveReviewForm clubId={props.clubId} login={props.auth.login}/> :
+                [<p key="review_enter" onClick={() => props.openPopupLogin()}
+                    className={style.review_enter_text}>Авторизуйтесь чтобы оставить отзыв</p>,
+                <div key="form-wrapper" className="disabled"><LeaveReviewForm/></div>]
 
             }
         </div>;
@@ -170,8 +174,10 @@ class LeaveReviewForm extends Component {
         const view = this;
 
         view.state = {
+            error: null,
             overStarIndex: -1,
-            reviewText: ''
+            reviewText: '',
+            waitForModeration: false
         };
     }
 
@@ -194,18 +200,48 @@ class LeaveReviewForm extends Component {
             .replace('{{rating}}', rating),
         {credentials: 'include', method: 'POST'})
             .then(blobData => blobData.json())
-            .then(data => {
-                console.log(data);
+            .then(parsedData => {
+                if (parsedData.code === 200) {
+                    view.refs.textArea.value = '';
+                    view.setState({
+                        overStarIndex: -1,
+                        reviewText: '',
+                        error: null,
+                        waitForModeration: true
+                    });
+                    return;
+                }
+
+                const {data} = parsedData;
+
+                if (data instanceof Array) {
+                    view.setState({error: data[0]});
+                    return;
+                }
+
+                const errorKey = Object.keys(data)[0];
+
+                view.setState({error: data[errorKey][0]});
             });
     }
 
-    render() {
+    render() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
 
-        // FIXME: make workable
+        if (state.waitForModeration === true) {
+            return <h3 className={style.review_wait_for_moderation}>Ваш отзыв ожидает модерации</h3>;
+        }
+
+        const avatar = get(props, 'login.data.user.image') || null;
+
         return <form className={style.review_form + ' clear-full'}>
-            <div className={style.review_form__avatar}/>
+            {avatar ?
+                <div
+                    className={style.review_form__avatar}
+                    style={{backgroundImage: 'url(' + resolveImagePath(avatar) + ')'}}/> :
+                <div className={style.review_form__avatar}/>
+            }
             <h4 className={style.review_form__header}>Оставить отзыв</h4>
             <div className={style.review_form__stars_wrapper}>
                 {'     '.split('')
@@ -221,6 +257,7 @@ class LeaveReviewForm extends Component {
                 ref="textArea"
                 onInput={() => view.setState({reviewText: view.refs.textArea.value.trim()})}
                 className={style.review_form__text_area} rows="10" placeholder="Напишите Ваш отзыв"/>
+            {state.error && <p className={style.review_error_text}>{state.error}</p>}
             <div
                 onClick={() => view.leaveReview()}
                 {...cnx(style.review_form__button, {disabled: state.overStarIndex === -1 || !state.reviewText.length})}>
