@@ -168,6 +168,11 @@ class Settings extends Component {
         });
 
         if (value === '') {
+            return true;
+        }
+
+        /*
+        if (value === '') {
             view.setState(prevState => {
                 Object.assign(prevState.form.input.phone,
                     {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
@@ -177,6 +182,7 @@ class Settings extends Component {
             });
             return false;
         }
+*/
 
         if ((value.match(/\d/g) || []).length < 9) {
             view.setState(prevState => {

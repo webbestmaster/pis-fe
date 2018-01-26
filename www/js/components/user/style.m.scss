@@ -109,6 +109,13 @@
     .text_label__label {
         padding-bottom: 27px;
     }
+
+    :global .section__radio {
+        clear: none;
+        float: left;
+        width: auto;
+    }
+
 }
 
 .calendar_input {

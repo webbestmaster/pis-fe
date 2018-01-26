@@ -160,15 +160,21 @@ class Register extends Component {
         });
 
         if (value === '') {
-            view.setState(prevState => {
-                Object.assign(prevState.form.input.phone,
-                    {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
-                );
-
-                return prevState;
-            });
-            return false;
+            return true;
         }
+
+        /*
+                if (value === '') {
+                    view.setState(prevState => {
+                        Object.assign(prevState.form.input.phone,
+                            {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
+                        );
+
+                        return prevState;
+                    });
+                    return false;
+                }
+        */
 
         if ((value.match(/\d/g) || []).length < 9) {
             view.setState(prevState => {
@@ -358,8 +364,8 @@ class Register extends Component {
 
         const formData = {
             subscription: {
-                promo: state.subscription.promo,
-                blog: state.subscription.blog
+                promo: state.subscription.promo ? 1 : 0,
+                blog: state.subscription.blog ? 1 : 0
             },
             name: view.refs.name.value.trim(),
             family: view.refs.family.value.trim(),
@@ -371,10 +377,14 @@ class Register extends Component {
 
         props
             .registration({
+                first_name: formData.name, // eslint-disable-line camelcase, id-match
+                last_name: formData.family, // eslint-disable-line camelcase, id-match
+                phone: formData.phone,
                 email: formData.email,
                 password: formData.password,
-                password_confirmation: formData.password_confirmation, // eslint-disable-line camelcase, id-match
-                name: formData.name
+                password_confirmation: formData.password_confirmation, // eslint-disable-line camelcase, id-match,
+                mailing_promotion: formData.subscription.promo, // eslint-disable-line camelcase, id-match
+                mailing_blog: formData.subscription.blog // eslint-disable-line camelcase, id-match
             })
             .then(({type, payload}) => {
                 if (payload.registration.code === 200) {
