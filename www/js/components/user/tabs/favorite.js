@@ -64,7 +64,7 @@ class Favorite extends Component {
             {/* FIXME: DO IT */}
             <h3 className="section__header">НЕ реализовано на сервере</h3>
 
-            <div className="sale-slider hidden">
+            <div className="sale-slider disabled">
                 <div ref="swiperContainer" className="swiper-container">
                     <div className="swiper-wrapper">
                         {pageData.data.tabs.promotions.map((promotion, index) =>

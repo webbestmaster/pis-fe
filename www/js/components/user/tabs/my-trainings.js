@@ -17,7 +17,7 @@ class MyTrainings extends Component {
             {/* FIXME: DO IT */}
             <h3 className="section__header">НЕ реализовано на сервере</h3>
 
-            <table className={tableStyle.table + ' hidden'}>
+            <table className={tableStyle.table + ' disabled'}>
                 <thead className={tableStyle.t_head}>
                     <tr>
                         <td>Дата</td>
@@ -43,7 +43,7 @@ class MyTrainings extends Component {
                             Обработка
                             </div>
                         </td>
-                        <td>Бывает и такое</td>
+                        <td>Ожидайте подтверждения</td>
                     </tr>
                     <tr>
                         <td>01.01.2017</td>
@@ -58,7 +58,7 @@ class MyTrainings extends Component {
                             Забронировано
                             </div>
                         </td>
-                        <td>Бывает и такое</td>
+                        <td>Клуб ждет вас</td>
                     </tr>
                     <tr>
                         <td>01.01.2017</td>
@@ -73,7 +73,7 @@ class MyTrainings extends Component {
                             Отклонено
                             </div>
                         </td>
-                        <td>Бывает и такое</td>
+                        <td>Выберите другое предложение</td>
                     </tr>
                     <tr>
                         <td>01.01.2017</td>
@@ -88,7 +88,7 @@ class MyTrainings extends Component {
                             Завершено
                             </div>
                         </td>
-                        <td>Бывает и такое</td>
+                        <td>Вам начислены бонусы</td>
                     </tr>
                 </tbody>
             </table>
