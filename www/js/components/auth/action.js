@@ -1,6 +1,6 @@
-/* global fetch, window */
+/* global fetch, window, FormData */
 import * as authApi from './api';
-import {progressiveFetch} from './../../helper/file';
+// import {progressiveFetch} from './../../helper/file';
 
 const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
@@ -81,16 +81,18 @@ export function updateProfile(userData) {
 }
 
 export function uploadUserAvatar(file) {
-    return dispatch => progressiveFetch(appGlobalConst.pageDataUrl.host + '/member/user/updateProfileImage',
+    //  'image' => 'required|image|dimensions:mim_width=100,mim_height=100,max_width=2000,max_height=2000',
+    const formData = new FormData();
+
+    formData.append('image', file);
+
+    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.updateProfileImage,
         {
             method: 'POST',
             credentials: 'include',
-            body: {
-                image: file
-            },
-            headers: {'Content-Disposition': 'attachment; filename=' + '"' + file.name + '"'}
-        },
-        console.log);
+            body: formData
+        })
+        .then(rawData => rawData.json());
 }
 
 export function openPopup(popupType) {

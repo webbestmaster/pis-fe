@@ -8,7 +8,8 @@
         "logout": "/api/auth/logout",
         "updateProfile": "/member/user/updateProfile",
         "sessionState": "/api/home/ping",
-        "leaveReview": "/member/feedback/add?fitness_club_id={{clubId}}&rating={{rating}}&description={{description}}"
+        "leaveReview": "/member/feedback/add?fitness_club_id={{clubId}}&rating={{rating}}&description={{description}}",
+        "updateProfileImage": "/member/user/updateProfileImage"
     },
     "type": {
         "login": "auth__login",

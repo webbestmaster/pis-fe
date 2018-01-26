@@ -376,16 +376,19 @@ class Register extends Component {
         };
 
         props
-            .registration({
-                first_name: formData.name, // eslint-disable-line camelcase, id-match
-                last_name: formData.family, // eslint-disable-line camelcase, id-match
-                phone: formData.phone,
-                email: formData.email,
-                password: formData.password,
-                password_confirmation: formData.password_confirmation, // eslint-disable-line camelcase, id-match,
-                mailing_promotion: formData.subscription.promo, // eslint-disable-line camelcase, id-match
-                mailing_blog: formData.subscription.blog // eslint-disable-line camelcase, id-match
-            })
+            .registration(Object.assign(
+                {
+                    first_name: formData.name, // eslint-disable-line camelcase, id-match
+                    last_name: formData.family, // eslint-disable-line camelcase, id-match
+                    // phone: formData.phone,
+                    email: formData.email,
+                    password: formData.password,
+                    password_confirmation: formData.password_confirmation, // eslint-disable-line camelcase, id-match,
+                    mailing_promotion: formData.subscription.promo, // eslint-disable-line camelcase, id-match
+                    mailing_blog: formData.subscription.blog // eslint-disable-line camelcase, id-match
+                },
+                formData.phone ? {phone: formData.phone} : null // phone is not required field
+            ))
             .then(({type, payload}) => {
                 if (payload.registration.code === 200) {
                     view.props.closePopup();
