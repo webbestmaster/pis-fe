@@ -14,6 +14,7 @@ import DateFilter, {prepareScheduleList} from './date-filter';
 import {resolveImagePath} from './../../helper/path-x';
 import {defaultDateFilter} from '../trainings-catalog/reducer';
 import {Link} from 'react-router-dom';
+import TrainingCard from './../club/training-card';
 
 const globalAppConst = require('./../../app-const.json');
 const appConst = require('./../../app-const.json');
@@ -274,39 +275,8 @@ class Description extends Component {
                             className="swiper-container">
 
                             <div className="swiper-wrapper">
-
-                                {pageData.similarTrainings.map((training, ii) => {
-                                    const promotion = training.promotion instanceof Array || !training.promotion ?
-                                        null :
-                                        training.promotion; // yes, if promotion is not exist: row.promotion === []
-
-                                    return <Link to={'/training/' + (promotion ?
-                                        promotion.fitness_club_training_id :
-                                        training.id)} key={ii} className="swiper-slide sale-swiper-card">
-                                        <div className="sale-swiper-card__label sale-swiper-card__label--line-only"/>
-                                        <div className="sale-swiper-card__static-content">
-                                            <div className="sale-swiper-card__training-image"
-                                                style={
-                                                    {backgroundImage: 'url(' + resolveImagePath(training.image) + ')'}
-                                                }/>
-                                            <div className="sale-swiper-card__subscription-data">
-                                                <p className="sale-swiper-card__subscription-single-header">
-                                                    {training.title}
-                                                </p>
-                                            </div>
-                                            {view.renderTrainingSchedule(training)}
-                                            <div className="sale-swiper-card__subscription-training-description"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: training.description // eslint-disable-line id-match
-                                                }}/>
-                                            <p className="sale-swiper-card__subscription-cost">{promotion ?
-                                                (training.price - promotion.discount).toFixed(2) :
-                                                training.price} <span
-                                                className="sale-swiper-card__subscription-cost-currency">руб.</span></p>
-                                            <div className="sale-swiper-card__button">Забронировать</div>
-                                        </div>
-                                    </Link>;
-                                })}
+                                {pageData.similarTrainings
+                                    .map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                             </div>
                         </div>
                     </div>
