@@ -36,6 +36,7 @@
             position: relative;
             top: 3px;
             left: 10px;
+            transition: background ease-out 0.3s;
             &.section__header-heart--marked {
                 background-image: url('./../../style/i/club/heart-filled.svg');
             }
