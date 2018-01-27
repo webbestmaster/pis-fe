@@ -3,6 +3,8 @@ import style from './../club/style.m.scss';
 import Rating from './../util/rating';
 import cnx from './../../helper/cnx';
 import {getMonthAfterDayName} from './../../helper/date';
+import ClubLeaveReviewForm from './../club/club-leave-review-form';
+import {resolveImagePath} from '../../helper/path-x';
 
 const appConst = require('./../../app-const.json');
 const {fetchX} = require('./../../helper/fetch-x');
@@ -58,7 +60,7 @@ export default class Reviews extends Component {
                     Пока нет отзывов
                 </h2>
                 <div style={{height: 140}}/>
-                <LeaveReviewForm/>
+                <ClubLeaveReviewForm clubId={props.clubId}/>
             </div>;
         }
 
@@ -70,7 +72,9 @@ export default class Reviews extends Component {
             <div className={style.review_list + ' clear-full'}>
                 {feedbacks.map((reviewItem, ii) => <div key={ii} className={style.review_item}>
                     <div className={style.review_image}
-                        style={{backgroundImage: 'url(' + (reviewItem.user.image || defaultUserAvatar) + ')'}}/>
+                        style={{backgroundImage: 'url(' +
+                            resolveImagePath(reviewItem.user.image || defaultUserAvatar) +
+                            ')'}}/>
 
                     <div className={style.review_text_holder + ' clear-self'}>
                         <p className={style.review_user_name}>{reviewItem.user.name}</p>
@@ -106,7 +110,7 @@ export default class Reviews extends Component {
                     </div>
                 </div>)}
             </div>
-            <LeaveReviewForm/>
+            <ClubLeaveReviewForm clubId={props.clubId}/>
         </div>;
     }
 }
@@ -141,42 +145,3 @@ class ReviewText extends Component {
     }
 }
 
-class LeaveReviewForm extends Component {
-    constructor() {
-        super();
-
-        const view = this;
-
-        view.state = {
-            overStarIndex: -1
-        };
-    }
-
-    onStarOver(starIndex) {
-        const view = this;
-
-        view.setState({overStarIndex: starIndex});
-    }
-
-    render() {
-        const view = this;
-        const {props, state} = view;
-
-        // FIXME: make workable
-        return <form className={style.review_form + ' clear-full'}>
-            <div className={style.review_form__avatar}/>
-            <h4 className={style.review_form__header}>Оставить отзыв</h4>
-            <div className={style.review_form__stars_wrapper}>
-                {'     '.split('')
-                    .map((item, ii) => <div key={ii}
-                        onClick={() => view.onStarOver(ii)}
-                        {...cnx('clubs-catalog-list-item__rating-star', {
-                            'clubs-catalog-list-item__rating-star--active': ii <= state.overStarIndex
-                        })}/>)}
-            </div>
-            <p className={style.review_form__stars_label}>Выставите Вашу оценку</p>
-            <textarea className={style.review_form__text_area} rows="10" placeholder="Напишите Ваш ответ"/>
-            <div {...cnx(style.review_form__button, {disabled: state.overStarIndex === -1})}>Написать отзыв</div>
-        </form>;
-    }
-}

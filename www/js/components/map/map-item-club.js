@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
 import {Link} from 'react-router-dom';
 import {plural} from '../../helper/plural';
+import {resolveImagePath} from '../../helper/path-x';
 
 const appConst = require('./../../app-const.json');
 
@@ -17,7 +18,7 @@ export default class MapItemClub extends Component {
         return <div className="map-point">
             <div className="map-point__content">
                 <div className="clubs-catalog-list-item__logo"
-                    style={{backgroundImage: 'url(' + (host + data.logo_image) + ')'}}/>
+                    style={{backgroundImage: 'url(' + resolveImagePath(data.logo_image) + ')'}}/>
                 <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
                 <p className="clubs-catalog-list-item__address">{data.address}</p>
                 <div className="clubs-catalog-list-item__description"

@@ -64,8 +64,6 @@ class ReviewList extends Component {
                 <h2 className="section__header section__header--plus-swiper">
                     Пока нет отзывов
                 </h2>
-                {/* <div style={{height: 140}}/> */}
-                {/* <LeaveReviewForm/> */}
             </div>;
         }
 
@@ -75,7 +73,9 @@ class ReviewList extends Component {
             <div className={clubStyle.review_list + ' clear-full'}>
                 {feedbacks.map((reviewItem, ii) => <div key={ii} className={clubStyle.review_item}>
                     <div className={clubStyle.review_image}
-                        style={{backgroundImage: 'url(' + (reviewItem.user.image || defaultUserAvatar) + ')'}}/>
+                        style={{backgroundImage: 'url(' +
+                            resolveImagePath(reviewItem.user.image || defaultUserAvatar) +
+                            ')'}}/>
 
                     <div className={clubStyle.review_text_holder + ' clear-self'}>
                         <p className={clubStyle.review_user_name}>

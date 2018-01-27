@@ -12,6 +12,7 @@ import {reduceSeconds, getTimePeriodName} from './../../helper/date';
 import Rating from './../util/rating';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {resolveImagePath} from '../../helper/path-x';
 
 const globalAppConst = require('./../../app-const.json');
 const appConst = require('./../../app-const.json');
@@ -120,7 +121,7 @@ class Description extends Component {
 
                 <div className={style.description}>
                     <div className={style.description_image}
-                        style={{backgroundImage: 'url(' + row.image + ')'}}/>
+                        style={{backgroundImage: 'url(' + resolveImagePath(row.image) + ')'}}/>
 
                     <div className={style.description_short_info}>
                         <div {...cnx(style.description_short_info_icon, style.description_short_info_icon__time)}/>
