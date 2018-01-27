@@ -1,11 +1,4 @@
-$mainFontFamily: 'Ubuntu', sans-serif;
-$mainColor: #fc1050;
-$mainBorderColor: #e8ecf0;
-$mainTextColor: #1a273b;
-$secondaryTextColor: #9399a1;
-$placeholderTextColor: #babec3;
-$tabletWidth: 1265px;
-$mobileWidth: 750px;
+@import "aaa-var";
 
 .hidden {
     display: none !important;
@@ -74,13 +67,6 @@ $mobileWidth: 750px;
     &::scrollbar-thumb {background-color:rgb(207,207,207);}
     &::scrollbar-track {background:rgb(244,244,244);}
 }
-
-/*
-.fll-50 {
-    float: left;
-    width: 50%;
-}
-*/
 
 .json {
     word-break: break-all;
