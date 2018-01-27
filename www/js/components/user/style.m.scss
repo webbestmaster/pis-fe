@@ -331,6 +331,9 @@
                 top: -105px;
                 margin-right: 15px;
             }
+            .favorite__description {
+                margin-top: 0;
+            }
         }
     }
 
@@ -352,3 +355,18 @@
     }
 }
 
+.favorite_container {
+    :global {
+        .sale-swiper-card {
+            .sale-swiper-card__favorite-mark {
+                display: none;
+            }
+            .sale-swiper-card__stopwatch {
+                height: 166px;
+                & ~ .sale-swiper-card__subscription-data {
+                    margin-bottom: 34px;
+                }
+            }
+        }
+    }
+}
