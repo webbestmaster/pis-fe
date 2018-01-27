@@ -333,6 +333,7 @@
             }
             .favorite__description {
                 margin-top: 0;
+                margin-left: 15px;
             }
         }
     }
@@ -350,6 +351,9 @@
                 float: none;
                 width: auto;
                 margin: 0 10px 16px;
+            }
+            .favorite__description {
+                margin-left: 10px;
             }
         }
     }
