@@ -305,6 +305,21 @@
         height: 64px;
         margin-top: -70px;
         margin-bottom: 25px;
+        .sale-swiper-card__favorite-mark {
+            position: absolute;
+            right: 9px;
+            top: 10px;
+            width: 44px;
+            height: 44px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 24px 24px;
+            background-image: url('./../../style/i/club/dark-heart.svg');
+            transition: background ease-out 0.3s;
+            &.sale-swiper-card__favorite-mark--active {
+                background-image: url('./../../style/i/club/dark-heart-filled.svg');
+            }
+        }
     }
 
     .sale-swiper-card__header {

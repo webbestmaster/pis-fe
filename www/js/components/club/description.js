@@ -13,6 +13,7 @@ import {resolveImagePath} from '../../helper/path-x';
 import {connect} from 'react-redux';
 import * as authAction from '../auth/action';
 import TrainingCard from './training-card';
+import SubscriptionCard from './subscription-card';
 
 const find = require('lodash/find');
 const appConst = require('./../../app-const.json');
@@ -42,21 +43,6 @@ class Description extends Component {
         const view = this;
         const {props, state} = view;
         const {clubId} = props;
-
-        /*
-                // TODO: remove this
-                const filial = data.filials[0];
-                // TODO: remove this
-
-                data.filials = [ // eslint-disable-line no-param-reassign
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial,
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial,
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial,
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial,
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial,
-                    filial, filial, filial, filial, filial, filial, filial, filial, filial, filial
-                ];
-        */
 
         Promise
             .all([
@@ -273,44 +259,8 @@ class Description extends Component {
                 <div ref="swiperSubscription"
                     className="swiper-container">
                     <div className="swiper-wrapper">
-                        {subscriptions.filter((item, ii) => ii <= 3).map((subscription, ii) => {
-                            const promotion = subscription.promotion instanceof Array || !subscription.promotion ?
-                                null :
-                                subscription.promotion; // yes, if promotion is not exist: row.promotion === []
-
-                            return <Link
-                                key={ii} className="swiper-slide sale-swiper-card"
-                                to={'/subscription/' + (promotion ?
-                                    promotion.fitness_club_subscription_id :
-                                    subscription.id)}>
-                                <div {...cnx('sale-swiper-card__label', {
-                                    'sale-swiper-card__label--line-only': Boolean(!promotion)
-                                })}>%
-                                </div>
-
-                                <div className="sale-swiper-card__static-content">
-                                    <div className="sale-swiper-card__stopwatch"/>
-                                    <div className="sale-swiper-card__subscription-data">
-                                        <p className="sale-swiper-card__subscription-count">
-                                            {subscription.period_amount}
-                                        </p>
-                                        <p className="sale-swiper-card__subscription-header">{subscription.title}</p>
-                                    </div>
-                                    <div className="sale-swiper-card__subscription-description">
-                                        <p dangerouslySetInnerHTML={{
-                                            __html: subscription.description // eslint-disable-line id-match
-                                        }}/>
-                                    </div>
-
-                                    <p className="sale-swiper-card__subscription-cost">{promotion ?
-                                        (subscription.price - promotion.discount).toFixed(2) :
-                                        subscription.price}
-                                    <span
-                                        className="sale-swiper-card__subscription-cost-currency">руб.</span></p>
-                                    <div className="sale-swiper-card__button">Забронировать</div>
-                                </div>
-                            </Link>;
-                        })}
+                        {subscriptions.filter((item, ii) => ii <= 3)
+                            .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
                     </div>
                 </div>
             </div>
