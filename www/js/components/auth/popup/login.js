@@ -29,8 +29,6 @@ class Login extends Component {
                 authApi.setUserData({email, password});
 
                 view.props.closePopup();
-
-                // view.props.history.push('/user');
                 return;
             }
 

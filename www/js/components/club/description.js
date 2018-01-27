@@ -7,9 +7,12 @@ import cnx from './../../helper/cnx';
 import Lightbox from 'react-images';
 import MapView from './../map';
 import MapItemClub from './../map/map-item-club';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {reduceSeconds} from '../../helper/date';
 import {resolveImagePath} from '../../helper/path-x';
+import {connect} from 'react-redux';
+import * as authAction from '../auth/action';
+import TrainingCard from './training-card';
 
 const find = require('lodash/find');
 const appConst = require('./../../app-const.json');
@@ -17,7 +20,7 @@ const {fetchX} = require('./../../helper/fetch-x');
 const Swiper = require('./../../lib/swiper');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
-export default class Description extends Component {
+class Description extends Component {
     constructor() {
         super();
 
@@ -314,26 +317,6 @@ export default class Description extends Component {
         </div>;
     }
 
-    renderTrainingSchedule(training) {
-        const includedDays = weekDays.map(() => false);
-
-        training.schedule
-            .forEach(schedule => weekDays
-                .forEach((dayName, dayIi) => Object
-                    .assign(includedDays,
-                        {[dayIi]: Boolean(schedule.day & Math.pow(2, dayIi + 1)) || includedDays[dayIi]} // eslint-disable-line no-bitwise
-                    )
-                )
-            );
-
-        return <div className="sale-swiper-card__week-schedule">
-            {weekDays.map((dayName, dayIi) => <span
-                key={dayIi} {...cnx('sale-swiper-card__week-day', {
-                    'sale-swiper-card__week-day--active': includedDays[dayIi]
-                })}>{dayName}</span>)}
-        </div>;
-    }
-
     renderTrainings() {
         const view = this;
         const {props, state} = view;
@@ -352,35 +335,7 @@ export default class Description extends Component {
                 <div ref="swiperTrainings"
                     className="swiper-container swiper-container-horizontal swiper-container-free-mode">
                     <div className="swiper-wrapper">
-
-                        {trainings.map((training, ii) => {
-                            const promotion = training.promotion instanceof Array || !training.promotion ?
-                                null :
-                                training.promotion; // yes, if promotion is not exist: row.promotion === []
-
-                            return <Link to={'/training/' + (promotion ?
-                                promotion.fitness_club_training_id :
-                                training.id)} key={ii} className="swiper-slide sale-swiper-card">
-                                <div className="sale-swiper-card__label sale-swiper-card__label--line-only"/>
-                                <div className="sale-swiper-card__static-content">
-                                    <div className="sale-swiper-card__training-image"
-                                        style={{backgroundImage: 'url(' + resolveImagePath(training.image) + ')'}}/>
-                                    <div className="sale-swiper-card__subscription-data">
-                                        <p className="sale-swiper-card__subscription-single-header">{training.title}</p>
-                                    </div>
-                                    {view.renderTrainingSchedule(training)}
-                                    <div className="sale-swiper-card__subscription-training-description"
-                                        dangerouslySetInnerHTML={{
-                                            __html: training.description // eslint-disable-line id-match
-                                        }}/>
-                                    <p className="sale-swiper-card__subscription-cost">{promotion ?
-                                        (training.price - promotion.discount).toFixed(2) :
-                                        training.price} <span
-                                        className="sale-swiper-card__subscription-cost-currency">руб.</span></p>
-                                    <div className="sale-swiper-card__button">Забронировать</div>
-                                </div>
-                            </Link>;
-                        })}
+                        {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                     </div>
                 </div>
             </div>
@@ -412,3 +367,17 @@ export default class Description extends Component {
         </div>;
     }
 }
+
+export default withRouter(connect(
+    state => ({
+        auth: state.auth
+    }),
+    {
+        // closePopup: authAction.closePopup,
+        // openPopupRegister: authAction.openPopupRegister,
+        // openPopupRestore: authAction.openPopupRestore,
+        // addToFavoriteClub: authAction.addToFavoriteClub,
+        // addToFavoriteTraining: authAction.addToFavoriteTraining,
+        // addToFavoriteSubscription: authAction.addToFavoriteSubscription
+    }
+)(Description));

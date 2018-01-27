@@ -281,20 +281,18 @@
         position: relative;
         margin-top: -65px;
         margin-bottom: 26px;
-        &:before {
-            // FIXME: do it after login and other
-            opacity: 0;
-            content: '';
+        .sale-swiper-card__favorite-mark {
             position: absolute;
-            right: 19px;
-            top: 20px;
-            width: 24px;
-            height: 24px;
-            background-size: contain;
+            right: 9px;
+            top: 10px;
+            width: 44px;
+            height: 44px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 24px 24px;
             background-image: url('./../../style/i/club/heart.svg');
-        }
-        &.sale-swiper-card__training-image--active {
-            &:before {
+            transition: background ease-out 0.3s;
+            &.sale-swiper-card__favorite-mark--active {
                 background-image: url('./../../style/i/club/heart-filled.svg');
             }
         }

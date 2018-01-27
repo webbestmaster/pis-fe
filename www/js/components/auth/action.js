@@ -15,7 +15,7 @@ export function getSessionState() {
                 return null;
             }
 
-            dispatch({type: authConst.type.login, payload: {login: parsedData}});
+            dispatch({type: authConst.type.login, payload: {login: Object.assign(parsedData, {isLogin: true})}});
             return parsedData;
         });
 }
@@ -30,7 +30,10 @@ export function login(email, password) {
         authConst.url.login.replace('{{email}}', email).replace('{{password}}', password),
         {credentials: 'include', method: 'POST'})
         .then(data => data.json())
-        .then(parsedData => dispatch({type: authConst.type.login, payload: {login: parsedData}}));
+        .then(parsedData => dispatch({
+            type: authConst.type.login,
+            payload: {login: Object.assign(parsedData, {isLogin: true})}
+        }));
 }
 
 export function logout() {
@@ -43,6 +46,37 @@ export function logout() {
             authApi.setUserData({email: null, password: null});
             window.location.reload();
         });
+}
+
+export function addToFavorite(type, itemId) {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host +
+        authConst.url.addToFavorite
+            .replace('{{type}}', type)
+            .replace('{{itemId}}', itemId),
+        {credentials: 'include', method: 'POST'})
+        .then(data => dispatch(getSessionState()).then(() => data.json()));
+}
+
+export function addToFavoriteClub(itemId) {
+    return addToFavorite('club', itemId);
+}
+
+export function addToFavoriteTraining(itemId) {
+    return addToFavorite('training', itemId);
+}
+
+export function addToFavoriteSubscription(itemId) {
+    return addToFavorite('subscription', itemId);
+}
+
+export function removeFromFavorite(favoriteItemId) {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host +
+        authConst.url.removeFromFavorite
+            .replace('{{favoriteItemId}}', favoriteItemId),
+        {credentials: 'include', method: 'POST'})
+        .then(data => dispatch(getSessionState()).then(() => data.json()));
 }
 
 export function registration(regData) {

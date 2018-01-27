@@ -9,7 +9,10 @@
         "updateProfile": "/member/user/updateProfile",
         "sessionState": "/api/home/ping",
         "leaveReview": "/member/feedback/add?fitness_club_id={{clubId}}&rating={{rating}}&description={{description}}",
-        "updateProfileImage": "/member/user/updateProfileImage"
+        "____userHomeData___not_used": "/member/user/home",
+        "updateProfileImage": "/member/user/updateProfileImage",
+        "addToFavorite": "/member/favorite/add?type={{type}}&item_id={{itemId}}",
+        "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}"
     },
     "type": {
         "login": "auth__login",
