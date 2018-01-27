@@ -43,7 +43,7 @@ class UserShortInfo extends Component {
 
             <div className={style.extra_info_wrapper}>
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>00</p>
+                    <p className={style.extra_info_value}>{user.cashback}</p>
                     <p className={style.extra_info_key}>Бонусы</p>
                 </div>
                 {/*
@@ -53,7 +53,7 @@ class UserShortInfo extends Component {
                 </div>
 */}
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>02</p>
+                    <p className={style.extra_info_value}>{login.data.finished.length}</p>
                     <p className={style.extra_info_key}>Завершённые</p>
                 </div>
             </div>
