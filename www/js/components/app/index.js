@@ -11,6 +11,8 @@ import Training from './../../page/training';
 import User from './../../page/user';
 import ForgotPassword from './../../page/forgot-password';
 import Terms from './../../page/terms';
+import Order from './../../page/order';
+import NotFoundPage from './../../page/404';
 import Auth from './../auth';
 
 /*
@@ -49,7 +51,9 @@ export default () => [
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
         <Route path='/terms/' component={Terms} exact/>
 
-        {/* <Route component={NoMatch}/> 404page*/}
+        <Route path='/order/' component={Order} exact/>
+
+        <Route component={NotFoundPage}/>
     </Switch>,
     <Auth key="auth"/>
 ];
