@@ -12,7 +12,8 @@
         "____userHomeData___not_used": "/member/user/home",
         "updateProfileImage": "/member/user/updateProfileImage",
         "addToFavorite": "/member/favorite/add?type={{type}}&item_id={{itemId}}",
-        "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}"
+        "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}",
+        "createClubAnswer": "/member/feedback/approve?id={{reviewId}}&answer={{answer}}"
     },
     "type": {
         "login": "auth__login",

@@ -129,6 +129,14 @@ export function uploadUserAvatar(file) {
         .then(rawData => rawData.json());
 }
 
+export function createClubAnswer(reviewId, answer) {
+    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.createClubAnswer
+        .replace('{{reviewId}}', reviewId)
+        .replace('{{answer}}', answer),
+    {credentials: 'include', method: 'POST'})
+        .then(data => data.json());
+}
+
 export function openPopup(popupType) {
     return {
         type: authConst.type.openPopup,

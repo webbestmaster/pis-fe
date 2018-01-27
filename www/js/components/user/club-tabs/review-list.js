@@ -10,6 +10,7 @@ import {plural} from '../../../helper/plural';
 import {getMonthAfterDayName} from '../../../helper/date';
 import cnx from './../../../helper/cnx';
 import Rating from './../../util/rating';
+import * as authAction from './../../auth/action';
 
 const appConst = require('./../../../app-const.json');
 const {fetchX} = require('./../../../helper/fetch-x');
@@ -58,6 +59,7 @@ class ReviewList extends Component {
         }
 
         const {feedbacks} = pageData;
+        const {auth} = props;
 
         if (!feedbacks || feedbacks.length === 0) {
             return <div className="hug sale hug--section">
@@ -73,9 +75,11 @@ class ReviewList extends Component {
             <div className={clubStyle.review_list + ' clear-full'}>
                 {feedbacks.map((reviewItem, ii) => <div key={ii} className={clubStyle.review_item}>
                     <div className={clubStyle.review_image}
-                        style={{backgroundImage: 'url(' +
-                            resolveImagePath(reviewItem.user.image || defaultUserAvatar) +
-                            ')'}}/>
+                        style={{
+                            backgroundImage: 'url(' +
+                             resolveImagePath(reviewItem.user.image || defaultUserAvatar) +
+                             ')'
+                        }}/>
 
                     <div className={clubStyle.review_text_holder + ' clear-self'}>
                         <p className={clubStyle.review_user_name}>
@@ -97,8 +101,13 @@ class ReviewList extends Component {
 
                         {reviewItem.answer ?
                             <div className={clubStyle.review_item_admin}>
-                                <div className={clubStyle.review_image}
-                                    style={{backgroundImage: 'url(' + defaultUserAvatar + ')'}}/>
+                                <div
+                                    className={clubStyle.review_image}
+                                    style={{
+                                        backgroundImage: 'url(' +
+                                        resolveImagePath(auth.login.data.user.image || defaultUserAvatar) +
+                                        ')'
+                                    }}/>
 
                                 <div className={clubStyle.review_text_holder + ' clear-self'}>
                                     <p className={clubStyle.review_user_name}>Администратор</p>
@@ -107,10 +116,13 @@ class ReviewList extends Component {
                                         {getMonthAfterDayName(new Date(reviewItem.created_at).getMonth())}&nbsp;
                                         {new Date(reviewItem.created_at).getFullYear()}
                                     </p>
-                                    <ReviewText text={reviewItem.answer} isAdmin={true}/>
+                                    <ReviewText text={reviewItem.answer}/>
                                 </div>
                             </div> :
-                            null}
+                            <AnswerReply
+                                auth={auth}
+                                onAnswearSubmit={answer => props.createClubAnswer(reviewItem.id, answer)}/>
+                        }
                     </div>
                 </div>)}
             </div>
@@ -120,16 +132,69 @@ class ReviewList extends Component {
     }
 }
 
-
-export class ReviewText extends Component {
+class AnswerReply extends Component {
     constructor() {
         super();
 
         const view = this;
 
         view.state = {
-            isOpenReview: false,
+            answerText: '',
             isReplyOpen: false
+        };
+    }
+
+    addClubAnswer() {
+        const view = this;
+        const {props, state} = view;
+
+        if (typeof view.props.onAnswearSubmit === 'function') {
+            view.props.onAnswearSubmit(state.answerText);
+        }
+    }
+
+    render() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+
+        if (!state.isReplyOpen) {
+            return <div
+                onClick={() => view.setState({isReplyOpen: true})}
+                key="reply-button" className={clubStyle.reply_to_review_button}>Ответить на отзыв</div>;
+        }
+
+        return <div
+            key="reply-form"
+            {...cnx(clubStyle.review_form, clubStyle.reply_form, 'clear-full')}>
+            <div className={clubStyle.review_form__avatar} style={{
+                backgroundImage: 'url(' +
+                resolveImagePath(auth.login.data.user.image || defaultUserAvatar) +
+                ')'
+            }}/>
+            <h4 className={clubStyle.review_form__header}>Ответ администратора</h4>
+            <textarea
+                ref="textArea"
+                onInput={() => view.setState({answerText: view.refs.textArea.value.trim()})}
+                className={clubStyle.review_form__text_area} rows="10" placeholder="Напишите Ваш ответ"/>
+            <div
+                onClick={() => view.addClubAnswer()}
+                {...cnx(clubStyle.review_form__button, {disabled: state.answerText.trim().length === 0})}>
+                Ответить
+            </div>
+        </div>;
+    }
+}
+
+class ReviewText extends Component {
+    constructor() {
+        super();
+
+        const view = this;
+
+        view.state = {
+            isOpenReview: false
+            // isReplyOpen: false
         };
     }
 
@@ -150,41 +215,16 @@ export class ReviewText extends Component {
         ];
     }
 
-    renderReply() {
-        const view = this;
-        const {props, state} = view;
-        const replyButton = props.isAdmin || state.isReplyOpen ?
-            null :
-            <div
-                onClick={() => view.setState({isReplyOpen: true})}
-                key="reply-button" className={clubStyle.reply_to_review_button}>Ответить на отзыв</div>;
-
-        // FIXME: make workable
-        const replyForm = !props.isAdmin && state.isReplyOpen ?
-            <form
-                key="reply-form"
-                {...cnx(clubStyle.review_form, clubStyle.reply_form, 'clear-full')}>
-                <div className={clubStyle.review_form__avatar}/>
-                <h4 className={clubStyle.review_form__header}>Ответ администратора</h4>
-                <textarea className={clubStyle.review_form__text_area} rows="10" placeholder="Напишите Ваш ответ"/>
-                <div {...cnx(clubStyle.review_form__button)}>Ответить</div>
-            </form> :
-            null;
-
-        return [
-            replyForm,
-            replyButton
-        ];
-    }
-
     render() {
         const view = this;
         const {props, state} = view;
 
-        return [
-            view.renderText(),
-            view.renderReply()
-        ];
+        return view.renderText();
+
+        // return [
+        //     ,
+        // props.isAdmin ? view.renderReply() : null
+        // ];
     }
 }
 
@@ -193,6 +233,8 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {}
+    {
+        createClubAnswer: authAction.createClubAnswer
+    }
 )(ReviewList);
 
