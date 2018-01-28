@@ -42,7 +42,7 @@ class ReviewList extends Component {
         const {clubId} = props;
 
         // DO NOT USE fetchX here, after admin answer a review, admin should have actual data
-        fetch(appConst.pageDataUrl.club.replace('{{clubId}}', 1))
+        fetch(appConst.pageDataUrl.club.replace('{{clubId}}', props.auth.login.data.user.fitness_club_id)) // eslint-disable-line camelcase, id-match
             .then(rawData => rawData.json())
             .then(({data}) => {
                 view.setState({
