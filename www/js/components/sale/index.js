@@ -79,6 +79,8 @@ class Sale extends Component {
                                 </div>
                             </Link>)}
                     </div>
+                    <div className="swiper__arrow"/>
+
                 </div>
             </div>
             <div className="ta-center mobile-only">

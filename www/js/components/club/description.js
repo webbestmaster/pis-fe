@@ -262,6 +262,8 @@ class Description extends Component {
                         {subscriptions.filter((item, ii) => ii <= 3)
                             .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
                     </div>
+                    <div className="swiper__arrow"/>
+
                 </div>
             </div>
         </div>;
@@ -287,6 +289,7 @@ class Description extends Component {
                     <div className="swiper-wrapper">
                         {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                     </div>
+                    <div className="swiper__arrow"/>
                 </div>
             </div>
         </div>;

@@ -80,6 +80,7 @@ class Favorite extends Component {
                                 }
                             })}
                     </div>
+                    <div className="swiper__arrow"/>
                 </div>
             </div>
         </div>;
