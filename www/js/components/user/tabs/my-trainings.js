@@ -15,8 +15,6 @@ class MyTrainings extends Component {
             <h3 className="section__header">Мои тренировки</h3>
 
             {/* FIXME: DO IT */}
-            <h3 className="section__header">НЕ реализовано на сервере</h3>
-
             <table className={tableStyle.table + ' disabled'}>
                 <thead className={tableStyle.t_head}>
                     <tr>

@@ -5,8 +5,6 @@ import Rating from './../util/rating';
 import cnx from './../../helper/cnx';
 import {getMonthAfterDayName} from './../../helper/date';
 import {connect} from 'react-redux';
-import * as authAction from './../auth/action';
-import * as authApi from '../auth/api';
 import {store} from '../../index';
 import {resolveImagePath} from '../../helper/path-x';
 import ClubLeaveReviewForm from './club-leave-review-form';
@@ -117,13 +115,7 @@ class Reviews extends Component {
                 </div>)}
             </div>
 
-            {get(props.auth, 'login.data.user.id', false) ?
-                <ClubLeaveReviewForm clubId={props.clubId}/> :
-                [<p key="review_enter" onClick={() => props.openPopupLogin()}
-                    className={style.review_enter_text}>Авторизуйтесь чтобы оставить отзыв</p>,
-                <div key="form-wrapper" className="disabled"><ClubLeaveReviewForm/></div>]
-
-            }
+            <ClubLeaveReviewForm clubId={props.clubId}/>
         </div>;
     }
 }
@@ -133,9 +125,7 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {
-        openPopupLogin: authAction.openPopupLogin
-    }
+    {}
 )(Reviews);
 
 class ReviewText extends Component {

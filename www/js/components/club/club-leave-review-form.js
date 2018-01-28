@@ -90,7 +90,16 @@ class ClubLeaveReviewForm extends Component {
 
         const avatar = get(auth, 'login.data.user.image') || null;
 
-        return <form className={style.review_form + ' clear-full'}>
+        return [get(props.auth, 'login.data.user.id', false) ?
+            null :
+            <p key="review-enter"
+                onClick={() => props.openPopupLogin()}
+                className={style.review_enter_text}>
+                Авторизуйтесь чтобы оставить отзыв
+            </p>,
+        <form key="form" {...cnx(style.review_form, 'clear-full',
+            {disabled: !get(props.auth, 'login.data.user.id', false)}
+        )}>
             {avatar ?
                 <div
                     className={style.review_form__avatar}
@@ -115,10 +124,13 @@ class ClubLeaveReviewForm extends Component {
             {state.error && <p className={style.review_error_text}>{state.error}</p>}
             <div
                 onClick={() => view.leaveReview()}
-                {...cnx(style.review_form__button, {disabled: state.overStarIndex === -1 || !state.reviewText.length})}>
-                Написать отзыв
+                {...cnx(style.review_form__button, {
+                    disabled:
+                        state.overStarIndex === -1 || !state.reviewText.length
+                })}>
+                    Написать отзыв
             </div>
-        </form>;
+        </form>];
     }
 }
 
@@ -128,6 +140,6 @@ export default connect(
         auth: state.auth
     }),
     {
-        // openPopupLogin: authAction.openPopupLogin
+        openPopupLogin: authAction.openPopupLogin
     }
 )(ClubLeaveReviewForm);
