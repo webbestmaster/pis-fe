@@ -12,6 +12,12 @@
         "training": "http://site.katran.by/api/training/getFullInfo?id={{trainingId}}",
         "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}"
     },
+    "phone": {
+        "by": {
+            "prefix": "+375",
+            "prefixClean": "375"
+        }
+    },
     "searchUrl": {
         "club": "http://site.katran.by/api/club/search",
         "subscriptions": "http://site.katran.by/api/subscription/search",

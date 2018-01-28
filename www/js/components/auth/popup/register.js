@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import cnx from './../../../helper/cnx';
 // import {connect} from 'react-redux';
 // import classnames from 'classnames';
-// const appConst = require('./../../../app-const.json');
 // const headerMaxHeight = 980;
 //
 import Dialog from './../../util/dialog';
@@ -13,6 +12,9 @@ import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
+import {formatPhoneBY} from './../../../helper/format';
+
+const globalAppConst = require('./../../../app-const.json');
 
 class Register extends Component {
     constructor() {
@@ -151,7 +153,10 @@ class Register extends Component {
     onBlurValidatePhone() {
         const view = this;
         const phone = view.refs.phone;
-        const value = phone.value.trim();
+
+        phone.value = formatPhoneBY(phone.value);
+
+        const value = phone.value;
 
         view.setState(prevState => {
             Object.assign(prevState.form.input.phone, {isValid: true});
@@ -163,23 +168,10 @@ class Register extends Component {
             return true;
         }
 
-        /*
-                if (value === '') {
-                    view.setState(prevState => {
-                        Object.assign(prevState.form.input.phone,
-                            {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
-                        );
-
-                        return prevState;
-                    });
-                    return false;
-                }
-        */
-
-        if ((value.match(/\d/g) || []).length < 9) {
+        if ((value.match(/\d/g) || []).length !== 9) {
             view.setState(prevState => {
                 Object.assign(prevState.form.input.phone,
-                    {isValid: false, error: {message: 'Введите правильный номер телефона.'}}
+                    {isValid: false, error: {message: 'Введите телефон в формате: XX XXX XX XX'}}
                 );
 
                 return prevState;
@@ -352,7 +344,7 @@ class Register extends Component {
         ].every(validation => validation);
     }
 
-    register() {
+    register() { // eslint-disable-line complexity
         const view = this;
         const {state, props} = view;
         const isValidForm = view.validateForm();
@@ -369,7 +361,9 @@ class Register extends Component {
             },
             name: view.refs.name.value.trim(),
             family: view.refs.family.value.trim(),
-            phone: view.refs.phone.value.trim(),
+            phone: view.refs.phone.value ?
+                (globalAppConst.phone.by.prefix + view.refs.phone.value).replace(/\D/g, '') :
+                null,
             email: view.refs.email.value.trim(),
             password: view.refs.password.value,
             password_confirmation: view.refs.confirmPassword.value // eslint-disable-line camelcase, id-match
@@ -457,14 +451,15 @@ class Register extends Component {
                             type="text" placeholder="Фамилия"/>
                         <ErrorLabel propName="family" form={state.form}/>
                     </label>
-                    <label className={style.text_label}>
+                    <label className={style.text_label + ' ' + style.text_label__phone}>
+                        <span className={style.text_label__phone_prefix}>{globalAppConst.phone.by.prefix}</span>
                         <input
                             ref="phone"
                             onBlur={() => view.onBlurValidatePhone()}
                             onInput={() => view.onBlurValidatePhone()}
                             {...cnx(style.popup__form_text_input,
                                 {[style.popup__form_text_input__invalid]: !state.form.input.phone.isValid})}
-                            type="tel" placeholder="+375 (__) ___-__-__"/>
+                            type="text" placeholder="XX XXX XX XX"/>
                         <ErrorLabel propName="phone" form={state.form}/>
                     </label>
                     <label className={style.text_label}>

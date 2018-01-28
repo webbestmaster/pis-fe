@@ -50,6 +50,20 @@
     padding-bottom: 19px;
 }
 
+.text_label__phone {
+    .input_text {
+        padding-left: 54px;
+    }
+}
+
+.text_label__phone_prefix {
+    position: absolute;
+    top: 57px;
+    left: 34px;
+    color: $mainTextColor;
+    font-size: 14px;
+}
+
 .input_text {
     font-size: 14px;
     color: $mainTextColor;

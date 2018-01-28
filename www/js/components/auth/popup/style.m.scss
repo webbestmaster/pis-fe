@@ -176,3 +176,19 @@
     color: #fff;
     border-radius: 4px 0;
 }
+
+.text_label__phone_prefix {
+    position: absolute;
+    top: 19px;
+    left: 22px;
+    color: $mainTextColor;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.text_label__phone {
+    .popup__form_text_input {
+        padding-left: 66px;
+    }
+}
+

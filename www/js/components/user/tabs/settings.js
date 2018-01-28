@@ -15,6 +15,8 @@ import {store} from '../../../index';
 const authConst = require('./../../auth/const.json');
 const globalAppConst = require('./../../../app-const.json');
 
+import {formatPhoneBY} from './../../../helper/format';
+
 class Settings extends Component {
     constructor() {
         super();
@@ -160,7 +162,10 @@ class Settings extends Component {
     onBlurValidatePhone() {
         const view = this;
         const phone = view.refs.phone;
-        const value = phone.value.trim();
+
+        phone.value = formatPhoneBY(phone.value);
+
+        const value = phone.value;
 
         view.setState(prevState => {
             Object.assign(prevState.form.input.phone, {isValid: true});
@@ -172,23 +177,10 @@ class Settings extends Component {
             return true;
         }
 
-        /*
-        if (value === '') {
+        if ((value.match(/\d/g) || []).length !== 9) {
             view.setState(prevState => {
                 Object.assign(prevState.form.input.phone,
-                    {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
-                );
-
-                return prevState;
-            });
-            return false;
-        }
-*/
-
-        if ((value.match(/\d/g) || []).length < 9) {
-            view.setState(prevState => {
-                Object.assign(prevState.form.input.phone,
-                    {isValid: false, error: {message: 'Введите правильный номер телефона.'}}
+                    {isValid: false, error: {message: 'Введите телефон в формате: XX XXX XX XX'}}
                 );
 
                 return prevState;
@@ -366,7 +358,9 @@ class Settings extends Component {
 
         // phone is not required field
         if (refs.phone.value.trim() !== '') {
-            Object.assign(newUserData, {phone: refs.phone.value.trim()});
+            Object.assign(
+                newUserData,
+                {phone: (globalAppConst.phone.by.prefix + view.refs.phone.value).replace(/\D/g, '')});
         }
 
         // if (refs.email.value.trim() !== user.email.trim()) {
@@ -374,7 +368,7 @@ class Settings extends Component {
         // }
 
         // if (state.extraData.dob !== null) {
-        Object.assign(newUserData, {birthday: state.extraData.dob || user.birthday});
+        Object.assign(newUserData, {birthday: state.extraData.dob || user.birthday || moment().format('YYYY-MM-DD')});
         // }
 
         const selectedSex = refs.sex_1.refs.input.checked ? 1 : 0; // eslint-disable-line id-match, camelcase
@@ -484,15 +478,18 @@ class Settings extends Component {
                         )}/>
                     <ErrorLabel propName="family" form={state.form}/>
                 </label>
-                <label className={style.text_label}>
+                <label className={style.text_label + ' ' + style.text_label__phone}>
                     <p className={style.text_label__label}>Телефон</p>
+                    <span className={style.text_label__phone_prefix}>{globalAppConst.phone.by.prefix}</span>
                     <input
                         ref="phone"
                         onBlur={() => view.onBlurValidatePhone()}
                         onInput={() => view.onBlurValidatePhone()}
-                        type="tel" defaultValue={user.phone} {...cnx(style.input_text,
-                            {[style.input_text__invalid]: !state.form.input.phone.isValid}
-                        )}/>
+                        type="text"
+                        defaultValue={formatPhoneBY(user.phone.replace(globalAppConst.phone.by.prefixClean, ''))}
+                        placeholder="XX XXX XX XX"
+                        {...cnx(style.input_text, {[style.input_text__invalid]: !state.form.input.phone.isValid})}
+                    />
                     <ErrorLabel propName="phone" form={state.form}/>
                 </label>
                 <div className={style.text_label + ' ' + style.text_label__wide}>
@@ -536,9 +533,11 @@ class Settings extends Component {
             <div className={style.settings_form}>
                 <div className={style.text_label + ' ' + style.text_label__mobile_wide}>
                     <p className={style.text_label__label}>Коммуникация</p>
-                    <CheckboxLabel ref="mailingPromotion"
-                        input={{ref: 'input', defaultChecked: parseInt(user.mailing_promotion, 10) === 1}}>Скидки
-                        и акции</CheckboxLabel>
+                    <CheckboxLabel
+                        ref="mailingPromotion"
+                        input={{ref: 'input', defaultChecked: parseInt(user.mailing_promotion, 10) === 1}}>
+                        Скидки и акции
+                    </CheckboxLabel>
                     <CheckboxLabel ref="mailingBlog" input={{
                         ref: 'input',
                         defaultChecked: parseInt(user.mailing_blog, 10) === 1
