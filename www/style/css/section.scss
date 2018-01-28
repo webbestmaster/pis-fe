@@ -160,6 +160,7 @@
     clear: both;
     margin-bottom: 12px;
     user-select: none;
+    position: relative;
 
     .section__checkbox-node {
         display: none;
@@ -181,6 +182,19 @@
         border: 1px solid $mainBorderColor;
         border-radius: 3px;
         background-color: #fff;
+    }
+
+    .section__checkbox-error-message {
+        color: #fff;
+        font-size: 12px;
+        box-sizing: border-box;
+        max-width: 100%;
+        padding: 1px 8px 2px;
+        border-radius: 4px;
+        display: block;
+        text-align: center;
+        clear: both;
+        margin-top: 14px;
     }
 }
 

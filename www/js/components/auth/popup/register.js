@@ -326,7 +326,7 @@ class Register extends Component {
                 Object.assign(prevState.form.input.terms,
                     {
                         isValid: false,
-                        error: {message: 'Чтобы зарегистрироваться нужно принять пользовательское соглашение.'}
+                        error: {message: 'Чтобы зарегистрироваться нужно принять условия пользовательского соглашения.'}
                     }
                 );
 
@@ -536,6 +536,9 @@ class Register extends Component {
                     <Link to="/terms/" target="_blank" className={style.popup__enter_link}>
                         пользовательского соглашения
                     </Link>
+                    {state.form.input.terms.isValid ?
+                        null :
+                        <span className="section__checkbox-error-message">{state.form.input.terms.error.message}</span>}
                 </label>
 
                 {state.error && <p className={style.popup__error_p}>{state.error}</p>}
