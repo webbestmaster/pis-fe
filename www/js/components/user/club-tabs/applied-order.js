@@ -24,7 +24,7 @@ class AppliedOrder extends Component {
                         <td>Время</td>
                         <td>Кол-во</td>
                         <td>Оплата</td>
-                        {/* <td>Статус</td>*/}
+                        <td>Оплачено?</td>
                     </tr>
                 </thead>
                 <tbody className={tableStyle.t_body}>
@@ -39,22 +39,13 @@ class AppliedOrder extends Component {
                                 __html: plural(2, 'человек').replace(' ', '&nbsp;') // eslint-disable-line id-match
                             }}/>
                             <td>Онлайн</td>
-                            {/*
                             <td className={tableStyle.vertical_free}>
-                                <div className={style.two_button_wrapper}>
-                                    <div className={style.table__training_status}>
-                                        <span className={style.table__training_status_icon + ' ' +
+                                <div className={style.table__training_status}>
+                                    <span className={style.table__training_status_icon + ' ' +
                                         style.table__training_status_icon__done}/>
-                                    Подтвердить
-                                    </div>
-                                    <div className={style.table__training_status}>
-                                        <span className={style.table__training_status_icon + ' ' +
-                                        style.table__training_status_icon__rejected}/>
-                                    Отклонить
-                                    </div>
+                                Подтвердить
                                 </div>
                             </td>
-*/}
                         </tr>)}
                 </tbody>
             </table>
