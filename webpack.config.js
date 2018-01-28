@@ -64,10 +64,14 @@ const webpackConfig = {
                 test: /\.json$/,
                 loader: 'json-loader'
             },
+            // {test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'},
             {
-                test: /\.(png|jpg|jpeg|gif|svg)$/,
-                loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'
+                test: /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/,
+                use: IS_DEVELOPMENT ?
+                    'base64-inline-loader?limit=2&name=img/img-[name]-[hash:6].[ext]' :
+                    'base64-inline-loader?limit=65536&name=img/img-[name]-[hash:6].[ext]'
             },
+
             // css module
             {
                 test: /\.m\.scss$/,
