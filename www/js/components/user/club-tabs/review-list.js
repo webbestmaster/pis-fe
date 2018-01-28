@@ -1,3 +1,4 @@
+/* global fetch */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -40,7 +41,9 @@ class ReviewList extends Component {
         const {props, state} = view;
         const {clubId} = props;
 
-        fetchX(appConst.pageDataUrl.club.replace('{{clubId}}', 1))
+        // DO NOT USE fetchX here, after admin answer a review, admin should have actual data
+        fetch(appConst.pageDataUrl.club.replace('{{clubId}}', 1))
+            .then(rawData => rawData.json())
             .then(({data}) => {
                 view.setState({
                     pageData: data
@@ -121,7 +124,8 @@ class ReviewList extends Component {
                             </div> :
                             <AnswerReply
                                 auth={auth}
-                                onAnswearSubmit={answer => props.createClubAnswer(reviewItem.id, answer)}/>
+                                onAnswearSubmit={answer => props.createClubAnswer(reviewItem.id, answer)
+                                    .then(() => view.componentDidMount())}/>
                         }
                     </div>
                 </div>)}

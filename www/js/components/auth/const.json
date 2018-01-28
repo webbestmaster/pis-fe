@@ -13,7 +13,8 @@
         "updateProfileImage": "/member/user/updateProfileImage",
         "addToFavorite": "/member/favorite/add?type={{type}}&item_id={{itemId}}",
         "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}",
-        "createClubAnswer": "/member/feedback/approve?id={{reviewId}}&answer={{answer}}"
+        "createClubAnswer": "/member/feedback/answer?id={{reviewId}}&answer={{answer}}",
+        "____createClubAnswer___not_used": "/member/feedback/approve?id={{reviewId}}&answer={{answer}}"
     },
     "type": {
         "login": "auth__login",
