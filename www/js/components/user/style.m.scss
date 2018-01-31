@@ -59,7 +59,7 @@
 .text_label__phone_prefix {
     position: absolute;
     top: 57px;
-    left: 34px;
+    left: 119px;
     color: $mainTextColor;
     font-size: 14px;
 }
@@ -350,6 +350,10 @@
                 margin-top: 0;
                 margin-left: 15px;
             }
+
+            .text_label__phone_prefix {
+                left: 34px;
+            }
         }
     }
 
@@ -377,9 +381,11 @@
 .favorite_container {
     :global {
         .sale-swiper-card {
+            /*
             .sale-swiper-card__favorite-mark {
                 display: none;
             }
+            */
             .sale-swiper-card__stopwatch {
                 height: 166px;
                 & ~ .sale-swiper-card__subscription-data {

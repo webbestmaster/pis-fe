@@ -91,11 +91,11 @@ class Description extends Component {
         const {pageData} = state;
         const {images} = pageData;
 
-        if (!images || !images['300x200'] || images['300x200'].length === 0) {
+        if (!images || !images['600x400'] || images['600x400'].length === 0) {
             return null;
         }
 
-        const imagesToShow = images['300x200'];
+        const imagesToShow = images['600x400'];
 
         return <div className={style.gallery_swiper_full_width_wrapper}>
             <div
@@ -262,7 +262,7 @@ class Description extends Component {
                         {subscriptions.filter((item, ii) => ii <= 3)
                             .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
                     </div>
-                    <div className="swiper__arrow"/>
+                    {/* <div className="swiper__arrow"/>*/}
 
                 </div>
             </div>
@@ -289,7 +289,7 @@ class Description extends Component {
                     <div className="swiper-wrapper">
                         {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                     </div>
-                    <div className="swiper__arrow"/>
+                    {/* <div className="swiper__arrow"/>*/}
                 </div>
             </div>
         </div>;

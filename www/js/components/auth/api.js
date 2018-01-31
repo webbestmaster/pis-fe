@@ -29,5 +29,5 @@ export function setUserData(newData) {
 
     const rawData = JSON.stringify(data);
 
-    localStorage.setItem(lsItem, encrypt(rawData));
+    // localStorage.setItem(lsItem, encrypt(rawData));
 }

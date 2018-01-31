@@ -240,7 +240,7 @@ class DateFilter extends Component {
                         </div>;
                     })}
                 </div>
-                <div className="swiper__arrow"/>
+                {/* <div className="swiper__arrow"/>*/}
 
             </div>
             <div className="clubs-catalog-date-filter__swipe-arrow"/>

@@ -60,10 +60,17 @@ class Favorite extends Component {
         return <div className="hug sale">
             <h3 className="section__header">Избранное</h3>
 
-            <p className={style.favorite__description}>
-                Здесь сохранены все Ваши тренировки. Чтобы убрать тренировку из избранного, нажмите
-                <span className={style.favorite__description_heart}/>
-            </p>
+            {auth.login.data.favorites.length === 0 ?
+                <p
+                    style={{paddingTop: 100, paddingBottom: 100}}
+                    className={style.favorite__description}>
+                    Здесь пока нет сохранённых тренировок. Чтобы добавить тренировку в избранное, нажмите
+                    <span className={style.favorite__description_heart}/>
+                </p> :
+                <p className={style.favorite__description}>
+                    Здесь сохранены все Ваши тренировки. Чтобы убрать тренировку из избранного, нажмите
+                    <span className={style.favorite__description_heart}/>
+                </p>}
 
             <div className="sale-slider">
                 <div ref="swiperContainer" className="swiper-container">
@@ -80,7 +87,7 @@ class Favorite extends Component {
                                 }
                             })}
                     </div>
-                    <div className="swiper__arrow"/>
+                    {/* <div className="swiper__arrow"/>*/}
                 </div>
             </div>
         </div>;

@@ -278,7 +278,7 @@ class Description extends Component {
                                 {pageData.similarTrainings
                                     .map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                             </div>
-                            <div className="swiper__arrow"/>
+                            {/* <div className="swiper__arrow"/>*/}
                         </div>
                     </div>
                 </div> :

@@ -47,11 +47,11 @@ export default class Gallery extends Component {
 
         const {images} = pageData;
 
-        if (!images || !images['300x200'] || images['300x200'].length === 0) {
+        if (!images || !images['600x400'] || images['600x400'].length === 0) {
             return null;
         }
 
-        const imagesToShow = images['300x200'];
+        const imagesToShow = images['600x400'];
 
         return <div className="hug sale hug--section">
             <h3 className="section__header">Фотогалерея</h3>
