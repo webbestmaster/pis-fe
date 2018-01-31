@@ -4,6 +4,7 @@ body {
     .tab_wrapper {
         padding: 34px 0 28px;
         border-bottom: 1px solid $mainBorderColor;
+        margin-bottom: 107px;
     }
 
     .tab_button {
@@ -47,8 +48,146 @@ body {
         }
     }
 
-
+    .tab_panel {
+        margin-right: 435px;
+    }
 
 }
 
+.input_block {
+    margin-left: 105px;
+    padding-bottom: 37px;
+}
 
+.input_label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.input_header_icon {
+    float: left;
+    width: 27px;
+    height: 19px;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    top: 1px;
+}
+
+.input_node {
+    font-size: 14px;
+    color: $mainTextColor;
+    padding: 19px 18px 16px;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.arrow_block_wrapper {
+    margin-left: 105px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input_block__arrow {
+    display: block;
+    margin-left: 0;
+    width: 28%;
+}
+
+.input_node__number {
+    display: block;
+    position: relative;
+    .input_node {
+        display: block;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+.input_node__number__plus,
+.input_node__number__minus {
+    width: 33.33333%;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        width: 16px;
+        height: 2px;
+        background-color: $mainTextColor;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+}
+
+.input_node__number__plus {
+    display: block;
+    border-left: 1px solid $mainBorderColor;
+    right: 0;
+    &:before {
+        transform: translate3d(-50%, -50%, 0) rotateZ(90deg);
+    }
+}
+
+.input_node__number__minus {
+    display: block;
+    border-right: 1px solid $mainBorderColor;
+    left: 0;
+}
+
+.card {
+    margin-top: 6px;
+    width: 370px;
+    min-height: 200px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid $mainColor;
+    float: right;
+}
+
+.navigate_button {
+    font-size: 14px;
+    border: 1px solid #e8ecf0;
+    padding: 15px 56px 14px 28px;
+    border-radius: 47px;
+    text-decoration: none;
+    color: #1a273b;
+    cursor: pointer;
+    box-sizing: border-box;
+    float: left;
+    text-align: left;
+    position: relative;
+    margin: 34px 0 0 102px;
+    &:after {
+        position: absolute;
+        right: 26px;
+        top: 21px;
+        content: '';
+        width: 21px;
+        height: 4px;
+        background-repeat: no-repeat;
+        background-image: url('./../../../style/i/user/arrow-from-to.png');
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: $mainColor;
+        &:after {
+            background-image: url('./../../../style/i/user/arrow-from-to--active.png');
+        }
+    }
+}

@@ -5,6 +5,9 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import cnx from './../../helper/cnx';
 import style from './style.m.scss';
 
+const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
+const trainingImage = require('./../../../style/i/category/dancing.svg');
+
 const Swiper = require('./../../lib/swiper');
 
 class Order extends Component {
@@ -40,7 +43,49 @@ class Order extends Component {
     }
 
     renderOrderInfo() {
-        return <h1>order info</h1>;
+        return <div>
+
+            <h3 className="section__header">Информация о тренировке</h3>
+
+            <div className={style.input_block}>
+                <h3 className={style.input_label}>
+                    <span className={style.input_header_icon} style={{backgroundImage: 'url(' + mapPinImage + ')'}}/>
+                    Филиал клуба
+                </h3>
+                <input className={style.input_node} type="text" defaultValue={'Яковопольский переулок, 17'} disabled/>
+            </div>
+            <div className={style.input_block}>
+                <h3 className={style.input_label}>
+                    <span className={style.input_header_icon} style={{backgroundImage: 'url(' + trainingImage + ')'}}/>
+                    Тренировка
+                </h3>
+                <input
+                    className={style.input_node} type="text"
+                    defaultValue={'Пробное занятие по стрип-пластике (60 руб.)'} disabled/>
+            </div>
+            <div className={style.arrow_block_wrapper}>
+                <div className={style.input_block + ' ' + style.input_block__arrow}>
+                    <h3 className={style.input_label}>День</h3>
+                    <input className={style.input_node} type="text" defaultValue={'7 июня'} disabled/>
+                </div>
+                <div className={style.input_block + ' ' + style.input_block__arrow}>
+                    <h3 className={style.input_label}>Время</h3>
+                    <input className={style.input_node} type="text" defaultValue={'20 : 00 '} disabled/>
+                </div>
+                <div className={style.input_block + ' ' + style.input_block__arrow}>
+                    <h3 className={style.input_label}>Кол-во человек</h3>
+                    <div className={style.input_node__number}>
+                        <div className={style.input_node__number__plus}/>
+                        <input
+                            className={style.input_node} type="text"
+                            defaultValue="1"
+                            disabled/>
+                        <div className={style.input_node__number__minus}/>
+                    </div>
+                </div>
+            </div>
+            <div className={style.navigate_button}>Перейти к личным данным</div>
+        </div>;
     }
 
     renderUserInfo() {
@@ -51,13 +96,17 @@ class Order extends Component {
         return <h1>paying info</h1>;
     }
 
+    renderCard() {
+        return <h1>paying info</h1>;
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
 
         return <div style={{paddingBottom: 1000}}>
-            <Tabs>
-                <div className={style.tab_wrapper + ' hug swiper-container'} ref="swiperContainer">
+            <Tabs className="hug">
+                <div className={style.tab_wrapper + ' swiper-container'} ref="swiperContainer">
                     <TabList className="swiper-wrapper">
                         <Tab
                             selectedClassName={style.tab_button__active}
@@ -76,21 +125,23 @@ class Order extends Component {
                         </Tab>
                     </TabList>
                 </div>
-                <TabPanel>
+
+                <div className={style.card}>
+                    <h1>
+                        here is card
+                    </h1>
+                </div>
+
+                <TabPanel className={style.tab_panel}>
                     {view.renderOrderInfo()}
                 </TabPanel>
-                <TabPanel>
+                <TabPanel className={style.tab_panel}>
                     {view.renderUserInfo()}
                 </TabPanel>
-                <TabPanel>
+                <TabPanel className={style.tab_panel}>
                     {view.renderPayingInfo()}
                 </TabPanel>
             </Tabs>
-            <div>
-                <h1>
-                    here is card
-                </h1>
-            </div>
         </div>;
     }
 }
