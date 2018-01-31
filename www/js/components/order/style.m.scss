@@ -1,0 +1,54 @@
+@import "./../../../style/css/aaa-var";
+
+body {
+    .tab_wrapper {
+        padding: 34px 0 28px;
+        border-bottom: 1px solid $mainBorderColor;
+    }
+
+    .tab_button {
+        font-size: 14px;
+        border: 1px solid $mainBorderColor;
+        padding: 15px 10px 14px;
+        border-radius: 47px;
+        text-decoration: none;
+        color: $mainTextColor;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 148px;
+        float: left;
+        list-style: none;
+        text-align: center;
+        margin-right: 63px;
+        position: relative;
+
+        &:after {
+            position: absolute;
+            right: -45px;
+            top: 21px;
+            content: '';
+            width: 21px;
+            height: 4px;
+            background-repeat: no-repeat;
+            background-image: url('./../../../style/i/user/arrow-from-to.png');
+        }
+
+        &:last-child {
+            margin-right: 0;
+            &:after {
+                content: none;
+            }
+        }
+
+        &:hover,
+        &.tab_button__active {
+            background-color: $mainColor;
+            color: #fff;
+        }
+    }
+
+
+
+}
+
+

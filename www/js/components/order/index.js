@@ -1,14 +1,42 @@
-/* global setTimeout */
+/* global window, setTimeout, Event */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import classnames from 'classnames';
+import cnx from './../../helper/cnx';
+import style from './style.m.scss';
+
+const Swiper = require('./../../lib/swiper');
 
 class Order extends Component {
-    componentDidMount() {
+    constructor() {
+        super();
         const view = this;
 
         view.state = {};
+        view.attr = {
+            swiper: null
+        };
+    }
+
+    componentDidMount() {
+        const view = this;
+
+        // instead of setTimeout, need to fix swiper :(
+        view.initSwiper();
+    }
+
+    initSwiper() {
+        const view = this;
+        const {refs} = view;
+        const {swiperContainer} = refs;
+
+        view.attr.swiper = new Swiper(swiperContainer, {
+            slidesPerView: 'auto',
+            freeMode: true
+        });
+
+        // need to fix swiper
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
     }
 
     renderOrderInfo() {
@@ -27,20 +55,27 @@ class Order extends Component {
         const view = this;
         const {props, state} = view;
 
-
-        return <div>
-
+        return <div style={{paddingBottom: 1000}}>
             <Tabs>
-                <div ref="swiperContainer" className="hug swiper-container">
+                <div className={style.tab_wrapper + ' hug swiper-container'} ref="swiperContainer">
                     <TabList className="swiper-wrapper">
-                        <div className="swiper-slide">
-                            <Tab>order info</Tab>
-                            <Tab>user info</Tab>
-                            <Tab>paying info</Tab>
-                        </div>
+                        <Tab
+                            selectedClassName={style.tab_button__active}
+                            className={style.tab_button + ' swiper-slide'}>
+                            Информация
+                        </Tab>
+                        <Tab
+                            selectedClassName={style.tab_button__active}
+                            className={style.tab_button + ' swiper-slide'}>
+                            Личные данные
+                        </Tab>
+                        <Tab
+                            selectedClassName={style.tab_button__active}
+                            className={style.tab_button + ' swiper-slide'}>
+                            Способы оплаты
+                        </Tab>
                     </TabList>
                 </div>
-
                 <TabPanel>
                     {view.renderOrderInfo()}
                 </TabPanel>
