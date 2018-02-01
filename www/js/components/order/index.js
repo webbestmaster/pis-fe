@@ -5,9 +5,14 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import cnx from './../../helper/cnx';
 import style from './style.m.scss';
 import cardStyle from './card.m.scss';
+import CheckboxLabel from './../util/checkbox';
 
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
+
+const faceImage = require('./../../../style/i/order/icon-face.png');
+const phoneImage = require('./../../../style/i/order/icon-phone.png');
+const mailImage = require('./../../../style/i/order/icon-mail.png');
 
 const Swiper = require('./../../lib/swiper');
 
@@ -90,11 +95,85 @@ class Order extends Component {
     }
 
     renderUserInfo() {
-        return <h1>user info</h1>;
+        return <div>
+            <h3 className="section__header">Личные данные</h3>
+            <div className={style.input_block}>
+                <h3
+                    className={style.input_label}>
+                    <span
+                        className={style.input_header_icon}
+                        style={{backgroundImage: 'url(' + faceImage + ')'}}/>
+                    Фамилия Имя Отчество
+                </h3>
+                <input
+                    className={style.input_node}
+                    type="text"
+                    placeholder="Иванов Иван Иванович"/>
+            </div>
+            <div className={style.input_block}>
+                <span className={style.input_block__phone_prefix}>+375</span>
+                <h3
+                    className={style.input_label}>
+                    <span
+                        className={style.input_header_icon}
+                        style={{backgroundImage: 'url(' + phoneImage + ')'}}/>
+                    Телефон
+                    <span className="main-color">&nbsp;*</span>
+                </h3>
+                <input
+                    className={style.input_node + ' ' + style.input_node__phone}
+                    type="text"
+                    placeholder="XX XXX XX XX"/>
+            </div>
+
+            <CheckboxLabel
+                ref="mailingPromotion"
+                label={{className: style.checkbox_label_phone}}
+                input={{ref: 'input', defaultChecked: true}}>
+                Жду звонок для подтверждение заказа
+            </CheckboxLabel>
+            <div className={style.input_block}>
+                <h3 className={style.input_label}>
+                    <span
+                        className={style.input_header_icon}
+                        style={{backgroundImage: 'url(' + mailImage + ')'}}/>
+                    Электронная почта
+                    <span className="main-color">&nbsp;*</span>
+                </h3>
+                <input
+                    className={style.input_node}
+                    type="text"/>
+            </div>
+            <CheckboxLabel
+                ref="mailingPromotion"
+                label={{className: style.checkbox_label_subscribe}}
+                input={{ref: 'input', defaultChecked: false}}>
+                Хочу получать новости и спецпредложения
+            </CheckboxLabel>
+
+            <div className={style.line}/>
+
+            <p className={style.required_note}>
+                <span className="main-color">*&nbsp;</span>
+                Обязательные поля для заполнения
+            </p>
+
+            <div className={style.navigate_button}>Способы оплаты</div>
+        </div>;
     }
 
     renderPayingInfo() {
-        return <h1>paying info</h1>;
+        return <div>
+            <h3 className="section__header">Способы оплаты</h3>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <div className={style.navigate_button}>Забронировать</div>
+        </div>;
     }
 
     renderCard() {
@@ -139,7 +218,9 @@ class Order extends Component {
         const {props, state} = view;
 
         return <div style={{paddingBottom: 1000}}>
-            <Tabs className="hug">
+            <Tabs
+                defaultIndex={1}
+                className="hug">
                 <div className={style.tab_wrapper + ' swiper-container'} ref="swiperContainer">
                     <TabList className="swiper-wrapper">
                         <Tab

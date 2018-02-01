@@ -52,11 +52,38 @@ body {
         margin-right: 435px;
     }
 
+    .checkbox_label_phone {
+        display: block;
+        clear: none;
+        margin-left: 105px;
+        position: relative;
+        z-index: 1;
+        margin-top: -18px;
+        margin-bottom: 41px;
+    }
+
+    .checkbox_label_subscribe {
+        display: block;
+        clear: none;
+        margin-left: 105px;
+        position: relative;
+        z-index: 1;
+        margin-top: -18px;
+        margin-bottom: 41px;
+        color: $secondaryTextColor;
+    }
+}
+
+.line {
+    height: 1px;
+    background-color: $mainBorderColor;
+    margin-left: 105px;
 }
 
 .input_block {
     margin-left: 105px;
     padding-bottom: 37px;
+    position: relative;
 }
 
 .input_label {
@@ -86,6 +113,18 @@ body {
     width: 100%;
     display: block;
     box-sizing: border-box;
+}
+
+.input_node__phone {
+    padding-left: 53px;
+}
+
+.input_block__phone_prefix {
+    position: absolute;
+    left: 19px;
+    top: 58px;
+    font-size: 14px;
+    color: $mainTextColor;
 }
 
 .arrow_block_wrapper {
@@ -132,6 +171,12 @@ body {
         transform: translate3d(-50%, -50%, 0);
     }
 
+}
+
+.required_note {
+    color: $mainTextColor;
+    margin: 20px 0 8px 105px;
+    font-size: 14px;
 }
 
 .input_node__number__plus {
