@@ -1,13 +1,10 @@
 // polyfill
-// require('./polyfill/es5-shim');
-// require('./polyfill/es5-sham');
-// require('./polyfill/json3');
-// require('./polyfill/es6-shim');
-// require('./polyfill/es6-sham.min');
-// require('./polyfill/es7-shim');
+require('./polyfill/es5-sham');
+require('./polyfill/json3');
+require('./polyfill/es6-shim');
+require('./polyfill/es6-sham.min');
+require('./polyfill/es7-shim');
 import 'react-datepicker/dist/react-datepicker.css';
-
-// import 'typeface-roboto';
 
 /* global window */
 import es6Promise from 'es6-promise';

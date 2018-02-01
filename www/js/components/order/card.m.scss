@@ -1,0 +1,141 @@
+@import "./../../../style/css/aaa-var";
+
+.card {
+    margin-top: 6px;
+    width: 370px;
+    padding: 43px 30px 33px;
+    min-height: 200px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid $mainColor;
+    float: right;
+}
+
+.header {
+    position: relative;
+    border-bottom: 1px solid $mainBorderColor;
+    padding-bottom: 21px;
+}
+
+.company_name {
+    display: block;
+    margin-right: 115px;
+}
+
+.company_name_value {
+    display: block;
+    font-size: 16px;
+    color: $mainTextColor;
+    max-width: 100%;
+    font-weight: bold;
+}
+
+.company_logo {
+    height: 50px;
+    width: 115px;
+    position: absolute;
+    right: 0;
+    top: -23px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+}
+
+.your_order {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 24px 10px 16px;
+    color: $mainTextColor;
+}
+
+.order_data_item {
+    display: block;
+    color: $mainTextColor;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    padding: 0 12px 8px;
+    span {
+        font-weight: normal;
+        color: $secondaryTextColor;
+    }
+}
+
+.full_cost {
+    display: block;
+    color: $mainColor;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+    padding: 20px 0 32px;
+}
+
+.button {
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    background-color: $mainColor;
+    padding: 18px 10px 17px 10px;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    text-indent: -19px;
+    border-radius: 50px;
+    margin-bottom: 35px;
+    display: block;
+    text-decoration: none;
+    &:before,
+    &:after {
+        content: '';
+        background-color: #fff;
+        width: 13px;
+        height: 2px;
+        position: absolute;
+        right: 22px;
+    }
+    &:before {
+        top: 23px;
+        transform: rotateZ(45deg);
+    }
+    &:after {
+        top: 31px;
+        transform: rotateZ(-45deg);
+    }
+
+}
+
+.cash_back {
+    display: block;
+    font-size: 16px;
+    color: $mainTextColor;
+    background-image: url('./../../../style/i/subscription/cash-back-label.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 130px auto;
+    padding: 4px 0 9px 156px;
+    font-weight: bold;
+}
+
+.cash_back_value {
+    color: $mainColor;
+    font-size: 18px;
+    display: inline-block;
+    background-image: url('./../../../style/i/subscription/cash-back-small-label.png');
+    background-position: 8px 4px;
+    background-repeat: no-repeat;
+    background-size: 25px 14px;
+    padding: 0 0 0 38px;
+    font-weight: bold;
+}
+
+:global .lt-desktop-width {
+    :local {
+        .cash_back {
+            background-position: center 0;
+            padding: 55px 0 0 0;
+            text-align: center;
+        }
+    }
+}
