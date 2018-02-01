@@ -6,6 +6,7 @@ import cnx from './../../helper/cnx';
 import style from './style.m.scss';
 import cardStyle from './card.m.scss';
 import CheckboxLabel from './../util/checkbox';
+import RadioLabel from './../util/radio';
 
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
@@ -13,6 +14,9 @@ const trainingImage = require('./../../../style/i/category/dancing.svg');
 const faceImage = require('./../../../style/i/order/icon-face.png');
 const phoneImage = require('./../../../style/i/order/icon-phone.png');
 const mailImage = require('./../../../style/i/order/icon-mail.png');
+
+const cacheImage = require('./../../../style/i/order/icon-cache.png');
+const cachebackImage = require('./../../../style/i/order/icon-cashe-back.png');
 
 const Swiper = require('./../../lib/swiper');
 
@@ -166,11 +170,44 @@ class Order extends Component {
         return <div>
             <h3 className="section__header">Способы оплаты</h3>
 
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <div className={style.input_block}>
+                <h3
+                    className={style.input_label}>
+                    <span
+                        className={style.input_header_icon}
+                        style={{backgroundImage: 'url(' + cacheImage + ')'}}/>
+                    Оплата на месте
+                </h3>
+                <RadioLabel
+                    ref="cacheRadioInput"
+                    input={{name: 'payType', ref: 'input', defaultChecked: true}}
+                    label={{className: style.radio_label_pay_type}}>
+                    Оплатить наличными на месте
+                </RadioLabel>
+
+            </div>
+
+            <div className={style.line__margin_bottom}/>
+
+            <div className={style.input_block}>
+                <h3
+                    className={style.input_label}>
+                    <span
+                        className={style.input_header_icon}
+                        style={{backgroundImage: 'url(' + cachebackImage + ')'}}/>
+                    &nbsp;Оплата бонусами
+                </h3>
+                <RadioLabel
+                    ref="bonusRadioInput"
+                    input={{name: 'payType', ref: 'input', defaultChecked: false}}
+                    label={{className: style.radio_label_pay_type}}>
+                    <span className="hidden">--- FIXME:LINK ---</span>
+                    Оплатить <span className={style.inner_link}>бонусами</span> через наш сервис
+                </RadioLabel>
+
+            </div>
+
+            {/* <div className={style.line__margin_bottom}/>*/}
 
             <div className={style.navigate_button}>Забронировать</div>
         </div>;
@@ -219,7 +256,9 @@ class Order extends Component {
 
         return <div style={{paddingBottom: 1000}}>
             <Tabs
-                defaultIndex={1}
+                // defaultIndex={2}
+                // selectedIndex={state.tabIndex}
+                onSelect={() => console.log('on select')}
                 className="hug">
                 <div className={style.tab_wrapper + ' swiper-container'} ref="swiperContainer">
                     <TabList className="swiper-wrapper">

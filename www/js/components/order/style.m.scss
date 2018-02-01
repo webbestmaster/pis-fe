@@ -72,12 +72,39 @@ body {
         margin-bottom: 41px;
         color: $secondaryTextColor;
     }
+
+    .radio_label_pay_type {
+        display: block;
+        clear: none;
+        position: relative;
+        z-index: 1;
+        margin-top: 37px;
+        margin-bottom: -8px;
+    }
 }
 
 .line {
     height: 1px;
     background-color: $mainBorderColor;
     margin-left: 105px;
+}
+
+.line__margin_bottom {
+    height: 1px;
+    background-color: $mainBorderColor;
+    margin-left: 105px;
+    margin-bottom: 28px;
+}
+
+.inner_link {
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px dotted $mainColor;
+    padding-bottom: 2px;
+    color: $mainColor;
+    &:hover {
+        border-bottom-color: transparent;
+    }
 }
 
 .input_block {
