@@ -131,6 +131,11 @@
     font-weight: bold;
 }
 
+.arrow_arrow_holder {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 :global .lt-desktop-width {
     :local {
         .card {
@@ -142,6 +147,18 @@
             background-position: center 0;
             padding: 55px 0 0 0;
             text-align: center;
+        }
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+        .card {
+            max-width: 326px;
+            width: auto;
+            float: none;
+            clear: both;
+            margin: 115px auto 0;
         }
     }
 }

@@ -8,6 +8,8 @@ import cardStyle from './card.m.scss';
 import CheckboxLabel from './../util/checkbox';
 import RadioLabel from './../util/radio';
 
+const globalAppConst = require('./../../app-const.json');
+
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
 
@@ -115,7 +117,7 @@ class Order extends Component {
                     placeholder="Иванов Иван Иванович"/>
             </div>
             <div className={style.input_block}>
-                <span className={style.input_block__phone_prefix}>+375</span>
+                <span className={style.input_block__phone_prefix}>{globalAppConst.phone.by.prefix}</span>
                 <h3
                     className={style.input_label}>
                     <span
@@ -253,8 +255,9 @@ class Order extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
 
-        return <div style={{paddingBottom: 1000}}>
+        return <div className={style.main}>
             <Tabs
                 // defaultIndex={2}
                 // selectedIndex={state.tabIndex}
@@ -280,7 +283,7 @@ class Order extends Component {
                     </TabList>
                 </div>
 
-                {view.renderCard()}
+                {globalAppConst.mobileWidth >= app.screen.width ? null : view.renderCard()}
 
                 <TabPanel className={style.tab_panel}>
                     {view.renderOrderInfo()}
@@ -291,6 +294,13 @@ class Order extends Component {
                 <TabPanel className={style.tab_panel}>
                     {view.renderPayingInfo()}
                 </TabPanel>
+
+                {globalAppConst.mobileWidth >= app.screen.width ?
+                    <div className={cardStyle.arrow_arrow_holder + ' clear-full'}>
+                        {view.renderCard()}
+                    </div> :
+                    null}
+
             </Tabs>
         </div>;
     }
@@ -298,6 +308,7 @@ class Order extends Component {
 
 export default connect(
     state => ({
+        app: state.app
         // auth: state.auth
     }),
     {

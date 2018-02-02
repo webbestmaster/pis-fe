@@ -1,5 +1,9 @@
 @import "./../../../style/css/aaa-var";
 
+.main {
+    padding-bottom: 77px;
+}
+
 body {
     .tab_wrapper {
         padding: 34px 0 28px;
@@ -60,6 +64,7 @@ body {
         z-index: 1;
         margin-top: -18px;
         margin-bottom: 41px;
+        width: auto;
     }
 
     .checkbox_label_subscribe {
@@ -71,6 +76,7 @@ body {
         margin-top: -18px;
         margin-bottom: 41px;
         color: $secondaryTextColor;
+        width: auto;
     }
 
     .radio_label_pay_type {
@@ -298,6 +304,21 @@ body {
 
 :global .lt-tablet-width {
     :local {
+        .tab_panel {
+            margin-right: 0;
+        }
 
+        .input_block {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .arrow_block_wrapper {
+            margin-left: 0;
+        }
+
+        .input_block__arrow {
+            width: 43%;
+        }
     }
 }
