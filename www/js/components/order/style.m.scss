@@ -253,3 +253,51 @@ body {
         }
     }
 }
+
+:global .lt-desktop-width {
+    :local {
+        .arrow_block_wrapper,
+        .input_block {
+            margin-left: 15px;
+        }
+
+        .arrow_block_wrapper {
+            flex-wrap: wrap;
+        }
+
+        .input_block__arrow {
+            width: 45%;
+            margin-left: 0;
+        }
+
+        .input_block__arrow:first-child {
+            width: 100%;
+        }
+        .navigate_button {
+            margin-left: 15px;
+        }
+
+        .tab_wrapper {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .tab_panel {
+            margin-right: 370px;
+        }
+
+        .line,
+        .line__margin_bottom,
+        .required_note,
+        .checkbox_label_subscribe,
+        .checkbox_label_phone {
+            margin-left: 15px;
+        }
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+
+    }
+}
