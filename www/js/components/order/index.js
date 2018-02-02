@@ -7,6 +7,7 @@ import style from './style.m.scss';
 import cardStyle from './card.m.scss';
 import CheckboxLabel from './../util/checkbox';
 import RadioLabel from './../util/radio';
+import {withRouter} from 'react-router-dom';
 
 const globalAppConst = require('./../../app-const.json');
 
@@ -258,6 +259,12 @@ class Order extends Component {
         const {app} = props;
 
         return <div className={style.main}>
+            {/*
+            <h1>{props.match.params.type}</h1>
+            <h1>{props.match.params.id}</h1>
+            <h1>{props.match.params.scheduleId}</h1>
+            <h1>{props.match.params.day}</h1>
+            */}
             <Tabs
                 // defaultIndex={2}
                 // selectedIndex={state.tabIndex}
@@ -306,7 +313,7 @@ class Order extends Component {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     state => ({
         app: state.app
         // auth: state.auth
@@ -316,4 +323,4 @@ export default connect(
         // getSessionState: authAction.getSessionState,
         // openPopupPromo: authAction.openPopupPromo
     }
-)(Order);
+)(Order));

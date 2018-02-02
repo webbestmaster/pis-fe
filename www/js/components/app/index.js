@@ -51,7 +51,8 @@ export default () => [
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
         <Route path='/terms/' component={Terms} exact/>
 
-        <Route path='/order/' component={Order} exact/>
+        <Route path='/order/:type/:id' component={Order} exact/>
+        <Route path='/order/:type/:id/:scheduleId/:day' component={Order} exact/>
 
         <Route component={NotFoundPage}/>
     </Switch>,
