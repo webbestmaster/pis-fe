@@ -165,7 +165,7 @@ class Description extends Component {
                 забронировать
             </Link>
             <p className={style.card_cash_back}>Бонус:&nbsp;
-            <span className={style.card_cash_back_value}>+0.00</span>
+            <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
             </p>
         </div>;
     }
