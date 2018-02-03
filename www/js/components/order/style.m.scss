@@ -260,6 +260,17 @@ body {
     }
 }
 
+.input_error_text {
+    position: absolute;
+    right: 15px;
+    top: 69px;
+    font-size: 12px;
+    padding: 4px 8px;
+    background-color: $mainColor;
+    color: #fff;
+    border-radius: 4px 0;
+}
+
 :global .lt-desktop-width {
     :local {
         .arrow_block_wrapper,

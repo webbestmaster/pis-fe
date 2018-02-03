@@ -8,6 +8,7 @@ import cardStyle from './card.m.scss';
 import CheckboxLabel from './../util/checkbox';
 import RadioLabel from './../util/radio';
 import {withRouter} from 'react-router-dom';
+import {formatPhoneBY} from '../../helper/format';
 
 const globalAppConst = require('./../../app-const.json');
 
@@ -28,7 +29,32 @@ class Order extends Component {
         super();
         const view = this;
 
-        view.state = {};
+        view.state = {
+            selectedIndex: 0,
+            form: {
+                input: {
+                    // fullName: {
+                    //     isValid: true,
+                    //     error: {
+                    //         message: ''
+                    //     }
+                    // },
+                    phone: {
+                        isValid: true,
+                        error: {
+                            message: ''
+                        }
+                    }
+                    // email: {
+                    //     isValid: true,
+                    //     error: {
+                    //         message: ''
+                    //     }
+                    // }
+                }
+            }
+        };
+
         view.attr = {
             swiper: null
         };
@@ -39,6 +65,58 @@ class Order extends Component {
 
         // instead of setTimeout, need to fix swiper :(
         view.initSwiper();
+    }
+
+    onBlurValidatePhone() {
+        const view = this;
+        const phone = view.refs.phone;
+
+        phone.value = formatPhoneBY(phone.value);
+
+        const value = phone.value;
+
+        view.setState(prevState => {
+            Object.assign(prevState.form.input.phone, {isValid: true});
+
+            return prevState;
+        });
+
+        if (value === '') {
+            view.setState(prevState => {
+                Object.assign(prevState.form.input.phone,
+                    {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
+                );
+
+                return prevState;
+            });
+            return false;
+        }
+
+        if ((value.match(/\d/g) || []).length !== 9) {
+            view.setState(prevState => {
+                Object.assign(prevState.form.input.phone,
+                    {isValid: false, error: {message: 'Введите телефон в формате: XX XXX XX XX'}}
+                );
+
+                return prevState;
+            });
+            return false;
+        }
+
+        return true;
+    }
+
+    validateForm() {
+        const view = this;
+
+        return [
+            // view.onBlurValidateName(),
+            // view.onBlurValidateFamily(),
+            view.onBlurValidatePhone()
+            // view.onBlurValidateEmail(),
+            // view.onBlurValidatePassword(),
+            // view.onBlurValidateNewPassword()
+        ].every(validation => validation);
     }
 
     initSwiper() {
@@ -115,7 +193,7 @@ class Order extends Component {
                 <input
                     className={style.input_node}
                     type="text"
-                    placeholder="Иванов Иван Иванович"/>
+                    value="Иванов Иван" disabled/>
             </div>
             <div className={style.input_block}>
                 <span className={style.input_block__phone_prefix}>{globalAppConst.phone.by.prefix}</span>
@@ -145,11 +223,13 @@ class Order extends Component {
                         className={style.input_header_icon}
                         style={{backgroundImage: 'url(' + mailImage + ')'}}/>
                     Электронная почта
-                    <span className="main-color">&nbsp;*</span>
+                    {/* <span className="main-color">&nbsp;*</span>*/}
                 </h3>
                 <input
                     className={style.input_node}
-                    type="text"/>
+                    value="user@mail.com"
+                    type="text"
+                    disabled/>
             </div>
             <CheckboxLabel
                 ref="mailingPromotion"
@@ -267,7 +347,7 @@ class Order extends Component {
             */}
             <Tabs
                 // defaultIndex={2}
-                // selectedIndex={state.tabIndex}
+                // selectedIndex={state.selectedIndex}
                 onSelect={() => console.log('on select')}
                 className="hug">
                 <div className={style.tab_wrapper + ' swiper-container'} ref="swiperContainer">
@@ -324,3 +404,17 @@ export default withRouter(connect(
         // openPopupPromo: authAction.openPopupPromo
     }
 )(Order));
+
+class ErrorLabel extends Component {
+    render() {
+        const view = this;
+        const {props, state} = view;
+        const {propName, form} = props;
+
+        if (form.input[propName].isValid) {
+            return null;
+        }
+
+        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
+    }
+}

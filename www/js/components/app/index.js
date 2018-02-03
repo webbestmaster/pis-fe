@@ -52,7 +52,7 @@ export default () => [
         <Route path='/terms/' component={Terms} exact/>
 
         <Route path='/order/:type/:id' component={Order} exact/>
-        <Route path='/order/:type/:id/:scheduleId/:day' component={Order} exact/>
+        <Route path='/order/:type/:id/:scheduleId/:dayId' component={Order} exact/>
 
         <Route component={NotFoundPage}/>
     </Switch>,
