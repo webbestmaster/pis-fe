@@ -79,9 +79,16 @@ export function prepareScheduleList(scheduleList) {
                     return oldScheduleItem;
                 }
 
-                const newScheduleItem = Object.assign({}, oldScheduleItem, {inThePast: false});
+                const currentDate = new Date(defaultItems[scheduleItemIi]);
 
-                if (scheduleItemIi === 0 && parseFloat(newScheduleItem.time_from) < (new Date()).getHours()) {
+                const newScheduleItem = Object.assign(
+                    {},
+                    oldScheduleItem,
+                    {inThePast: false},
+                    {dayId: oldScheduleItem.day & weekDaysMap[currentDate.getDay()].day} // eslint-disable-line no-bitwise
+                );
+
+                if (scheduleItemIi === 0 && parseFloat(newScheduleItem.time_from) <= (new Date()).getHours()) {
                     newScheduleItem.inThePast = true;
                 }
 
@@ -111,7 +118,7 @@ export function prepareScheduleList(scheduleList) {
             return;
         }
 
-        if (dayIi === 0 && parseFloat(day.time_from) < (new Date()).getHours()) {
+        if (dayIi === 0 && parseFloat(day.time_from) <= (new Date()).getHours()) {
             return;
         }
 
@@ -214,27 +221,33 @@ class DateFilter extends Component {
                                 {weekDaysMap[currentDate.getDay()].name}
                             </p>
                             <p className="clubs-catalog-date-filter__date-date">{dateDate}</p>
-                            <span className="hidden">--- FIXME:LINK ---</span>
 
                             <div className="clubs-catalog-date-filter__date-content">
                                 <div className="clubs-catalog-date-filter__date-time-wrapper">
-                                    {schedule
-                                        .map((scheduleItem, innerIi) => <Link
-                                            to={'###'}
-                                            key={ii + '-' + innerIi} // eslint-disable-line complexity
-                                            {...cnx('clubs-catalog-date-filter__date-time', {
-                                                disabled: ii === 0 &&
-                                                parseFloat(scheduleItem.time_from) < (new Date()).getHours(),
-                                                'clubs-catalog-date-filter__date-time--active':
-                                                preparedScheduleList.firstScheduleIndex === innerIi &&
-                                                preparedScheduleList.firstDayIndex === ii
-                                            })}>
-                                            {scheduleItem.day & weekDaysMap[currentDate.getDay()].day ? // eslint-disable-line no-bitwise
-                                                reduceSeconds(scheduleItem.time_from) +
-                                                ' - ' +
-                                                reduceSeconds(scheduleItem.time_to) :
-                                                <br/>}
-                                        </Link>)}
+                                    {schedule.map((scheduleItem, innerIi) =>
+                                        scheduleItem.day & weekDaysMap[currentDate.getDay()].day ? // eslint-disable-line no-bitwise
+                                            <Link
+                                                to={'/order/training/' +
+                                                    row.id + '/' +
+                                                    scheduleItem.id + '/' +
+                                                    (scheduleItem.day & weekDaysMap[currentDate.getDay()].day)} // eslint-disable-line no-bitwise
+                                                key={ii + '-' + innerIi} // eslint-disable-line complexity
+                                                {...cnx('clubs-catalog-date-filter__date-time', {
+                                                    disabled: ii === 0 &&
+                                                        parseFloat(scheduleItem.time_from) <= (new Date()).getHours(),
+                                                    'clubs-catalog-date-filter__date-time--active':
+                                                        preparedScheduleList.firstScheduleIndex === innerIi &&
+                                                        preparedScheduleList.firstDayIndex === ii
+                                                })}>
+                                                {reduceSeconds(scheduleItem.time_from) +
+                                                    ' - ' +
+                                                    reduceSeconds(scheduleItem.time_to)}
+                                            </Link> :
+                                            <div
+                                                key={ii + '-' + innerIi}
+                                                className="clubs-catalog-date-filter__date-time">
+                                                <br/>
+                                            </div>)}
                                 </div>
                             </div>
                         </div>;
