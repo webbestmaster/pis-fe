@@ -146,6 +146,9 @@ body {
     width: 100%;
     display: block;
     box-sizing: border-box;
+    &.input_text__invalid {
+        border-color: $mainColor;
+    }
 }
 
 .input_node__phone {
@@ -263,7 +266,7 @@ body {
 
 .input_error_text {
     position: absolute;
-    right: 15px;
+    right: 0;
     top: 69px;
     font-size: 12px;
     padding: 4px 8px;

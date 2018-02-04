@@ -12,6 +12,7 @@ import {formatPhoneBY} from '../../helper/format';
 import {resolveImagePath} from '../../helper/path-x';
 import {reduceSeconds} from '../../helper/date';
 import * as authAction from '../auth/action';
+import {Link} from 'react-router-dom';
 
 const globalAppConst = require('./../../app-const.json');
 
@@ -36,7 +37,7 @@ class Order extends Component {
 
         view.state = {
             pageData: null,
-            selectedIndex: 0,
+            partIndex: 0,
             qty: 1,
             form: {
                 input: {
@@ -142,14 +143,19 @@ class Order extends Component {
     validateForm() {
         const view = this;
 
-        return [
-            // view.onBlurValidateName(),
-            // view.onBlurValidateFamily(),
-            view.onBlurValidatePhone()
-            // view.onBlurValidateEmail(),
-            // view.onBlurValidatePassword(),
-            // view.onBlurValidateNewPassword()
-        ].every(validation => validation);
+        return [view.onBlurValidatePhone()]
+            .every(validation => validation);
+    }
+
+    submitOrder() {
+        const view = this;
+
+        if (!view.validateForm()) {
+            view.setState({partIndex: 1});
+            return;
+        }
+
+        console.log('send data');
     }
 
     initSwiper() {
@@ -233,7 +239,9 @@ class Order extends Component {
                     </div>
                 </div>
             </div>
-            <div className={style.navigate_button}>Перейти к личным данным</div>
+            <div
+                onClick={() => view.setState({partIndex: 1})}
+                className={style.navigate_button}>Перейти к личным данным</div>
         </div>;
     }
 
@@ -275,8 +283,22 @@ class Order extends Component {
                     Телефон
                     <span className="main-color">&nbsp;*</span>
                 </h3>
+
+                {/*
+                <input
+                    ref="phone"
+                    onBlur={() => view.onBlurValidatePhone()}
+                    onInput={() => view.onBlurValidatePhone()}
+                    type="text"
+                    defaultValue={formatPhoneBY(user.phone.replace(globalAppConst.phone.by.prefixClean, ''))}
+                    placeholder="XX XXX XX XX"
+                />
+                */}
+
                 {user.phone ?
                     <input
+                        key="phone"
+                        ref="phone"
                         className={style.input_node + ' ' + style.input_node__phone}
                         type="text"
                         value={user.phone
@@ -284,15 +306,28 @@ class Order extends Component {
                             .replace(globalAppConst.phone.by.prefixClean, '')
                             .trim()}
                         disabled/> :
-                    <input
-                        className={style.input_node + ' ' + style.input_node__phone}
-                        type="text"
-                        placeholder="XX XXX XX XX"/>
+                    [
+                        <input
+                            key="phone"
+                            ref="phone"
+                            onBlur={() => view.onBlurValidatePhone()}
+                            onInput={() => view.onBlurValidatePhone()}
+                            {...cnx(style.input_node,
+                                style.input_node__phone,
+                                {[style.input_text__invalid]: !state.form.input.phone.isValid})
+                            }
+                            type="text"
+                            placeholder="XX XXX XX XX"/>,
+                        <ErrorLabel
+                            key="phone-error-label"
+                            propName="phone"
+                            form={state.form}/>
+                    ]
                 }
             </div>
 
             <CheckboxLabel
-                ref="mailingPromotion"
+                ref="phoneCallBack"
                 label={{className: style.checkbox_label_phone}}
                 input={{ref: 'input', defaultChecked: true}}>
                 Жду звонок для подтверждение заказа
@@ -311,6 +346,7 @@ class Order extends Component {
                     type="text"
                     disabled/>
             </div>
+
             {/*
             <CheckboxLabel
                 ref="mailingPromotion"
@@ -327,11 +363,30 @@ class Order extends Component {
                 Обязательные поля для заполнения
             </p>
 
-            <div className={style.navigate_button}>Способы оплаты</div>
+            <div
+                onClick={() => {
+                    if (view.validateForm()) {
+                        view.setState({partIndex: 2});
+                        return;
+                    }
+                    view.setState({partIndex: 1});
+                }}
+                className={style.navigate_button}>Способы оплаты</div>
         </div>;
     }
 
     renderPayingInfo() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+        const {user} = auth.login.data;
+        const {pageData, qty} = state;
+        const {row} = pageData;
+        const {fitnessClub} = row;
+        const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
+        const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
+        const singleCacheBack = parseFloat(row.cashback);
+
         return <div>
             <h3 className="section__header">Способы оплаты</h3>
 
@@ -367,14 +422,17 @@ class Order extends Component {
                     input={{name: 'payType', ref: 'input', defaultChecked: false}}
                     label={{className: style.radio_label_pay_type}}>
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    Оплатить <span className={style.inner_link}>бонусами</span> через наш сервис
+                    Оплатить <Link to={'/'} target="_blank" className={style.inner_link}>бонусами</Link> через наш
+                    сервис
                 </RadioLabel>
 
             </div>
 
             {/* <div className={style.line__margin_bottom}/>*/}
 
-            <div className={style.navigate_button}>Забронировать</div>
+            <div
+                onClick={() => view.submitOrder()}
+                className={style.navigate_button}>Забронировать</div>
         </div>;
     }
 
@@ -453,7 +511,25 @@ class Order extends Component {
             </h5>
 
             <span className="hidden">--- FIXME:LINK ---</span>
-            <div className={cardStyle.button}>забронировать</div>
+            <div
+                onClick={() => {
+                    switch (state.partIndex) {
+                        case 0:
+                            view.setState({partIndex: 1});
+                            break;
+                        case 1:
+                            if (view.validateForm()) {
+                                view.setState({partIndex: 2});
+                            }
+                            break;
+                        case 2:
+                            view.submitOrder();
+                            break;
+
+                        default: console.warn('How it possible o_O ?');
+                    }
+                }}
+                className={cardStyle.button}>забронировать</div>
             <p className={cardStyle.cash_back}>Бонус:&nbsp;
             <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
             </p>
@@ -479,40 +555,49 @@ class Order extends Component {
             */}
             <Tabs
                 // defaultIndex={2}
-                // selectedIndex={state.selectedIndex}
-                onSelect={() => console.log('on select')}
+                // selectedIndex={state.partIndex}
+                // onSelect={() => {}}
                 className="hug">
                 <div className={style.tab_wrapper + ' swiper-container'} ref="swiperContainer">
-                    <TabList className="swiper-wrapper">
-                        <Tab
-                            selectedClassName={style.tab_button__active}
-                            className={style.tab_button + ' swiper-slide'}>
+                    <div className="swiper-wrapper">
+                        <div
+                            onClick={() => view.setState({partIndex: 0})}
+                            {...cnx(style.tab_button, 'swiper-slide',
+                                {[style.tab_button__active]: state.partIndex === 0})}>
                             Информация
-                        </Tab>
-                        <Tab
-                            selectedClassName={style.tab_button__active}
-                            className={style.tab_button + ' swiper-slide'}>
+                        </div>
+                        <div
+                            onClick={() => view.setState({partIndex: 1})}
+                            {...cnx(style.tab_button, 'swiper-slide',
+                                {[style.tab_button__active]: state.partIndex === 1})}>
                             Личные данные
-                        </Tab>
-                        <Tab
-                            selectedClassName={style.tab_button__active}
-                            className={style.tab_button + ' swiper-slide'}>
+                        </div>
+                        <div
+                            onClick={() => {
+                                if (view.validateForm()) {
+                                    view.setState({partIndex: 2});
+                                    return;
+                                }
+                                view.setState({partIndex: 1});
+                            }}
+                            {...cnx(style.tab_button, 'swiper-slide',
+                                {[style.tab_button__active]: state.partIndex === 2})}>
                             Способы оплаты
-                        </Tab>
-                    </TabList>
+                        </div>
+                    </div>
                 </div>
 
                 {globalAppConst.mobileWidth >= app.screen.width ? null : view.renderCard()}
 
-                <TabPanel className={style.tab_panel}>
+                <div {...cnx(style.tab_panel, {hidden: state.partIndex !== 0})}>
                     {view.renderOrderInfo()}
-                </TabPanel>
-                <TabPanel className={style.tab_panel}>
+                </div>
+                <div {...cnx(style.tab_panel, {hidden: state.partIndex !== 1})}>
                     {auth.login.isLogin ? view.renderUserInfo() : null}
-                </TabPanel>
-                <TabPanel className={style.tab_panel}>
+                </div>
+                <div {...cnx(style.tab_panel, {hidden: state.partIndex !== 2})}>
                     {auth.login.isLogin ? view.renderPayingInfo() : null}
-                </TabPanel>
+                </div>
 
                 {globalAppConst.mobileWidth >= app.screen.width ?
                     <div className={cardStyle.arrow_arrow_holder + ' clear-full'}>

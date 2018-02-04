@@ -1,27 +1,21 @@
 сделать так что бы было видно что можно свайпать - а то не понятно - читай скайп за 29.01.2018
 
- + принять пользовательское соглашение - должно быть серым пока не стоит галочка - принять пользовательское соглашение
- + поправить избранное - сделать засветку справа
+/member/order/create?productType=subscription&orderType=reservation&amount=1&subscriptionId=1
 
- + max-width: 260px;
- + margin-left: 50px;
- + https://i.gyazo.com/03cb9218e4fe28bd316c62939436704d.png - поправить что бы было по вертикали
- + https://i.gyazo.com/f094c55dd9d7d49d16448bb15a433c19.png - должно быть кнопка оплачено - что бы админ мог поменить что юзер оплатил треню
- + +375 XX XXX XX XX - помогать пользователю вводить код - см как на тут бае https://profile.tut.by/register.html
- + убрать лишнюю стрелочку на расписании тут - http://localhost:8181/#/training/6
- + if (!images || !images['300x200'] || images['300x200'].length === 0) { - выбрать большее разрешение
- + уехала цифра +375 в кабинете пользователя - на разных разрешениях по разному едет
- + кабинет пользователя - вернуть сердечка на избранные
+        // subscription
+        $validator = \Validator::make($request->all(), [
+            'amount' => 'required|between:1,5',
+            'subscriptionId' => 'required|string',
+            'needCall' => 'sometimes|in:' . implode(',', array_keys(model\Order::getNeedCallHash())),
+            'orderUserPhone' => 'sometimes|min:10',
+        ])->validate();
 
-//  1 - добавление\удаление тренировок и абонементов\тренировок в любимые - done
-//  2 - отображение любимых тренировок\абонементов на странице пользователя - done
-//  3 - доприкрутка остальной части страницы пользователя к бек енду (пока ещё не всей) - что хотел, то прикрутил
-//  4 - работа над страницей пользователя-клуба (пока тоже не всей) - что хотел - прикрутил
-    5 - начать делать страницу бронирования тренировки\абонемента
-
-        Дмитрий в оплате все как в дизайне
-        Только не нужно в третьем шаге оплаты делать строку" орлана онлайн"
-        Оплата онлайн *
-        Останется только:
-            - оплата на месте
-            - оплата бонусами
+        // training
+        $validator = \Validator::make($request->all(), [
+            'amount' => 'required|between:1,5',
+            'trainingId' => 'required|string',
+            'trainingScheduleId' => 'required|min:1',
+            'day' => 'required|in:' . implode(',', array_keys(model\FitnessClubTrainingSchedule::getDaysHash())),
+            'needCall' => 'sometimes|in:' . implode(',', array_keys(model\Order::getNeedCallHash())),
+            'orderUserPhone' => 'sometimes|min:10',
+        ])->validate();
