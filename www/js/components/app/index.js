@@ -11,7 +11,8 @@ import Training from './../../page/training';
 import User from './../../page/user';
 import ForgotPassword from './../../page/forgot-password';
 import Terms from './../../page/terms';
-import Order from './../../page/order';
+import OrderTraining from './../../page/order-training';
+import OrderSubscription from './../../page/order-subscription';
 import NotFoundPage from './../../page/404';
 import Auth from './../auth';
 
@@ -51,8 +52,8 @@ export default () => [
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
         <Route path='/terms/' component={Terms} exact/>
 
-        <Route path='/order/:type/:id' component={Order} exact/>
-        <Route path='/order/:type/:id/:scheduleId/:dayId' component={Order} exact/>
+        <Route path='/order/subscription/:id' component={OrderSubscription} exact/>
+        <Route path='/order/training/:id/:scheduleId/:dayId' component={OrderTraining} exact/>
 
         <Route component={NotFoundPage}/>
     </Switch>,

@@ -12,7 +12,7 @@ import userShortInfoStyle from './../../components/user-short-info/style.m.scss'
 import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
-import Order from './../../components/order';
+import OrderTraining from './../../components/order-training';
 
 const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/order/top-banner.png');
@@ -36,7 +36,7 @@ class OrderPage extends Component {
                 <h3 className="section__header">Мой заказ</h3>
             </TopBigBanner>
 
-            <Order/>
+            <OrderTraining/>
 
             <Footer/>
         </div>;

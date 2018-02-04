@@ -9,6 +9,8 @@ import CheckboxLabel from './../util/checkbox';
 import RadioLabel from './../util/radio';
 import {withRouter} from 'react-router-dom';
 import {formatPhoneBY} from '../../helper/format';
+import {resolveImagePath} from '../../helper/path-x';
+import {reduceSeconds} from '../../helper/date';
 
 const globalAppConst = require('./../../app-const.json');
 
@@ -23,6 +25,7 @@ const cacheImage = require('./../../../style/i/order/icon-cache.png');
 const cachebackImage = require('./../../../style/i/order/icon-cashe-back.png');
 
 const Swiper = require('./../../lib/swiper');
+const {fetchX} = require('./../../helper/fetch-x');
 
 class Order extends Component {
     constructor() {
@@ -30,7 +33,9 @@ class Order extends Component {
         const view = this;
 
         view.state = {
+            pageData: null,
             selectedIndex: 0,
+            qty: 1,
             form: {
                 input: {
                     // fullName: {
@@ -62,9 +67,11 @@ class Order extends Component {
 
     componentDidMount() {
         const view = this;
+        const {props, state} = view;
 
-        // instead of setTimeout, need to fix swiper :(
-        view.initSwiper();
+        fetchX(globalAppConst.pageDataUrl.subscription.replace('{{subscriptionId}}', props.match.params.id))
+            .then(({data}) => view.setState({pageData: data}, () => view.initSwiper()))
+            .catch(console.error);
     }
 
     onBlurValidatePhone() {
@@ -134,6 +141,15 @@ class Order extends Component {
     }
 
     renderOrderInfo() {
+        const view = this;
+        const {props, state} = view;
+        const {pageData, qty} = state;
+        const {row} = pageData;
+        const {fitnessClub} = row;
+        const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
+        const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
+        const singleCacheBack = parseFloat(row.cashback);
+
         return <div>
 
             <h3 className="section__header">Информация о тренировке</h3>
@@ -166,12 +182,16 @@ class Order extends Component {
                 <div className={style.input_block + ' ' + style.input_block__arrow}>
                     <h3 className={style.input_label}>Кол-во человек</h3>
                     <div className={style.input_node__number}>
-                        <div className={style.input_node__number__plus}/>
+                        <div
+                            onClick={() => view.setState({qty: Math.min(qty + 1, 5)})}
+                            className={style.input_node__number__plus}/>
                         <input
                             className={style.input_node} type="text"
-                            defaultValue="1"
+                            value={qty}
                             disabled/>
-                        <div className={style.input_node__number__minus}/>
+                        <div
+                            onClick={() => view.setState({qty: Math.max(qty - 1, 1)})}
+                            className={style.input_node__number__minus}/>
                     </div>
                 </div>
             </div>
@@ -297,38 +317,83 @@ class Order extends Component {
     }
 
     renderCard() {
+        const view = this;
+        const {props, state} = view;
+        const {pageData} = state;
+        const {row} = pageData;
+        const {fitnessClub} = row;
+        const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
+        const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
+        const singleCacheBack = parseFloat(row.cashback);
+
         return <div className={cardStyle.card}>
-            <h3 className={cardStyle.header}>
+            <h3 className={cardStyle.header} title={fitnessClub.title}>
                 <span className={cardStyle.company_name}>
-                    <span className={cardStyle.company_name_value + ' ellipsis'}>La Fitness</span>
+                    <span className={cardStyle.company_name_value + ' ellipsis'}>{fitnessClub.title}</span>
                 </span>
                 <span
                     className={cardStyle.company_logo}
-                    style={{backgroundImage: 'url(http://via.placeholder.com/115x50)'}}/>
+                    style={{backgroundImage: 'url(' + resolveImagePath(fitnessClub.logo_image) + ')'}}/>
             </h3>
             <h4 className={cardStyle.your_order}>Ваш заказ:</h4>
             <p className={cardStyle.order_data_item}>
-                Тренировка: <span>Пробное занятие по стрип-пластике</span>
+                {/* Тренировка: <span>Пробное занятие по стрип-пластике</span>*/}
+                Абонемент: <span>{fitnessClub.title}</span>
             </p>
             <p className={cardStyle.order_data_item}>
-                Адрес: <span>пр-т Дзержинского, 58 к2</span>
+                Адрес: <span>{fitnessClub.address}</span>
             </p>
+
+
+            {/*
+            <h3 className={style.description_info_item_header}>Время действия:</h3>
+            <p className={style.description_info_item_text}>
+                Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)}
+                &nbsp;
+                Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
+            </p>
+*/}
+
+
             <p className={cardStyle.order_data_item}>
-                Дата: <span>7 июня</span>
+                Время действия:&nbsp;
+                <span>
+                    Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)}
+                    <br/>
+                    Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
+                </span>
             </p>
+            {/*
             <p className={cardStyle.order_data_item}>
                 Время: <span>20:00</span>
             </p>
+*/}
             <p className={cardStyle.order_data_item}>
-                Кол-во человек: <span>1</span>
+                Кол-во человек: <span>{state.qty}</span>
             </p>
 
-            <h5 className={cardStyle.full_cost}>Итоговая цена: 60 руб.</h5>
+            {/*
+            {promotion ?
+                <div>
+                    <p className={style.card_cost}>Цена со скидкой:&nbsp;
+                        {(row.price - promotion.discount).toFixed(2)} руб.
+                    </p>
+                    <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
+                </div> :
+                <div>
+                    <p className={style.card_cost}>Цена: {row.price}</p>
+                    <br/>
+                </div>}
+*/}
+
+            <h5 className={cardStyle.full_cost}>
+                Итоговая цена: {(state.qty * singlePrice).toFixed(2)} руб.
+            </h5>
 
             <span className="hidden">--- FIXME:LINK ---</span>
             <div className={cardStyle.button}>забронировать</div>
             <p className={cardStyle.cash_back}>Бонус:&nbsp;
-            <span className={cardStyle.cash_back_value}>+0.00</span>
+            <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
             </p>
         </div>;
     }
@@ -336,7 +401,12 @@ class Order extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {pageData} = state;
         const {app} = props;
+
+        if (pageData === null) {
+            return null;
+        }
 
         return <div className={style.main}>
             {/*
