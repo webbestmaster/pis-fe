@@ -17,6 +17,7 @@ const globalAppConst = require('./../../app-const.json');
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
 
+const timeImage = require('./../../../style/i/order/icon-time.png');
 const faceImage = require('./../../../style/i/order/icon-face.png');
 const phoneImage = require('./../../../style/i/order/icon-phone.png');
 const mailImage = require('./../../../style/i/order/icon-mail.png');
@@ -151,7 +152,6 @@ class Order extends Component {
         const singleCacheBack = parseFloat(row.cashback);
 
         return <div>
-
             <h3 className="section__header">Информация о тренировке</h3>
 
             <div className={style.input_block}>
@@ -159,18 +159,30 @@ class Order extends Component {
                     <span className={style.input_header_icon} style={{backgroundImage: 'url(' + mapPinImage + ')'}}/>
                     Филиал клуба
                 </h3>
-                <input className={style.input_node} type="text" defaultValue={'Яковопольский переулок, 17'} disabled/>
+                <input className={style.input_node} type="text" defaultValue={fitnessClub.address} disabled/>
             </div>
             <div className={style.input_block}>
                 <h3 className={style.input_label}>
                     <span className={style.input_header_icon} style={{backgroundImage: 'url(' + trainingImage + ')'}}/>
-                    Тренировка
+                    Абонемент
                 </h3>
                 <input
                     className={style.input_node} type="text"
-                    defaultValue={'Пробное занятие по стрип-пластике (60 руб.)'} disabled/>
+                    defaultValue={row.title + ' - ' + singlePrice + ' руб.'} disabled/>
+            </div>
+            <div className={style.input_block}>
+                <h3 className={style.input_label}>
+                    <span className={style.input_header_icon} style={{backgroundImage: 'url(' + timeImage + ')'}}/>
+                    Время действия
+                </h3>
+                <input
+                    className={style.input_node} type="text"
+                    defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
+                    ', Сб-Вс: ' + reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)}
+                    disabled/>
             </div>
             <div className={style.arrow_block_wrapper}>
+                {/*
                 <div className={style.input_block + ' ' + style.input_block__arrow}>
                     <h3 className={style.input_label}>День</h3>
                     <input className={style.input_node} type="text" defaultValue={'7 июня'} disabled/>
@@ -179,6 +191,7 @@ class Order extends Component {
                     <h3 className={style.input_label}>Время</h3>
                     <input className={style.input_node} type="text" defaultValue={'20 : 00 '} disabled/>
                 </div>
+                */}
                 <div className={style.input_block + ' ' + style.input_block__arrow}>
                     <h3 className={style.input_label}>Кол-во человек</h3>
                     <div className={style.input_node__number}>
@@ -338,7 +351,7 @@ class Order extends Component {
             <h4 className={cardStyle.your_order}>Ваш заказ:</h4>
             <p className={cardStyle.order_data_item}>
                 {/* Тренировка: <span>Пробное занятие по стрип-пластике</span>*/}
-                Абонемент: <span>{fitnessClub.title}</span>
+                Абонемент: <span>{row.title}</span>
             </p>
             <p className={cardStyle.order_data_item}>
                 Адрес: <span>{fitnessClub.address}</span>
@@ -358,7 +371,7 @@ class Order extends Component {
             <p className={cardStyle.order_data_item}>
                 Время действия:&nbsp;
                 <span>
-                    Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)}
+                    Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
                     <br/>
                     Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
                 </span>
@@ -387,7 +400,7 @@ class Order extends Component {
 */}
 
             <h5 className={cardStyle.full_cost}>
-                Итоговая цена: {(state.qty * singlePrice).toFixed(2)} руб.
+                Итоговая цена: {(state.qty * singlePrice).toFixed(2)}&nbsp;руб.
             </h5>
 
             <span className="hidden">--- FIXME:LINK ---</span>

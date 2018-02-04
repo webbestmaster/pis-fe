@@ -176,6 +176,7 @@ body {
 .input_node__number {
     display: block;
     position: relative;
+    max-width: 176px;
     .input_node {
         display: block;
         box-sizing: border-box;

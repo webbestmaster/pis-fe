@@ -128,8 +128,7 @@ class Description extends Component {
                         <div className={style.description_info_item}>
                             <h3 className={style.description_info_item_header}>Время действия:</h3>
                             <p className={style.description_info_item_text}>
-                                Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)}
-                                &nbsp;
+                                Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
                                 Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
                             </p>
                         </div>
