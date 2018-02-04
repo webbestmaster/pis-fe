@@ -11,6 +11,7 @@ import {withRouter} from 'react-router-dom';
 import {formatPhoneBY} from '../../helper/format';
 import {resolveImagePath} from '../../helper/path-x';
 import {reduceSeconds} from '../../helper/date';
+import * as authAction from '../auth/action';
 
 const globalAppConst = require('./../../app-const.json');
 
@@ -69,10 +70,34 @@ class Order extends Component {
     componentDidMount() {
         const view = this;
         const {props, state} = view;
+        const {auth} = props;
 
         fetchX(globalAppConst.pageDataUrl.subscription.replace('{{subscriptionId}}', props.match.params.id))
             .then(({data}) => view.setState({pageData: data}, () => view.initSwiper()))
             .catch(console.error);
+
+        if (auth.login.isLogin) {
+            return;
+        }
+
+        props
+            .getSessionState()
+            .then(() => {
+                if (view.props.auth.login.isLogin) {
+                    return;
+                }
+
+                (function wait() {
+                    if (view.props.auth.login.isLogin) {
+                        return;
+                    }
+
+                    if (view.props.auth.openPopup === null) {
+                        props.openPopupLogin();
+                    }
+                    setTimeout(wait, 100);
+                })();
+            });
     }
 
     onBlurValidatePhone() {
@@ -213,6 +238,17 @@ class Order extends Component {
     }
 
     renderUserInfo() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+        const {user} = auth.login.data;
+        const {pageData, qty} = state;
+        const {row} = pageData;
+        const {fitnessClub} = row;
+        const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
+        const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
+        const singleCacheBack = parseFloat(row.cashback);
+
         return <div>
             <h3 className="section__header">Личные данные</h3>
             <div className={style.input_block}>
@@ -221,12 +257,13 @@ class Order extends Component {
                     <span
                         className={style.input_header_icon}
                         style={{backgroundImage: 'url(' + faceImage + ')'}}/>
-                    Фамилия Имя Отчество
+                    Имя Фамилия
                 </h3>
                 <input
                     className={style.input_node}
                     type="text"
-                    value="Иванов Иван" disabled/>
+                    defaultValue={user.first_name + ' ' + user.last_name}
+                    disabled/>
             </div>
             <div className={style.input_block}>
                 <span className={style.input_block__phone_prefix}>{globalAppConst.phone.by.prefix}</span>
@@ -238,10 +275,20 @@ class Order extends Component {
                     Телефон
                     <span className="main-color">&nbsp;*</span>
                 </h3>
-                <input
-                    className={style.input_node + ' ' + style.input_node__phone}
-                    type="text"
-                    placeholder="XX XXX XX XX"/>
+                {user.phone ?
+                    <input
+                        className={style.input_node + ' ' + style.input_node__phone}
+                        type="text"
+                        value={user.phone
+                            .replace('+', '')
+                            .replace(globalAppConst.phone.by.prefixClean, '')
+                            .trim()}
+                        disabled/> :
+                    <input
+                        className={style.input_node + ' ' + style.input_node__phone}
+                        type="text"
+                        placeholder="XX XXX XX XX"/>
+                }
             </div>
 
             <CheckboxLabel
@@ -260,16 +307,18 @@ class Order extends Component {
                 </h3>
                 <input
                     className={style.input_node}
-                    value="user@mail.com"
+                    value={user.email}
                     type="text"
                     disabled/>
             </div>
+            {/*
             <CheckboxLabel
                 ref="mailingPromotion"
                 label={{className: style.checkbox_label_subscribe}}
                 input={{ref: 'input', defaultChecked: false}}>
                 Хочу получать новости и спецпредложения
             </CheckboxLabel>
+            */}
 
             <div className={style.line}/>
 
@@ -357,7 +406,6 @@ class Order extends Component {
                 Адрес: <span>{fitnessClub.address}</span>
             </p>
 
-
             {/*
             <h3 className={style.description_info_item_header}>Время действия:</h3>
             <p className={style.description_info_item_text}>
@@ -365,8 +413,7 @@ class Order extends Component {
                 &nbsp;
                 Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
             </p>
-*/}
-
+            */}
 
             <p className={cardStyle.order_data_item}>
                 Время действия:&nbsp;
@@ -376,11 +423,13 @@ class Order extends Component {
                     Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
                 </span>
             </p>
+
             {/*
             <p className={cardStyle.order_data_item}>
                 Время: <span>20:00</span>
             </p>
-*/}
+            */}
+
             <p className={cardStyle.order_data_item}>
                 Кол-во человек: <span>{state.qty}</span>
             </p>
@@ -397,7 +446,7 @@ class Order extends Component {
                     <p className={style.card_cost}>Цена: {row.price}</p>
                     <br/>
                 </div>}
-*/}
+            */}
 
             <h5 className={cardStyle.full_cost}>
                 Итоговая цена: {(state.qty * singlePrice).toFixed(2)}&nbsp;руб.
@@ -411,11 +460,11 @@ class Order extends Component {
         </div>;
     }
 
-    render() {
+    render() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {pageData} = state;
-        const {app} = props;
+        const {app, auth} = props;
 
         if (pageData === null) {
             return null;
@@ -459,10 +508,10 @@ class Order extends Component {
                     {view.renderOrderInfo()}
                 </TabPanel>
                 <TabPanel className={style.tab_panel}>
-                    {view.renderUserInfo()}
+                    {auth.login.isLogin ? view.renderUserInfo() : null}
                 </TabPanel>
                 <TabPanel className={style.tab_panel}>
-                    {view.renderPayingInfo()}
+                    {auth.login.isLogin ? view.renderPayingInfo() : null}
                 </TabPanel>
 
                 {globalAppConst.mobileWidth >= app.screen.width ?
@@ -478,13 +527,13 @@ class Order extends Component {
 
 export default withRouter(connect(
     state => ({
-        app: state.app
-        // auth: state.auth
+        app: state.app,
+        auth: state.auth
     }),
     {
         // login: authAction.login,
-        // getSessionState: authAction.getSessionState,
-        // openPopupPromo: authAction.openPopupPromo
+        getSessionState: authAction.getSessionState,
+        openPopupLogin: authAction.openPopupLogin
     }
 )(Order));
 
