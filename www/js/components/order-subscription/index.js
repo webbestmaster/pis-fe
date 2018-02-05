@@ -15,6 +15,7 @@ import * as authAction from '../auth/action';
 import {Link} from 'react-router-dom';
 
 const globalAppConst = require('./../../app-const.json');
+const authConst = require('./../auth/const.json');
 
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
@@ -164,7 +165,8 @@ class Order extends Component {
         const userPhone = (globalAppConst.phone.by.prefix + view.refs.phone.value).replace(/\D/g, '');
 
         return fetch(
-            globalAppConst.pageDataUrl.makeSubscriptionOrder
+            globalAppConst.pageDataUrl.host +
+            authConst.url.makeSubscriptionOrder
                 .replace('{{orderType}}', orderType)
                 .replace('{{amount}}', amount)
                 .replace('{{subscriptionId}}', subscriptionId)

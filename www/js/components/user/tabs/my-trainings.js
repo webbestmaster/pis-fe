@@ -14,8 +14,20 @@ class MyTrainings extends Component {
         return <div className="hug">
             <h3 className="section__header">Мои тренировки</h3>
 
+            <pre>
+                нашёл баг,
+                http://site.katran.by/member/user/home
+                мне приходят мои тренировки, НО
+                fitness_club_subscription.title - тут приходит название абонемента, а НЕ название клуба
+                название клуба - вообще не приходит
+
+            </pre>
+            <br/>
+            <br/>
+            <div className="json">{JSON.stringify(props.auth.homeData)}</div>
+
             {/* FIXME: DO IT */}
-            <table className={tableStyle.table + ' disabled'}>
+            <table className={tableStyle.table}>
                 <thead className={tableStyle.t_head}>
                     <tr>
                         <td>Дата</td>

@@ -10,9 +10,7 @@
         "subscription": "http://site.katran.by/api/subscription/getFullInfo?id={{subscriptionId}}",
         "trainings": "http://site.katran.by/api/training/index",
         "training": "http://site.katran.by/api/training/getFullInfo?id={{trainingId}}",
-        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}",
-        "makeSubscriptionOrder": "http://site.katran.by/member/order/create?productType=subscription&orderType={{orderType}}&amount={{amount}}&subscriptionId={{subscriptionId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}",
-        "___makeTrainingOrder": "http://site.katran.by/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}................"
+        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}"
     },
     "phone": {
         "by": {

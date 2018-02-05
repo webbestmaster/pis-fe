@@ -11,6 +11,13 @@ export default combineReducers({
 
         return {...login, ...payload.login};
     },
+    homeData: (homeData = {}, {type, payload}) => {
+        if (type !== authConst.type.homeData) {
+            return homeData;
+        }
+
+        return {...homeData, ...payload.homeData};
+    },
     registration: (registration = {}, {type, payload}) => {
         if (type !== authConst.type.registration) {
             return registration;

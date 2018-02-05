@@ -20,6 +20,21 @@ export function getSessionState() {
         });
 }
 
+export function getUserHomeData() {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.userHomeData,
+        {credentials: 'include', method: 'GET'})
+        .then(data => data.json())
+        .then(parsedData => {
+            if (!parsedData.data.user || parsedData.data.user instanceof Array && parsedData.data.user.length === 0) {
+                return null;
+            }
+
+            dispatch({type: authConst.type.homeData, payload: {homeData: parsedData}});
+            return parsedData;
+        });
+}
+
 export function login(email, password) {
     if (!email || !password) {
         return () => console.warn('No email or password');

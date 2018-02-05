@@ -13,7 +13,7 @@ import * as authAction from '../auth/action';
 const Swiper = require('./../../lib/swiper');
 
 class User extends Component {
-    constructor(props, state) {
+    constructor() {
         super();
 
         const view = this;
@@ -29,9 +29,12 @@ class User extends Component {
 
     componentDidMount() {
         const view = this;
+        const {state, props} = view;
 
         // instead of setTimeout, need to fix swiper :(
         view.initSwiper();
+
+        props.getUserHomeData().then(data => console.warn(data));
     }
 
     initSwiper() {
@@ -86,6 +89,7 @@ export default withRouter(connect(
         auth: state.auth
     }),
     {
+        getUserHomeData: authAction.getUserHomeData
     }
 )(User));
 
