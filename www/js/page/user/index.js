@@ -1,3 +1,4 @@
+/* global setTimeout */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -12,12 +13,42 @@ import userShortInfoStyle from './../../components/user-short-info/style.m.scss'
 import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
+import * as authAction from '../../components/auth/action';
 
 const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/user/top-banner.png');
 const authConst = require('./../../components/auth/const.json');
 
 class UserPage extends Component {
+    componentDidMount() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+
+        if (auth.login.isLogin) {
+            return;
+        }
+
+        props
+            .getSessionState()
+            .then(() => {
+                if (view.props.auth.login.isLogin) {
+                    return;
+                }
+
+                (function wait() {
+                    if (view.props.auth.login.isLogin) {
+                        return;
+                    }
+
+                    if (view.props.auth.openPopup === null) {
+                        props.openPopupLogin();
+                    }
+                    setTimeout(wait, 100);
+                })();
+            });
+    }
+
     renderUser() {
         const view = this;
         const {props, state} = view;
@@ -93,6 +124,9 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {}
+    {
+        getSessionState: authAction.getSessionState,
+        openPopupLogin: authAction.openPopupLogin
+    }
 )(UserPage);
 

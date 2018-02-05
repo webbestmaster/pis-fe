@@ -171,10 +171,8 @@ class Order extends Component {
                 .replace('{{needCall}}', needCall)
                 .replace('{{userPhone}}', userPhone),
             {credentials: 'include', method: 'POST'})
-            .then(data => data.json())
-            .then(parsedData => {
-                console.log(parsedData);
-            });
+            // .then(data => data.json())
+            .then(() => view.props.history.push('/user/tab-index/1'));
     }
 
     initSwiper() {

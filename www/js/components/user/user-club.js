@@ -1,6 +1,6 @@
 /* global requestAnimationFrame, window, setTimeout, Event */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
@@ -14,7 +14,7 @@ import cnx from '../../helper/cnx';
 
 const Swiper = require('./../../lib/swiper');
 
-export default class UserClub extends Component {
+class UserClub extends Component {
     constructor() {
         super();
 
@@ -64,7 +64,8 @@ export default class UserClub extends Component {
                 className="section__tabs-wrapper">
                 <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
                     <TabList className="swiper-wrapper">
-                        <Tab onClick={() => view.setState({tabIndex: 0})}
+                        <Tab
+                            onClick={() => view.setState({tabIndex: 0})}
                             className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
                             <span className={tabsStyle.tab_text_mark}>3</span>
                         </Tab>
@@ -107,3 +108,12 @@ export default class UserClub extends Component {
         </div>;
     }
 }
+
+export default withRouter(connect(
+    state => ({
+        app: state.app,
+        auth: state.auth
+    }),
+    {
+    }
+)(UserClub));

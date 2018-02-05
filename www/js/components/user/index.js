@@ -1,6 +1,6 @@
 /* global requestAnimationFrame, window, setTimeout, Event */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
@@ -13,7 +13,7 @@ import * as authAction from '../auth/action';
 const Swiper = require('./../../lib/swiper');
 
 class User extends Component {
-    constructor() {
+    constructor(props, state) {
         super();
 
         const view = this;
@@ -53,14 +53,11 @@ class User extends Component {
         const {props, state} = view;
         const {auth} = props;
         const {login} = auth;
-
-        if (login.code !== 200) {
-            return null;
-        }
+        const defaultIndex = parseInt(props.match.params.tabIndex, 10) || 0;
 
         return <div>
             <Tabs
-                defaultIndex={0}
+                defaultIndex={defaultIndex}
                 className="section__tabs-wrapper">
                 <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
                     <TabList className="swiper-wrapper">
@@ -83,12 +80,12 @@ class User extends Component {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     state => ({
         app: state.app,
         auth: state.auth
     }),
     {
     }
-)(User);
+)(User));
 

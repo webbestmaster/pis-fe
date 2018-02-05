@@ -49,6 +49,7 @@ export default () => [
         <Route path='/training/:trainingId' component={Training} exact/>
 
         <Route path='/user/' component={User} exact/>
+        <Route path='/user/tab-index/:tabIndex' component={User} exact/>
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
         <Route path='/terms/' component={Terms} exact/>
 
