@@ -1,4 +1,4 @@
-/* global window, setTimeout, Event */
+/* global window, setTimeout, Event, fetch */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
@@ -36,6 +36,7 @@ class Order extends Component {
         const view = this;
 
         view.state = {
+            orderType: 'reservation',
             pageData: null,
             partIndex: 0,
             qty: 1,
@@ -149,13 +150,31 @@ class Order extends Component {
 
     submitOrder() {
         const view = this;
+        const {state, props, refs} = view;
 
         if (!view.validateForm()) {
             view.setState({partIndex: 1});
-            return;
+            return Promise.reject({error: {message: 'NOT valid form.'}});
         }
 
-        console.log('send data');
+        const {orderType} = state;
+        const amount = state.qty;
+        const subscriptionId = state.pageData.row.id;
+        const needCall = refs.phoneCallBack.refs.input.checked ? 1 : 0;
+        const userPhone = (globalAppConst.phone.by.prefix + view.refs.phone.value).replace(/\D/g, '');
+
+        return fetch(
+            globalAppConst.pageDataUrl.makeSubscriptionOrder
+                .replace('{{orderType}}', orderType)
+                .replace('{{amount}}', amount)
+                .replace('{{subscriptionId}}', subscriptionId)
+                .replace('{{needCall}}', needCall)
+                .replace('{{userPhone}}', userPhone),
+            {credentials: 'include', method: 'POST'})
+            .then(data => data.json())
+            .then(parsedData => {
+                console.log(parsedData);
+            });
     }
 
     initSwiper() {
@@ -241,7 +260,8 @@ class Order extends Component {
             </div>
             <div
                 onClick={() => view.setState({partIndex: 1})}
-                className={style.navigate_button}>Перейти к личным данным</div>
+                className={style.navigate_button}>Перейти к личным данным
+            </div>
         </div>;
     }
 
@@ -371,7 +391,8 @@ class Order extends Component {
                     }
                     view.setState({partIndex: 1});
                 }}
-                className={style.navigate_button}>Способы оплаты</div>
+                className={style.navigate_button}>Способы оплаты
+            </div>
         </div>;
     }
 
@@ -400,8 +421,11 @@ class Order extends Component {
                 </h3>
                 <RadioLabel
                     ref="cacheRadioInput"
-                    input={{name: 'payType', ref: 'input', defaultChecked: true}}
-                    label={{className: style.radio_label_pay_type}}>
+                    input={{name: 'payType', ref: 'input', defaultChecked: state.orderType === 'reservation'}}
+                    label={{
+                        className: style.radio_label_pay_type,
+                        onClick: () => view.setState({orderType: 'reservation'})
+                    }}>
                     Оплатить наличными на месте
                 </RadioLabel>
 
@@ -419,8 +443,11 @@ class Order extends Component {
                 </h3>
                 <RadioLabel
                     ref="bonusRadioInput"
-                    input={{name: 'payType', ref: 'input', defaultChecked: false}}
-                    label={{className: style.radio_label_pay_type}}>
+                    input={{name: 'payType', ref: 'input', defaultChecked: state.orderType === 'cashback'}}
+                    label={{
+                        className: style.radio_label_pay_type,
+                        onClick: () => view.setState({orderType: 'cashback'})
+                    }}>
                     <span className="hidden">--- FIXME:LINK ---</span>
                     Оплатить <Link to={'/'} target="_blank" className={style.inner_link}>бонусами</Link> через наш
                     сервис
@@ -432,7 +459,8 @@ class Order extends Component {
 
             <div
                 onClick={() => view.submitOrder()}
-                className={style.navigate_button}>Забронировать</div>
+                className={style.navigate_button}>Забронировать
+            </div>
         </div>;
     }
 
@@ -526,10 +554,12 @@ class Order extends Component {
                             view.submitOrder();
                             break;
 
-                        default: console.warn('How it possible o_O ?');
+                        default:
+                            console.warn('How it possible o_O ?');
                     }
                 }}
-                className={cardStyle.button}>забронировать</div>
+                className={cardStyle.button}>забронировать
+            </div>
             <p className={cardStyle.cash_back}>Бонус:&nbsp;
             <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
             </p>
