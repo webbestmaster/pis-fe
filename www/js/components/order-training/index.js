@@ -182,16 +182,20 @@ class Order extends Component {
 
         const {orderType} = state;
         const amount = state.qty;
-        const subscriptionId = state.pageData.row.id;
+        const trainingId = state.pageData.row.id;
+        const trainingScheduleId = props.match.params.scheduleId;
+        const dayId = props.match.params.dayId;
         const needCall = refs.phoneCallBack.refs.input.checked ? 1 : 0;
         const userPhone = (globalAppConst.phone.by.prefix + view.refs.phone.value).replace(/\D/g, '');
 
         return fetch(
             globalAppConst.pageDataUrl.host +
-            authConst.url.makeSubscriptionOrder
+            authConst.url.makeTrainingOrder
                 .replace('{{orderType}}', orderType)
                 .replace('{{amount}}', amount)
-                .replace('{{subscriptionId}}', subscriptionId)
+                .replace('{{trainingId}}', trainingId)
+                .replace('{{trainingScheduleId}}', trainingScheduleId)
+                .replace('{{dayId}}', dayId)
                 .replace('{{needCall}}', needCall)
                 .replace('{{userPhone}}', userPhone),
             {credentials: 'include', method: 'POST'})
@@ -246,10 +250,8 @@ class Order extends Component {
         const trainingSchedule = view.findSchedule();
         const trainingDayId = parseInt(props.match.params.dayId, 10);
         const trainingDay = find(trainingSchedule, {dayId: trainingDayId});
-
         const showDayTimeItem = find(defaultItems, timeItem =>
             trainingDayId === weekDaysMap[new Date(timeItem).getDay()].day);
-
         const currentDate = new Date(showDayTimeItem);
         const showDay = currentDate.getDate() + ' ' + yearMonthsMap[currentDate.getMonth()];
 
@@ -520,8 +522,13 @@ class Order extends Component {
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
         const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
         const singleCacheBack = parseFloat(row.cashback);
-
-        return null;
+        const trainingSchedule = view.findSchedule();
+        const trainingDayId = parseInt(props.match.params.dayId, 10);
+        const trainingDay = find(trainingSchedule, {dayId: trainingDayId});
+        const showDayTimeItem = find(defaultItems, timeItem =>
+            trainingDayId === weekDaysMap[new Date(timeItem).getDay()].day);
+        const currentDate = new Date(showDayTimeItem);
+        const showDay = currentDate.getDate() + ' ' + yearMonthsMap[currentDate.getMonth()];
 
         return <div className={cardStyle.card}>
             <h3 className={cardStyle.header} title={fitnessClub.title}>
@@ -534,59 +541,25 @@ class Order extends Component {
             </h3>
             <h4 className={cardStyle.your_order}>Ваш заказ:</h4>
             <p className={cardStyle.order_data_item}>
-                {/* Тренировка: <span>Пробное занятие по стрип-пластике</span>*/}
-                Абонемент: <span>{row.title}</span>
+                Тренировка: <span>{row.title}</span>
             </p>
             <p className={cardStyle.order_data_item}>
                 Адрес: <span>{fitnessClub.address}</span>
             </p>
-
-            {/*
-            <h3 className={style.description_info_item_header}>Время действия:</h3>
-            <p className={style.description_info_item_text}>
-                Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)}
-                &nbsp;
-                Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
-            </p>
-            */}
-
             <p className={cardStyle.order_data_item}>
-                Время действия:&nbsp;
-                <span>
-                    Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
-                    <br/>
-                    Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
+                Дата: <span>{showDay}</span>
+            </p>
+            <p className={cardStyle.order_data_item}>
+                Время: <span>
+                    {reduceSeconds(trainingDay.time_from) + ' - ' + reduceSeconds(trainingDay.time_to)}
                 </span>
             </p>
-
-            {/*
-            <p className={cardStyle.order_data_item}>
-                Время: <span>20:00</span>
-            </p>
-            */}
-
             <p className={cardStyle.order_data_item}>
                 Кол-во человек: <span>{state.qty}</span>
             </p>
-
-            {/*
-            {promotion ?
-                <div>
-                    <p className={style.card_cost}>Цена со скидкой:&nbsp;
-                        {(row.price - promotion.discount).toFixed(2)} руб.
-                    </p>
-                    <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
-                </div> :
-                <div>
-                    <p className={style.card_cost}>Цена: {row.price}</p>
-                    <br/>
-                </div>}
-            */}
-
             <h5 className={cardStyle.full_cost}>
                 Итоговая цена: {(state.qty * singlePrice).toFixed(2)}&nbsp;руб.
             </h5>
-
             <div
                 onClick={() => {
                     switch (state.partIndex) {
@@ -671,10 +644,10 @@ class Order extends Component {
                     {view.renderOrderInfo()}
                 </div>
                 <div {...cnx(style.tab_panel, {hidden: state.partIndex !== 1})}>
-                    {/* {auth.login.isLogin ? view.renderUserInfo() : null}*/}
+                    {auth.login.isLogin ? view.renderUserInfo() : null}
                 </div>
                 <div {...cnx(style.tab_panel, {hidden: state.partIndex !== 2})}>
-                    {/* {auth.login.isLogin ? view.renderPayingInfo() : null}*/}
+                    {auth.login.isLogin ? view.renderPayingInfo() : null}
                 </div>
 
                 {globalAppConst.mobileWidth >= app.screen.width ?

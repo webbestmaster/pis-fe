@@ -15,8 +15,7 @@
         "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}",
         "createClubAnswer": "/member/feedback/answer?id={{reviewId}}&answer={{answer}}",
         "makeSubscriptionOrder": "/member/order/create?productType=subscription&orderType={{orderType}}&amount={{amount}}&subscriptionId={{subscriptionId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}",
-        "___makeTrainingOrder": "/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}................",
-        "____createClubAnswer___not_used": "/member/feedback/approve?id={{reviewId}}&answer={{answer}}"
+        "makeTrainingOrder": "/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}&trainingId={{trainingId}}&trainingScheduleId={{trainingScheduleId}}&day={{dayId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}"
     },
     "type": {
         "login": "auth__login",
