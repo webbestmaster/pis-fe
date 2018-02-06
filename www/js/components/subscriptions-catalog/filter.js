@@ -143,6 +143,10 @@ class Filter extends Component {
             return null;
         }
 
+        if (props.isHidden === true) {
+            return null;
+        }
+
         const {mainFilter, additionFilter, categoryFilter} = pageData.data;
 
         return <div className="clubs-catalog-filter">

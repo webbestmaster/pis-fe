@@ -32,8 +32,7 @@ class SubscriptionsCatalog extends Component {
         const {children, app, subscriptionsCatalog} = props;
 
         return <div className="clubs-catalog subscriptions-catalog hug">
-            {/* FIXME: this is need to initialize usual filter */}
-            <div className="hidden"><Filter/></div>
+            <Filter isHidden={true}/>
             <Sort/>
             {app.screen.width > globalAppConst.tabletWidth ?
                 <div className="clubs-catalog__left-part">
