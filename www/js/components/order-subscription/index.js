@@ -202,7 +202,7 @@ class Order extends Component {
         const singleCacheBack = parseFloat(row.cashback);
 
         return <div>
-            <h3 className="section__header">Информация о тренировке</h3>
+            <h3 className="section__header">Информация об абонементе</h3>
 
             <div className={style.input_block}>
                 <h3 className={style.input_label}>
@@ -538,7 +538,6 @@ class Order extends Component {
                 Итоговая цена: {(state.qty * singlePrice).toFixed(2)}&nbsp;руб.
             </h5>
 
-            <span className="hidden">--- FIXME:LINK ---</span>
             <div
                 onClick={() => {
                     switch (state.partIndex) {
