@@ -4,6 +4,7 @@ require('./polyfill/json3');
 require('./polyfill/es6-shim');
 require('./polyfill/es6-sham.min');
 require('./polyfill/es7-shim');
+require('whatwg-fetch');
 import 'react-datepicker/dist/react-datepicker.css';
 
 /* global window */

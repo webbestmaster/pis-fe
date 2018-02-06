@@ -1,4 +1,5 @@
 /* global window, IS_PRODUCTION, IS_DEVELOPMENT */
+require('./lib/initialize-environment');
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter, HashRouter, hashRouter} from 'react-router-dom';
@@ -13,7 +14,6 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {initAppScreenHelper} from './components/app/helper';
 
 import styles from 'style/css/_root.scss'; // do not remove me
-require('./lib/initialize-environment');
 
 // import * as reducers from './reducer';
 import * as reducers from './reducer';
