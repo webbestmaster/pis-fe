@@ -183,6 +183,6 @@ if (IS_PRODUCTION) {
     );
 }
 
-webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
