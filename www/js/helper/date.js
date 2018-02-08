@@ -39,7 +39,7 @@ export function dateToDay(time) {
 }
 
 export function reduceSeconds(date) {
-    return date.substr(0, 5);
+    return date.substr(0, 5).replace(/^0/, '');
 }
 
 const months = [

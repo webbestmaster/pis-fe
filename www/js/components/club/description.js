@@ -218,7 +218,15 @@ class Description extends Component {
                                 <div className={style.filial_details_block}>
                                     <h3 className={style.filial_details_block_h}>Время работы:</h3>
                                     <p className={style.filial_details_block_p}>
-                                            Пн-Вс: {reduceSeconds(filial.work_from)} - {reduceSeconds(filial.work_to)}
+                                            Пн-Пт:&nbsp;
+                                        {reduceSeconds(filial.work_from)}
+                                        &nbsp;-&nbsp;
+                                        {reduceSeconds(filial.work_to)}
+                                        <br/>
+                                            Сб-Вс:&nbsp;
+                                        {reduceSeconds(filial.work_weekend_from)}
+                                        &nbsp;-&nbsp;
+                                        {reduceSeconds(filial.work_weekend_to)}
                                     </p>
                                 </div>
                                 <div className={style.filial_details_block__w100}>
