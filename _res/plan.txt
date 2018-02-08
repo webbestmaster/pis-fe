@@ -16,17 +16,6 @@ https://www.npmjs.com/package/react-js-pagination
 
 5 - сделать так что бы было видно что можно свайпать - а то не понятно - читай скайп за 29.01.2018
 
-6 -
-[22:38:05] fitness_Dmitry Mamchyts: work_weekend_from
-           work_weekend_to
-           добавил эти поля в профиль клуба, это время работы по выходным, вроде как паша говорил что оно где-то должно быть
-[22:39:33] dmitry.turovtsov: когда это будет работать?
-[22:39:52] dmitry.turovtsov: http://site.katran.by/api/club/getFullInfo?id=1 - ты же сейчас этот урл имеешь ввиду?
-[22:40:36] fitness_Dmitry Mamchyts: не только
-[22:40:57] fitness_Dmitry Mamchyts: это доабвиться во все обьекты fitness_club
-
-
-
 
 /member/order/create?productType=subscription&orderType=reservation&amount=1&subscriptionId=1
 
