@@ -29,7 +29,7 @@ class MyTrainings extends Component {
                     .push(Object.assign({}, orderByType, {frontType: orderType}))));
 
         return allTypedOrders
-            .sort((orderA, orderB) => orderA.created_at > orderB.created_at ? 1 : -1);
+            .sort((orderA, orderB) => orderA.created_at > orderB.created_at ? -1 : 1);
     }
 
     getHumanOrderStatus(orderStatus) {
