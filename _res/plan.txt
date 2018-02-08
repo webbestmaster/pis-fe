@@ -1,6 +1,3 @@
-0 - прикрутить пагинцию - и вообще сделать таблицу в моих тренировках в кабинете пользователя
-https://www.npmjs.com/package/react-js-pagination
-
 1 - после того как мы сместим юзер шорт инфо в низ,
     поубирать лишние отступы в табе настрокий
     что бы не пришлось удлиннять юзер шорт инфо
@@ -9,38 +6,6 @@ https://www.npmjs.com/package/react-js-pagination
     https://gyazo.com/9145ebdcfe7416114e18fe0478c46434?token=533bdbcf025975825c85882138958da8.png
     https://i.gyazo.com/f81e003fd4d242ddaed6513ea82d8299.png
 
-3 - в личном кабинете простого пользователя в тренировках сделать 6 строк на страницу
-    добавить пагинацию аля гугл
+3 - для клуба во всех вкладках сделать по 8 строк
 
-4 - для клуба во всех вкладках сделать по 8 строк
-
-5 - сделать так что бы было видно что можно свайпать - а то не понятно - читай скайп за 29.01.2018
-
-
-/member/order/create?productType=subscription&orderType=reservation&amount=1&subscriptionId=1
-
-    productType=subscription
-    productType=training
-
-    const ORDER_TYPE_BY_CASHBACK = 'cashback';
-    const ORDER_TYPE_RESERVATION = 'reservation';
-        вот эти 2 ща работают
-    const ORDER_TYPE_ASSIST = 'assist'; - это на будущее
-
-        // subscription
-        $validator = \Validator::make($request->all(), [
-            'amount' => 'required|between:1,5',
-            'subscriptionId' => 'required|string',
-            'needCall' => 'sometimes|in:' . implode(',', array_keys(model\Order::getNeedCallHash())),
-            'orderUserPhone' => 'sometimes|min:10',
-        ])->validate();
-
-        // training
-        $validator = \Validator::make($request->all(), [
-            'amount' => 'required|between:1,5',
-            'trainingId' => 'required|string',
-            'trainingScheduleId' => 'required|min:1',
-            'day' => 'required|in:' . implode(',', array_keys(model\FitnessClubTrainingSchedule::getDaysHash())),
-            'needCall' => 'sometimes|in:' . implode(',', array_keys(model\Order::getNeedCallHash())),
-            'orderUserPhone' => 'sometimes|min:10',
-        ])->validate();
+4 - сделать так что бы было видно что можно свайпать - а то не понятно - читай скайп за 29.01.2018

@@ -5,6 +5,8 @@ import {resolveImagePath} from './../../../helper/path-x';
 import style from './../style.m.scss';
 import moment from 'moment/moment';
 import tableStyle from './../table.m.scss';
+import Pagination from 'react-js-pagination';
+import {getHumanOrderStatus} from './../helper';
 
 class MyTrainings extends Component {
     constructor() {
@@ -12,7 +14,13 @@ class MyTrainings extends Component {
 
         const view = this;
 
-        view.state = {};
+        view.state = {
+            activePage: 0
+        };
+
+        view.attr = {
+            itemsCountPerPage: 6
+        };
     }
 
     getOrders() {
@@ -32,35 +40,7 @@ class MyTrainings extends Component {
             .sort((orderA, orderB) => orderA.created_at > orderB.created_at ? -1 : 1);
     }
 
-    getHumanOrderStatus(orderStatus) {
-        const statusData = {
-            pending: {
-                cssClass: style.table__training_status_icon__in_progress,
-                status: 'Обработка',
-                description: 'Ожидайте подтверждения'
-            },
-            confirmed: {
-                cssClass: style.table__training_status_icon__taken,
-                status: 'Забронировано',
-                description: 'Клуб ждет вас'
-            },
-            declined: {
-                cssClass: style.table__training_status_icon__rejected,
-                status: 'Отклонено',
-                description: 'Выберите другое предложение'
-            },
-            approved: {
-                cssClass: style.table__training_status_icon__done,
-                status: 'Завершено',
-                description: 'Вам начислены бонусы'
-            }
-        };
-
-        return statusData[orderStatus] || {};
-    }
-
     renderTableRow(order) {
-        const view = this;
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
@@ -74,7 +54,7 @@ class MyTrainings extends Component {
             frontType
         } = order;
 
-        const humanStatus = view.getHumanOrderStatus(frontType);
+        const humanStatus = getHumanOrderStatus(frontType);
 
         return <tr key={id}>
             <td>{
@@ -89,7 +69,8 @@ class MyTrainings extends Component {
                     fitness_club_training.title // eslint-disable-line id-match, camelcase
             } (<span className="main-color">{
                 real_price // eslint-disable-line id-match, camelcase
-            } руб.</span>)</td>
+            } руб.</span>)
+            </td>
             {
                 order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
                     <td>На&nbsp;месте</td> :
@@ -108,10 +89,15 @@ class MyTrainings extends Component {
 
     renderTableBody() {
         const view = this;
-        const {props, state} = view;
+        const {props, state, attr} = view;
         const orders = view.getOrders();
+        const {activePage} = state;
+        const nexPage = activePage + 1;
+        const {itemsCountPerPage} = attr;
 
-        return orders.map(order => view.renderTableRow(order));
+        return orders
+            .slice(activePage * itemsCountPerPage, nexPage * itemsCountPerPage)
+            .map(order => view.renderTableRow(order));
     }
 
     render() {
@@ -121,6 +107,8 @@ class MyTrainings extends Component {
         if (!props.auth.homeData.data) {
             return null;
         }
+
+        const orders = view.getOrders();
 
         return <div className="hug">
             <h3 className="section__header">Мои тренировки</h3>
@@ -204,6 +192,21 @@ class MyTrainings extends Component {
                     */}
                 </tbody>
             </table>
+
+            {orders.length > view.attr.itemsCountPerPage ?
+                <Pagination
+                    activePage={view.state.activePage + 1}
+                    itemsCountPerPage={view.attr.itemsCountPerPage}
+                    totalItemsCount={orders.length}
+                    pageRangeDisplayed={5}
+                    onChange={activePage => view.setState({activePage: activePage - 1})}
+                    innerClass="pagination"
+                    activeClass="pagination__li--active"
+                    activeLinkClass="pagination__a--active"
+                    itemClass="pagination__li"
+                    linkClass="pagination__a"
+                /> :
+                null}
         </div>;
     }
 }
