@@ -166,9 +166,7 @@ if (IS_DEVELOPMENT) {
             minChunks: (jsModule, count) => {
                 const {context} = jsModule;
 
-                return context === null ||
-                    ['\\node_modules\\', 'js\\lib']
-                        .some(partOfPath => context.indexOf(partOfPath) !== -1);
+                return context === null || /(node_modules)|(lib)/.test(context);
             }
         })
     );
@@ -185,6 +183,6 @@ if (IS_PRODUCTION) {
     );
 }
 
-// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
