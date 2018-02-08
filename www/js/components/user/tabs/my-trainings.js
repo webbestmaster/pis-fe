@@ -15,12 +15,116 @@ class MyTrainings extends Component {
         view.state = {};
     }
 
+    getOrders() {
+        const view = this;
+        const {props, state} = view;
+        const {orders} = props.auth.homeData.data;
+        const orderTypeList = ['pending', 'confirmed', 'declined', 'approved'];
+
+        const allTypedOrders = [];
+
+        orderTypeList
+            .forEach(orderType => orders[orderType]
+                .forEach(orderByType => allTypedOrders
+                    .push(Object.assign({}, orderByType, {frontType: orderType}))));
+
+        return allTypedOrders
+            .sort((orderA, orderB) => orderA.created_at > orderB.created_at ? 1 : -1);
+    }
+
+    getHumanOrderStatus(orderStatus) {
+        const statusData = {
+            pending: {
+                cssClass: style.table__training_status_icon__in_progress,
+                status: 'Обработка',
+                description: 'Ожидайте подтверждения'
+            },
+            confirmed: {
+                cssClass: style.table__training_status_icon__taken,
+                status: 'Забронировано',
+                description: 'Клуб ждет вас'
+            },
+            declined: {
+                cssClass: style.table__training_status_icon__rejected,
+                status: 'Отклонено',
+                description: 'Выберите другое предложение'
+            },
+            approved: {
+                cssClass: style.table__training_status_icon__done,
+                status: 'Завершено',
+                description: 'Вам начислены бонусы'
+            }
+        };
+
+        return statusData[orderStatus] || {};
+    }
+
+    renderTableRow(order) {
+        const view = this;
+        const {
+            id,
+            created_at, // eslint-disable-line id-match, camelcase
+            fitness_club, // eslint-disable-line id-match, camelcase
+            fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
+            fitness_club_subscription, // eslint-disable-line id-match, camelcase
+            fitness_club_training, // eslint-disable-line id-match, camelcase
+            order_type, // eslint-disable-line id-match, camelcase
+            real_price, // eslint-disable-line id-match, camelcase
+            cashback,
+            frontType
+        } = order;
+
+        const humanStatus = view.getHumanOrderStatus(frontType);
+
+        return <tr key={id}>
+            <td>{
+                moment(created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                fitness_club.title // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
+                    fitness_club_subscription.title : // eslint-disable-line id-match, camelcase
+                    fitness_club_training.title // eslint-disable-line id-match, camelcase
+            } (<span className="main-color">{
+                real_price // eslint-disable-line id-match, camelcase
+            } руб.</span>)</td>
+            {
+                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                    <td>На&nbsp;месте</td> :
+                    <td>Бонусами</td>
+            }
+            <td>+{parseFloat(cashback).toFixed(2)}</td>
+            <td className={tableStyle.vertical_free}>
+                <div className={style.table__training_status}>
+                    <span className={style.table__training_status_icon + ' ' + humanStatus.cssClass}/>
+                    {humanStatus.status}
+                </div>
+            </td>
+            <td>{humanStatus.description}</td>
+        </tr>;
+    }
+
+    renderTableBody() {
+        const view = this;
+        const {props, state} = view;
+        const orders = view.getOrders();
+
+        return orders.map(order => view.renderTableRow(order));
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
 
+        if (!props.auth.homeData.data) {
+            return null;
+        }
+
         return <div className="hug">
             <h3 className="section__header">Мои тренировки</h3>
+
             {/* FIXME: DO IT */}
             <table className={tableStyle.table}>
                 <thead className={tableStyle.t_head}>
@@ -35,6 +139,8 @@ class MyTrainings extends Component {
                     </tr>
                 </thead>
                 <tbody className={tableStyle.t_body}>
+                    {view.renderTableBody()}
+                    {/*
                     <tr>
                         <td>01.01.2017</td>
                         <td>Фитнес клуб “Аргумент”</td>
@@ -44,7 +150,7 @@ class MyTrainings extends Component {
                         <td className={tableStyle.vertical_free}>
                             <div className={style.table__training_status}>
                                 <span className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__in_progress}/>
+                                style.table__training_status_icon__in_progress}/>
                             Обработка
                             </div>
                         </td>
@@ -59,7 +165,7 @@ class MyTrainings extends Component {
                         <td className={tableStyle.vertical_free}>
                             <div className={style.table__training_status}>
                                 <span className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__taken}/>
+                                style.table__training_status_icon__taken}/>
                             Забронировано
                             </div>
                         </td>
@@ -74,7 +180,7 @@ class MyTrainings extends Component {
                         <td className={tableStyle.vertical_free}>
                             <div className={style.table__training_status}>
                                 <span className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__rejected}/>
+                                style.table__training_status_icon__rejected}/>
                             Отклонено
                             </div>
                         </td>
@@ -89,12 +195,13 @@ class MyTrainings extends Component {
                         <td className={tableStyle.vertical_free}>
                             <div className={style.table__training_status}>
                                 <span className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__done}/>
+                                style.table__training_status_icon__done}/>
                             Завершено
                             </div>
                         </td>
                         <td>Вам начислены бонусы</td>
                     </tr>
+                    */}
                 </tbody>
             </table>
         </div>;
