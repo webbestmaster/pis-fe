@@ -10,6 +10,8 @@
         "sessionState": "/api/home/ping",
         "leaveReview": "/member/feedback/add?fitness_club_id={{clubId}}&rating={{rating}}&description={{description}}",
         "userHomeData": "/member/user/home",
+        "clubHomeData": "/member/club/home",
+        "clubFeedbackList": "/member/feedback/list",
         "updateProfileImage": "/member/user/updateProfileImage",
         "addToFavorite": "/member/favorite/add?type={{type}}&item_id={{itemId}}",
         "removeFromFavorite": "/member/favorite/remove?id={{favoriteItemId}}",
@@ -20,6 +22,8 @@
     "type": {
         "login": "auth__login",
         "homeData": "auth__home-data",
+        "clubData": "auth__club-data",
+        "clubFeedback": "auth__club-feedback-list",
         "registration": "auth__registration",
         "forgotPassword": "auth__forgot-password",
         "resetPassword": "auth__reset-password",

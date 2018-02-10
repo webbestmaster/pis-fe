@@ -30,7 +30,35 @@ export function getUserHomeData() {
                 return null;
             }
 
+            console.log('user', parsedData);
+
             dispatch({type: authConst.type.homeData, payload: {homeData: parsedData}});
+            return parsedData;
+        });
+}
+
+export function getClubHomeData() {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.clubHomeData,
+        {credentials: 'include', method: 'GET'})
+        .then(data => data.json())
+        .then(parsedData => {
+            console.log('club data', parsedData);
+
+            dispatch({type: authConst.type.clubData, payload: {clubData: parsedData}});
+            return parsedData;
+        });
+}
+
+export function getClubFeedbackList() {
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.clubFeedbackList,
+        {credentials: 'include', method: 'GET'})
+        .then(data => data.json())
+        .then(parsedData => {
+            console.log('club feedback list', parsedData);
+
+            dispatch({type: authConst.type.clubFeedback, payload: {clubFeedback: parsedData}});
             return parsedData;
         });
 }

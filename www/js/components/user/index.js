@@ -34,7 +34,7 @@ class User extends Component {
         // instead of setTimeout, need to fix swiper :(
         view.initSwiper();
 
-        props.getUserHomeData().then(data => console.warn(data));
+        props.getUserHomeData(); // .then(data => console.warn(data));
     }
 
     initSwiper() {

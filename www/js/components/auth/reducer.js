@@ -18,6 +18,20 @@ export default combineReducers({
 
         return {...homeData, ...payload.homeData};
     },
+    clubData: (clubData = {}, {type, payload}) => {
+        if (type !== authConst.type.clubData) {
+            return clubData;
+        }
+
+        return {...clubData, ...payload.clubData};
+    },
+    clubFeedback: (clubFeedback = {}, {type, payload}) => {
+        if (type !== authConst.type.clubFeedback) {
+            return clubFeedback;
+        }
+
+        return {...clubFeedback, ...payload.clubFeedback};
+    },
     registration: (registration = {}, {type, payload}) => {
         if (type !== authConst.type.registration) {
             return registration;

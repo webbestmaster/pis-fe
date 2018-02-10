@@ -86,7 +86,7 @@ class UserPage extends Component {
                         <Link to="/">Главная</Link>
                         <Link to="/user">Личный кабинет</Link>
                     </BreadCrumbs>
-                    <h3 className="section__header">----------- Личный кабинет -----------</h3>
+                    <h3 className="section__header">Личный кабинет</h3>
                 </TopBigBanner>
 
                 <UserClub/>

@@ -11,6 +11,7 @@ import RejectedOrder from './club-tabs/rejected-order';
 import ReviewList from './club-tabs/review-list';
 import style from './style.m.scss';
 import cnx from '../../helper/cnx';
+import * as authAction from '../auth/action';
 
 const Swiper = require('./../../lib/swiper');
 
@@ -32,9 +33,14 @@ class UserClub extends Component {
 
     componentDidMount() {
         const view = this;
+        const {state, props} = view;
 
         // instead of setTimeout, need to fix swiper :(
         view.initSwiper();
+
+        // here is two undepended async methods
+        props.getClubHomeData(); // .then(data => console.warn(data));
+        props.getClubFeedbackList(); // .then(data => console.warn(data));
     }
 
     initSwiper() {
@@ -51,10 +57,26 @@ class UserClub extends Component {
         setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
     }
 
+    getNewFeedbackCount() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+
+        if (!auth.clubFeedback.data) {
+            return 0;
+        }
+
+        const createdFeedbackList = auth.clubFeedback.data.created || [];
+
+        return createdFeedbackList.filter(createdFeedback => !createdFeedback.answer).length;
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
-        // const {app} = props;
+        const {auth} = props;
+
+        const newFeedbackCount = view.getNewFeedbackCount();
 
         return <div>
             <Tabs
@@ -67,7 +89,8 @@ class UserClub extends Component {
                         <Tab
                             onClick={() => view.setState({tabIndex: 0})}
                             className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
-                            <span className={tabsStyle.tab_text_mark}>3</span>
+                            <span className="hidden">FIXME</span>
+                            <span className={tabsStyle.tab_text_mark + ' hidden'}>3</span>
                         </Tab>
                         <Tab
                             onClick={() => view.setState({tabIndex: 1})}
@@ -87,8 +110,9 @@ class UserClub extends Component {
                         Отзывы
                         <span className={style.open_review_list_button__icon}/>
                         <span {...cnx(style.open_review_list_button__counter, {
-                            [style.open_review_list_button__counter__hidden]: state.tabIndex === 3
-                        })}>1</span>
+                            [style.open_review_list_button__counter__hidden]:
+                            state.tabIndex === 3 || newFeedbackCount === 0
+                        })}>{newFeedbackCount}</span>
                     </div>
                 </div>
 
@@ -115,5 +139,7 @@ export default withRouter(connect(
         auth: state.auth
     }),
     {
+        getClubHomeData: authAction.getClubHomeData,
+        getClubFeedbackList: authAction.getClubFeedbackList
     }
 )(UserClub));
