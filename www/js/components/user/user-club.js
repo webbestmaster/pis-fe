@@ -71,12 +71,29 @@ class UserClub extends Component {
         return createdFeedbackList.filter(createdFeedback => !createdFeedback.answer).length;
     }
 
+    getNewOrderCount() {
+        const view = this;
+        const {props, state} = view;
+        const {auth} = props;
+
+        if (!auth.clubData.data) {
+            return 0;
+        }
+
+        return auth.clubData.data.rows.pending.length;
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
         const {auth} = props;
 
         const newFeedbackCount = view.getNewFeedbackCount();
+        const newOrderCount = view.getNewOrderCount();
+
+        if (!auth.clubFeedback.data || !auth.clubData.data) {
+            return null;
+        }
 
         return <div>
             <Tabs
@@ -89,8 +106,9 @@ class UserClub extends Component {
                         <Tab
                             onClick={() => view.setState({tabIndex: 0})}
                             className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
-                            <span className="hidden">FIXME</span>
-                            <span className={tabsStyle.tab_text_mark + ' hidden'}>3</span>
+                            {newOrderCount === 0 ?
+                                null :
+                                <span className={tabsStyle.tab_text_mark}>{newOrderCount}</span>}
                         </Tab>
                         <Tab
                             onClick={() => view.setState({tabIndex: 1})}

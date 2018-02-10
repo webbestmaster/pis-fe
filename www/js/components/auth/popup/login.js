@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
+
 const authConst = require('./../const.json');
 
 class Login extends Component {
@@ -29,7 +30,7 @@ class Login extends Component {
             if (payload.login.code === 200) {
                 authApi.setUserData({email, password});
 
-                if (payload.login.user.role === authConst.userType.fitnessClub) {
+                if (payload.login.data.user.role === authConst.userType.fitnessClub) {
                     props.getClubHomeData();
                 }
 
@@ -64,7 +65,8 @@ class Login extends Component {
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Войти</h3>
                 <p className={style.popup__p}>Вы еще не зарегистрированы у нас?
-                <span onClick={() => view.props.openPopupRegister()} className={style.popup__enter_link}>
+                <span
+                    onClick={() => view.props.openPopupRegister()} className={style.popup__enter_link}>
                         Зарегистрируйтесь
                 </span>
                 </p>

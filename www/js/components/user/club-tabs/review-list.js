@@ -68,7 +68,6 @@ class ReviewList extends Component {
             <div className={clubStyle.review_text_holder + ' clear-self'}>
                 <p className={clubStyle.review_user_name}>
                     {reviewItem.user.name || 'Аноним'}
-                    <span className="hidden">FIXME</span>
                     {
                         // just created and NO answer
                         reviewItem.status === FEEDBACK_STATUS_CREATED && !reviewItem.answer ? // eslint-disable-line id-match
