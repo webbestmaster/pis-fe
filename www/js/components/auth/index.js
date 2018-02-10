@@ -34,6 +34,9 @@ class Auth extends Component {
 
         props.getSessionState().then(data => {
             if (data !== null) {
+                if (data.user.role === authConst.userType.fitnessClub) {
+                    props.getClubHomeData();
+                }
                 return;
             }
 

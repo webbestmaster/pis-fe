@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
+const authConst = require('./../const.json');
 
 class Login extends Component {
     constructor() {
@@ -28,7 +29,11 @@ class Login extends Component {
             if (payload.login.code === 200) {
                 authApi.setUserData({email, password});
 
-                view.props.closePopup();
+                if (payload.login.user.role === authConst.userType.fitnessClub) {
+                    props.getClubHomeData();
+                }
+
+                props.closePopup();
                 return;
             }
 
@@ -89,6 +94,7 @@ export default withRouter(connect(
         closePopup: authAction.closePopup,
         openPopupRegister: authAction.openPopupRegister,
         openPopupRestore: authAction.openPopupRestore,
+        getClubHomeData: authAction.getClubHomeData,
         login: authAction.login
     }
 )(Login));

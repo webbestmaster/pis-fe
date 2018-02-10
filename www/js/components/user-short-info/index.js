@@ -64,8 +64,14 @@ class UserShortInfo extends Component {
         const view = this;
         const {props, state} = view;
         const {auth} = props;
-        const {login} = auth;
+        const {login, clubData} = auth;
         const {user} = login.data;
+
+        if (!clubData.data) {
+            return null;
+        }
+
+        const {rows} = clubData.data;
 
         const imagePath = user.image ? resolveImagePath(user.image) : defaultUserAvatar;
 
@@ -95,15 +101,15 @@ class UserShortInfo extends Component {
 
             <div className={style.extra_info_wrapper}>
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>00</p>
+                    <p className={style.extra_info_value}>{rows.pending.length}</p>
                     <p className={style.extra_info_key}>Новые</p>
                 </div>
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>00</p>
+                    <p className={style.extra_info_value}>{rows.approved.length}</p>
                     <p className={style.extra_info_key}>Подтвержденные</p>
                 </div>
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>00</p>
+                    <p className={style.extra_info_value}>{rows.declined.length}</p>
                     <p className={style.extra_info_key}>Отклоненные</p>
                 </div>
             </div>
