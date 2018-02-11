@@ -421,7 +421,7 @@ class Order extends Component {
                 </h3>
                 <RadioLabel
                     ref="cacheRadioInput"
-                    input={{name: 'payType', ref: 'input', defaultChecked: state.orderType === 'reservation'}}
+                    input={{name: 'payType', ref: 'input', checked: state.orderType === 'reservation', readOnly: true}}
                     label={{
                         className: style.radio_label_pay_type,
                         onClick: () => view.setState({orderType: 'reservation'})
@@ -439,14 +439,19 @@ class Order extends Component {
                     <span
                         className={style.input_header_icon}
                         style={{backgroundImage: 'url(' + cachebackImage + ')'}}/>
-                    &nbsp;Оплата бонусами
+                    &nbsp;Оплата бонусами (бонус баланс: {singleCacheBack.toFixed(2)})
                 </h3>
                 <RadioLabel
                     ref="bonusRadioInput"
-                    input={{name: 'payType', ref: 'input', defaultChecked: state.orderType === 'cashback'}}
+                    input={{name: 'payType', ref: 'input', checked: state.orderType === 'cashback', readOnly: true}}
                     label={{
                         className: style.radio_label_pay_type,
-                        onClick: () => view.setState({orderType: 'cashback'})
+                        onClick: () => {
+                            if (singleCacheBack < state.qty * singlePrice) {
+                                return;
+                            }
+                            view.setState({orderType: 'cashback'});
+                        }
                     }}>
                     <span className="hidden">--- FIXME:LINK ---</span>
                     Оплатить <Link to={'/'} target="_blank" className={style.inner_link}>бонусами</Link> через наш
@@ -454,8 +459,6 @@ class Order extends Component {
                 </RadioLabel>
 
             </div>
-
-            {/* <div className={style.line__margin_bottom}/>*/}
 
             <div
                 onClick={() => view.submitOrder()}
