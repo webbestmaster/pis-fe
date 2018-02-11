@@ -1,4 +1,4 @@
-/* global setTimeout */
+/* global setTimeout, location */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -96,6 +96,15 @@ class UserPage extends Component {
         </div>;
     }
 
+    hardLogout() {
+        const view = this;
+        const {props, state} = view;
+
+        props.logout();
+
+        return 'logout...';
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
@@ -115,7 +124,7 @@ class UserPage extends Component {
             return view.renderUserClub();
         }
 
-        return <h1>unsupported user type</h1>;
+        return <h1>Unsupported user type! {view.hardLogout()}</h1>;
     }
 }
 
@@ -126,6 +135,7 @@ export default connect(
     }),
     {
         getSessionState: authAction.getSessionState,
+        logout: authAction.logout,
         openPopupLogin: authAction.openPopupLogin
     }
 )(UserPage);
