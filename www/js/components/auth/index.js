@@ -32,11 +32,17 @@ class Auth extends Component {
         const view = this;
         const {props} = view;
 
-        props.getSessionState().then(data => {
+        props.getSessionState().then(data => { // eslint-disable-line complexity
             if (data !== null) {
                 if (data.data.user.role === authConst.userType.fitnessClub) {
                     props.getClubHomeData();
                 }
+
+                /*
+                if (data.data.user.role === authConst.userType.user) {
+                    props.getUserHomeData();
+                }
+                */
                 return;
             }
 
@@ -94,6 +100,7 @@ export default connect(
         login: authAction.login,
         getSessionState: authAction.getSessionState,
         getClubHomeData: authAction.getClubHomeData,
+        getUserHomeData: authAction.getUserHomeData,
         openPopupPromo: authAction.openPopupPromo
     }
 )(Auth);

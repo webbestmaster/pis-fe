@@ -39,7 +39,7 @@ class UserClub extends Component {
         view.initSwiper();
 
         // here is two undepended async methods
-        props.getClubHomeData(); // .then(data => console.warn(data));
+        // props.getClubHomeData(); // .then(data => console.warn(data));
         props.getClubFeedbackList(); // .then(data => console.warn(data));
     }
 
