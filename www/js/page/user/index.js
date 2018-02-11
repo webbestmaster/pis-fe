@@ -52,7 +52,8 @@ class UserPage extends Component {
     renderUser() {
         const view = this;
         const {props, state} = view;
-        const {app} = props;
+        const {app, auth} = props;
+        const {user} = auth.login.data;
 
         return <div>
             <HeaderSimple/>
@@ -63,7 +64,7 @@ class UserPage extends Component {
                         <Link to="/">Главная</Link>
                         <Link to="/user">Личный кабинет</Link>
                     </BreadCrumbs>
-                    <h3 className="section__header">Личный кабинет</h3>
+                    <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
                 </TopBigBanner>
                 <User/>
             </div>
@@ -74,10 +75,10 @@ class UserPage extends Component {
     renderUserClub() {
         const view = this;
         const {props, state} = view;
-        const {app} = props;
+        const {app, auth} = props;
+        const {user} = auth.login.data;
 
         return <div>
-
             <HeaderSimple/>
             {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
             <div {...cnx({[userShortInfoStyle.left_padded_wrapper]: app.screen.width > globalAppConst.tabletWidth})}>
@@ -86,11 +87,9 @@ class UserPage extends Component {
                         <Link to="/">Главная</Link>
                         <Link to="/user">Личный кабинет</Link>
                     </BreadCrumbs>
-                    <h3 className="section__header">Личный кабинет</h3>
+                    <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
                 </TopBigBanner>
-
                 <UserClub/>
-
             </div>
             <Footer/>
         </div>;
