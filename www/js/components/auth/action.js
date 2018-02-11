@@ -1,7 +1,7 @@
 /* global fetch, window, FormData */
 import * as authApi from './api';
+import * as fileApi from './../../helper/file';
 // import {progressiveFetch} from './../../helper/file';
-
 const appGlobalConst = require('./../../app-const.json');
 const authConst = require('./const.json');
 
@@ -158,18 +158,16 @@ export function updateProfile(userData) {
 }
 
 export function uploadUserAvatar(file) {
-    //  'image' => 'required|image|dimensions:mim_width=100,mim_height=100,max_width=2000,max_height=2000',
-    const formData = new FormData();
+    return dispatch => fileApi.loadImage(file, {maxWidth: 1000, maxHeight: 1000, orientation: true})
+        .then(canvas => {
+            const formData = new FormData();
 
-    formData.append('image', file);
+            formData.append('image', fileApi.fromCanvasToAvatarFile(canvas));
 
-    return dispatch => fetch(appGlobalConst.pageDataUrl.host + authConst.url.updateProfileImage,
-        {
-            method: 'POST',
-            credentials: 'include',
-            body: formData
-        })
-        .then(rawData => rawData.json());
+            return fetch(appGlobalConst.pageDataUrl.host + authConst.url.updateProfileImage,
+                {method: 'POST', credentials: 'include', body: formData})
+                .then(rawData => rawData.json());
+        });
 }
 
 export function createClubAnswer(reviewId, answer) {

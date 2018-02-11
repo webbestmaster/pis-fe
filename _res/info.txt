@@ -7,10 +7,11 @@ const STATUS_APPROVED = 2;
 const STATUS_DECLINED = 3;
 
 // заказы
-pending - status = 1
-approved - status = 2 // not checked
-confirmed - status = 3
-declined - status = 4
+const STATUS_CREATED = 1;
+const STATUS_DECLINED_BY_USER = 2;
+const STATUS_CONFIRMED = 3;
+const STATUS_DECLINED_BY_CLUB = 4;
+const STATUS_APPROVED = 5;
 
 DAY_MONDAY    = 2;
 DAY_TUESDAY   = 4;

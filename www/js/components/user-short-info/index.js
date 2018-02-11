@@ -125,7 +125,11 @@ class UserShortInfo extends Component {
             .then(data => {
                 const newLoginData = JSON.parse(JSON.stringify(props.auth.login));
 
-                Object.assign(newLoginData.data.user, data.data);
+                Object.assign(
+                    newLoginData.data.user,
+                    data.data,
+                    {image: newLoginData.data.user.image + '?timestamp=' + Date.now()}
+                );
 
                 store.dispatch({type: authConst.type.login, payload: {login: newLoginData}});
             });
