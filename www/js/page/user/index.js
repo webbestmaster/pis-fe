@@ -100,7 +100,7 @@ class UserPage extends Component {
         const view = this;
         const {props, state} = view;
 
-        props.logout();
+        props.logout().then(() => view.props.history.push('/'));
 
         return 'Logout...';
     }
