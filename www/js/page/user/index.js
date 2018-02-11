@@ -102,7 +102,7 @@ class UserPage extends Component {
 
         props.logout();
 
-        return 'logout...';
+        return 'Logout...';
     }
 
     render() {
