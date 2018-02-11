@@ -8,6 +8,10 @@ import tableStyle from './../table.m.scss';
 import {plural} from './../../../helper/plural';
 import {NewOrder, getOrderTime} from './new-order';
 import Pagination from 'react-js-pagination';
+import {orderApi} from '../api';
+import * as authAction from '../../auth/action';
+
+const userConst = require('./../const.json');
 
 class ConfirmedOrder extends NewOrder {
     getOrders() {
@@ -32,6 +36,7 @@ class ConfirmedOrder extends NewOrder {
             real_price, // eslint-disable-line id-match, camelcase
             // cashback,
             // frontType,
+            status,
             amount
         } = order;
 
@@ -67,11 +72,31 @@ class ConfirmedOrder extends NewOrder {
                     <td>Бонусами</td>
             }
             <td className={tableStyle.vertical_free}>
-                <div className={style.table__training_status}>
-                    <span
-                        className={style.table__training_status_icon + ' ' +
-                        style.table__training_status_icon__done}/>
-                    Подтвердить {/* оплату */}
+                <div className={style.one_button_wrapper}>
+                    {status === userConst.status.order.confirmed ?
+                        <div
+                            onClick={() => {
+                                alert('not implemented!');
+                                // view.approveOrder(id)
+                            }}
+                            className={style.table__training_status}>
+                            <span
+                                className={style.table__training_status_icon + ' ' +
+                            style.table__training_status_icon__done}/>
+                            {status} ??? Подтвердить {/* оплату */}
+                        </div> :
+                        <div
+                            onClick={() => {
+                                alert('not implemented!');
+                                // view.approveOrder(id)
+                            }}
+                            className={style.table__training_status}>
+                            <span
+                                className={style.table__training_status_icon + ' ' +
+                            style.table__training_status_icon__done}/>
+                            {status} ??? Подтвердить {/* оплату */}
+                        </div>
+                    }
                 </div>
             </td>
         </tr>;
@@ -178,6 +203,8 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {}
+    {
+        getClubHomeData: authAction.getClubHomeData
+    }
 )(ConfirmedOrder);
 

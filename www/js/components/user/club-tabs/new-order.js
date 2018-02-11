@@ -34,6 +34,13 @@ export class NewOrder extends Component {
         return auth.clubData.data.rows.pending;
     }
 
+    approveOrder(orderId) {
+        const view = this;
+        const {props, state, attr} = view;
+
+        orderApi.approve(orderId).then(() => props.getClubHomeData());
+    }
+
     confirmOrder(orderId) {
         const view = this;
         const {props, state, attr} = view;
@@ -112,7 +119,10 @@ export class NewOrder extends Component {
             <td className={tableStyle.vertical_free}>
                 <div className={style.two_button_wrapper}>
                     <div
-                        onClick={() => view.confirmOrder(id)}
+                        onClick={() => {
+                            alert('not implemented!');
+                            // view.approveOrder(id)
+                        }}
                         className={style.table__training_status}>
                         <span className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__done}/>

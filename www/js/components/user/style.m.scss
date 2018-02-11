@@ -230,6 +230,16 @@
     top: 2px;
 }
 
+.one_button_wrapper {
+    .table__training_status {
+        cursor: pointer;
+        &:hover,
+        &:active {
+            background-color: #808080;
+        }
+    }
+}
+
 .two_button_wrapper {
     display: block;
     width: 268px;

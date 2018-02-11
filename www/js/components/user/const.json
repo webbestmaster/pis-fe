@@ -5,5 +5,13 @@
             "decline": "/member/club/decline?id={{orderId}}&message=lorem_ipsum_dolor_sit_amet",
             "approve": "/member/club/approve?id={{orderId}}"
         }
+    },
+    "status": {
+        "order": {
+            "pending": 1,
+            "approved": 2,
+            "confirmed": 3,
+            "declined": 4
+        }
     }
 }
