@@ -28,6 +28,7 @@ class UserShortInfo extends Component {
                     style={{backgroundImage: 'url(' + imagePath + ')'}}/>
                 <input
                     ref="userAvatarFileInput"
+                    accept="image/*"
                     type="file"
                     onChange={() => view.uploadUserAvatar(view.refs.userAvatarFileInput.files[0])}
                     className={style.user_avatar__input_file}/>
@@ -82,6 +83,7 @@ class UserShortInfo extends Component {
                     style={{backgroundImage: 'url(' + imagePath + ')'}}/>
                 <input
                     ref="userAvatarFileInput"
+                    accept="image/*"
                     type="file"
                     onChange={() => view.uploadUserAvatar(view.refs.userAvatarFileInput.files[0])}
                     className={style.user_avatar__input_file}/>
