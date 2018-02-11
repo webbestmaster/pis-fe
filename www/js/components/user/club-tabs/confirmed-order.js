@@ -5,60 +5,17 @@ import {resolveImagePath} from './../../../helper/path-x';
 import style from './../style.m.scss';
 import moment from 'moment/moment';
 import tableStyle from './../table.m.scss';
-import {plural} from '../../../helper/plural';
+import {plural} from './../../../helper/plural';
+import {NewOrder, getOrderTime} from './new-order';
 import Pagination from 'react-js-pagination';
-import {reduceSeconds} from './../../../helper/date';
-import {orderApi} from './../api';
-import * as authAction from '../../auth/action';
 
-export class NewOrder extends Component {
-    constructor() {
-        super();
-
-        const view = this;
-
-        view.state = {
-            activePage: 0
-        };
-
-        view.attr = {
-            itemsCountPerPage: 8
-        };
-    }
-
+class ConfirmedOrder extends NewOrder {
     getOrders() {
         const view = this;
         const {props, state, attr} = view;
         const {auth} = props;
 
-        return auth.clubData.data.rows.pending;
-    }
-
-    confirmOrder(orderId) {
-        const view = this;
-        const {props, state, attr} = view;
-
-        orderApi.confirm(orderId).then(() => props.getClubHomeData());
-    }
-
-    declineOrder(orderId) {
-        const view = this;
-        const {props, state, attr} = view;
-
-        orderApi.decline(orderId).then(() => props.getClubHomeData());
-    }
-
-    renderTableBody() {
-        const view = this;
-        const {props, state, attr} = view;
-        const orders = view.getOrders();
-        const {activePage} = state;
-        const nexPage = activePage + 1;
-        const {itemsCountPerPage} = attr;
-
-        return orders
-            .slice(activePage * itemsCountPerPage, nexPage * itemsCountPerPage)
-            .map(order => view.renderTableRow(order));
+        return [].concat(auth.clubData.data.rows.confirmed, auth.clubData.data.rows.approved);
     }
 
     renderTableRow(order) {
@@ -110,21 +67,11 @@ export class NewOrder extends Component {
                     <td>Бонусами</td>
             }
             <td className={tableStyle.vertical_free}>
-                <div className={style.two_button_wrapper}>
-                    <div
-                        onClick={() => view.confirmOrder(id)}
-                        className={style.table__training_status}>
-                        <span className={style.table__training_status_icon + ' ' +
+                <div className={style.table__training_status}>
+                    <span
+                        className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__done}/>
-                        Подтвердить
-                    </div>
-                    <div
-                        onClick={() => view.declineOrder(id)}
-                        className={style.table__training_status}>
-                        <span className={style.table__training_status_icon + ' ' +
-                        style.table__training_status_icon__rejected}/>
-                        Отклонить
-                    </div>
+                    Подтвердить {/* оплату */}
                 </div>
             </td>
         </tr>;
@@ -137,13 +84,13 @@ export class NewOrder extends Component {
 
         if (orders.length === 0) {
             return <div className="hug">
-                <h3 className="section__header">Нет новых заявок</h3>
+                <h3 className="section__header">Нет подтвержденных заявок</h3>
                 <div style={{height: 300}}/>
             </div>;
         }
 
         return <div className="hug">
-            <h3 className="section__header">Новые заявки</h3>
+            <h3 className="section__header">Подтвержденные</h3>
 
             <table className={tableStyle.table}>
                 <thead className={tableStyle.t_head}>
@@ -154,7 +101,7 @@ export class NewOrder extends Component {
                         <td>Время</td>
                         <td>Кол-во</td>
                         <td>Оплата</td>
-                        <td>Статус</td>
+                        <td>Оплачено?</td>
                     </tr>
                 </thead>
                 <tbody className={tableStyle.t_body}>
@@ -179,6 +126,51 @@ export class NewOrder extends Component {
 
         </div>;
     }
+
+
+    renderOld() {
+        const view = this;
+        const {props, state} = view;
+
+        return <div className="hug">
+            <h3 className="section__header">Подтвержденные</h3>
+
+            <table className={tableStyle.table}>
+                <thead className={tableStyle.t_head}>
+                    <tr>
+                        <td>Дата</td>
+                        <td>Имя/Фамилия</td>
+                        <td>Абонемент/Тренировка</td>
+                        <td>Время</td>
+                        <td>Кол-во</td>
+                        <td>Оплата</td>
+                        <td>Оплачено?</td>
+                    </tr>
+                </thead>
+                <tbody className={tableStyle.t_body}>
+                    {'123456'
+                        .split('')
+                        .map(ii => <tr key={ii}>
+                            <td>01.01.2017</td>
+                            <td>Иванов Иван</td>
+                            <td>Пробная тренировка для новичков (<span className="main-color">100 руб.</span>)</td>
+                            <td>18:00-19:00</td>
+                            <td dangerouslySetInnerHTML={{
+                                __html: plural(2, 'человек').replace(' ', '&nbsp;') // eslint-disable-line id-match
+                            }}/>
+                            <td>Онлайн</td>
+                            <td className={tableStyle.vertical_free}>
+                                <div className={style.table__training_status}>
+                                    <span className={style.table__training_status_icon + ' ' +
+                                    style.table__training_status_icon__done}/>
+                                Подтвердить
+                                </div>
+                            </td>
+                        </tr>)}
+                </tbody>
+            </table>
+        </div>;
+    }
 }
 
 export default connect(
@@ -186,38 +178,6 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {
-        getClubHomeData: authAction.getClubHomeData
-    }
-)(NewOrder);
+    {}
+)(ConfirmedOrder);
 
-export function getOrderTime(order) {
-    const {
-        fitness_club_subscription_id // eslint-disable-line id-match, camelcase
-    } = order;
-
-
-    return fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-        getSubscriptionTime(order) :
-        getTrainingTime(order);
-}
-
-function getSubscriptionTime(order) {
-    const {
-        fitness_club_subscription // eslint-disable-line id-match, camelcase
-    } = order;
-
-    const {work_from, work_to} = fitness_club_subscription; // eslint-disable-line id-match, camelcase
-
-    return reduceSeconds(work_from) + '-' + reduceSeconds(work_to);
-}
-
-function getTrainingTime(order) {
-    const {
-        fitness_club_training_schedule // eslint-disable-line id-match, camelcase
-    } = order;
-
-    const {time_from, time_to} = fitness_club_training_schedule; // eslint-disable-line id-match, camelcase
-
-    return reduceSeconds(time_from) + '-' + reduceSeconds(time_to);
-}

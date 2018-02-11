@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import tabsStyle from './../../../style/css/tabs.m.scss';
-import AppliedOrder from './club-tabs/applied-order';
+import ConfirmedOrder from './club-tabs/confirmed-order';
 import NewOrder from './club-tabs/new-order';
 import RejectedOrder from './club-tabs/rejected-order';
 import ReviewList from './club-tabs/review-list';
@@ -138,7 +138,7 @@ class UserClub extends Component {
                     <NewOrder/>
                 </TabPanel>
                 <TabPanel>
-                    <AppliedOrder/>
+                    <ConfirmedOrder/>
                 </TabPanel>
                 <TabPanel>
                     <RejectedOrder/>

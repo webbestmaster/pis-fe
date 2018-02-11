@@ -1,9 +1,16 @@
 test5@test.test/111111
+http://via.placeholder.com/268x237
 
-отзывы
+// отзывы
 const STATUS_CREATED = 1;
 const STATUS_APPROVED = 2;
 const STATUS_DECLINED = 3;
+
+// заказы
+pending - status = 1
+approved - status = 2 // not checked
+confirmed - status = 3
+declined - status = 4
 
 DAY_MONDAY    = 2;
 DAY_TUESDAY   = 4;
@@ -14,13 +21,10 @@ DAY_SATURDAY  = 64;
 DAY_SUNDAY    = 128;
 
 // period types
-    const PERIOD_ITEMS  = 1;
-    const PERIOD_WEEKS  = 2;
-    const PERIOD_MONTHS = 3;
-    const PERIOD_YEARS  = 4;
-
-http://via.placeholder.com/268x237
-
+const PERIOD_ITEMS  = 1;
+const PERIOD_WEEKS  = 2;
+const PERIOD_MONTHS = 3;
+const PERIOD_YEARS  = 4;
 
 const userDataData = {
     'sig': '212cb4492a10edc9930c42777afa0da9d0fdff13',
