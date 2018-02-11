@@ -1,0 +1,9 @@
+{
+    "url": {
+        "order": {
+            "confirm": "/member/club/confirm?id={orderId}",
+            "decline": "/member/club/decline?id={orderId}",
+            "approve": "/member/club/approve?id={orderId}"
+        }
+    }
+}

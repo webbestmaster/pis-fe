@@ -8,8 +8,10 @@ import tableStyle from './../table.m.scss';
 import {plural} from '../../../helper/plural';
 import Pagination from 'react-js-pagination';
 import {reduceSeconds} from './../../../helper/date';
+import {orderApi} from './../api';
+import * as authAction from '../../auth/action';
 
-class NewOrder extends Component {
+export class NewOrder extends Component {
     constructor() {
         super();
 
@@ -32,6 +34,24 @@ class NewOrder extends Component {
         return auth.clubData.data.rows.pending;
     }
 
+    confirmOrder(orderId) {
+        const view = this;
+        const {props, state, attr} = view;
+
+        console.log(orderId);
+        return;
+        orderApi.confirm(orderId).then(() => props.getClubHomeData());
+    }
+
+    declineOrder(orderId) {
+        const view = this;
+        const {props, state, attr} = view;
+
+        console.log(orderId);
+        return;
+        orderApi.decline(orderId).then(() => props.getClubHomeData());
+    }
+
     renderTableBody() {
         const view = this;
         const {props, state, attr} = view;
@@ -46,6 +66,8 @@ class NewOrder extends Component {
     }
 
     renderTableRow(order) {
+        const view = this;
+
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
@@ -94,12 +116,14 @@ class NewOrder extends Component {
             <td className={tableStyle.vertical_free}>
                 <div className={style.two_button_wrapper}>
                     <div
+                        onClick={() => view.confirmOrder(id)}
                         className={style.table__training_status}>
                         <span className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__done}/>
                         Подтвердить
                     </div>
                     <div
+                        onClick={() => view.declineOrder(id)}
                         className={style.table__training_status}>
                         <span className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__rejected}/>
@@ -166,7 +190,9 @@ export default connect(
         app: state.app,
         auth: state.auth
     }),
-    {}
+    {
+        getClubHomeData: authAction.getClubHomeData
+    }
 )(NewOrder);
 
 export function getOrderTime(order) {
