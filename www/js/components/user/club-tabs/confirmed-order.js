@@ -72,32 +72,21 @@ class ConfirmedOrder extends NewOrder {
                     <td>Бонусами</td>
             }
             <td className={tableStyle.vertical_free}>
-                <div className={style.one_button_wrapper}>
-                    {status === userConst.status.order.confirmed ?
+                {status === userConst.status.order.confirmed ?
+                    <div className={style.one_button_wrapper}>
                         <div
-                            onClick={() => {
-                                alert('not implemented!');
-                                // view.approveOrder(id)
-                            }}
+                            onClick={() => view.approveOrder(id)}
                             className={style.table__training_status}>
-                            <span
-                                className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__done}/>
-                            {status} ??? Подтвердить {/* оплату */}
-                        </div> :
-                        <div
-                            onClick={() => {
-                                alert('not implemented!');
-                                // view.approveOrder(id)
-                            }}
-                            className={style.table__training_status}>
-                            <span
-                                className={style.table__training_status_icon + ' ' +
-                            style.table__training_status_icon__done}/>
-                            {status} ??? Подтвердить {/* оплату */}
+                            Подтвердить
                         </div>
-                    }
-                </div>
+                    </div> :
+                    <div
+                        className={style.table__training_status}>
+                        <span
+                            className={style.table__training_status_icon + ' ' +
+                            style.table__training_status_icon__done}/>
+                        Оплачено
+                    </div>}
             </td>
         </tr>;
     }
@@ -152,7 +141,7 @@ class ConfirmedOrder extends NewOrder {
         </div>;
     }
 
-
+/*
     renderOld() {
         const view = this;
         const {props, state} = view;
@@ -196,6 +185,7 @@ class ConfirmedOrder extends NewOrder {
             </table>
         </div>;
     }
+*/
 }
 
 export default connect(

@@ -119,10 +119,7 @@ export class NewOrder extends Component {
             <td className={tableStyle.vertical_free}>
                 <div className={style.two_button_wrapper}>
                     <div
-                        onClick={() => {
-                            alert('not implemented!');
-                            // view.approveOrder(id)
-                        }}
+                        onClick={() => view.confirmOrder(id)}
                         className={style.table__training_status}>
                         <span className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__done}/>

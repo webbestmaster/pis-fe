@@ -107,7 +107,7 @@ class UserShortInfo extends Component {
                     <p className={style.extra_info_key}>Новые</p>
                 </div>
                 <div className={style.extra_info_block}>
-                    <p className={style.extra_info_value}>{rows.approved.length}</p>
+                    <p className={style.extra_info_value}>{rows.confirmed.length + rows.approved.length}</p>
                     <p className={style.extra_info_key}>Подтвержденные</p>
                 </div>
                 <div className={style.extra_info_block}>
