@@ -77,11 +77,11 @@ class ConfirmedOrder extends NewOrder {
                         <div
                             onClick={() => view.approveOrder(id)}
                             className={style.table__training_status}>
-                            Подтвердить
+                            Оплатил
                         </div>
                     </div> :
                     <div
-                        className={style.table__training_status}>
+                        className={style.table__training_status + ' disabled'}>
                         <span
                             className={style.table__training_status_icon + ' ' +
                             style.table__training_status_icon__done}/>
@@ -115,7 +115,7 @@ class ConfirmedOrder extends NewOrder {
                         <td>Время</td>
                         <td>Кол-во</td>
                         <td>Оплата</td>
-                        <td>Оплачено?</td>
+                        <td>Статус</td>
                     </tr>
                 </thead>
                 <tbody className={tableStyle.t_body}>
