@@ -30,6 +30,10 @@
             padding-top: 0;
             padding-bottom: 0;
         }
+        &.decline__td {
+            padding-top: 0;
+            padding-bottom: 20px;
+        }
     }
 
     tr:nth-child(even) {

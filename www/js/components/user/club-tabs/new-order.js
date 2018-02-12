@@ -10,6 +10,7 @@ import Pagination from 'react-js-pagination';
 import {reduceSeconds} from './../../../helper/date';
 import {orderApi} from './../api';
 import * as authAction from '../../auth/action';
+import rcn from 'rcn';
 
 export class NewOrder extends Component {
     constructor() {
@@ -18,7 +19,13 @@ export class NewOrder extends Component {
         const view = this;
 
         view.state = {
-            activePage: 0
+            activePage: 0,
+            order: {
+                openForDecline: {
+                    id: null,
+                    text: ''
+                }
+            }
         };
 
         view.attr = {
@@ -48,11 +55,11 @@ export class NewOrder extends Component {
         orderApi.confirm(orderId).then(() => props.getClubHomeData());
     }
 
-    declineOrder(orderId) {
+    declineOrder(orderId, message) {
         const view = this;
         const {props, state, attr} = view;
 
-        orderApi.decline(orderId).then(() => props.getClubHomeData());
+        orderApi.decline(orderId, message).then(() => props.getClubHomeData());
     }
 
     renderTableBody() {
@@ -70,6 +77,7 @@ export class NewOrder extends Component {
 
     renderTableRow(order) {
         const view = this;
+        const {state, props} = view;
 
         const {
             id,
@@ -85,9 +93,10 @@ export class NewOrder extends Component {
             amount
         } = order;
 
+
         const time = getOrderTime(order);
 
-        return <tr key={id}>
+        return [<tr key={id}>
             <td>{
                 moment(created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
             }</td>
@@ -126,7 +135,7 @@ export class NewOrder extends Component {
                         Подтвердить
                     </div>
                     <div
-                        onClick={() => view.declineOrder(id)}
+                        onClick={() => view.toggleDeclineFormForOrder(id)}
                         className={style.table__training_status}>
                         <span className={style.table__training_status_icon + ' ' +
                         style.table__training_status_icon__rejected}/>
@@ -134,7 +143,73 @@ export class NewOrder extends Component {
                     </div>
                 </div>
             </td>
-        </tr>;
+        </tr>,
+        view.renderDeclineForm(id)
+        ];
+    }
+
+    toggleDeclineFormForOrder(id) {
+        const view = this;
+        const {state, props} = view;
+        const currentDeclineId = state.order.openForDecline.id;
+
+        if (currentDeclineId === id) {
+            // close form
+            view.setState(prevState => {
+                Object.assign(prevState.order.openForDecline, {
+                    id: null,
+                    text: ''
+                });
+                return prevState;
+            });
+            return;
+        }
+
+        view.setState(prevState => {
+            Object.assign(prevState.order.openForDecline, {
+                id,
+                text: ''
+            });
+            return prevState;
+        });
+    }
+
+    renderDeclineForm(id) {
+        const view = this;
+        const {state, props} = view;
+
+        if (state.order.openForDecline.id !== id) {
+            return null;
+        }
+
+        const declineText = state.order.openForDecline.text.trim();
+
+        return [
+            <tr key={id + '-save-nth'} className="hidden"/>,
+            <tr key={id + '-open-to-decline'}>
+                <td colSpan="7" className={tableStyle.decline__td}>
+                    <div
+                        onClick={() => view.declineOrder(id, declineText)}
+                        {...rcn(style.table__training_status,
+                            style.table__training_status__free,
+                            style.decline__close_button,
+                            {disabled: declineText.length <= 10 || declineText.length >= 1000}
+                        )}>
+                        Подтвердить отказ
+                    </div>
+                    <div className={style.decline__text_input__wrapper}>
+                        <input
+                            ref="declineInput"
+                            onInput={() => view.setState(prevState => {
+                                Object.assign(prevState.order.openForDecline, {
+                                    text: view.refs.declineInput.value
+                                });
+                                return prevState;
+                            })}
+                            className={style.decline__text_input} placeholder="Укажите причину отказа" type="text"/>
+                    </div>
+                </td>
+            </tr>];
     }
 
     render() {

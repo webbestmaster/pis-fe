@@ -178,6 +178,11 @@
     padding: 8px 0 11px;
     margin-top: 15px;
     user-select: none;
+    &.table__training_status__free {
+        width: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .table__training_status_icon {
@@ -324,6 +329,43 @@
     color: $mainColor;
     font-size: 16px;
     padding-bottom: 16px;
+}
+
+//.decline__form {
+//    display: block;
+//    width: 100%;
+//    box-sizing: border-box;
+//    padding: 10px 10px;
+//}
+
+.decline__text_input__wrapper {
+    display: block;
+    margin-right: 175px;
+}
+
+.decline__text_input {
+    font-size: 14px;
+    color: $mainTextColor;
+    padding: 19px 18px 16px;
+    border: 1px solid $mainBorderColor;
+    border-radius: 4px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.decline__close_button {
+    display: block;
+    float: right;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover,
+    &:active {
+        background-color: #808080;
+    }
 }
 
 :global {

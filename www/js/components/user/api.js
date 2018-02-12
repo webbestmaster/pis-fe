@@ -10,9 +10,11 @@ const orderApi = {
         )
             .then(blobData => blobData.json()),
 
-    decline: orderId =>
-        fetch(globalAppConst.pageDataUrl.host + userConst.url.order.decline.replace('{{orderId}}', orderId),
-            {credentials: 'include', method: 'POST'}
+    decline: (orderId, message) =>
+        fetch(globalAppConst.pageDataUrl.host + userConst.url.order.decline
+            .replace('{{message}}', message)
+            .replace('{{orderId}}', orderId),
+        {credentials: 'include', method: 'POST'}
         )
             .then(blobData => blobData.json()),
 

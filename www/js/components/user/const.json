@@ -2,7 +2,7 @@
     "url": {
         "order": {
             "confirm": "/member/club/confirm?id={{orderId}}",
-            "decline": "/member/club/decline?id={{orderId}}&message=lorem_ipsum_dolor_sit_amet",
+            "decline": "/member/club/decline?id={{orderId}}&message={{message}}",
             "approve": "/member/club/approve?id={{orderId}}"
         }
     },
