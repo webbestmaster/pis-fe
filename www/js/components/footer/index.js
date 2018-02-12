@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {store} from '../../index';
 
-const appConst = require('./../app/const.json');
+// const globalAppConst = require('./../app/const.json');
 
 export default class Footer extends Component {
     render() {
@@ -23,26 +23,30 @@ export default class Footer extends Component {
                 </p>
                 <p className="footer__text footer__text--part-2">
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" className="footer__link">Стать партнером</Link>
+                    <Link to="#" target="_blank" className="footer__link">Стать партнером</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" className="footer__link">Ваши предложения</Link>
+                    <Link to="#" target="_blank" className="footer__link">Ваши предложения</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" className="footer__link">Пользовательское соглашение</Link>
+                    <Link to="#" target="_blank" className="footer__link">Пользовательское соглашение</Link>
                 </p>
                 <p className="footer__text footer__text--part-3">
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" className="footer__link">Бонусы</Link>
+                    <Link to="#" target="_blank" className="footer__link">Бонусы</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" className="footer__link">О нас</Link>
+                    <Link to="#" target="_blank" className="footer__link">О нас</Link>
+                    <span className="hidden">--- FIXME:LINK ---</span>
+                    <Link to="#" target="_blank" className="footer__link">Публичная оферта</Link>
                 </p>
                 <p className="footer__text footer__text--social">
                     <span className="footer__text footer__text--social-header">Мы в соц. сетях</span>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <a className="footer__social-link footer__social-link--vk"
+                    <a
+                        className="footer__social-link footer__social-link--vk"
                         target="_blank"
                         href="https://vk.com/smart_women"/>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <a className="footer__social-link footer__social-link--instagram" href="#"/>
+                    <a
+                        className="footer__social-link footer__social-link--instagram"
+                        target="_blank"
+                        href="https://www.instagram.com/people__in__sport"/>
                 </p>
             </div>
         </section>;
