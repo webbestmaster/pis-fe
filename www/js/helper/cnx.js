@@ -1,5 +1,3 @@
-import classnames from 'classnames';
+import rcn from 'rcn';
 
-export default (...args) => ({
-    className: classnames(...args)
-});
+export default (...args) => rcn(...args);

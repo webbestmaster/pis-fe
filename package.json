@@ -36,6 +36,7 @@
     "material-ui": "^1.0.0-beta.27",
     "moment": "^2.20.1",
     "query-string": "^5.0.1",
+    "rcn": "0.1.1",
     "react": "^16.2.0",
     "react-datepicker": "^1.0.4",
     "react-dom": "^16.2.0",
