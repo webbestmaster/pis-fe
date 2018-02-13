@@ -10,6 +10,7 @@ import * as authAction from './action';
 import * as authApi from './api';
 
 const authConst = require('./const.json');
+const globalAppConst = require('./../../app-const.json');
 
 // import {getLoginStatus} from './api';
 
@@ -61,7 +62,12 @@ class Auth extends Component {
     initPromoPopup() {
         const view = this;
         const {props} = view;
-        const {auth} = props;
+        const {auth, app} = props;
+
+        if (app.screen.width <= globalAppConst.tabletWidth) {
+            console.log('too narrow screen to show promo popup');
+            return;
+        }
 
         if (auth.openPopup !== null) {
             console.log('some popup is open');
@@ -94,6 +100,7 @@ class Auth extends Component {
 
 export default connect(
     state => ({
+        app: state.app,
         auth: state.auth
     }),
     {
