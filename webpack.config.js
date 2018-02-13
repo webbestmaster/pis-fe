@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
@@ -179,7 +180,8 @@ if (IS_PRODUCTION) {
                 warnings: false,
                 drop_console: true // eslint-disable-line camelcase
             }
-        })
+        }),
+        new CopyWebpackPlugin([{from: './favicon.ico', to: './../../public/favicon.ico'}], {debug: true})
     );
 }
 
