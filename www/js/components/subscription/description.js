@@ -55,6 +55,8 @@ class Description extends Component {
             freeMode: true
         });
 
+        view.attr.swiperSubscription.translate = -144;
+
         // need to fix swiper
         requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }

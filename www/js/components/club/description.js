@@ -70,24 +70,23 @@ class Description extends Component {
             slidesPerView: 'auto',
             freeMode: true,
             grabCursor: true
-            // translate: 300
         });
 
-        // view.attr.swiperGallery.slideTo(0.5, 1000, () => {});
-
-        view.attr.swiperGallery.translate = -300;
-
-        // debugger
+        view.attr.swiperGallery.translate = -160;
 
         view.attr.swiperSubscription = new Swiper(swiperSubscription, {
             slidesPerView: 'auto',
             freeMode: true
         });
 
+        view.attr.swiperSubscription.translate = -144;
+
         view.attr.swiperTrainings = new Swiper(swiperTrainings, {
             slidesPerView: 'auto',
             freeMode: true
         });
+
+        view.attr.swiperTrainings.translate = -144;
 
         // need to fix swiper
         requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));

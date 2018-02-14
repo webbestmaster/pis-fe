@@ -43,6 +43,8 @@ class Favorite extends Component {
             freeMode: true
         });
 
+        view.attr.swiper.translate = -144;
+
         // need to fix swiper
         requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
