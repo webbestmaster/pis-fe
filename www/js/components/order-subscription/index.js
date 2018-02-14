@@ -1,4 +1,4 @@
-/* global window, setTimeout, Event, fetch */
+/* global window, requestAnimationFrame, setTimeout, Event, fetch */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
@@ -188,7 +188,7 @@ class Order extends Component {
         });
 
         // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
     renderOrderInfo() {

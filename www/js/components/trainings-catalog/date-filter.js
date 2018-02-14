@@ -46,25 +46,30 @@ class DateFilter extends Component {
 
     componentDidMount() {
         const view = this;
+        const {props} = view;
+        const {app} = props;
 
-        // instead of setTimeout, need to fix swiper :(
-        requestAnimationFrame(() => view.initSwiper());
-        // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        view.initSwiper();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const view = this;
+        const {props} = view;
+
+        if (prevProps.app.window.isLoad === false && props.app.window.isLoad === true) {
+            window.dispatchEvent(new Event('resize'));
+        }
     }
 
     initSwiper() {
         const view = this;
-        const {refs} = view;
+        const {refs, props} = view;
         const {swiperContainer} = refs;
 
         view.attr.swiper = new Swiper(swiperContainer, {
             slidesPerView: 'auto',
             freeMode: true
         });
-
-        // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
     }
 
     render() {

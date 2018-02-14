@@ -176,7 +176,7 @@ class DateFilter extends Component {
             freeMode: true
         });
         // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
     render() {

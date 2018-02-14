@@ -1,4 +1,4 @@
-/* global window, setTimeout, Event */
+/* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
 // import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import style from './style.m.scss';
@@ -56,7 +56,7 @@ class Description extends Component {
         });
 
         // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
     renderCard() { // eslint-disable-line complexity

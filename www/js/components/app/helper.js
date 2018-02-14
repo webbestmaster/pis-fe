@@ -1,4 +1,4 @@
-/* global window */
+/* global window, requestAnimationFrame, Event */
 import {store} from '../../index';
 
 const appConst = require('./const.json');
@@ -51,9 +51,24 @@ function onWindowResize() {
     });
 }
 
+function onWindowLoad() {
+    store.dispatch({
+        type: appConst.type.window,
+        payload: {
+            window: {
+                isLoad: true
+            }
+        }
+    });
+
+    // need to fix swiper
+    requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+}
+
 export function initAppScreenHelper() {
     onWindowResize();
 
     window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('load', onWindowLoad, false);
 }
 

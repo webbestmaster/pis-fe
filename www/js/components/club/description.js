@@ -1,4 +1,4 @@
-/* global window, setTimeout, Event */
+/* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import style from './style.m.scss';
@@ -68,8 +68,16 @@ class Description extends Component {
 
         view.attr.swiperGallery = new Swiper(swiperGallery, {
             slidesPerView: 'auto',
-            freeMode: true
+            freeMode: true,
+            grabCursor: true
+            // translate: 300
         });
+
+        // view.attr.swiperGallery.slideTo(0.5, 1000, () => {});
+
+        view.attr.swiperGallery.translate = -300;
+
+        // debugger
 
         view.attr.swiperSubscription = new Swiper(swiperSubscription, {
             slidesPerView: 'auto',
@@ -82,7 +90,7 @@ class Description extends Component {
         });
 
         // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
     renderGallery() {

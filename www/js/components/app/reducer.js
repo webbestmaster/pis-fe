@@ -15,5 +15,12 @@ export default combineReducers({
             width: payload.width,
             height: payload.height
         };
+    },
+    window: (windowState = {isLoad: false}, {type, payload}) => {
+        if (type !== appConst.type.window) {
+            return windowState;
+        }
+
+        return {...windowState, ...payload.window};
     }
 });

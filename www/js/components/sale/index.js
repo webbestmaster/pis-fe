@@ -1,4 +1,4 @@
-/* global window, setTimeout, Event */
+/* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -40,7 +40,7 @@ class Sale extends Component {
         });
 
         // need to fix swiper
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 1e3);
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
     render() {
