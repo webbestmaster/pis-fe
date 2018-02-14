@@ -8,8 +8,8 @@ import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
 import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
-import UserShortInfo from './../../components/user-short-info';
-import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
+// import UserShortInfo from './../../components/user-short-info';
+// import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
 import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
@@ -57,17 +57,18 @@ class UserPage extends Component {
 
         return <div>
             <HeaderSimple/>
-            {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
-            <div {...cnx({[userShortInfoStyle.left_padded_wrapper]: app.screen.width > globalAppConst.tabletWidth})}>
-                <TopBigBanner backgroundImage={topBanner}>
-                    <BreadCrumbs>
-                        <Link to="/">Главная</Link>
-                        <Link to="/user">Личный кабинет</Link>
-                    </BreadCrumbs>
-                    <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
-                </TopBigBanner>
-                <User/>
-            </div>
+            {/* {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}*/}
+            {/* <div {...cnx({[userShortInfoStyle.left_padded_wrapper]:
+            app.screen.width > globalAppConst.tabletWidth})}>*/}
+            <TopBigBanner backgroundImage={topBanner}>
+                <BreadCrumbs>
+                    <Link to="/">Главная</Link>
+                    <Link to="/user">Личный кабинет</Link>
+                </BreadCrumbs>
+                <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
+            </TopBigBanner>
+            <User/>
+            {/* </div>*/}
             <Footer/>
         </div>;
     }
@@ -80,17 +81,18 @@ class UserPage extends Component {
 
         return <div>
             <HeaderSimple/>
-            {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
-            <div {...cnx({[userShortInfoStyle.left_padded_wrapper]: app.screen.width > globalAppConst.tabletWidth})}>
-                <TopBigBanner backgroundImage={topBanner}>
-                    <BreadCrumbs>
-                        <Link to="/">Главная</Link>
-                        <Link to="/user">Личный кабинет</Link>
-                    </BreadCrumbs>
-                    <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
-                </TopBigBanner>
-                <UserClub/>
-            </div>
+            {/* {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}*/}
+            {/* <div {...cnx({[userShortInfoStyle.left_padded_wrapper]:
+             app.screen.width > globalAppConst.tabletWidth})}>*/}
+            <TopBigBanner backgroundImage={topBanner}>
+                <BreadCrumbs>
+                    <Link to="/">Главная</Link>
+                    <Link to="/user">Личный кабинет</Link>
+                </BreadCrumbs>
+                <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
+            </TopBigBanner>
+            <UserClub/>
+            {/* </div>*/}
             <Footer/>
         </div>;
     }

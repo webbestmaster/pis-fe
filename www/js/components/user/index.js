@@ -58,28 +58,26 @@ class User extends Component {
         const {login} = auth;
         const defaultIndex = parseInt(props.match.params.tabIndex, 10) || 0;
 
-        return <div>
-            <Tabs
-                defaultIndex={defaultIndex}
-                className="section__tabs-wrapper">
-                <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
-                    <TabList className="swiper-wrapper">
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Настройки</Tab>
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Мои тренировки</Tab>
-                        <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Избранное</Tab>
-                    </TabList>
-                </div>
-                <TabPanel>
-                    <Settings/>
-                </TabPanel>
-                <TabPanel>
-                    <MyTrainings/>
-                </TabPanel>
-                <TabPanel>
-                    <Favorite/>
-                </TabPanel>
-            </Tabs>
-        </div>;
+        return <Tabs
+            defaultIndex={defaultIndex}
+            className="section__tabs-wrapper">
+            <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
+                <TabList className="swiper-wrapper">
+                    <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Настройки</Tab>
+                    <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Мои тренировки</Tab>
+                    <Tab className={classnames('swiper-slide', tabsStyle.tab)}>Избранное</Tab>
+                </TabList>
+            </div>
+            <TabPanel>
+                <Settings/>
+            </TabPanel>
+            <TabPanel>
+                <MyTrainings/>
+            </TabPanel>
+            <TabPanel>
+                <Favorite/>
+            </TabPanel>
+        </Tabs>;
     }
 }
 

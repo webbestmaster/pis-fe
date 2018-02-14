@@ -7,10 +7,12 @@ $paddingFonUserPanel: 50px;
     position: relative;
     margin-left: $userInfoWidth;
     :global {
+        /*
         .top-big-banner {
             background-position: right center;
             padding-left: $paddingFonUserPanel;
         }
+        */
         .hug.swiper-container {
             clear: none;
         }
@@ -24,11 +26,13 @@ $paddingFonUserPanel: 50px;
             margin-right: 15px;
         }
 
+        /*
         .top-big-banner {
             .hug {
                 margin-left: 0;
             }
         }
+        */
 
     }
 }
@@ -37,7 +41,8 @@ $paddingFonUserPanel: 50px;
     .desktop-width {
         :local .left_padded_wrapper {
             :global .section__tabs-wrapper {
-                min-height: 750px;
+                // FIXME: !!!!!
+                //min-height: 750px;
             }
         }
     }

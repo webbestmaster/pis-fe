@@ -95,59 +95,57 @@ class UserClub extends Component {
             return null;
         }
 
-        return <div>
-            <Tabs
-                // defaultIndex={state.tabIndex}
-                selectedIndex={state.tabIndex}
-                onSelect={() => console.log('on select')}
-                className="section__tabs-wrapper">
-                <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
-                    <TabList className="swiper-wrapper">
-                        <Tab
-                            onClick={() => view.setState({tabIndex: 0})}
-                            className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
-                            {newOrderCount === 0 ?
-                                null :
-                                <span className={tabsStyle.tab_text_mark}>{newOrderCount}</span>}
-                        </Tab>
-                        <Tab
-                            onClick={() => view.setState({tabIndex: 1})}
-                            className={classnames('swiper-slide', tabsStyle.tab)}>Подтвержденные</Tab>
-                        <Tab
-                            onClick={() => view.setState({tabIndex: 2})}
-                            className={classnames('swiper-slide', tabsStyle.tab)}>Отклоненные</Tab>
-                        <Tab className="hidden"/>
-                    </TabList>
+        return <Tabs
+            // defaultIndex={state.tabIndex}
+            selectedIndex={state.tabIndex}
+            onSelect={() => console.log('on select')}
+            className="section__tabs-wrapper">
+            <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
+                <TabList className="swiper-wrapper">
+                    <Tab
+                        onClick={() => view.setState({tabIndex: 0})}
+                        className={classnames('swiper-slide', tabsStyle.tab)}>Новые заявки
+                        {newOrderCount === 0 ?
+                            null :
+                            <span className={tabsStyle.tab_text_mark}>{newOrderCount}</span>}
+                    </Tab>
+                    <Tab
+                        onClick={() => view.setState({tabIndex: 1})}
+                        className={classnames('swiper-slide', tabsStyle.tab)}>Подтвержденные</Tab>
+                    <Tab
+                        onClick={() => view.setState({tabIndex: 2})}
+                        className={classnames('swiper-slide', tabsStyle.tab)}>Отклоненные</Tab>
+                    <Tab className="hidden"/>
+                </TabList>
+            </div>
+            <div className="hug hug--no-clear">
+                <div
+                    onClick={() => view.setState({tabIndex: 3})}
+                    {...cnx(style.open_review_list_button, {
+                        [style.open_review_list_button__active]: state.tabIndex === 3
+                    })}>
+                    Отзывы
+                    <span className={style.open_review_list_button__icon}/>
+                    <span {...cnx(style.open_review_list_button__counter, {
+                        [style.open_review_list_button__counter__hidden]:
+                        state.tabIndex === 3 || newFeedbackCount === 0
+                    })}>{newFeedbackCount}</span>
                 </div>
-                <div className="hug hug--no-clear">
-                    <div
-                        onClick={() => view.setState({tabIndex: 3})}
-                        {...cnx(style.open_review_list_button, {
-                            [style.open_review_list_button__active]: state.tabIndex === 3
-                        })}>
-                        Отзывы
-                        <span className={style.open_review_list_button__icon}/>
-                        <span {...cnx(style.open_review_list_button__counter, {
-                            [style.open_review_list_button__counter__hidden]:
-                            state.tabIndex === 3 || newFeedbackCount === 0
-                        })}>{newFeedbackCount}</span>
-                    </div>
-                </div>
+            </div>
 
-                <TabPanel>
-                    <NewOrder/>
-                </TabPanel>
-                <TabPanel>
-                    <ConfirmedOrder/>
-                </TabPanel>
-                <TabPanel>
-                    <RejectedOrder/>
-                </TabPanel>
-                <TabPanel>
-                    <ReviewList/>
-                </TabPanel>
-            </Tabs>
-        </div>;
+            <TabPanel>
+                <NewOrder/>
+            </TabPanel>
+            <TabPanel>
+                <ConfirmedOrder/>
+            </TabPanel>
+            <TabPanel>
+                <RejectedOrder/>
+            </TabPanel>
+            <TabPanel>
+                <ReviewList/>
+            </TabPanel>
+        </Tabs>;
     }
 }
 
