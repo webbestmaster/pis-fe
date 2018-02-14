@@ -61,10 +61,10 @@ class Login extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 570}}>
+            <div className={style.popup__paper} style={{maxWidth: 570}}>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Войти</h3>
-                <p className={style.popup__p}>Вы еще не зарегистрированы у нас?
+                <p className={style.popup__p}>Вы еще не зарегистрированы у нас?&nbsp;&nbsp;
                 <span
                     onClick={() => view.props.openPopupRegister()} className={style.popup__enter_link}>
                         Зарегистрируйтесь

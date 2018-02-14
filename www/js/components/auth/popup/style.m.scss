@@ -81,7 +81,7 @@
     padding-bottom: 2px;
     display: inline-block;
     border-bottom: 1px dotted #00a1fe;
-    margin-left: 8px;
+    //margin-left: 8px;
     text-decoration: none;
     cursor: pointer;
 }
@@ -189,6 +189,13 @@
 .text_label__phone {
     .popup__form_text_input {
         padding-left: 66px;
+    }
+}
+
+@media screen and (max-width: $mobileWidth) {
+    .popup__paper {
+        padding-left: 25px;
+        padding-right: 25px;
     }
 }
 
