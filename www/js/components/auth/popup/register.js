@@ -532,7 +532,7 @@ class Register extends Component {
                         type="checkbox"/>
                     <span className="section__checkbox-state"/>
                     Принять условия&nbsp;
-                    <Link to="/terms/" target="_blank" className={style.popup__enter_link}>
+                    <Link to="/terms" target="_blank" className={style.popup__enter_link}>
                         пользовательского соглашения
                     </Link>
                     {state.form.input.terms.isValid ?

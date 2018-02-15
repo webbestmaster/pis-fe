@@ -15,6 +15,10 @@ import OrderTraining from './../../page/order-training';
 import OrderSubscription from './../../page/order-subscription';
 import NotFoundPage from './../../page/404';
 import AboutCashback from './../../page/about-cashback';
+import AboutUs from './../../page/about-us';
+import BecomeAPartner from './../../page/become-a-partner';
+import PublicOffer from './../../page/public-offer';
+import YourProposal from './../../page/your-proposal';
 import Auth from './../auth';
 
 /*
@@ -52,12 +56,16 @@ export default () => [
         <Route path='/user/' component={User} exact/>
         <Route path='/user/tab-index/:tabIndex' component={User} exact/>
         <Route path='/forgotPassword/' component={ForgotPassword} exact/>
-        <Route path='/terms/' component={Terms} exact/>
+        <Route path='/terms' component={Terms} exact/>
 
         <Route path='/order/subscription/:id' component={OrderSubscription} exact/>
         <Route path='/order/training/:id/:scheduleId/:dayId' component={OrderTraining} exact/>
 
         <Route path='/about-cashback' component={AboutCashback} exact/>
+        <Route path='/about-us' component={AboutUs} exact/>
+        <Route path='/become-a-partner' component={BecomeAPartner} exact/>
+        <Route path='/public-offer' component={PublicOffer} exact/>
+        <Route path='/your-proposal' component={YourProposal} exact/>
 
         <Route component={NotFoundPage}/>
     </Switch>,

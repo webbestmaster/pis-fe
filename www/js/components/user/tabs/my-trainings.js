@@ -113,7 +113,6 @@ class MyTrainings extends Component {
         return <div className="hug">
             <h3 className="section__header">Мои тренировки</h3>
 
-            {/* FIXME: DO IT */}
             <table className={tableStyle.table}>
                 <thead className={tableStyle.t_head}>
                     <tr>

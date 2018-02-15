@@ -22,18 +22,14 @@ export default class Footer extends Component {
                     <Link to="/trainings" className="footer__link">Тренировки</Link>
                 </p>
                 <p className="footer__text footer__text--part-2">
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">Стать партнером</Link>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">Ваши предложения</Link>
-                    <Link to="/terms/" target="_blank" className="footer__link">Пользовательское соглашение</Link>
+                    <Link to="/become-a-partner" target="_blank" className="footer__link">Стать партнером</Link>
+                    <Link to="/your-proposal" target="_blank" className="footer__link">Ваши предложения</Link>
+                    <Link to="/terms" target="_blank" className="footer__link">Пользовательское соглашение</Link>
                 </p>
                 <p className="footer__text footer__text--part-3">
                     <Link to="/about-cashback" target="_blank" className="footer__link">Бонусы</Link>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">О нас</Link>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">Публичная оферта</Link>
+                    <Link to="/about-us" target="_blank" className="footer__link">О нас</Link>
+                    <Link to="/public-offer" target="_blank" className="footer__link">Публичная оферта</Link>
                 </p>
                 <p className="footer__text footer__text--social">
                     <span className="footer__text footer__text--social-header">Мы в соц. сетях</span>
