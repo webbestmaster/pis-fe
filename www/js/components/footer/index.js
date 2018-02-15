@@ -26,12 +26,10 @@ export default class Footer extends Component {
                     <Link to="#" target="_blank" className="footer__link">Стать партнером</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>
                     <Link to="#" target="_blank" className="footer__link">Ваши предложения</Link>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">Пользовательское соглашение</Link>
+                    <Link to="/terms/" target="_blank" className="footer__link">Пользовательское соглашение</Link>
                 </p>
                 <p className="footer__text footer__text--part-3">
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    <Link to="#" target="_blank" className="footer__link">Бонусы</Link>
+                    <Link to="/about-cashback" target="_blank" className="footer__link">Бонусы</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>
                     <Link to="#" target="_blank" className="footer__link">О нас</Link>
                     <span className="hidden">--- FIXME:LINK ---</span>

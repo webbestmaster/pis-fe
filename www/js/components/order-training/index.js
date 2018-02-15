@@ -502,8 +502,10 @@ class Order extends Component {
                             view.setState({orderType: 'cashback'});
                         }
                     }}>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    Оплатить <Link to={'/'} target="_blank" className={style.inner_link}>бонусами</Link> через наш
+                    Оплатить <Link
+                        to="/about-cashback"
+                        target="_blank"
+                        className={style.inner_link}>бонусами</Link> через наш
                     сервис
                 </RadioLabel>
 

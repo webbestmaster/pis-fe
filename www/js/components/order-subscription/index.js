@@ -173,7 +173,7 @@ class Order extends Component {
                 .replace('{{needCall}}', needCall)
                 .replace('{{userPhone}}', userPhone),
             {credentials: 'include', method: 'POST'})
-            // .then(data => data.json())
+        // .then(data => data.json())
             .then(() => view.props.history.push('/user/tab-index/1'));
     }
 
@@ -453,8 +453,10 @@ class Order extends Component {
                             view.setState({orderType: 'cashback'});
                         }
                     }}>
-                    <span className="hidden">--- FIXME:LINK ---</span>
-                    Оплатить <Link to={'/'} target="_blank" className={style.inner_link}>бонусами</Link> через наш
+                    Оплатить <Link
+                        to="/about-cashback"
+                        target="_blank"
+                        className={style.inner_link}>бонусами</Link> через наш
                     сервис
                 </RadioLabel>
 

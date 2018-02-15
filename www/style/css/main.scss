@@ -8,6 +8,10 @@ body {
     @extend .clear-full;
     margin: 0 auto;
     max-width: 1170px;
+    &.hug--simple-page {
+        padding-top: 70px;
+    }
+
     &.hug--section {
         padding-bottom: 100px;
     }
@@ -21,6 +25,9 @@ body {
 
 .lt-tablet-width {
     .hug {
+        &.hug--simple-page {
+            padding-top: 35px;
+        }
         &.hug--section {
             padding-bottom: 40px;
         }

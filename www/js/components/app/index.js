@@ -14,6 +14,7 @@ import Terms from './../../page/terms';
 import OrderTraining from './../../page/order-training';
 import OrderSubscription from './../../page/order-subscription';
 import NotFoundPage from './../../page/404';
+import AboutCashback from './../../page/about-cashback';
 import Auth from './../auth';
 
 /*
@@ -55,6 +56,8 @@ export default () => [
 
         <Route path='/order/subscription/:id' component={OrderSubscription} exact/>
         <Route path='/order/training/:id/:scheduleId/:dayId' component={OrderTraining} exact/>
+
+        <Route path='/about-cashback' component={AboutCashback} exact/>
 
         <Route component={NotFoundPage}/>
     </Switch>,

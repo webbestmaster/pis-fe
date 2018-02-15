@@ -23,15 +23,15 @@ class OrderPage extends Component {
         const view = this;
         const {props, state} = view;
         const {app} = props;
-        const {auth} = props;
+        const {auth, match} = props;
 
         return <div>
             <HeaderSimple/>
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/trainings">Тренировки</Link>
-                    <Link to="/trainings">Мой заказ</Link>
+                    <Link to="/subscriptions">Абонементы</Link>
+                    <Link to={match.url}>Мой заказ</Link>
                 </BreadCrumbs>
                 <h3 className="section__header">Мой заказ</h3>
             </TopBigBanner>
