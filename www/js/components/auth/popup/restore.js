@@ -9,6 +9,8 @@ import Dialog from './../../util/dialog';
 import style from './style.m.scss';
 import * as authAction from '../action';
 
+const globalAppConst = require('./../../../app-const.json');
+
 class Restore extends Component {
     constructor() {
         super();
@@ -53,6 +55,7 @@ class Restore extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
 
         return <Dialog {...props.dialog} onExit={() => {
             view.setState({error: null});
@@ -60,14 +63,17 @@ class Restore extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 570}}>
+            <div
+                className={style.popup__paper}
+                style={app.screen.width <= globalAppConst.tabletWidth ? {maxWidth: 570} : {width: 570}}>
                 <div onClick={() => props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Сбросить пароль</h3>
                 <p className={style.popup__p}>
                     Введите Вашу почту
                 </p>
                 <form className={style.popup__form}>
-                    <input ref="email"
+                    <input
+                        ref="email"
                         className={style.popup__form_text_input_wide} type="email" placeholder="Email"/>
                 </form>
                 {state.error && <p className={style.popup__error_p}>{state.error}</p>}
@@ -79,7 +85,7 @@ class Restore extends Component {
 
 export default connect(
     state => ({
-        // auth: state.auth
+        app: state.app
     }),
     {
         closePopup: authAction.closePopup,
