@@ -424,7 +424,11 @@ class Register extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 770, paddingTop: 20, paddingBottom: 20}}>
+            <div className={style.popup__paper} style={
+                app.screen.width <= globalAppConst.tabletWidth ?
+                    {maxWidth: 770, padding: '40px 15px 20px'} :
+                    {width: 770, paddingTop: 20, paddingBottom: 20}
+            }>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Регистрация</h3>
                 <p className={style.popup__p}>Вы уже зарегистрированы?&nbsp;
@@ -548,7 +552,7 @@ class Register extends Component {
 
 export default withRouter(connect(
     state => ({
-        // auth: state.auth
+        app: state.app
     }),
     {
         closePopup: authAction.closePopup,

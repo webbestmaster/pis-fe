@@ -192,6 +192,25 @@
     }
 }
 
+@media screen and (max-width: $tabletWidth) {
+    .popup__form {
+        display: block;
+    }
+    .text_label {
+        width: 100%;
+        display: block;
+    }
+
+    .popup__subscription {
+        :global {
+            .section__checkbox {
+                width: 100%;
+                float: none;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: $mobileWidth) {
     .popup__paper {
         padding-left: 25px;
