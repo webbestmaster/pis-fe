@@ -431,7 +431,7 @@ class Register extends Component {
             }>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Регистрация</h3>
-                <p className={style.popup__p}>Вы уже зарегистрированы?&nbsp;
+                <p className={style.popup__p}>Вы уже зарегистрированы?&nbsp;&nbsp;
                 <span onClick={() => view.props.openPopupLogin()} className={style.popup__enter_link}>Войти</span>
                 </p>
                 <form className={style.popup__form}>
@@ -531,7 +531,7 @@ class Register extends Component {
                         {...cnx('section__checkbox-node')}
                         type="checkbox"/>
                     <span className="section__checkbox-state"/>
-                    Принять условия
+                    Принять условия&nbsp;
                     <Link to="/terms/" target="_blank" className={style.popup__enter_link}>
                         пользовательского соглашения
                     </Link>
