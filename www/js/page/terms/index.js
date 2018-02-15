@@ -5,28 +5,60 @@ import classnames from 'classnames';
 import HeaderSimple from './../../components/header-simple';
 import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
-import SubscriptionsCatalog from './../../components/subscriptions-catalog';
+import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
-import Training from './../../components/training';
+import UserShortInfo from './../../components/user-short-info';
+import userShortInfoStyle from './../../components/user-short-info/style.m.scss';
+import cnx from './../../helper/cnx';
+import User from './../../components/user';
+import UserClub from './../../components/user/user-club';
 
-const isEqual = require('lodash/isEqual');
-const appConst = require('./../../app-const.json');
-const {fetchX} = require('./../../helper/fetch-x');
-const topBanner = require('./../../../style/images/club/top-banner.png');
+const globalAppConst = require('./../../app-const.json');
+const topBanner = require('./../../../style/images/order/top-banner.png');
+const authConst = require('./../../components/auth/const.json');
 
-export default class Terms extends Component {
-    constructor() {
-        super();
+const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
+    ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
+    'крутое помещение - красавцы. Приветливые тренера, обходительный персонал. Обязательно ' +
+    'зайдем сюда еще раз. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ' +
+    'cumque ipsam molestias possimus quaerat. Dolorem fugiat fugit similique soluta ' +
+    'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
+    'nulla suscipit?';
 
-        const view = this;
-    }
-
+class Terms extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
+        const {auth} = props;
 
         return <div>
-            <h1>Terms</h1>
+            <HeaderSimple/>
+            <TopBigBanner backgroundImage={topBanner}>
+                <BreadCrumbs>
+                    <Link to="/">Главная</Link>
+                    <Link to="/terms">Пользовательское соглашение</Link>
+                    {/* <Link to="/trainings">Мой заказ</Link>*/}
+                </BreadCrumbs>
+                <h3 className="section__header">Пользовательское соглашение</h3>
+            </TopBigBanner>
+
+            <div className="hug hug--simple-page">
+                <h3 className="section__header">Пользовательское соглашение</h3>
+                <div className="section__text-wrapper">
+                    <p>{fishText}</p>
+                    <p>{fishText}</p>
+                    <p>{fishText}</p>
+                    <p>{fishText}</p>
+                </div>
+            </div>
+            <Footer/>
         </div>;
     }
 }
+
+export default connect(
+    state => ({}),
+    {}
+)(Terms);
+
