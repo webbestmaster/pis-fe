@@ -6,6 +6,8 @@ import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 
+const globalAppConst = require('./../../../app-const.json');
+
 class ChangePassword extends Component {
     constructor() {
         super();
@@ -24,6 +26,7 @@ class ChangePassword extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
 
         return <Dialog {...props.dialog} onExit={() => {
             view.setState({error: null});
@@ -31,7 +34,9 @@ class ChangePassword extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{width: 570}}>
+            <div
+                className={style.popup__paper}
+                style={app.screen.width <= globalAppConst.tabletWidth ? {maxWidth: 570} : {width: 570}}>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Сменить пароль</h3>
                 {/*
@@ -58,7 +63,7 @@ class ChangePassword extends Component {
 
 export default withRouter(connect(
     state => ({
-        // auth: state.auth
+        app: state.app
     }),
     {
         closePopup: authAction.closePopup

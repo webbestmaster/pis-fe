@@ -7,6 +7,7 @@ import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 
 const authConst = require('./../const.json');
+const globalAppConst = require('./../../../app-const.json');
 
 class Login extends Component {
     constructor() {
@@ -54,6 +55,7 @@ class Login extends Component {
     render() {
         const view = this;
         const {props, state} = view;
+        const {app} = props;
 
         return <Dialog {...props.dialog} onExit={() => {
             view.setState({error: null});
@@ -61,7 +63,9 @@ class Login extends Component {
                 props.dialog.onExit();
             }
         }}>
-            <div className={style.popup__paper} style={{maxWidth: 570}}>
+            <div
+                className={style.popup__paper}
+                style={app.screen.width <= globalAppConst.tabletWidth ? {maxWidth: 570} : {width: 570}}>
                 <div onClick={() => view.props.closePopup()} className={style.close_button}/>
                 <h3 className={style.popup__header}>Войти</h3>
                 <p className={style.popup__p}>Вы еще не зарегистрированы у нас?&nbsp;&nbsp;
@@ -90,7 +94,7 @@ class Login extends Component {
 
 export default withRouter(connect(
     state => ({
-        // auth: state.auth
+        app: state.app
     }),
     {
         closePopup: authAction.closePopup,
