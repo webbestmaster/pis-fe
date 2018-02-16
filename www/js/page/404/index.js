@@ -12,6 +12,9 @@ import userShortInfoStyle from './../../components/user-short-info/style.m.scss'
 import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
+import style from './style.m.scss';
+
+const image404 = require('./images/404.png');
 
 const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/order/top-banner.png');
@@ -26,23 +29,13 @@ class NotFoundPage extends Component {
 
         return <div>
             <HeaderSimple/>
-            <TopBigBanner backgroundImage={topBanner}>
-                <BreadCrumbs>
-                    <Link to="/">Главная</Link>
-                    {/* <Link to="/trainings">Тренировки</Link>*/}
-                    {/* <Link to="/trainings">Мой заказ</Link>*/}
-                </BreadCrumbs>
-                <h3 className="section__header">404</h3>
-            </TopBigBanner>
 
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
-            <h1>404 Page</h1>
+            <div className={style.main}>
+                <img className={style.image} src={image404} alt=""/>
+                <h1 className={style.header}>Страница не найдена</h1>
+                <p className={style.text}>Запрашиваемая страница не найдена или была перемещена по другому адресу</p>
+                <Link to="/" className={style.button}>перейти на главную</Link>
+            </div>
 
             <Footer/>
         </div>;
@@ -51,8 +44,8 @@ class NotFoundPage extends Component {
 
 export default connect(
     state => ({
-        app: state.app,
-        auth: state.auth
+        // app: state.app,
+        // auth: state.auth
     }),
     {}
 )(NotFoundPage);
