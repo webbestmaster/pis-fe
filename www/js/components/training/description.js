@@ -283,7 +283,7 @@ class Description extends Component {
 
             {pageData.similarTrainings.length > 0 ?
                 <div className="sale hug--section clear-full">
-                    <h2 className="section__header section__header--plus-swiper">Похожие тренировки этого клуба</h2>
+                    <h2 className="section__header section__header--plus-swiper">Другие тренировки этого клуба</h2>
 
                     <div className="sale-slider">
                         <div

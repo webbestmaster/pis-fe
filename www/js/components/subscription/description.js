@@ -210,7 +210,7 @@ class Description extends Component {
             </div>
 
             <div className="sale hug--section clear-full">
-                <h2 className="section__header section__header--plus-swiper">Похожие абонементы этого клуба</h2>
+                <h2 className="section__header section__header--plus-swiper">Другие абонементы этого клуба</h2>
 
                 <div className="sale-slider">
                     <div
