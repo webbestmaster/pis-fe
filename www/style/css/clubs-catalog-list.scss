@@ -93,6 +93,9 @@
 
 .clubs-catalog-list-item__short-additional-info {
     padding-bottom: 22px;
+    &:empty {
+        display: none;
+    }
 }
 
 .clubs-catalog-list-item__short-additional-info-item {

@@ -184,6 +184,7 @@ class Description extends Component {
         const {host} = appConst.pageDataUrl;
         const {row} = pageData;
         const {fitnessClub} = row;
+        const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
 
         return <div className="hug">
             {/* this wrapper need for sticky card */}
@@ -193,8 +194,13 @@ class Description extends Component {
                 {props.app.screen.width > globalAppConst.mobileWidth ? view.renderCard() : null}
 
                 <div className={style.description}>
-                    <div className={style.description_image}
-                        style={{backgroundImage: 'url(' + resolveImagePath(row.image) + ')'}}/>
+                    <div
+                        className={style.description_image}
+                        style={{
+                            backgroundImage: 'url(' +
+                            resolveImagePath(promotion ? promotion.image : row.image) +
+                            ')'
+                        }}/>
                     <br/>
                     <br/>
 

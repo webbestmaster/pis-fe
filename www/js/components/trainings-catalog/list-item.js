@@ -7,6 +7,14 @@ import {dateToDay} from './../../helper/date';
 import {reduceSeconds} from './../../helper/date';
 import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
+import {prepareScheduleList} from '../training/date-filter';
+import {defaultDateFilter} from './reducer';
+const defaultItems = [defaultDateFilter];
+const millisecondsInOneDay = 24 * 60 * 60 * 1000;
+
+while (defaultItems.length < 7) {
+    defaultItems.push(defaultItems[defaultItems.length - 1] + millisecondsInOneDay);
+}
 
 const appConst = require('./../../app-const.json');
 
@@ -21,6 +29,9 @@ class ListItem extends Component {
         const {host} = appConst.pageDataUrl;
         const row = data;
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
+        const preparedScheduleList = prepareScheduleList(data.schedule);
+        const {firstSchedule, firstDayIndex} = preparedScheduleList;
+        const dayData = firstSchedule[firstDayIndex];
 
         return <div className="clubs-catalog-list-item clear-full">
             <div className="clubs-catalog-list-item__image"
@@ -79,7 +90,7 @@ class ListItem extends Component {
                     </p>
                     <p className="clubs-catalog-list-item__shot-price-info-subscription-text">
                         {dateToDay(trainingsCatalog.dateFilter)}&nbsp;
-                        {reduceSeconds(data.fitnessClub.work_from)} - {reduceSeconds(data.fitnessClub.work_from)}
+                        {reduceSeconds(dayData.time_from)} - {reduceSeconds(dayData.time_to)}
                     </p>
                 </div>
                 <Link to={'/training/' + data.id} className="clubs-catalog-list-item__more-info">Подробнее</Link>
