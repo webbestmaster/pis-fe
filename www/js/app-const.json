@@ -10,7 +10,8 @@
         "subscription": "http://site.katran.by/api/subscription/getFullInfo?id={{subscriptionId}}",
         "trainings": "http://site.katran.by/api/training/index",
         "training": "http://site.katran.by/api/training/getFullInfo?id={{trainingId}}",
-        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}"
+        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}",
+        "metaTag": "http://site.katran.by/api/page/getByUrl?url={{url}}"
     },
     "phone": {
         "by": {

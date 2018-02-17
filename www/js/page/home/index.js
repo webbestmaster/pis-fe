@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
+import {metaTagMaster} from './../../module/meta-tag';
 
 import Header from './../../components/header';
 import Sale from './../../components/sale';
@@ -11,6 +12,10 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 
 export default class Home extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/index');
+    }
+
     render() {
         const view = this;
         // const {props, state} = view;
