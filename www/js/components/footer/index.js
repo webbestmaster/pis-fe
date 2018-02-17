@@ -36,7 +36,7 @@ export default class Footer extends Component {
                     <a
                         className="footer__social-link footer__social-link--vk"
                         target="_blank"
-                        href="https://vk.com/smart_women"/>
+                        href="https://vk.com/train_now"/>
                     <a
                         className="footer__social-link footer__social-link--instagram"
                         target="_blank"
