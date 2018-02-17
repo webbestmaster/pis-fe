@@ -11,6 +11,7 @@ import Rating from './../../components/util/rating';
 import {plural} from './../../helper/plural';
 import Club from './../../components/club';
 import * as appAction from './../../components/app/action';
+import {metaTagMaster} from '../../module/meta-tag';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const.json');
@@ -44,6 +45,8 @@ export default class ClubPage extends Component {
     }
 
     componentDidMount() {
+        metaTagMaster.updateByUrl('/club');
+
         const view = this;
         const {props, state} = view;
         const {clubId} = props.match.params;

@@ -7,9 +7,14 @@ import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
 import ClubsCatalog from './../../components/clubs-catalog';
 import Footer from './../../components/footer';
+import {metaTagMaster} from '../../module/meta-tag';
 const topBanner = require('./../../../style/images/clubs/top-banner.png');
 
 export default class Clubs extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/clubs');
+    }
+
     render() {
         const view = this;
         // const {props, state} = view;

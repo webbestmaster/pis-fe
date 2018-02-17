@@ -9,6 +9,7 @@ import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import Subscription from './../../components/subscription';
 import * as appAction from '../../components/app/action';
+import {metaTagMaster} from '../../module/meta-tag';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const.json');
@@ -42,6 +43,8 @@ export default class SubscriptionPage extends Component {
     }
 
     componentDidMount() {
+        metaTagMaster.updateByUrl('/subscription');
+
         const view = this;
         const {props, state} = view;
         const {subscriptionId} = props.match.params;

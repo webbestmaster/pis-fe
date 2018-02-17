@@ -13,6 +13,7 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import style from './style.m.scss';
+import {metaTagMaster} from '../../module/meta-tag';
 
 const image404 = require('./images/404.png');
 
@@ -21,6 +22,10 @@ const topBanner = require('./../../../style/images/order/top-banner.png');
 const authConst = require('./../../components/auth/const.json');
 
 class NotFoundPage extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/page-404');
+    }
+
     render() {
         const view = this;
         const {props, state} = view;

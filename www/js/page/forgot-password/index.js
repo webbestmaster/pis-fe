@@ -22,9 +22,14 @@ const topBanner = require('./../../../style/images/club/top-banner.png');
 import style from './../../components/auth/popup/style.m.scss';
 import cnx from '../../helper/cnx';
 import {plural} from '../../helper/plural';
+import {metaTagMaster} from '../../module/meta-tag';
 
 
 class ForgotPassword extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/forgot-password');
+    }
+
     constructor() {
         super();
 

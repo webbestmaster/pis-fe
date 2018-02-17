@@ -13,12 +13,17 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import OrderTraining from './../../components/order-training';
+import {metaTagMaster} from '../../module/meta-tag';
 
 const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/order/top-banner.png');
 const authConst = require('./../../components/auth/const.json');
 
 class OrderPage extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/make-order');
+    }
+
     render() {
         const view = this;
         const {props, state} = view;

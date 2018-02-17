@@ -12,6 +12,7 @@ import userShortInfoStyle from './../../components/user-short-info/style.m.scss'
 import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
+import {metaTagMaster} from '../../module/meta-tag';
 
 const globalAppConst = require('./../../app-const.json');
 const topBanner = require('./../../../style/images/order/top-banner.png');
@@ -26,6 +27,10 @@ const fishText = 'Замечательный клуб В самом центре
     'nulla suscipit?';
 
 class PublicOffer extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/public-offer');
+    }
+
     render() {
         const view = this;
         const {props, state} = view;

@@ -7,9 +7,14 @@ import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
 import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
+import {metaTagMaster} from '../../module/meta-tag';
 const topBanner = require('./../../../style/images/trainings/top-banner.png');
 
 export default class Trainings extends Component {
+    componentDidMount() {
+        metaTagMaster.updateByUrl('/trainings');
+    }
+
     render() {
         const view = this;
         // const {props, state} = view;
