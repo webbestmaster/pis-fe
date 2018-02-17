@@ -53,7 +53,7 @@ export default class ClubPage extends Component {
 
         appAction.scrollToTop();
 
-        return fetchX(appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
+        return fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);
     }
 

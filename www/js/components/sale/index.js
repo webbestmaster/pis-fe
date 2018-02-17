@@ -26,7 +26,8 @@ class Sale extends Component {
             pageData: null
         };
 
-        fetchX(appConst.pageDataUrl.home).then(pageData => view.setState({pageData}, () => view.initSwiper()));
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home)
+            .then(pageData => view.setState({pageData}, () => view.initSwiper()));
     }
 
     initSwiper() {

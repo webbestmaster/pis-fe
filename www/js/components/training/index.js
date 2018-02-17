@@ -49,7 +49,7 @@ export default class Training extends Component {
         const {props, state} = view;
         const {trainingId} = props;
 
-        fetchX(appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
             .then(({data}) => view.setState({pageData: data}))
             .catch(console.error);
     }

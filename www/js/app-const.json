@@ -3,15 +3,15 @@
     "mobileWidth": 750,
     "pageDataUrl": {
         "host": "http://site.katran.by",
-        "home": "http://site.katran.by/api/home/index",
-        "clubs": "http://site.katran.by/api/club/index",
-        "club": "http://site.katran.by/api/club/getFullInfo?id={{clubId}}",
-        "subscriptions": "http://site.katran.by/api/subscription/index",
-        "subscription": "http://site.katran.by/api/subscription/getFullInfo?id={{subscriptionId}}",
-        "trainings": "http://site.katran.by/api/training/index",
-        "training": "http://site.katran.by/api/training/getFullInfo?id={{trainingId}}",
-        "clubFilials": "http://site.katran.by/api/club/getAllFilials?id={{clubId}}",
-        "metaTag": "http://site.katran.by/api/page/getByUrl?url={{url}}"
+        "home": "/api/home/index",
+        "clubs": "/api/club/index",
+        "club": "/api/club/getFullInfo?id={{clubId}}",
+        "subscriptions": "/api/subscription/index",
+        "subscription": "/api/subscription/getFullInfo?id={{subscriptionId}}",
+        "trainings": "/api/training/index",
+        "training": "/api/training/getFullInfo?id={{trainingId}}",
+        "clubFilials": "/api/club/getAllFilials?id={{clubId}}",
+        "metaTag": "/api/page/getByUrl?url={{url}}"
     },
     "phone": {
         "by": {
@@ -20,9 +20,10 @@
         }
     },
     "searchUrl": {
-        "club": "http://site.katran.by/api/club/search",
-        "subscriptions": "http://site.katran.by/api/subscription/search",
-        "trainings": "http://site.katran.by/api/training/search"
+        "headerSearch": "/api/search/full?query={{query}}",
+        "club": "/api/club/search",
+        "subscriptions": "/api/subscription/search",
+        "trainings": "/api/training/search"
     },
     "key": {
         "googleMap": "AIzaSyCgl3fWrTUUYRtPM8WDsjnAlaI6OFdCK0Q"

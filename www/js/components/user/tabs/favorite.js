@@ -30,7 +30,8 @@ class Favorite extends Component {
     componentDidMount() {
         const view = this;
 
-        fetchX(appConst.pageDataUrl.home).then(pageData => view.setState({pageData}, () => view.initSwiper()));
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home)
+            .then(pageData => view.setState({pageData}, () => view.initSwiper()));
     }
 
     initSwiper() {

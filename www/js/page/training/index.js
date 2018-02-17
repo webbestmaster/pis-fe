@@ -53,7 +53,7 @@ class TrainingPage extends Component {
 
         appAction.scrollToTop();
 
-        return fetchX(appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
+        return fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);
     }
 

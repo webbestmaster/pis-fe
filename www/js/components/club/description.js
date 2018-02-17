@@ -46,8 +46,8 @@ class Description extends Component {
 
         Promise
             .all([
-                fetchX(appConst.pageDataUrl.clubs),
-                fetchX(appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
+                fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.clubs),
+                fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
             ])
             .then(([clubData, {data}]) => {
                 view.setState({

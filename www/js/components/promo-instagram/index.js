@@ -17,7 +17,7 @@ export default class PromoInstagram extends Component {
             pageData: null
         };
 
-        fetchX(appConst.pageDataUrl.home).then(pageData => view.setState({pageData}));
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home).then(pageData => view.setState({pageData}));
     }
 
     render() {

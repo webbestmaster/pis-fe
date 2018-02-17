@@ -75,7 +75,8 @@ class Order extends Component {
         const {props, state} = view;
         const {auth} = props;
 
-        fetchX(globalAppConst.pageDataUrl.subscription.replace('{{subscriptionId}}', props.match.params.id))
+        fetchX(globalAppConst.pageDataUrl.host + globalAppConst.pageDataUrl.subscription
+            .replace('{{subscriptionId}}', props.match.params.id))
             .then(({data}) => view.setState({pageData: data}, () => view.initSwiper()))
             .catch(console.error);
 

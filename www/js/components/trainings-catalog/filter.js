@@ -78,7 +78,7 @@ class Filter extends Component {
 
         view.state = Object.assign({}, view.getDefaultState(), filter || {});
 
-        fetchX(appConst.pageDataUrl.trainings).then(pageData => {
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.trainings).then(pageData => {
             const categoryFilter = {};
 
             Object.keys(pageData.data.categoryFilter)

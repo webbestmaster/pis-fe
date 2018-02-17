@@ -49,7 +49,8 @@ export default class Subscription extends Component {
         const {props, state} = view;
         const {subscriptionId} = props;
 
-        fetchX(appConst.pageDataUrl.subscription.replace('{{subscriptionId}}', subscriptionId))
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.subscription
+            .replace('{{subscriptionId}}', subscriptionId))
             .then(({data}) => view.setState({pageData: data}))
             .catch(console.error);
     }

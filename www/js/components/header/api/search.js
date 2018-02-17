@@ -13,7 +13,7 @@ function search(query) {
     }
 
     promiseCache[query] = fetch(
-        appGlobalConst.pageDataUrl.host + '/api/search/full?query=' + query,
+        appGlobalConst.pageDataUrl.host + appGlobalConst.searchUrl.headerSearch.replace('{{query}}', query),
         {credentials: 'include', method: 'GET'})
         .then(rawResult => rawResult.json());
 

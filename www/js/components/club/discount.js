@@ -22,7 +22,7 @@ export default class Discounts extends Component {
         const {props, state} = view;
         const {clubId} = props;
 
-        fetchX(appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
             .then(({data}) => {
                 view.setState({
                     pageData: data

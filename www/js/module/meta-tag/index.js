@@ -17,7 +17,7 @@ export default class MetaTagMaster {
     updateByUrl(url) {
         const master = this; // eslint-disable-line consistent-this
 
-        return fetchX(globalAppConst.pageDataUrl.metaTag.replace('{{url}}', url))
+        return fetchX(globalAppConst.pageDataUrl.host + globalAppConst.pageDataUrl.metaTag.replace('{{url}}', url))
             .then(reaponse => {
                 const {page} = reaponse.data;
 

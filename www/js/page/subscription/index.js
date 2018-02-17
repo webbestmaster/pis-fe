@@ -51,7 +51,8 @@ export default class SubscriptionPage extends Component {
 
         appAction.scrollToTop();
 
-        return fetchX(appConst.pageDataUrl.subscription.replace('{{subscriptionId}}', subscriptionId))
+        return fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.subscription
+            .replace('{{subscriptionId}}', subscriptionId))
             .then(({data}) => view.setState({pageData: data})).catch(console.error);
     }
 

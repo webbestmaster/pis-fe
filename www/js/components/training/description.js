@@ -77,7 +77,7 @@ class Description extends Component {
         const {props, state} = view;
         const {trainingId} = props;
 
-        fetchX(appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
+        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
             .then(({data}) => view.setState({pageData: data}, () => view.initInteractive()))
             .catch(console.error);
     }
