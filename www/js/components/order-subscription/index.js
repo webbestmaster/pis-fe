@@ -14,8 +14,8 @@ import {reduceSeconds} from '../../helper/date';
 import * as authAction from '../auth/action';
 import {Link} from 'react-router-dom';
 
-const globalAppConst = require('./../../app-const.json');
-const authConst = require('./../auth/const.json');
+const globalAppConst = require('./../../app-const');
+const authConst = require('./../auth/const');
 
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');

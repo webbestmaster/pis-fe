@@ -4,7 +4,7 @@ import {resolveImagePath} from '../../helper/path-x';
 import {Link} from 'react-router-dom';
 import TrainingCard from './training-card';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];

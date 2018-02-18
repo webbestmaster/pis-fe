@@ -6,8 +6,8 @@ import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 
-const authConst = require('./../const.json');
-const globalAppConst = require('./../../../app-const.json');
+const authConst = require('./../const');
+const globalAppConst = require('./../../../app-const');
 
 class Login extends Component {
     constructor() {

@@ -1,4 +1,4 @@
-const appConst = require('./../app-const.json');
+const appConst = require('./../app-const');
 
 export function resolveImagePath(path) {
     const preparedPath = path.trim().toLowerCase();
@@ -8,7 +8,7 @@ export function resolveImagePath(path) {
         return path;
     }
     if (preparedPath.indexOf('/') === 0) {
-        return host + path.trim();
+        return host + path.trim() + appConst.proxy.postfixQuestion;
     }
 
     return path;

@@ -12,8 +12,8 @@ import * as authAction from './../../auth/action';
 import * as authApi from '../../auth/api';
 import {store} from '../../../index';
 
-const authConst = require('./../../auth/const.json');
-const globalAppConst = require('./../../../app-const.json');
+const authConst = require('./../../auth/const');
+const globalAppConst = require('./../../../app-const');
 
 import {formatPhoneBY} from './../../../helper/format';
 

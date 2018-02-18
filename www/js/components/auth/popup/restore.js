@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 // import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 // import classnames from 'classnames';
-// const appConst = require('./../../../app-const.json');
+// const appConst = require('./../../../app-const');
 // const headerMaxHeight = 980;
 //
 import Dialog from './../../util/dialog';
 import style from './style.m.scss';
 import * as authAction from '../action';
 
-const globalAppConst = require('./../../../app-const.json');
+const globalAppConst = require('./../../../app-const');
 
 class Restore extends Component {
     constructor() {

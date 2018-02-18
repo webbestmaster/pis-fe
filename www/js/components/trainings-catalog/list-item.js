@@ -16,7 +16,7 @@ while (defaultItems.length < 7) {
     defaultItems.push(defaultItems[defaultItems.length - 1] + millisecondsInOneDay);
 }
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 class ListItem extends Component {
     render() { // eslint-disable-line complexity

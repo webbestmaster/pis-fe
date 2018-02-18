@@ -6,7 +6,7 @@ import {getMonthAfterDayName} from './../../helper/date';
 import ClubLeaveReviewForm from './../club/club-leave-review-form';
 import {resolveImagePath} from '../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
 

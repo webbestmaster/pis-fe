@@ -8,7 +8,7 @@ import TrainingCard from './../../club/training-card';
 import SubscriptionCard from './../../club/subscription-card';
 import cnx from './../../../helper/cnx';
 
-const appConst = require('./../../../app-const.json');
+const appConst = require('./../../../app-const');
 const Swiper = require('./../../../lib/swiper');
 const {fetchX} = require('./../../../helper/fetch-x');
 

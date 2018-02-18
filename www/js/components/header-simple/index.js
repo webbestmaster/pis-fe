@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import Menu from './../header/menu';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 class Header extends Component {
     render() {

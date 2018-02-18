@@ -6,8 +6,8 @@ import * as clubsCatalogAction from './action';
 
 const {fetchX} = require('./../../helper/fetch-x');
 const {createArray} = require('./../../helper/create');
-const appConst = require('./../../app-const.json');
-const globalAppConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
+const globalAppConst = require('./../../app-const');
 
 import Search from './search';
 import {store} from '../../index';

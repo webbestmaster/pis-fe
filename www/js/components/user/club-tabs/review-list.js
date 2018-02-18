@@ -20,7 +20,7 @@ import Rating from './../../util/rating';
 import * as authAction from './../../auth/action';
 
 const {get} = require('lodash');
-const appConst = require('./../../../app-const.json');
+const appConst = require('./../../../app-const');
 const {fetchX} = require('./../../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../../style/i/club/no-avatar.png');
 

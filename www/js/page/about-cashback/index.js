@@ -14,9 +14,9 @@ import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
-const authConst = require('./../../components/auth/const.json');
+const authConst = require('./../../components/auth/const');
 
 const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
     ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +

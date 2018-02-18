@@ -15,7 +15,7 @@ import Dialog from './../../components/util/dialog';
 
 const queryString = require('query-string');
 const isEqual = require('lodash/isEqual');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const topBanner = require('./../../../style/images/club/top-banner.png');
 

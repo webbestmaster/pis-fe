@@ -11,10 +11,10 @@ import {store} from '../../index';
 import {resolveImagePath} from '../../helper/path-x';
 
 const get = require('lodash/get');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
-const authConst = require('./../auth/const.json');
+const authConst = require('./../auth/const');
 
 /*
     Example

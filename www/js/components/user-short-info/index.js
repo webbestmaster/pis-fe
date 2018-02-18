@@ -5,7 +5,7 @@ import {resolveImagePath} from './../../helper/path-x';
 import * as authAction from './../auth/action';
 import {withRouter} from 'react-router-dom';
 
-const authConst = require('./../auth/const.json');
+const authConst = require('./../auth/const');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
 
 import style from './style.m.scss';

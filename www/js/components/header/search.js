@@ -11,7 +11,7 @@ const backSlideImage = require('./../../../style/images/header/search.jpg');
 const leftSlideImage = require('./../../../style/images/header/clubs.jpg');
 const centerSlideImage = require('./../../../style/images/header/subscriptions.jpg');
 const rightSlideImage = require('./../../../style/images/header/trainings.jpg');
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 
 
 /* global document, setTimeout, location */

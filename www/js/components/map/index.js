@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 
 export default class MapView extends Component {
     render() {

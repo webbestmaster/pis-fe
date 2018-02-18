@@ -15,8 +15,8 @@ import {Link} from 'react-router-dom';
 import {resolveImagePath} from '../../helper/path-x';
 import SubscriptionCard from './../club/subscription-card';
 
-const globalAppConst = require('./../../app-const.json');
-const appConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const Swiper = require('./../../lib/swiper');
 

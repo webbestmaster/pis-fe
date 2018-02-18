@@ -16,8 +16,8 @@ import {defaultDateFilter} from '../trainings-catalog/reducer';
 import {Link} from 'react-router-dom';
 import TrainingCard from './../club/training-card';
 
-const globalAppConst = require('./../../app-const.json');
-const appConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const {capitalizeFirstLetter} = require('./../../helper/string');
 const {reduceSeconds} = require('./../../helper/date');

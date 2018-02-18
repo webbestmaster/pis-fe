@@ -14,7 +14,7 @@ import {connect} from 'react-redux';
 import * as authAction from '../auth/action';
 
 const find = require('lodash/find');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const Swiper = require('./../../lib/swiper');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];

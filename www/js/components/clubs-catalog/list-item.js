@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {plural} from './../../helper/plural';
 import Rating from './../util/rating';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 class ListItem extends Component {
     render() {

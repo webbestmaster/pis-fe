@@ -4,7 +4,7 @@ import Lightbox from 'react-images';
 import style from './style.m.scss';
 import {resolveImagePath} from '../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
 export default class Gallery extends Component {

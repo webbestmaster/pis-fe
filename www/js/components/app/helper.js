@@ -2,7 +2,7 @@
 import {store} from '../../index';
 
 const appConst = require('./const.json');
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 
 function defineWrapperClassName() {
     const {clientWidth} = window.document.documentElement;

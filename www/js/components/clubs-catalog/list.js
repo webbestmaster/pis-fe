@@ -7,11 +7,11 @@ import ListItem from './list-item';
 import MapView from './../map';
 import MapItemClub from './../map/map-item-club';
 
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const get = require('lodash/get');
 const {fetchX} = require('./../../helper/fetch-x');
 // const {createArray} = require('./../../helper/create');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 // import HeaderSimple from './../components/header-simple';
 // import TopBigBanner from './../components/top-big-banner';
 
@@ -36,7 +36,7 @@ class List extends Component {
     getSearchLink() { // eslint-disable-line complexity, max-statements
         const view = this;
         const {props, state} = view;
-        const searchUrl = appConst.searchUrl.club + '?';
+        const searchUrl = appConst.searchUrl.club;
         const params = [];
         const {clubsCatalog} = props;
 

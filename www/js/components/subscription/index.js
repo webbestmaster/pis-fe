@@ -11,7 +11,7 @@ import Reviews from './reviews';
 // import Discounts from './discount';
 // import Gallery from './gallery';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 // const Swiper = require('./../../lib/swiper');
 

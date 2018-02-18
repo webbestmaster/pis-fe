@@ -10,7 +10,7 @@ import * as subscriptionsCatalogAction from './action';
 // import TopBigBanner from './../components/top-big-banner';
 
 // const topBanner = require('./../../style/images/clubs/top-banner.png');
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 
 class SubscriptionsCatalog extends Component {
     renderMobileFilter() {

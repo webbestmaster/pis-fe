@@ -6,8 +6,8 @@ import * as trainingsCatalogAction from './action';
 
 const {fetchX} = require('./../../helper/fetch-x');
 const {createArray} = require('./../../helper/create');
-const appConst = require('./../../app-const.json');
-const globalAppConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
+const globalAppConst = require('./../../app-const');
 const find = require('lodash/find');
 
 import Search from './search';

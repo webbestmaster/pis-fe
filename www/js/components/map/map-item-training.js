@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {reduceSeconds} from './../../helper/date';
 import {resolveImagePath} from '../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 class MapItemTraining extends Component {
     render() { // eslint-disable-line complexity

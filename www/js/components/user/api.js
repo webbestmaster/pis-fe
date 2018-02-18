@@ -1,6 +1,6 @@
 /* global fetch */
 const userConst = require('./const.json');
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 
 const orderApi = {
     confirm: orderId =>

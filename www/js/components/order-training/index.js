@@ -17,8 +17,8 @@ import {prepareScheduleList} from './../training/date-filter';
 import {defaultDateFilter} from '../trainings-catalog/reducer';
 
 const find = require('lodash/find');
-const globalAppConst = require('./../../app-const.json');
-const authConst = require('./../auth/const.json');
+const globalAppConst = require('./../../app-const');
+const authConst = require('./../auth/const');
 
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');

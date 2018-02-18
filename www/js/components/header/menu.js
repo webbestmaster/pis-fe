@@ -6,8 +6,8 @@ import * as authAction from './../auth/action';
 import UserShortInfo from './../../components/user-short-info';
 import cnx from './../../helper/cnx';
 
-const globalAppConst = require('./../../app-const.json');
-const appConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
+const appConst = require('./../../app-const');
 
 class Menu extends Component {
     constructor() {

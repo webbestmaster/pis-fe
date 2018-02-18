@@ -11,7 +11,7 @@ import * as trainingsCatalogAction from './../trainings-catalog/action';
 const {fetchX} = require('./../../helper/fetch-x');
 const {createArray} = require('./../../helper/create');
 const {reduceSeconds} = require('./../../helper/date');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const Swiper = require('./../../lib/swiper');
 // import HeaderSimple from './../components/header-simple';
 // import TopBigBanner from './../components/top-big-banner';

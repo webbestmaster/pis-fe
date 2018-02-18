@@ -2,8 +2,8 @@
 import * as authApi from './api';
 import * as fileApi from './../../helper/file';
 // import {progressiveFetch} from './../../helper/file';
-const appGlobalConst = require('./../../app-const.json');
-const authConst = require('./const.json');
+const appGlobalConst = require('./../../app-const');
+const authConst = require('./const');
 
 export function getSessionState() {
     return dispatch => fetch(

@@ -6,7 +6,7 @@ import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 
-const globalAppConst = require('./../../../app-const.json');
+const globalAppConst = require('./../../../app-const');
 
 class ChangePassword extends Component {
     constructor() {

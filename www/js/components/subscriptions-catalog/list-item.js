@@ -5,7 +5,7 @@ import Rating from './../util/rating';
 import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 class ListItem extends Component {
     render() { // eslint-disable-line complexity

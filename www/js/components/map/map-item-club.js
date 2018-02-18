@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {plural} from '../../helper/plural';
 import {resolveImagePath} from '../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 
 
 export default class MapItemClub extends Component {

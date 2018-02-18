@@ -16,9 +16,9 @@ import UserClub from './../../components/user/user-club';
 import * as authAction from '../../components/auth/action';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/user/top-banner.png');
-const authConst = require('./../../components/auth/const.json');
+const authConst = require('./../../components/auth/const');
 
 class UserPage extends Component {
     componentDidMount() {

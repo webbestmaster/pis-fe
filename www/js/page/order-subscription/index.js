@@ -15,9 +15,9 @@ import UserClub from './../../components/user/user-club';
 import OrderSubscription from './../../components/order-subscription';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
-const authConst = require('./../../components/auth/const.json');
+const authConst = require('./../../components/auth/const');
 
 class OrderPage extends Component {
     componentDidMount() {

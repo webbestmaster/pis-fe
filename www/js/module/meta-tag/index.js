@@ -1,6 +1,6 @@
 /* global document */
 const metaTagConst = require('./const.json');
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
 export default class MetaTagMaster {

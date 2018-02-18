@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import Menu from './menu';
 import Slider from './slider';
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const headerMaxHeight = 980;
 
 class Header extends Component {

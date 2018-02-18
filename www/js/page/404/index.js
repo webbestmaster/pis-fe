@@ -17,9 +17,9 @@ import {metaTagMaster} from '../../module/meta-tag';
 
 const image404 = require('./images/404.png');
 
-const globalAppConst = require('./../../app-const.json');
+const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
-const authConst = require('./../../components/auth/const.json');
+const authConst = require('./../../components/auth/const');
 
 class NotFoundPage extends Component {
     componentDidMount() {

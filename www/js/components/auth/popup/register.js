@@ -14,7 +14,7 @@ import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 import {formatPhoneBY} from './../../../helper/format';
 
-const globalAppConst = require('./../../../app-const.json');
+const globalAppConst = require('./../../../app-const');
 
 class Register extends Component {
     constructor() {

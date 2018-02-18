@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {resolveImagePath} from './../../helper/path-x';
 
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
 export default class OurPartners extends Component {

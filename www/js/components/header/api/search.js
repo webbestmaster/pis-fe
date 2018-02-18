@@ -1,5 +1,5 @@
 /* global fetch, setTimeout */
-const appGlobalConst = require('./../../../app-const.json');
+const appGlobalConst = require('./../../../app-const');
 
 const emptyQuery = '';
 

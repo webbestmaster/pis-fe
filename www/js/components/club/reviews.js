@@ -10,10 +10,10 @@ import {resolveImagePath} from '../../helper/path-x';
 import ClubLeaveReviewForm from './club-leave-review-form';
 
 const get = require('lodash/get');
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
-const authConst = require('./../auth/const.json');
+const authConst = require('./../auth/const');
 
 const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
     ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +

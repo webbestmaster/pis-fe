@@ -9,7 +9,7 @@ const Swiper = require('./../../lib/swiper');
 
 // import Menu from './menu';
 // import Slider from './slider';
-const appConst = require('./../../app-const.json');
+const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
 class Sale extends Component {

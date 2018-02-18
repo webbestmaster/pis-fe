@@ -1,7 +1,7 @@
 /* global window */
 import {combineReducers} from 'redux';
 
-const authConst = require('./const.json');
+const authConst = require('./const');
 
 export default combineReducers({
     login: (login = {}, {type, payload}) => {
