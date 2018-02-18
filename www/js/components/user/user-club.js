@@ -83,24 +83,22 @@ class UserClub extends Component {
         return auth.clubData.data.rows.pending.length;
     }
 
-    render() {
+    render() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {auth} = props;
-
         const newFeedbackCount = view.getNewFeedbackCount();
         const newOrderCount = view.getNewOrderCount();
-
-        if (!auth.clubFeedback.data || !auth.clubData.data) {
-            return null;
-        }
+        const canRender = Boolean(auth.clubFeedback.data && auth.clubData.data);
 
         return <Tabs
             // defaultIndex={state.tabIndex}
             selectedIndex={state.tabIndex}
             onSelect={() => console.log('on select')}
             className="section__tabs-wrapper">
-            <div ref="swiperContainer" className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
+            <div
+                ref="swiperContainer"
+                className={'hug swiper-container ' + tabsStyle.tab_wrapper}>
                 <TabList className="swiper-wrapper">
                     <Tab
                         onClick={() => view.setState({tabIndex: 0})}
@@ -134,16 +132,16 @@ class UserClub extends Component {
             </div>
 
             <TabPanel>
-                <NewOrder/>
+                {canRender ? <NewOrder/> : null}
             </TabPanel>
             <TabPanel>
-                <ConfirmedOrder/>
+                {canRender ? <ConfirmedOrder/> : null}
             </TabPanel>
             <TabPanel>
-                <RejectedOrder/>
+                {canRender ? <RejectedOrder/> : null}
             </TabPanel>
             <TabPanel>
-                <ReviewList/>
+                {canRender ? <ReviewList/> : null}
             </TabPanel>
         </Tabs>;
     }
