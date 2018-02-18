@@ -13,6 +13,7 @@ const host = 'http://site.katran.by';
 module.exports = {
     tabletWidth: 1260,
     mobileWidth: 750,
+    isTest: false,
     proxy: {
         postfix,
         postfixAmp,

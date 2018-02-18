@@ -6,6 +6,10 @@ const appGlobalConst = require('./../../app-const');
 const authConst = require('./const');
 
 export function getSessionState() {
+    if (appGlobalConst.isTest) {
+        return dispatch => Promise.resolve({data: {user: {}}});
+    }
+
     return dispatch => fetch(
         appGlobalConst.pageDataUrl.host + authConst.url.sessionState,
         {credentials: 'include', method: 'GET'})
