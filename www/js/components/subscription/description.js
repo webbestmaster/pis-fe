@@ -75,9 +75,10 @@ class Description extends Component {
         })}>
             {promotion && <div className={style.card_percent}>%</div>}
             <div className={style.card_short_info_wrapper}>
-                <p className={style.card_short_info_number}>1</p>
-                <p className={style.card_short_info_description}>Абонемент на&nbsp;
-                {plural(1, getTimePeriodName(row.period_type))}
+                <p className={style.card_short_info_number}>{row.period_amount}</p>
+                <p className={style.card_short_info_description}>
+                    Абонемент на&nbsp;
+                    {plural(row.period_amount, getTimePeriodName(row.period_type))}
                 </p>
             </div>
 
@@ -85,8 +86,9 @@ class Description extends Component {
 
             {promotion ?
                 <div>
-                    <p className={style.card_cost}>Цена со скидкой:&nbsp;
-                    {(row.price - promotion.discount).toFixed(2)} руб.
+                    <p
+                        className={style.card_cost}>Цена со скидкой:&nbsp;
+                        {(row.price - promotion.discount).toFixed(2)} руб.
                     </p>
                     <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
                 </div> :
