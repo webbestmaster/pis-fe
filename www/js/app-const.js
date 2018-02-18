@@ -38,7 +38,7 @@ module.exports = {
         }
     },
     searchUrl: {
-        headerSearch: host + '/api/search/full?query={{query}}' + postfixAmp,
+        headerSearch: '/api/search/full?query={{query}}' + postfixAmp,
         club: host + '/api/club/search' + (postfixQuestionAmp || '?'),
         subscriptions: host + '/api/subscription/search' + (postfixQuestionAmp || '?'),
         trainings: host + '/api/training/search' + (postfixQuestionAmp || '?')
