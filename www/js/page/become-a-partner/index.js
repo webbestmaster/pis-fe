@@ -13,6 +13,7 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import {metaTagMaster} from '../../module/meta-tag';
+import BecomeAPartner from './../../components/become-a-partner';
 
 const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
@@ -26,7 +27,7 @@ const fishText = 'Замечательный клуб В самом центре
     'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
     'nulla suscipit?';
 
-class BecomeAPartner extends Component {
+class BecomeAPartnerPage extends Component {
     componentDidMount() {
         metaTagMaster.updateByUrl('/become-a-partner');
     }
@@ -48,15 +49,8 @@ class BecomeAPartner extends Component {
                 <h3 className="section__header">Стать партнером</h3>
             </TopBigBanner>
 
-            <div className="hug hug--simple-page">
-                <h3 className="section__header">Стать партнером</h3>
-                <div className="section__text-wrapper">
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
-                </div>
-            </div>
+            <BecomeAPartner/>
+
             <Footer/>
         </div>;
     }
@@ -65,5 +59,5 @@ class BecomeAPartner extends Component {
 export default connect(
     state => ({}),
     {}
-)(BecomeAPartner);
+)(BecomeAPartnerPage);
 

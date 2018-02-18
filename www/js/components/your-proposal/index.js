@@ -13,7 +13,6 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import {metaTagMaster} from '../../module/meta-tag';
-import YourProposal from '../../components/your-proposal';
 
 const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
@@ -27,7 +26,7 @@ const fishText = 'Замечательный клуб В самом центре
     'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
     'nulla suscipit?';
 
-class YourProposalPage extends Component {
+class YourProposal extends Component {
     componentDidMount() {
         metaTagMaster.updateByUrl('/your-proposal');
     }
@@ -38,20 +37,10 @@ class YourProposalPage extends Component {
         const {app} = props;
         const {auth} = props;
 
-        return <div>
-            <HeaderSimple/>
-            <TopBigBanner backgroundImage={topBanner}>
-                <BreadCrumbs>
-                    <Link to="/">Главная</Link>
-                    <Link to="/your-proposal">Ваши предложения</Link>
-                    {/* <Link to="/trainings">Мой заказ</Link>*/}
-                </BreadCrumbs>
-                <h3 className="section__header">Ваши предложения</h3>
-            </TopBigBanner>
+        return <div className="hug hug--simple-page">
+            <h3 className="section__header">Ваши предложения</h3>
 
-            <YourProposal/>
 
-            <Footer/>
         </div>;
     }
 }
@@ -59,5 +48,5 @@ class YourProposalPage extends Component {
 export default connect(
     state => ({}),
     {}
-)(YourProposalPage);
+)(YourProposal);
 

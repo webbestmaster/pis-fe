@@ -10,6 +10,7 @@ body {
     max-width: 1170px;
     &.hug--simple-page {
         padding-top: 70px;
+        padding-bottom: 70px;
     }
 
     &.hug--section {
@@ -27,6 +28,7 @@ body {
     .hug {
         &.hug--simple-page {
             padding-top: 35px;
+            padding-bottom: 35px;
         }
         &.hug--section {
             padding-bottom: 40px;

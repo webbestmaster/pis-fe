@@ -78,7 +78,6 @@
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-server": "^2.9.3",
-    "whatwg-fetch": "^2.0.3",
-    "woden": "^3.2.0"
+    "whatwg-fetch": "^2.0.3"
   }
 }
