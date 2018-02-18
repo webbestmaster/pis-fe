@@ -11,6 +11,7 @@ import Training from './../../components/training';
 import * as appAction from '../../components/app/action';
 import * as authAction from '../../components/auth/action';
 import {metaTagMaster} from '../../module/meta-tag';
+
 const find = require('lodash/find');
 
 const isEqual = require('lodash/isEqual');
@@ -143,10 +144,10 @@ class TrainingPage extends Component {
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
                     <Link to="/trainings">Тренировки</Link>
-                    <Link to={'/club/' + fitnessClub.id}>{fitnessClub.title}</Link>
+                    <Link to={'/training/' + trainingId}>{pageData.row.title}</Link>
                 </BreadCrumbs>
                 <h3 className="section__header section__header--training">
-                    Тренировки {fitnessClub.title}
+                    {pageData.row.title}
                     {view.renderFavoriteMark()}
                 </h3>
             </TopBigBanner>

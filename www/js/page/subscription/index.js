@@ -73,9 +73,9 @@ export default class SubscriptionPage extends Component {
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
                     <Link to="/subscriptions">Абонементы</Link>
-                    <Link to={'/club/' + pageData.row.fitnessClub.id}>{pageData.row.fitnessClub.title}</Link>
+                    <Link to={'/subscription/' + subscriptionId}>{pageData.row.title}</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Абонемент</h3>
+                <h3 className="section__header">{pageData.row.title}</h3>
             </TopBigBanner>
             <Subscription {...{subscriptionId}}/>
             <Footer/>
