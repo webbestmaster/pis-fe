@@ -12,10 +12,10 @@ import {resolveImagePath} from '../../helper/path-x';
 import {formatPhoneBY} from '../../helper/format';
 
 const get = require('lodash/get');
-const appConst = require('./../../app-const');
+const globalAppConst = require('./../../app-const');
+const authConst = require('./../auth/const');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
-const authConst = require('./../auth/const');
 
 /*
     Example
@@ -31,6 +31,7 @@ class BecomeAPartnerForm extends Component {
         view.state = {
             error: null,
             messageText: '',
+            formSent: false,
             // overStarIndex: -1,
             form: {
                 input: {
@@ -92,13 +93,25 @@ class BecomeAPartnerForm extends Component {
             return;
         }
 
-        console.log('send message');
+        fetch(
+            globalAppConst.pageDataUrl.host +
+            authConst.url.proposal
+                .replace('{{type}}', authConst.proposalType.partner)
+                .replace('{{message}}', state.messageText.trim()),
+            {credentials: 'include', method: 'POST'})
+            .then(() => view.setState({formSent: true}));
     }
 
     render() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {auth} = props;
+
+        if (state.formSent === true) {
+            return <h3
+                style={{paddingTop: 200, paddingBottom: 200}}
+                className={style.review_wait_for_moderation}>Спасибо за Ваше сообщение!</h3>;
+        }
 
         const avatar = get(auth, 'login.data.user.image') || null;
 
