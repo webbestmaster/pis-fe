@@ -13,7 +13,6 @@ import * as authAction from '../../components/auth/action';
 import {metaTagMaster} from '../../module/meta-tag';
 
 const find = require('lodash/find');
-
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
