@@ -1,3 +1,5 @@
+@import "aaa-var";
+
 .club-header-rating {
     display: block;
     margin: -60px 0 0 98px;
@@ -96,7 +98,7 @@
 
 @media screen and (max-width: $mobileWidth) {
     .club-header-rating {
-        margin: -34px 0 0 6px;
+        margin: -44px 0 0 6px;
     }
 
     .club-header-rating__stars {
