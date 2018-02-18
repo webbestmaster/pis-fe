@@ -13,18 +13,11 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import {metaTagMaster} from '../../module/meta-tag';
+import Form from './form';
 
 const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/order/top-banner.png');
 const authConst = require('./../../components/auth/const');
-
-const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
-    ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
-    'крутое помещение - красавцы. Приветливые тренера, обходительный персонал. Обязательно ' +
-    'зайдем сюда еще раз. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ' +
-    'cumque ipsam molestias possimus quaerat. Dolorem fugiat fugit similique soluta ' +
-    'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
-    'nulla suscipit?';
 
 class YourProposal extends Component {
     componentDidMount() {
@@ -39,8 +32,7 @@ class YourProposal extends Component {
 
         return <div className="hug hug--simple-page">
             <h3 className="section__header">Ваши предложения</h3>
-
-
+            <Form/>
         </div>;
     }
 }

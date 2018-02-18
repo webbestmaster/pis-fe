@@ -96,7 +96,7 @@ class BecomeAPartnerForm extends Component {
         fetch(
             globalAppConst.pageDataUrl.host +
             authConst.url.proposal
-                .replace('{{type}}', authConst.proposalType.partner)
+                .replace('{{type}}', authConst.proposalType.proposal)
                 .replace('{{message}}', state.messageText.trim()),
             {credentials: 'include', method: 'POST'})
             .then(() => view.setState({formSent: true}));
@@ -110,7 +110,7 @@ class BecomeAPartnerForm extends Component {
         if (state.formSent === true) {
             return <h3
                 style={{paddingTop: 200, paddingBottom: 200}}
-                className={style.review_wait_for_moderation}>Спасибо за Ваше сообщение!</h3>;
+                className={style.review_wait_for_moderation}>Спасибо за Ваше предложение!</h3>;
         }
 
         const avatar = get(auth, 'login.data.user.image') || null;
@@ -119,7 +119,7 @@ class BecomeAPartnerForm extends Component {
             <div
                 key="text"
                 className="section__text-wrapper clear-full">
-                <p>Оставье Ваши контактные данные ниже.</p>
+                <p>Оставье Ваше предложение ниже.</p>
             </div>,
             get(props.auth, 'login.data.user.id', false) ?
                 null :
@@ -127,7 +127,7 @@ class BecomeAPartnerForm extends Component {
                     key="review-enter"
                     onClick={() => props.openPopupLogin()}
                     className={style.review_enter_text}>
-                    Авторизуйтесь чтобы оставить сообщение
+                    Авторизуйтесь чтобы оставить предложение
                 </p>,
             <form
                 key="form" {...cnx(style.review_form, 'clear-full',
@@ -139,7 +139,7 @@ class BecomeAPartnerForm extends Component {
                         style={{backgroundImage: 'url(' + resolveImagePath(avatar) + ')'}}/> :
                     <div className={style.review_form__avatar}/>
                 }
-                <h4 className={style.review_form__header}>Написать сообщение</h4>
+                <h4 className={style.review_form__header}>Написать предложение</h4>
                 <p className={style.review_form__stars_label}>&nbsp;</p>
                 <textarea
                     ref="message"
@@ -147,14 +147,14 @@ class BecomeAPartnerForm extends Component {
                     onBlur={() => view.validateMessage()}
                     className={style.review_form__text_area}
                     rows="10"
-                    placeholder="Напишите Ваше сообщение"/>
+                    placeholder="Напишите Ваше предложение"/>
                 {state.error && <p className={style.review_error_text}>{state.error}</p>}
                 <div
                     onClick={() => view.leaveMessage()}
                     {...cnx(style.review_form__button, {
                         disabled: state.messageText.trim().length < 10
                     })}>
-                    Написать сообщение
+                    Написать предложение
                 </div>
             </form>
         ];
