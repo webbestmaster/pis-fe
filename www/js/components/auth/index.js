@@ -8,6 +8,7 @@ import ChangePassword from './popup/change-password';
 import {connect} from 'react-redux';
 import * as authAction from './action';
 import * as authApi from './api';
+// import FacebookLogin from 'react-facebook-login';
 
 const authConst = require('./const');
 const globalAppConst = require('./../../app-const');
@@ -87,6 +88,20 @@ class Auth extends Component {
         const {props} = view;
         const {auth} = props;
         const popupType = auth.openPopup;
+
+        /*
+            <FacebookLogin
+                key="FacebookLogin"
+                appId="31415926"
+                autoLoad={true}
+                fields="name,email,picture,gender,first_name,last_name"
+                onClick={evt => {
+                    console.log(evt);
+                }}
+                callback={responseFacebook => {
+                    console.log(responseFacebook);
+                }}/>,
+        */
 
         return [
             <Promo key="promo" dialog={{open: authConst.popup.promo === popupType}}/>,
