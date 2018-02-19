@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import * as subscriptionsCatalogAction from './action';
+import {withRouter} from 'react-router-dom';
 
 const {fetchX} = require('./../../helper/fetch-x');
 const {createArray} = require('./../../helper/create');
@@ -11,6 +12,7 @@ const globalAppConst = require('./../../app-const');
 
 import Search from './search';
 import {store} from '../../index';
+import * as authAction from '../auth/action';
 // import HeaderSimple from './../components/header-simple';
 // import TopBigBanner from './../components/top-big-banner';
 
@@ -33,36 +35,14 @@ class Filter extends Component {
         view.initialize();
     }
 
-    getDefaultState() {
-        return {
-            pageData: null,
-            selected: {
-                underground: [],
-                work: {
-                    from: null,
-                    to: null
-                },
-                cost: {
-                    from: null,
-                    to: null
-                }
-            },
-            additionFilter: {
-                isOpen: false,
-                comfort: {
-                    selected: []
-                }
-            },
-            categoryFilter: {},
-            error: {
-                workTime: false,
-                costRange: false
-            },
-            isSpecPriceAtFirst: true,
-            selectedSubscriptionPeriod: {
-                ...subscriptionPeriodOptionList[0]
-            }
-        };
+    componentDidMount() {
+        const view = this;
+
+        const {state, props} = view;
+
+        if (props.location.state && props.location.state.fromSaleSwiper) {
+            view.setState({isSpecPriceAtFirst: true});
+        }
     }
 
     componentDidUpdate() {
@@ -77,7 +57,7 @@ class Filter extends Component {
         const view = this;
         const {filter} = store.getState().subscriptionsCatalog;
 
-        view.state = Object.assign({}, view.getDefaultState(), filter || {});
+        view.state = Object.assign({}, getDefaultState(), filter || {});
 
         fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.subscriptions).then(pageData => {
             const categoryFilter = {};
@@ -348,13 +328,45 @@ class Filter extends Component {
                 ])}
             </div>
             <div className="clubs-catalog-filter__clear-filter"
-                onClick={() => view.setState(view.getDefaultState(), () => view.initialize())}>Очистить фильтр
+                onClick={() => view.setState(getDefaultState(), () => view.initialize())}>Очистить фильтр
             </div>
         </div>;
     }
 }
 
-export default connect(
+export function getDefaultState() {
+    return {
+        pageData: null,
+        selected: {
+            underground: [],
+            work: {
+                from: null,
+                to: null
+            },
+            cost: {
+                from: null,
+                to: null
+            }
+        },
+        additionFilter: {
+            isOpen: false,
+            comfort: {
+                selected: []
+            }
+        },
+        categoryFilter: {},
+        error: {
+            workTime: false,
+            costRange: false
+        },
+        isSpecPriceAtFirst: false,
+        selectedSubscriptionPeriod: {
+            ...subscriptionPeriodOptionList[0]
+        }
+    };
+}
+
+export default withRouter(connect(
     state => ({
         app: state.app
     }),
@@ -362,4 +374,4 @@ export default connect(
         setFilter: subscriptionsCatalogAction.setFilter,
         setFilterVisible: subscriptionsCatalogAction.setFilterVisible
     }
-)(Filter);
+)(Filter));

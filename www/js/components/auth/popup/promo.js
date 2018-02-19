@@ -46,7 +46,7 @@ class Promo extends Component {
                         Зарегистрироваться
                     </div>
                     <div className={style.promo_text}>
-                        Вы уже зарегистрированы?
+                        Вы уже зарегистрированы?&nbsp;&nbsp;
                         <span onClick={() => props.openPopupLogin()} className={style.promo_enter}>Войти</span>
                     </div>
                 </div>

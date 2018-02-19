@@ -56,7 +56,10 @@ class Sale extends Component {
         return <section className="section sale">
             <h2 className="section__header">
                 Акции
-                <Link to="/subscriptions" className="section__button">Смотреть все акции</Link>
+                <Link to={{
+                    pathname: '/subscriptions',
+                    state: {fromSaleSwiper: true}
+                }} className="section__button">Смотреть все акции</Link>
             </h2>
             <div className="sale-slider">
                 <div ref="swiperContainer" className="swiper-container">
