@@ -334,7 +334,8 @@
         line-height: 20px;
         color: $secondaryTextColor;
         margin-bottom: 14px;
-        min-height: 70px;
+        height: 78px;
+        @include line-cap(4);
     }
 
     .sale-swiper-card__details {
