@@ -254,10 +254,16 @@ class Description extends Component {
                     <h3 className="section__header">Информация о клубе</h3>
 
                     <div {...cnx('clubs-catalog-list-item', 'clear-full', style.club_info)}>
-                        <div className="clubs-catalog-list-item__image"
+                        <div
+                            className="clubs-catalog-list-item__image"
                             style={{backgroundImage: 'url(' + resolveImagePath(fitnessClub.image) + ')'}}/>
                         <div className="clubs-catalog-list-item__info">
-                            <h4 className="clubs-catalog-list-item__header">{fitnessClub.title}</h4>
+                            <Link
+                                target="_blank"
+                                to={'/club/' + fitnessClub.id}
+                                className="clubs-catalog-list-item__header section_htdu">
+                                {fitnessClub.title}
+                            </Link>
                             <p className="clubs-catalog-list-item__address">{fitnessClub.address}</p>
 
                             <div className={style.club_info_rating + ' clear-self'}>

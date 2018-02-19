@@ -236,7 +236,11 @@ body { // just add authority in front of swiper's classes
                 left: 100px;
             }
 
-            .clubs-catalog-list-item__header,
+            .clubs-catalog-list-item__header {
+                color: $mainTextColor;
+                margin-right: 0;
+            }
+
             .clubs-catalog-list-item__address {
                 margin-right: 0;
             }
