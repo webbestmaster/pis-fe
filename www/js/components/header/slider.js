@@ -61,27 +61,30 @@ class Slider extends Component {
             {app.screen.width > globalAppConst.tabletWidth ?
                 <div className="header-slider__navigation" style={{marginTop: deltaTop}}>
                     <div className="header-slider__navigation-hug">
-                        <div
+                        <Link
+                            to="/clubs"
                             onMouseOver={() => view.setState({activeSlide: 'leftSlide'})}
                             onMouseOut={() => view.setState({activeSlide: null})}
                             className="slider-navigation-item slider-navigation-item--left">
                             Клубы
-                            <Link className="slider-navigation-item__button" to="/clubs">Подробнее</Link>
-                        </div>
-                        <div
+                            <span className="slider-navigation-item__button">Подробнее</span>
+                        </Link>
+                        <Link
+                            to="/trainings"
                             onMouseOver={() => view.setState({activeSlide: 'rightSlide'})}
                             onMouseOut={() => view.setState({activeSlide: null})}
                             className="slider-navigation-item slider-navigation-item--right">
                             Тренировки
-                            <Link className="slider-navigation-item__button" to="/trainings">Подробнее</Link>
-                        </div>
-                        <div
+                            <span className="slider-navigation-item__button">Подробнее</span>
+                        </Link>
+                        <Link
+                            to="/subscriptions"
                             onMouseOver={() => view.setState({activeSlide: 'centerSlide'})}
                             onMouseOut={() => view.setState({activeSlide: null})}
                             className="slider-navigation-item slider-navigation-item--center">
                             Абонементы
-                            <Link className="slider-navigation-item__button" to="/subscriptions">Подробнее</Link>
-                        </div>
+                            <span className="slider-navigation-item__button">Подробнее</span>
+                        </Link>
                     </div>
                 </div> :
                 <div className="header-slider__navigation header-slider__navigation--mobile"

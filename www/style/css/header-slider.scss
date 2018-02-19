@@ -1,3 +1,5 @@
+@import "aaa-var";
+
 .header-slider {
     position: absolute;
     width: 100%;
@@ -60,6 +62,8 @@
     width: 100%;
 
     .slider-navigation-item {
+        display: block;
+        text-decoration: none;
         padding-top: 100px;
         font-size: 28px;
         font-weight: bold;
