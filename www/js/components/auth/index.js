@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import * as authAction from './action';
 import * as authApi from './api';
 import FacebookLogin from 'react-facebook-login';
+import InstagramLogin from 'react-instagram-login';
 
 const authConst = require('./const');
 const globalAppConst = require('./../../app-const');
@@ -91,7 +92,8 @@ class Auth extends Component {
 
 
         return [
-            <div key="facebook-login" style={{display: 'none'}}>
+            <div key="facebook-login" style={{display: 'block'}}>
+
                 <FacebookLogin
                     tag="span"
                     textButton="Login with Facebook"
@@ -105,6 +107,18 @@ class Auth extends Component {
                     }}
                     callback={responseFacebook => {
                         console.log(responseFacebook);
+                    }}/>
+
+                <InstagramLogin
+                    scope="comments"
+                    clientId="aa0687bc325"
+                    onSuccess={responseInstagram => {
+                        console.log('responseInstagram++');
+                        console.log(responseInstagram);
+                    }}
+                    onFailure={responseInstagram => {
+                        console.log('responseInstagram--');
+                        console.log(responseInstagram);
                     }}/>
             </div>,
             <Promo key="promo" dialog={{open: authConst.popup.promo === popupType}}/>,
