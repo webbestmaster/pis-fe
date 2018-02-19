@@ -1,3 +1,5 @@
+@import "helper";
+
 .gm-fullscreen-control {
     display: none; // Hide default fullscreen button on react-google-maps
 }
@@ -13,7 +15,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 0;
-
 }
 
 .map-point__content {
@@ -59,6 +60,9 @@
     .clubs-catalog-list-item__description {
         clear: both;
         padding-bottom: 2px;
+        p {
+            @include line-cap(4);
+        }
     }
 
     .clubs-catalog-list-item__logo {
