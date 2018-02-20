@@ -9,7 +9,8 @@ import {connect} from 'react-redux';
 import * as authAction from './action';
 import * as authApi from './api';
 import FacebookLogin from 'react-facebook-login';
-import InstagramLogin from 'react-instagram-login';
+// import InstagramLogin from 'react-instagram-login';
+// import VkLogin from 'react-vk-login';
 
 const authConst = require('./const');
 const globalAppConst = require('./../../app-const');
@@ -90,6 +91,19 @@ class Auth extends Component {
         const {auth} = props;
         const popupType = auth.openPopup;
 
+{/*
+        <InstagramLogin
+            scope="comments"
+            clientId="aa0687bc325"
+            onSuccess={responseInstagram => {
+                console.log('responseInstagram++');
+                console.log(responseInstagram);
+            }}
+            onFailure={responseInstagram => {
+                console.log('responseInstagram--');
+                console.log(responseInstagram);
+            }}/>
+*/}
 
         return [
             <div key="facebook-login" style={{display: 'block'}}>
@@ -109,18 +123,8 @@ class Auth extends Component {
                         console.log(responseFacebook);
                     }}/>
 
-                <InstagramLogin
-                    scope="comments"
-                    clientId="aa0687bc325"
-                    onSuccess={responseInstagram => {
-                        console.log('responseInstagram++');
-                        console.log(responseInstagram);
-                    }}
-                    onFailure={responseInstagram => {
-                        console.log('responseInstagram--');
-                        console.log(responseInstagram);
-                    }}/>
             </div>,
+
             <Promo key="promo" dialog={{open: authConst.popup.promo === popupType}}/>,
             <Register key="register" dialog={{open: authConst.popup.register === popupType}}/>,
             <Login key="login" dialog={{open: authConst.popup.login === popupType}}/>,
