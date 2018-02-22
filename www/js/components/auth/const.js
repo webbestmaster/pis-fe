@@ -20,7 +20,7 @@ module.exports = {
         removeFromFavorite: '/member/favorite/remove?id={{favoriteItemId}}' + postfixAmp,
         createClubAnswer: '/member/feedback/answer?id={{reviewId}}&answer={{answer}}' + postfixAmp,
         makeSubscriptionOrder: '/member/order/create?productType=subscription&orderType={{orderType}}&amount={{amount}}&subscriptionId={{subscriptionId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}' + postfixAmp, // eslint-disable-line max-len
-        makeTrainingOrder: '/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}&trainingId={{trainingId}}&trainingScheduleId={{trainingScheduleId}}&day={{dayId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}' + postfixAmp, // eslint-disable-line max-len
+        makeTrainingOrder: '/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}&trainingId={{trainingId}}&trainingScheduleId={{trainingScheduleId}}&day={{dayId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}&startOrderDate={{startOrderDate}}' + postfixAmp, // eslint-disable-line max-len
         proposal: '/member/proposal/create?type={{type}}&message={{message}}' + postfixAmp
     },
     type: {

@@ -198,7 +198,8 @@ class Order extends Component {
                 .replace('{{trainingScheduleId}}', trainingScheduleId)
                 .replace('{{dayId}}', dayId)
                 .replace('{{needCall}}', needCall)
-                .replace('{{userPhone}}', userPhone),
+                .replace('{{userPhone}}', userPhone)
+                .replace('{{startOrderDate}}', view.getTrainingDate()),
             {credentials: 'include', method: 'POST'})
         // .then(data => data.json())
             .then(() => view.props.history.push('/user/tab-index/1'));
@@ -582,7 +583,7 @@ class Order extends Component {
                             break;
 
                         default:
-                            console.warn('How it possible o_O ?');
+                            console.warn('How it possible o_O? Page has 3 tabs only');
                     }
                 }}
                 className={cardStyle.button}>забронировать
@@ -591,6 +592,21 @@ class Order extends Component {
             <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
             </p>
         </div>;
+    }
+
+    getTrainingDate() {
+        const view = this;
+        const {props} = view;
+        const trainingDayId = parseInt(props.match.params.dayId, 10);
+        const showDayTimeItem = find(defaultItems, timeItem =>
+            trainingDayId === weekDaysMap[new Date(timeItem).getDay()].day);
+        const currentDate = new Date(showDayTimeItem);
+
+        return [
+            currentDate.getFullYear(),
+            currentDate.getMonth() < 10 ? '0' + currentDate.getMonth() : currentDate.getMonth(),
+            currentDate.getDate() < 10 ? '0' + currentDate.getDate() : currentDate.getDate()
+        ].join('-');
     }
 
     render() { // eslint-disable-line complexity

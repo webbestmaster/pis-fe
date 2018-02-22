@@ -22,12 +22,13 @@ class ConfirmedOrder extends NewOrder {
         return [].concat(auth.clubData.data.rows.confirmed, auth.clubData.data.rows.approved);
     }
 
-    renderTableRow(order) {
+    renderTableRow(order) { // eslint-disable-line complexity
         const view = this;
 
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
+            start_order_date, // eslint-disable-line id-match, camelcase
             // fitness_club, // eslint-disable-line id-match, camelcase
             fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
             fitness_club_subscription, // eslint-disable-line id-match, camelcase
@@ -44,7 +45,9 @@ class ConfirmedOrder extends NewOrder {
 
         return <tr key={id}>
             <td>{
-                moment(created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
+                    moment(created_at).format('DD.MM.YYYY') : // eslint-disable-line id-match, camelcase
+                    moment(start_order_date || created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
             }</td>
             <td>{
                 [order.order_user.first_name, order.order_user.last_name].join(' ') // eslint-disable-line id-match, camelcase
