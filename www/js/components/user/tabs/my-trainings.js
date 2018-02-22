@@ -44,7 +44,6 @@ class MyTrainings extends Component {
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
-            start_order_date, // eslint-disable-line id-match, camelcase
             fitness_club, // eslint-disable-line id-match, camelcase
             fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
             fitness_club_subscription, // eslint-disable-line id-match, camelcase
@@ -59,9 +58,7 @@ class MyTrainings extends Component {
 
         return <tr key={id}>
             <td>{
-                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-                    moment(created_at).format('DD.MM.YYYY') : // eslint-disable-line id-match, camelcase
-                    moment(start_order_date || created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+                moment(created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
             }</td>
             <td>{
                 fitness_club.title // eslint-disable-line id-match, camelcase
