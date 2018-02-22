@@ -6,7 +6,7 @@ import style from './../style.m.scss';
 import moment from 'moment/moment';
 import tableStyle from './../table.m.scss';
 import {plural} from './../../../helper/plural';
-import {NewOrder, getOrderTime} from './new-order';
+import {NewOrder} from './new-order';
 import Pagination from 'react-js-pagination';
 import {orderApi} from '../api';
 import * as authAction from '../../auth/action';

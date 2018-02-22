@@ -348,34 +348,3 @@ export default connect(
         getClubHomeData: authAction.getClubHomeData
     }
 )(NewOrder);
-
-export function getOrderTime(order) {
-    const {
-        fitness_club_subscription_id // eslint-disable-line id-match, camelcase
-    } = order;
-
-
-    return fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-        getSubscriptionTime(order) :
-        getTrainingTime(order);
-}
-
-function getSubscriptionTime(order) {
-    const {
-        fitness_club_subscription // eslint-disable-line id-match, camelcase
-    } = order;
-
-    const {work_from, work_to} = fitness_club_subscription; // eslint-disable-line id-match, camelcase
-
-    return reduceSeconds(work_from) + '-' + reduceSeconds(work_to);
-}
-
-function getTrainingTime(order) {
-    const {
-        fitness_club_training_schedule // eslint-disable-line id-match, camelcase
-    } = order;
-
-    const {time_from, time_to} = fitness_club_training_schedule; // eslint-disable-line id-match, camelcase
-
-    return reduceSeconds(time_from) + '-' + reduceSeconds(time_to);
-}

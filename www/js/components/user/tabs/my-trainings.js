@@ -41,13 +41,63 @@ class MyTrainings extends Component {
     }
 
     renderTableRow(order) {
+        const view = this;
+
+        return order.fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
+            view.renderTableRowSubscription(order) :
+            view.renderTableRowTraining(order);
+    }
+
+    renderTableRowTraining(order) {
+        const {
+            id,
+            created_at, // eslint-disable-line id-match, camelcase
+            start_order_date, // eslint-disable-line id-match, camelcase
+            fitness_club, // eslint-disable-line id-match, camelcase
+            fitness_club_training, // eslint-disable-line id-match, camelcase
+            order_type, // eslint-disable-line id-match, camelcase
+            real_price, // eslint-disable-line id-match, camelcase
+            cashback,
+            frontType
+        } = order;
+
+        const humanStatus = getHumanOrderStatus(frontType);
+
+        return <tr key={id}>
+            <td>{
+                moment(start_order_date || created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                fitness_club.title // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                fitness_club_training.title // eslint-disable-line id-match, camelcase
+            } (<span className="main-color">{
+                real_price // eslint-disable-line id-match, camelcase
+            } руб.</span>)
+            </td>
+            {
+                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                    <td>На&nbsp;месте</td> :
+                    <td>Бонусами</td>
+            }
+            <td>+{parseFloat(cashback).toFixed(2)}</td>
+            <td className={tableStyle.vertical_free}>
+                <div className={style.table__training_status}>
+                    <span className={style.table__training_status_icon + ' ' + humanStatus.cssClass}/>
+                    {humanStatus.status}
+                </div>
+            </td>
+            <td>{humanStatus.description}</td>
+        </tr>;
+    }
+
+    renderTableRowSubscription(order) {
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
             fitness_club, // eslint-disable-line id-match, camelcase
-            fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
             fitness_club_subscription, // eslint-disable-line id-match, camelcase
-            fitness_club_training, // eslint-disable-line id-match, camelcase
             order_type, // eslint-disable-line id-match, camelcase
             real_price, // eslint-disable-line id-match, camelcase
             cashback,
@@ -64,9 +114,7 @@ class MyTrainings extends Component {
                 fitness_club.title // eslint-disable-line id-match, camelcase
             }</td>
             <td>{
-                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-                    fitness_club_subscription.title : // eslint-disable-line id-match, camelcase
-                    fitness_club_training.title // eslint-disable-line id-match, camelcase
+                fitness_club_subscription.title // eslint-disable-line id-match, camelcase
             } (<span className="main-color">{
                 real_price // eslint-disable-line id-match, camelcase
             } руб.</span>)
