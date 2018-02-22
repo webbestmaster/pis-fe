@@ -77,6 +77,87 @@ export class NewOrder extends Component {
 
     renderTableRow(order) { // eslint-disable-line complexity
         const view = this;
+
+        return order.fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
+            view.renderTableRowSubscription(order) :
+            view.renderTableRowTraining(order);
+    }
+
+    renderTableRowTraining(order) {
+        const view = this;
+
+        const {
+            id,
+            created_at, // eslint-disable-line id-match, camelcase
+            start_order_date, // eslint-disable-line id-match, camelcase
+            // fitness_club, // eslint-disable-line id-match, camelcase
+            // fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
+            // fitness_club_subscription, // eslint-disable-line id-match, camelcase
+            fitness_club_training, // eslint-disable-line id-match, camelcase
+            order_type, // eslint-disable-line id-match, camelcase
+            real_price, // eslint-disable-line id-match, camelcase
+            // cashback,
+            // frontType,
+            fitness_club_training_schedule, // eslint-disable-line id-match, camelcase
+            amount
+        } = order;
+
+        return [<tr key={id}>
+            <td>{
+                moment(start_order_date || created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                [order.order_user.first_name, order.order_user.last_name].join(' ') // eslint-disable-line id-match, camelcase
+            }</td>
+            <td>{
+                fitness_club_training.title // eslint-disable-line id-match, camelcase
+            } (<span className="main-color">тренировка - {
+                real_price // eslint-disable-line id-match, camelcase
+            } руб.
+            </span>)
+            </td>
+            <td>
+                {reduceSeconds(
+                    fitness_club_training_schedule.time_from // eslint-disable-line id-match, camelcase
+                )}
+                &nbsp;-&nbsp;
+                {reduceSeconds(
+                    fitness_club_training_schedule.time_to // eslint-disable-line id-match, camelcase
+                )}
+            </td>
+            <td dangerouslySetInnerHTML={{
+                __html: plural(amount, 'человек').replace(' ', '&nbsp;') // eslint-disable-line id-match
+            }}/>
+            {
+                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                    <td>На&nbsp;месте</td> :
+                    <td>Бонусами</td>
+            }
+            <td className={tableStyle.vertical_free}>
+                <div className={style.two_button_wrapper}>
+                    <div
+                        onClick={() => view.confirmOrder(id)}
+                        className={style.table__training_status}>
+                        <span className={style.table__training_status_icon + ' ' +
+                        style.table__training_status_icon__done}/>
+                        Подтвердить
+                    </div>
+                    <div
+                        onClick={() => view.toggleDeclineFormForOrder(id)}
+                        className={style.table__training_status}>
+                        <span className={style.table__training_status_icon + ' ' +
+                        style.table__training_status_icon__rejected}/>
+                        Отклонить
+                    </div>
+                </div>
+            </td>
+        </tr>,
+        view.renderDeclineForm(id)
+        ];
+    }
+
+    renderTableRowSubscription(order) {
+        const view = this;
         const {state, props} = view;
 
         const {
@@ -94,8 +175,6 @@ export class NewOrder extends Component {
             amount
         } = order;
 
-        const time = getOrderTime(order);
-
         return [<tr key={id}>
             <td>{
                 fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
@@ -109,16 +188,15 @@ export class NewOrder extends Component {
                 fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
                     fitness_club_subscription.title : // eslint-disable-line id-match, camelcase
                     fitness_club_training.title // eslint-disable-line id-match, camelcase
-            } (<span className="main-color">{
+            } (<span className="main-color">абонемент - {
                 real_price // eslint-disable-line id-match, camelcase
             } руб.</span>)
             </td>
-            {time.indexOf(':') === 1 ?
-                <td>
-                    <span style={{visibility: 'hidden'}}>1</span>
-                    {time}
-                </td> :
-                <td>{time}</td>}
+            <td>
+                <div className="ta-center">
+                    &nbsp;&ndash;&ndash;&nbsp;
+                </div>
+            </td>
             <td dangerouslySetInnerHTML={{
                 __html: plural(amount, 'человек').replace(' ', '&nbsp;') // eslint-disable-line id-match
             }}/>
