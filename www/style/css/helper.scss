@@ -30,38 +30,11 @@
     display: -o-box;
 }
 
-
-.line-cap-1 {
-    @include line-cap(1);
-    p, div {
-        @include line-cap(1);
-    }
-}
-
-.line-cap-2 {
-    @include line-cap(2);
-    p, div {
-        @include line-cap(2);
-    }
-}
-
-.line-cap-3 {
-    @include line-cap(3);
-    p, div {
-        @include line-cap(3);
-    }
-}
-
-.line-cap-4 {
-    @include line-cap(4);
-    p, div {
-        @include line-cap(4);
-    }
-}
-
-.line-cap-5 {
-    @include line-cap(5);
-    p, div {
-        @include line-cap(5);
+@for $i from 1 through 10 {
+    .line-cap-#{$i} {
+        @include line-cap(#{$i});
+        p, div {
+            @include line-cap(#{$i});
+        }
     }
 }

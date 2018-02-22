@@ -33,7 +33,7 @@ class ListItem extends Component {
                     clubs-catalog-list-item__short-additional-info-item--parking">Есть парковка</p> :
                         null}
                 </div>
-                <div className="clubs-catalog-list-item__description line-cap-5"
+                <div className="clubs-catalog-list-item__description line-cap-8"
                     dangerouslySetInnerHTML={{
                         __html: data.description // eslint-disable-line id-match
                     }}/>
