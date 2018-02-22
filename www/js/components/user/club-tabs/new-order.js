@@ -75,7 +75,7 @@ export class NewOrder extends Component {
             .map(order => view.renderTableRow(order));
     }
 
-    renderTableRow(order) { // eslint-disable-line complexity
+    renderTableRow(order) {
         const view = this;
 
         return order.fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
@@ -163,11 +163,11 @@ export class NewOrder extends Component {
         const {
             id,
             created_at, // eslint-disable-line id-match, camelcase
-            start_order_date, // eslint-disable-line id-match, camelcase
+            // start_order_date, // eslint-disable-line id-match, camelcase
             // fitness_club, // eslint-disable-line id-match, camelcase
-            fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
+            // fitness_club_subscription_id, // eslint-disable-line id-match, camelcase
             fitness_club_subscription, // eslint-disable-line id-match, camelcase
-            fitness_club_training, // eslint-disable-line id-match, camelcase
+            // fitness_club_training, // eslint-disable-line id-match, camelcase
             order_type, // eslint-disable-line id-match, camelcase
             real_price, // eslint-disable-line id-match, camelcase
             // cashback,
@@ -177,17 +177,13 @@ export class NewOrder extends Component {
 
         return [<tr key={id}>
             <td>{
-                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-                    moment(created_at).format('DD.MM.YYYY') : // eslint-disable-line id-match, camelcase
-                    moment(start_order_date || created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
+                moment(created_at).format('DD.MM.YYYY') // eslint-disable-line id-match, camelcase
             }</td>
             <td>{
                 [order.order_user.first_name, order.order_user.last_name].join(' ') // eslint-disable-line id-match, camelcase
             }</td>
             <td>{
-                fitness_club_subscription_id ? // eslint-disable-line id-match, camelcase
-                    fitness_club_subscription.title : // eslint-disable-line id-match, camelcase
-                    fitness_club_training.title // eslint-disable-line id-match, camelcase
+                fitness_club_subscription.title // eslint-disable-line id-match, camelcase
             } (<span className="main-color">абонемент - {
                 real_price // eslint-disable-line id-match, camelcase
             } руб.</span>)
