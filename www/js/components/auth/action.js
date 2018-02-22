@@ -87,9 +87,11 @@ export function logout() {
     return dispatch => fetch(
         appGlobalConst.pageDataUrl.host +
         authConst.url.logout,
-        {credentials: 'include', method: 'GET'})
+        {credentials: 'include', method: 'GET'}
+    )
         .then(data => data.json())
-        .then(() => {
+        .then(parsedData => {
+            console.log('logout data --->', parsedData);
             authApi.setUserData({email: null, password: null});
             window.location.reload();
         });

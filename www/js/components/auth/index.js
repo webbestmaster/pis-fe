@@ -91,7 +91,7 @@ class Auth extends Component {
         const {auth} = props;
         const popupType = auth.openPopup;
 
-{/*
+        /*
         <InstagramLogin
             scope="comments"
             clientId="aa0687bc325"
@@ -103,10 +103,10 @@ class Auth extends Component {
                 console.log('responseInstagram--');
                 console.log(responseInstagram);
             }}/>
-*/}
+        */
 
         return [
-            <div key="facebook-login" style={{display: 'block'}}>
+            <div key="facebook-login" style={{display: 'none'}}>
 
                 <FacebookLogin
                     tag="span"
