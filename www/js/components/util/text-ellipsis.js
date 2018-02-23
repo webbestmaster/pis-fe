@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 // import classnames from 'classnames';
 
-export default class TextCap extends Component {
+export default class TextEllipsis extends Component {
     splitText(text) {
         const chunkList = [];
         const view = this;
         const {props} = view;
-        const {lineCap} = props;
+        const {charCap} = props;
 
-        text
+        const resultText = text
             .trim()
-            .replace(/\s+/, ' ')
-            .substr(0, lineCap ? 1000 : text.length)
+            .replace(/\s+/, ' ');
+
+        resultText
+            .substr(0, charCap)
             .split('\n')
             .map(textChunk => textChunk.trim())
             .filter(textChunk => textChunk)
@@ -26,14 +28,18 @@ export default class TextCap extends Component {
                 }
             });
 
+        if (resultText.length > charCap) {
+            chunkList.push(<span>&hellip;</span>);
+            chunkList.push(props.readMore);
+        }
+
         return chunkList;
     }
 
     render() {
         const view = this;
         const {props} = view;
-        const {lineCap} = props;
 
-        return <p className={lineCap ? 'line-cap-' + lineCap : ''}>{view.splitText(props.children)}</p>;
+        return <p>{view.splitText(props.children)}</p>;
     }
 }

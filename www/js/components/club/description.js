@@ -15,6 +15,7 @@ import * as authAction from '../auth/action';
 import TrainingCard from './training-card';
 import SubscriptionCard from './subscription-card';
 import TextCap from '../util/text-cap';
+import TextEllipsis from '../util/text-ellipsis';
 
 const find = require('lodash/find');
 const appConst = require('./../../app-const');
@@ -36,7 +37,8 @@ class Description extends Component {
             lightboxGallery: {
                 isOpen: false,
                 imageIndex: 0
-            }
+            },
+            isShowFullDescription: false
         };
     }
 
@@ -326,9 +328,17 @@ class Description extends Component {
             <div className="hug">
                 <h3 className="section__header">Описание клуба</h3>
                 <div className="section__text-wrapper">
-                    <TextCap lineCap={10}>
+                    <TextEllipsis
+                        charCap={state.isShowFullDescription ? row.description.length : 1000}
+                        readMore={<div>
+                            <span
+                                className="section__show-more"
+                                onClick={() => view.setState({isShowFullDescription: true})}>
+                            Показать больше
+                            </span>
+                        </div>}>
                         {row.description}
-                    </TextCap>
+                    </TextEllipsis>
                 </div>
             </div>
             {view.renderGallery()}

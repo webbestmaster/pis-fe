@@ -15,6 +15,7 @@ import {Link} from 'react-router-dom';
 import {resolveImagePath} from '../../helper/path-x';
 import SubscriptionCard from './../club/subscription-card';
 import TextCap from '../util/text-cap';
+import TextEllipsis from '../util/text-ellipsis';
 
 const globalAppConst = require('./../../app-const');
 const appConst = require('./../../app-const');
@@ -32,6 +33,7 @@ class Description extends Component {
         view.attr = {};
 
         view.state = {
+            isShowFullDescription: false,
             pageData: null
         };
     }
@@ -177,9 +179,17 @@ class Description extends Component {
                 </div>
 
                 <div className={style.description_text}>
-                    <TextCap lineCap={10}>
+                    <TextEllipsis
+                        charCap={state.isShowFullDescription ? row.description.length : 1000}
+                        readMore={<div>
+                            <span
+                                className="section__show-more"
+                                onClick={() => view.setState({isShowFullDescription: true})}>
+                            Показать больше
+                            </span>
+                        </div>}>
                         {row.description}
-                    </TextCap>
+                    </TextEllipsis>
                 </div>
 
                 {props.app.screen.width <= globalAppConst.mobileWidth ? view.renderCard() : null}
