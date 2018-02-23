@@ -18,16 +18,17 @@ export default class MapItemClub extends Component {
 
         return <div className="map-point map-point--subscriptions">
             <div className="map-point__content">
-                <div className="clubs-catalog-list-item__logo"
+                <div
+                    className="clubs-catalog-list-item__logo"
                     style={
                         {backgroundImage: 'url(' + resolveImagePath(promotion ? promotion.image : data.image) + ')'}
                     }/>
                 <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
                 <p className="clubs-catalog-list-item__address">{data.fitnessClub.address}</p>
-                <div className="clubs-catalog-list-item__description"
-                    dangerouslySetInnerHTML={{
-                        __html: promotion ? promotion.description : data.description // eslint-disable-line id-match
-                    }}/>
+                <div
+                    className="clubs-catalog-list-item__description">
+                    <p>{promotion ? promotion.description : data.description}</p>
+                </div>
 
                 {/* <div className="clubs-catalog-list-item__available-training clear-full">*/}
                 <p className="clubs-catalog-list-item__available-training-item
