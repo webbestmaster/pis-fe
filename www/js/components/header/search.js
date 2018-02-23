@@ -70,9 +70,9 @@ class Search extends Component {
                             'url(' + resolveImagePath(item.image) + ')'
                         }}/>
                     <h4 className="header-slider__search-result-name">{item.title}</h4>
-                    <div className="header-slider__result-description" dangerouslySetInnerHTML={{
-                        __html: item.description // eslint-disable-line id-match
-                    }}/>
+                    <div className="header-slider__result-description">
+                        {item.description.substr(0, 300)}
+                    </div>
                 </Link>;
 
             default:
@@ -113,7 +113,7 @@ class Search extends Component {
                     view.onSearchInput();
                     view.setState({hasFocus: true});
                 }}
-                onBlur={() => setTimeout(() => view.setState({hasFocus: false}), 300)}
+                onBlur={() => setTimeout(() => view.setState({hasFocus: false}), 500)}
             />
             <button
                 key="button"

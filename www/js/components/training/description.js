@@ -15,6 +15,7 @@ import {resolveImagePath} from './../../helper/path-x';
 import {defaultDateFilter} from '../trainings-catalog/reducer';
 import {Link} from 'react-router-dom';
 import TrainingCard from './../club/training-card';
+import TextCap from '../util/text-cap';
 
 const globalAppConst = require('./../../app-const');
 const appConst = require('./../../app-const');
@@ -244,9 +245,11 @@ class Description extends Component {
                     </div>
                 </div>
 
-                <div className={style.description_text} dangerouslySetInnerHTML={{
-                    __html: row.description // eslint-disable-line id-match
-                }}/>
+                <div className={style.description_text}>
+                    <TextCap lineCap={10}>
+                        {row.description}
+                    </TextCap>
+                </div>
 
                 {props.app.screen.width <= globalAppConst.mobileWidth ? view.renderCard() : null}
 
@@ -278,12 +281,13 @@ class Description extends Component {
                                     {plural(fitnessClub.feedbacksCount, 'отзыв')}
                                 </Link>
                             </div>
-                            <div className="clubs-catalog-list-item__description" dangerouslySetInnerHTML={{
-                                __html: fitnessClub.description // eslint-disable-line id-match
-                            }}/>
+                            <div className="clubs-catalog-list-item__description">
+                                <TextCap lineCap={8}>
+                                    {fitnessClub.description}
+                                </TextCap>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
