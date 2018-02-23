@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import * as authAction from '../auth/action';
 import TrainingCard from './training-card';
 import SubscriptionCard from './subscription-card';
+import TextCap from '../util/text-cap';
 
 const find = require('lodash/find');
 const appConst = require('./../../app-const');
@@ -227,12 +228,12 @@ class Description extends Component {
                                     <p className={style.filial_details_block_p}>
                                             Пн-Пт:&nbsp;
                                         {reduceSeconds(filial.work_from)}
-                                        &nbsp;-&nbsp;
+                                            &nbsp;-&nbsp;
                                         {reduceSeconds(filial.work_to)}
                                         <br/>
                                             Сб-Вс:&nbsp;
                                         {reduceSeconds(filial.work_weekend_from)}
-                                        &nbsp;-&nbsp;
+                                            &nbsp;-&nbsp;
                                         {reduceSeconds(filial.work_weekend_to)}
                                     </p>
                                 </div>
@@ -324,9 +325,11 @@ class Description extends Component {
         return <div>
             <div className="hug">
                 <h3 className="section__header">Описание клуба</h3>
-                <div className="section__text-wrapper" dangerouslySetInnerHTML={{
-                    __html: row.description // eslint-disable-line id-match
-                }}/>
+                <div className="section__text-wrapper">
+                    <TextCap lineCap={10}>
+                        {row.description}
+                    </TextCap>
+                </div>
             </div>
             {view.renderGallery()}
             {view.renderFilials()}

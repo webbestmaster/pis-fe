@@ -4,6 +4,7 @@ import {plural} from './../../helper/plural';
 import Rating from './../util/rating';
 import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
+import TextCap from './../util/text-cap';
 
 const appConst = require('./../../app-const');
 
@@ -34,10 +35,11 @@ class ListItem extends Component {
                     clubs-catalog-list-item__short-additional-info-item--parking">Есть парковка</p> :
                         null}
                 </div>
-                <div className="clubs-catalog-list-item__description line-cap-8"
-                    dangerouslySetInnerHTML={{
-                        __html: promotion ? promotion.description : data.description // eslint-disable-line id-match
-                    }}/>
+                <div className="clubs-catalog-list-item__description">
+                    <TextCap lineCap={8}>
+                        {promotion ? promotion.description : data.description}
+                    </TextCap>
+                </div>
                 <div className="clubs-catalog-list-item__available-training clear-full">
                     <p className="clubs-catalog-list-item__available-training-item
                      clubs-catalog-list-item__available-training-item--club-icon">

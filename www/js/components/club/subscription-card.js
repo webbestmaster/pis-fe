@@ -122,9 +122,7 @@ class SubscriptionCard extends Component {
                     <p className="sale-swiper-card__subscription-header">{subscription.title}</p>
                 </div>
                 <div className="sale-swiper-card__subscription-description">
-                    <p dangerouslySetInnerHTML={{
-                        __html: subscription.description // eslint-disable-line id-match
-                    }}/>
+                    <p>{subscription.description}</p>
                 </div>
 
                 <p className="sale-swiper-card__subscription-cost">{promotion ?

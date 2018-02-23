@@ -136,10 +136,9 @@ class TrainingCard extends Component {
                     <p className="sale-swiper-card__subscription-single-header">{training.title}</p>
                 </div>
                 {view.renderTrainingSchedule(training)}
-                <div className="sale-swiper-card__subscription-training-description"
-                    dangerouslySetInnerHTML={{
-                        __html: training.description // eslint-disable-line id-match
-                    }}/>
+                <div className="sale-swiper-card__subscription-training-description">
+                    <p>{training.description}</p>
+                </div>
                 <p className="sale-swiper-card__subscription-cost">{promotion ?
                     (training.price - promotion.discount).toFixed(2) :
                     training.price} <span

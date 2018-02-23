@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {plural} from './../../helper/plural';
 import Rating from './../util/rating';
+import TextCap from './../util/text-cap';
 
 const appConst = require('./../../app-const');
 
@@ -33,10 +34,9 @@ class ListItem extends Component {
                     clubs-catalog-list-item__short-additional-info-item--parking">Есть парковка</p> :
                         null}
                 </div>
-                <div className="clubs-catalog-list-item__description line-cap-8"
-                    dangerouslySetInnerHTML={{
-                        __html: data.description // eslint-disable-line id-match
-                    }}/>
+                <div className="clubs-catalog-list-item__description">
+                    <TextCap lineCap={8}>{data.description}</TextCap>
+                </div>
                 <div className="clubs-catalog-list-item__available-training clear-full">
                     <Link to={'/club/' + data.id + '/tab-index/2'}
                         className="clubs-catalog-list-item__available-training-item

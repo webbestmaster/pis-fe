@@ -9,6 +9,8 @@ import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
 import {prepareScheduleList} from '../training/date-filter';
 import {defaultDateFilter} from './reducer';
+import TextCap from './../util/text-cap';
+
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;
 
@@ -51,10 +53,9 @@ class ListItem extends Component {
                     clubs-catalog-list-item__short-additional-info-item--parking">Есть парковка</p> :
                         null}
                 </div>
-                <div className="clubs-catalog-list-item__description line-cap-8"
-                    dangerouslySetInnerHTML={{
-                        __html: promotion ? promotion.description : data.description // eslint-disable-line id-match
-                    }}/>
+                <div className="clubs-catalog-list-item__description">
+                    <TextCap lineCap={8}>{promotion ? promotion.description : data.description}</TextCap>
+                </div>
                 <div className="clubs-catalog-list-item__available-training clear-full">
                     <p className="clubs-catalog-list-item__available-training-item
                      clubs-catalog-list-item__available-training-item--club-icon">
