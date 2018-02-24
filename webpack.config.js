@@ -150,7 +150,14 @@ const webpackConfig = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(definePluginParams),
         new HtmlWebpackPlugin(Object.assign(
-            {template: 'index.html'},
+            {
+                template: 'index.html',
+                minify: {
+                    collapseWhitespace: IS_PRODUCTION,
+                    removeComments: IS_PRODUCTION
+                },
+                hash: true
+            },
             IS_PRODUCTION ? {filename: './../../public/index.html'} : null
         )),
         new ExtractTextPlugin({
