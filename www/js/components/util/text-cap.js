@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 
 type Props = {
     lineCap: number,
@@ -7,7 +8,7 @@ type Props = {
 };
 
 export default class TextCap extends Component<Props> {
-    splitText(text:string) {
+    splitText(text: string): Node[] {
         const chunkList = [];
         const view = this;
         const {props} = view;

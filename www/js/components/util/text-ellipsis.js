@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default class TextEllipsis extends Component<Props> {
-    splitText(text:string) {
+    splitText(text: string): Node[] {
         const chunkList = [];
         const view = this;
         const {props} = view;
