@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
 import Sort from './sort';
 import Filter from './filter';
 import Search from './search';
 import List from './list';
 import * as subscriptionsCatalogAction from './action';
-// import TopBigBanner from './../components/top-big-banner';
 
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
 const globalAppConst = require('./../../app-const');
 
 class SubscriptionsCatalog extends Component {

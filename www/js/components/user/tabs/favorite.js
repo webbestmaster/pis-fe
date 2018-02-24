@@ -1,9 +1,7 @@
 /* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import style from './../style.m.scss';
-import {resolveImagePath} from './../../../helper/path-x';
 import TrainingCard from './../../club/training-card';
 import SubscriptionCard from './../../club/subscription-card';
 import cnx from './../../../helper/cnx';

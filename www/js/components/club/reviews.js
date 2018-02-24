@@ -1,27 +1,14 @@
-/* global fetch */
 import React, {Component} from 'react';
 import style from './style.m.scss';
 import Rating from './../util/rating';
-import cnx from './../../helper/cnx';
 import {getMonthAfterDayName} from './../../helper/date';
 import {connect} from 'react-redux';
-import {store} from '../../index';
 import {resolveImagePath} from '../../helper/path-x';
 import ClubLeaveReviewForm from './club-leave-review-form';
 
-const get = require('lodash/get');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
-const authConst = require('./../auth/const');
-
-const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
-    ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
-    'крутое помещение - красавцы. Приветливые тренера, обходительный персонал. Обязательно ' +
-    'зайдем сюда еще раз. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ' +
-    'cumque ipsam molestias possimus quaerat. Dolorem fugiat fugit similique soluta ' +
-    'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
-    'nulla suscipit?';
 
 class Reviews extends Component {
     constructor() {

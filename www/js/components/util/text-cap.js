@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import classnames from 'classnames';
 
 export default class TextCap extends Component {
     splitText(text) {

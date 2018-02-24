@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
 import {Link} from 'react-router-dom';
-import {plural} from '../../helper/plural';
 import {resolveImagePath} from '../../helper/path-x';
-
-const appConst = require('./../../app-const');
-
 
 export default class MapItemClub extends Component {
     render() {
         const view = this;
         const {props} = view;
         const {data} = props;
-        const {attributes} = data;
-        const {host} = appConst.pageDataUrl;
 
         return <div className="map-point">
             <div className="map-point__content">

@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
 import HeaderSimple from './../../components/header-simple';
 import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
-import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import Subscription from './../../components/subscription';
 import * as appAction from '../../components/app/action';

@@ -1,21 +1,15 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import * as trainingsCatalogAction from './action';
 
 const {fetchX} = require('./../../helper/fetch-x');
-const {createArray} = require('./../../helper/create');
 const appConst = require('./../../app-const');
 const globalAppConst = require('./../../app-const');
 const find = require('lodash/find');
 
 import Search from './search';
 import {store} from '../../index';
-// import HeaderSimple from './../components/header-simple';
-// import TopBigBanner from './../components/top-big-banner';
-
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
 
 const trainingPeriodOptionList = [
     {value: 'all', from: '07:00', to: '24:00', text: 'Выберите время'},

@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import * as subscriptionsCatalogAction from './action';
 
 const globalAppConst = require('./../../app-const');
-// import HeaderSimple from './../components/header-simple';
-// import TopBigBanner from './../components/top-big-banner';
 
 class Sort extends Component {
     render() {

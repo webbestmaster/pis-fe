@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import classnames from 'classnames';
 import {resolveImagePath} from './../../helper/path-x';
 
 const appConst = require('./../../app-const');

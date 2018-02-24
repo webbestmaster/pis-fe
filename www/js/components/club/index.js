@@ -1,7 +1,6 @@
-/* global requestAnimationFrame, window, setTimeout, Event */
+/* global requestAnimationFrame, window, Event */
 import React, {Component} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import style from './style.m.scss';
 import tabsStyle from './../../../style/css/tabs.m.scss';
 import classnames from 'classnames';
 import {withRouter} from 'react-router-dom';
@@ -16,20 +15,6 @@ import Gallery from './gallery';
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const Swiper = require('./../../lib/swiper');
-
-/*
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import HeaderSimple from './../../components/header-simple';
-import TopBigBanner from './../../components/top-big-banner';
-import BreadCrumbs from './../../components/bread-crumbs';
-import ClubPage from './../../components/clubs-catalog';
-import Footer from './../../components/footer';
-import Rating from './../../components/util/rating';
-import {plural} from './../../helper/plural';
-
-const topBanner = require('./../../../style/images/club/top-banner.png');
-*/
 
 class Club extends Component {
     constructor() {

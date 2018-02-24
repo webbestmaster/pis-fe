@@ -3,20 +3,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import cnx from './../../helper/cnx';
-import classnames from 'classnames';
-// import * as subscriptionsCatalogAction from './action';
 import {defaultDateFilter} from './../trainings-catalog/reducer';
-import * as trainingsCatalogAction from './../trainings-catalog/action';
 
 const {fetchX} = require('./../../helper/fetch-x');
-const {createArray} = require('./../../helper/create');
 const {reduceSeconds} = require('./../../helper/date');
 const appConst = require('./../../app-const');
 const Swiper = require('./../../lib/swiper');
-// import HeaderSimple from './../components/header-simple';
-// import TopBigBanner from './../components/top-big-banner';
-
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
 
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;

@@ -6,8 +6,6 @@ import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 import FacebookLogin from 'react-facebook-login';
-import get from 'lodash/get';
-import moment from 'moment';
 
 const authConst = require('./../const');
 const globalAppConst = require('./../../../app-const');

@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const DEVELOPMENT = 'development';
@@ -164,7 +164,7 @@ if (IS_DEVELOPMENT) {
     webpackConfig.plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            minChunks: (jsModule, count) => {
+            minChunks: (jsModule, count) => { // eslint-disable-line no-unused-vars
                 const {context} = jsModule;
 
                 return context === null || /node_modules|lib|util|helper|style/.test(context);

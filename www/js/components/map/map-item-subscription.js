@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
 import {Link} from 'react-router-dom';
-import {plural} from '../../helper/plural';
 import {resolveImagePath} from '../../helper/path-x';
-
-const appConst = require('./../../app-const');
 
 export default class MapItemClub extends Component {
     render() { // eslint-disable-line complexity
         const view = this;
         const {props} = view;
         const {data} = props;
-        const {fitnessClub} = data;
-        const {host} = appConst.pageDataUrl;
         const row = data;
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
 

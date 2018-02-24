@@ -1,4 +1,4 @@
-module.exports = ({file, options, env}) => ({
+module.exports = ({file, options, env}) => ({ // eslint-disable-line no-unused-vars
     parser: false,
     // parser: file.extname === '.sss' ? 'sugarss' : false,
 

@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import classnames from 'classnames';
-// import HeaderSimple from './../components/header-simple';
-// import TopBigBanner from './../components/top-big-banner';
-
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
 
 export default class BreadCrumbs extends Component {
     modifyChildren(child) {

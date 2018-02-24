@@ -6,8 +6,6 @@ import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../helper/path-x';
 import TextCap from './../util/text-cap';
 
-const appConst = require('./../../app-const');
-
 class ListItem extends Component {
     render() { // eslint-disable-line complexity
         const view = this;
@@ -15,7 +13,6 @@ class ListItem extends Component {
         const {data} = props;
         const {attributes} = data.fitnessClub;
         const {comfort} = attributes;
-        const {host} = appConst.pageDataUrl;
         const row = data;
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
 

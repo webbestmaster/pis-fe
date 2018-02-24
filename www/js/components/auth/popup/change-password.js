@@ -4,7 +4,6 @@ import style from './style.m.scss';
 import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
-import * as authApi from './../api';
 
 const globalAppConst = require('./../../../app-const');
 

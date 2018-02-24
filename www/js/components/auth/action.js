@@ -3,7 +3,6 @@ import * as authApi from './api';
 import * as fileApi from './../../helper/file';
 import get from 'lodash/get';
 import moment from 'moment/moment';
-// import {progressiveFetch} from './../../helper/file';
 const appGlobalConst = require('./../../app-const');
 const authConst = require('./const');
 

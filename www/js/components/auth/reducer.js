@@ -1,4 +1,3 @@
-/* global window */
 import {combineReducers} from 'redux';
 
 const authConst = require('./const');

@@ -1,22 +1,12 @@
 /* global window, setTimeout, Event */
 import React, {Component} from 'react';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import style from './style.m.scss';
-import classnames from 'classnames';
 import cnx from './../../helper/cnx';
-import Lightbox from 'react-images';
-import MapView from './../map';
-import MapItemClub from './../map/map-item-club';
 import {Link, withRouter} from 'react-router-dom';
-import {reduceSeconds} from '../../helper/date';
 import {resolveImagePath} from '../../helper/path-x';
 import {connect} from 'react-redux';
 import * as authAction from '../auth/action';
 
 const find = require('lodash/find');
-const appConst = require('./../../app-const');
-const {fetchX} = require('./../../helper/fetch-x');
-const Swiper = require('./../../lib/swiper');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
 class TrainingCard extends Component {

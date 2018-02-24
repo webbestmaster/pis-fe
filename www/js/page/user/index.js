@@ -2,11 +2,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
 import HeaderSimple from './../../components/header-simple';
 import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
-import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
 import UserShortInfo from './../../components/user-short-info';
 import userShortInfoStyle from './../../components/user-short-info/style.m.scss';

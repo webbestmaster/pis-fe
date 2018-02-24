@@ -1,11 +1,6 @@
 /* global window */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import classnames from 'classnames';
-import {store} from '../../index';
-
-// const globalAppConst = require('./../app/const.json');
 
 export default class Footer extends Component {
     render() {

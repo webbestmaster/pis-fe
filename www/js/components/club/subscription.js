@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import cnx from '../../helper/cnx';
-import {Link} from 'react-router-dom';
 import SubscriptionCard from './subscription-card';
 
 const appConst = require('./../../app-const');

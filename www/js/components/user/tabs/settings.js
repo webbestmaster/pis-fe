@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {resolveImagePath} from './../../../helper/path-x';
 import style from './../style.m.scss';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';

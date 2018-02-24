@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import classnames from 'classnames';
-// const appConst = require('./../../../app-const');
-// const headerMaxHeight = 980;
-//
 import Dialog from './../../util/dialog';
 import style from './promo.m.scss';
 import * as authAction from './../action';
@@ -13,7 +8,6 @@ class Promo extends Component {
     render() {
         const view = this;
         const {props, state} = view;
-        const {app} = props;
 
         return <Dialog {...props.dialog}>
             <div onClick={() => props.closePopup()} className={style.close_button__white}/>

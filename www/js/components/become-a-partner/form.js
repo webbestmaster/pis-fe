@@ -1,26 +1,14 @@
 /* global fetch */
 import React, {Component} from 'react';
 import style from './../club/style.m.scss';
-import Rating from './../util/rating';
 import cnx from './../../helper/cnx';
-import {getMonthAfterDayName} from './../../helper/date';
 import {connect} from 'react-redux';
 import * as authAction from './../auth/action';
-import * as authApi from '../auth/api';
-import {store} from '../../index';
 import {resolveImagePath} from '../../helper/path-x';
-import {formatPhoneBY} from '../../helper/format';
 
 const get = require('lodash/get');
 const globalAppConst = require('./../../app-const');
 const authConst = require('./../auth/const');
-const {fetchX} = require('./../../helper/fetch-x');
-const defaultUserAvatar = require('./../../../style/i/club/no-avatar.png');
-
-/*
-    Example
-    <ClubLeaveReviewForm clubId={clubId:string|number}/>
-*/
 
 class BecomeAPartnerForm extends Component {
     constructor() {

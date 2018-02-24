@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-
-const appConst = require('./../../app-const');
 
 class TopBigBanner extends Component {
     render() {

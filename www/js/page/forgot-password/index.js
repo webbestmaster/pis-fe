@@ -3,25 +3,17 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import classnames from 'classnames';
 import HeaderSimple from './../../components/header-simple';
 import TopBigBanner from './../../components/top-big-banner';
 import BreadCrumbs from './../../components/bread-crumbs';
-import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
-import Training from './../../components/training';
 import * as authAction from '../../components/auth/action';
-import Dialog from './../../components/util/dialog';
 
 const queryString = require('query-string');
-const isEqual = require('lodash/isEqual');
-const appConst = require('./../../app-const');
-const {fetchX} = require('./../../helper/fetch-x');
 const topBanner = require('./../../../style/images/club/top-banner.png');
 
 import style from './../../components/auth/popup/style.m.scss';
 import cnx from '../../helper/cnx';
-import {plural} from '../../helper/plural';
 import {metaTagMaster} from '../../module/meta-tag';
 
 

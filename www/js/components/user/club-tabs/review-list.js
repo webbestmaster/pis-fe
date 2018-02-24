@@ -1,36 +1,17 @@
-/* global fetch */
-
 // feedback's statuses
 const FEEDBACK_STATUS_CREATED = 1; // eslint-disable-line camelcase, id-match
 const FEEDBACK_STATUS_APPROVED = 2; // eslint-disable-line camelcase, id-match
 const FEEDBACK_STATUS_DECLINED = 3; // eslint-disable-line camelcase, id-match
+const defaultUserAvatar = require('./../../../../style/i/club/no-avatar.png');
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {resolveImagePath} from './../../../helper/path-x';
-import style from './../style.m.scss';
 import clubStyle from './../../club/style.m.scss';
-import moment from 'moment/moment';
-import tableStyle from './../table.m.scss';
-import {plural} from '../../../helper/plural';
 import {getMonthAfterDayName} from '../../../helper/date';
 import cnx from './../../../helper/cnx';
 import Rating from './../../util/rating';
 import * as authAction from './../../auth/action';
-
-const {get} = require('lodash');
-const appConst = require('./../../../app-const');
-const {fetchX} = require('./../../../helper/fetch-x');
-const defaultUserAvatar = require('./../../../../style/i/club/no-avatar.png');
-
-const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
-    ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
-    'крутое помещение - красавцы. Приветливые тренера, обходительный персонал. Обязательно ' +
-    'зайдем сюда еще раз. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ' +
-    'cumque ipsam molestias possimus quaerat. Dolorem fugiat fugit similique soluta ' +
-    'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
-    'nulla suscipit?';
 
 class ReviewList extends Component {
     constructor() {

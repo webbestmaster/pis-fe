@@ -2,13 +2,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
 import {resolveImagePath} from './../../helper/path-x';
 
 const Swiper = require('./../../lib/swiper');
-
-// import Menu from './menu';
-// import Slider from './slider';
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 

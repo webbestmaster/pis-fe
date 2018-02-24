@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import classnames from 'classnames';
 import {metaTagMaster} from './../../module/meta-tag';
 
 import Header from './../../components/header';

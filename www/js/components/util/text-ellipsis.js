@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import classnames from 'classnames';
 
 export default class TextEllipsis extends Component {
     splitText(text) {

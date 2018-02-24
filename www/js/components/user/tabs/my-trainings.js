@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {resolveImagePath} from './../../../helper/path-x';
 import style from './../style.m.scss';
 import moment from 'moment/moment';
 import tableStyle from './../table.m.scss';

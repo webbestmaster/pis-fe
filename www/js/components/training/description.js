@@ -1,6 +1,5 @@
 /* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import style from './style.m.scss';
 import classnames from 'classnames';
 import cnx from './../../helper/cnx';

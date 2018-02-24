@@ -1,21 +1,11 @@
 /* global requestAnimationFrame, window, setTimeout, Event */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
-// import * as subscriptionsCatalogAction from './action';
 import {defaultDateFilter} from './reducer';
 import * as trainingsCatalogAction from './action';
 
-const {fetchX} = require('./../../helper/fetch-x');
-const {createArray} = require('./../../helper/create');
-const appConst = require('./../../app-const');
 const Swiper = require('./../../lib/swiper');
-// import HeaderSimple from './../components/header-simple';
-// import TopBigBanner from './../components/top-big-banner';
-
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
-
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;
 

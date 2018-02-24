@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import cnx from '../../helper/cnx';
-import {resolveImagePath} from '../../helper/path-x';
-import {Link} from 'react-router-dom';
 import TrainingCard from './training-card';
 
 const appConst = require('./../../app-const');

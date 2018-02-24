@@ -1,22 +1,10 @@
+/* global setTimeout */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import classnames from 'classnames';
-import {headerMaxHeight} from './index';
 import {resolveImagePath} from './../../helper/path-x';
 
 const {search} = require('./api/search');
-
-const backSlideImage = require('./../../../style/images/header/search.jpg');
-const leftSlideImage = require('./../../../style/images/header/clubs.jpg');
-const centerSlideImage = require('./../../../style/images/header/subscriptions.jpg');
-const rightSlideImage = require('./../../../style/images/header/trainings.jpg');
-const globalAppConst = require('./../../app-const');
-
-
-/* global document, setTimeout, location */
-
-// const {SearchPage} = require('./search-page');
 
 function normalizeString(string) {
     return string.trim().replace(/\s+/g, ' ');

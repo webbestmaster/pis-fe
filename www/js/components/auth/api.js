@@ -1,5 +1,4 @@
 /* global localStorage, location */
-
 const Cryptr = require('cryptr');
 const cryptr = new Cryptr(location.host);
 

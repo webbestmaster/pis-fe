@@ -1,22 +1,18 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
 import Sort from './sort';
 import Filter from './filter';
 import Search from './search';
 import List from './list';
 import * as clubsCatalogAction from './action';
-// import TopBigBanner from './../components/top-big-banner';
 
-// const topBanner = require('./../../style/images/clubs/top-banner.png');
 const globalAppConst = require('./../../app-const');
 
 class ClubsCatalog extends Component {
     renderMobileFilter() {
         const view = this;
         const {props, state} = view;
-        const {children, app, clubsCatalog} = props;
+        const {clubsCatalog} = props;
 
         return clubsCatalog.filterIsOpen ?
             [
@@ -29,7 +25,7 @@ class ClubsCatalog extends Component {
     render() {
         const view = this;
         const {props, state} = view;
-        const {children, app, clubsCatalog} = props;
+        const {app} = props;
 
         return <div className="clubs-catalog hug">
             <Sort/>
