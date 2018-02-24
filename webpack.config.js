@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -160,6 +161,9 @@ const webpackConfig = {
             },
             IS_PRODUCTION ? {filename: './../../public/index.html'} : null
         )),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: IS_PRODUCTION ? 'async' : 'defer'
+        }),
         new ExtractTextPlugin({
             filename: 'style.css',
             allChunks: true
