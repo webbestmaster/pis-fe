@@ -1,6 +1,8 @@
 /* global fetch, window, FormData */
 import * as authApi from './api';
 import * as fileApi from './../../helper/file';
+import get from 'lodash/get';
+import moment from 'moment/moment';
 // import {progressiveFetch} from './../../helper/file';
 const appGlobalConst = require('./../../app-const');
 const authConst = require('./const');
@@ -76,6 +78,35 @@ export function login(email, password) {
         appGlobalConst.pageDataUrl.host +
         authConst.url.login.replace('{{email}}', email).replace('{{password}}', password),
         {credentials: 'include', method: 'POST'})
+        .then(data => data.json())
+        .then(parsedData => dispatch({
+            type: authConst.type.login,
+            payload: {login: Object.assign(parsedData, {isLogin: true})}
+        }));
+}
+
+export function loginFacebook(responseFacebook) {
+    const email = responseFacebook.email;
+    const userId = responseFacebook.userID;
+    const firstName = responseFacebook.first_name;
+    const lastName = responseFacebook.last_name;
+    const gender = responseFacebook.gender === 'мужской' ? 1 : 0;
+    const birthday = moment().format('YYYY-MM-DD');
+    const avatar = get(responseFacebook, 'picture.data.url') || '';
+
+    console.log('---> responseFacebook', responseFacebook);
+
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.loginFacebook
+            .replace('{{email}}', email)
+            .replace('{{userId}}', userId)
+            .replace('{{firstName}}', firstName)
+            .replace('{{lastName}}', lastName)
+            .replace('{{gender}}', gender)
+            .replace('{{birthday}}', birthday)
+            .replace('{{avatar}}', avatar),
+        {credentials: 'include', method: 'POST'}
+    )
         .then(data => data.json())
         .then(parsedData => dispatch({
             type: authConst.type.login,
