@@ -330,13 +330,13 @@ class Description extends Component {
                 <div className="section__text-wrapper">
                     <TextEllipsis
                         charCap={state.isShowFullDescription ? row.description.length : 1000}
-                        readMore={<div>
+                        readMore={<span className="d-block" key="read-more">
                             <span
                                 className="section__show-more"
                                 onClick={() => view.setState({isShowFullDescription: true})}>
                             Показать больше
                             </span>
-                        </div>}>
+                        </span>}>
                         {row.description}
                     </TextEllipsis>
                 </div>

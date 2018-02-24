@@ -29,7 +29,7 @@ export default class TextEllipsis extends Component {
             });
 
         if (resultText.length > charCap) {
-            chunkList.push(<span>&hellip;</span>);
+            chunkList.push(<span key='hellip'>&hellip;</span>);
             chunkList.push(props.readMore);
         }
 
