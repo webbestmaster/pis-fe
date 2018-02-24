@@ -22,9 +22,6 @@ export default class TextCap extends Component<Props> {
             .map(textChunk => textChunk.trim())
             .filter(textChunk => textChunk)
             .forEach((textChunk, ii, arr) => {
-                if (!textChunk) {
-                    return;
-                }
                 chunkList.push(textChunk);
 
                 if (ii < arr.length - 1) {
