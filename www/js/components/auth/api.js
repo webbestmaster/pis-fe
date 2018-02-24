@@ -1,9 +1,12 @@
 /* global localStorage, location */
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr(location.host);
+// const Cryptr = require('cryptr');
+// const cryptr = new Cryptr(location.host);
 
-const encrypt = str => cryptr.encrypt(str); // eslint-disable-line func-style
-const decrypt = str => cryptr.decrypt(str); // eslint-disable-line func-style
+// const encrypt = str => cryptr.encrypt(str); // eslint-disable-line func-style
+// const decrypt = str => cryptr.decrypt(str); // eslint-disable-line func-style
+
+const encrypt = str => str; // eslint-disable-line func-style
+const decrypt = str => str; // eslint-disable-line func-style
 
 const lsItem = encrypt('auth');
 
