@@ -1,7 +1,13 @@
+// @flow
 import React, {Component} from 'react';
 
-export default class TextCap extends Component {
-    splitText(text) {
+type Props = {
+    lineCap: number,
+    children: string
+};
+
+export default class TextCap extends Component<Props> {
+    splitText(text:string) {
         const chunkList = [];
         const view = this;
         const {props} = view;

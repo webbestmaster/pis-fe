@@ -1,7 +1,15 @@
+// @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 
-export default class TextEllipsis extends Component {
-    splitText(text) {
+type Props = {
+    readMore: Node,
+    charCap: number,
+    children: string
+};
+
+export default class TextEllipsis extends Component<Props> {
+    splitText(text:string) {
         const chunkList = [];
         const view = this;
         const {props} = view;
