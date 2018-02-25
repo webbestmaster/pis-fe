@@ -107,15 +107,12 @@ class Description extends Component {
 
         const {row} = pageData;
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
-        const {schedule} = row;
-
+        const schedule = row.schedule
+            .sort((scheduleA, scheduleB) => parseFloat(scheduleA.time_from) - parseFloat(scheduleB.time_from));
         const preparedScheduleList = prepareScheduleList(schedule);
-
         const {firstSchedule, firstDayIndex} = preparedScheduleList;
-
         const currentDate = new Date(defaultItems[firstDayIndex]);
         const dayData = firstSchedule[firstDayIndex];
-
         let dateDate = null;
 
         switch (firstDayIndex) {
@@ -129,8 +126,6 @@ class Description extends Component {
             default:
                 dateDate = currentDate.getDate() + ' ' + yearMonthsMap[currentDate.getMonth()];
         }
-
-        console.log(firstSchedule, firstDayIndex);
 
         return <div className={style.card}>
             <p className={style.card__time}>{capitalizeFirstLetter(dateDate)}:&nbsp;
