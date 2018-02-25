@@ -319,13 +319,12 @@
 }
 
 .section__show-more {
-    display: block;
+    margin-left: 5px;
     color: #00a1fe;
     padding-bottom: 2px;
     border-bottom: 1px dotted #00a1fe;
     text-decoration: none;
     cursor: pointer;
-    float: right;
     &:hover {
         border-bottom-color: transparent;
     }

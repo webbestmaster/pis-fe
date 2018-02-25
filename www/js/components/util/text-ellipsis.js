@@ -33,7 +33,6 @@ export default class TextEllipsis extends Component<Props> {
             });
 
         if (resultText.length > charCap) {
-            chunkList.push(<span key='hellip'>&hellip;</span>);
             chunkList.push(props.readMore);
         }
 
