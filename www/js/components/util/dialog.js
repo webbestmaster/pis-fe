@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Dialog from 'material-ui/Dialog';
-import {withStyles} from 'material-ui/styles';
+import withStyles from 'material-ui/styles/withStyles';
 
 const styles = {
     paper: {
@@ -25,4 +25,3 @@ class CleanDialog extends Component {
 }
 
 export default withStyles(styles)(CleanDialog);
-
