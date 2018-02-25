@@ -1,11 +1,7 @@
 /* global window, requestAnimationFrame, Event */
 import React, {Component} from 'react';
 import style from './style.m.scss';
-import classnames from 'classnames';
 import cnx from './../../helper/cnx';
-import Lightbox from 'react-images';
-import MapView from './../map';
-import MapItemClub from './../map/map-item-club';
 import {plural} from './../../helper/plural';
 import Rating from './../util/rating';
 import {connect} from 'react-redux';
