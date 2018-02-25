@@ -116,6 +116,7 @@ class Login extends Component {
                 cssClass={style.social_button__vk_content}
                 apiId={globalAppConst.key.vKontakte}
                 fields="photo_400_orig,sex,bdate"
+                redirectUri={globalAppConst.pageDataUrl.host}
                 callback={responseVk => {
                     if (!responseVk.hasOwnProperty('uid')) {
                         console.warn('not login');

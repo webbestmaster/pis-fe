@@ -2,16 +2,19 @@
 // https://vk.com/dev/objects/user
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 
 type Props = {
-    apiId: number,
-    fields?: string,
-    callback?: Function,
-    cssClass?: string
+    apiId: number;
+    fields?: string;
+    callback?: Function;
+    cssClass?: string;
+    redirectUri?: string;
+    children?: Node[]
 }
 
 export default class VkLogin extends Component<Props> {
-    addScript(): Promise {
+    addScript(): Promise<void> {
         const view = this;
 
         if (typeof window.VK !== 'undefined') {
@@ -32,7 +35,7 @@ export default class VkLogin extends Component<Props> {
         });
     }
 
-    onClick(): Promise {
+    onClick(): Promise<void> {
         const view = this;
         const {props} = view;
 
@@ -42,8 +45,7 @@ export default class VkLogin extends Component<Props> {
                     return getUserData(loginStatusResponse.session.mid, props.fields || '');
                 }
 
-                console.log('not login');
-                console.log(loginStatusResponse);
+                window.location.href = view.getLoginUrl();
 
                 return Promise.resolve(null);
             })
@@ -52,6 +54,18 @@ export default class VkLogin extends Component<Props> {
                     props.callback(userDataResponse.response[0]);
                 }
             });
+    }
+
+    getLoginUrl() {
+        const view = this;
+        const {props} = view;
+
+        return 'https://oauth.vk.com/authorize?' +
+            'client_id=' + props.apiId +
+            '&scope=' + (props.fields || '0') +
+            '&redirect_uri=' + (props.redirectUri || '0') +
+            '&response_type=code' +
+            '&v=5.73';
     }
 
     componentDidMount() {
