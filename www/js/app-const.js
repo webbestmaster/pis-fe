@@ -46,6 +46,7 @@ module.exports = {
     },
     key: {
         googleMap: 'AIzaSyCgl3fWrTUUYRtPM8WDsjnAlaI6OFdCK0Q',
-        facebook: '151031658945087'
+        facebook: '151031658945087',
+        vKontakte: 6379669
     }
 };

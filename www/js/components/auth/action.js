@@ -3,6 +3,7 @@ import * as authApi from './api';
 import * as fileApi from './../../helper/file';
 import get from 'lodash/get';
 import moment from 'moment/moment';
+
 const appGlobalConst = require('./../../app-const');
 const authConst = require('./const');
 
@@ -97,6 +98,39 @@ export function loginFacebook(responseFacebook) {
 
     return dispatch => fetch(
         appGlobalConst.pageDataUrl.host + authConst.url.loginFacebook
+            .replace('{{email}}', email)
+            .replace('{{userId}}', userId)
+            .replace('{{firstName}}', firstName)
+            .replace('{{lastName}}', lastName)
+            .replace('{{gender}}', gender)
+            .replace('{{birthday}}', birthday)
+            .replace('{{avatar}}', avatar),
+        {credentials: 'include', method: 'POST'}
+    )
+        .then(data => data.json())
+        .then(parsedData => dispatch({
+            type: authConst.type.login,
+            payload: {login: Object.assign(parsedData, {isLogin: true})}
+        }));
+}
+
+export function loginVk(responseVk) {
+    const email = 'pis-' + responseVk.uid + '@vk.com';
+    const userId = responseVk.uid;
+    const firstName = responseVk.first_name;
+    const lastName = responseVk.last_name;
+    const gender = responseVk.sex === 2 ? 1 : 0;
+    const birthday = responseVk.bdate && responseVk.bdate.split('.').length === 3 ?
+        responseVk.bdate
+            .split('.')
+            .map(datePart => (datePart.length === 1 ? '0' : '') + datePart)
+            .reverse()
+            .join('-') :
+        moment().format('YYYY-MM-DD');
+    const avatar = responseVk.photo_400_orig || '';
+
+    return dispatch => fetch(
+        appGlobalConst.pageDataUrl.host + authConst.url.loginVk
             .replace('{{email}}', email)
             .replace('{{userId}}', userId)
             .replace('{{firstName}}', firstName)

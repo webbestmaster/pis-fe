@@ -6,6 +6,7 @@ import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
 import * as authApi from './../api';
 import FacebookLogin from 'react-facebook-login';
+import VkLogin from './../../vk-login';
 
 const authConst = require('./../const');
 const globalAppConst = require('./../../../app-const');
@@ -107,6 +108,26 @@ class Login extends Component {
         </div>;
     }
 
+    renderVk() {
+        const view = this;
+
+        return <div className={style.social_button + ' ' + style.social_button__vk}>
+            <VkLogin
+                cssClass={style.social_button__vk_content}
+                apiId={globalAppConst.key.vKontakte}
+                fields="photo_400_orig,sex,bdate"
+                callback={responseVk => {
+                    if (!responseVk.hasOwnProperty('uid')) {
+                        console.warn('not login');
+                        return;
+                    }
+
+                    view.props.loginVk(responseVk);
+                }}
+            />
+        </div>;
+    }
+
     render() {
         const view = this;
         const {props, state} = view;
@@ -127,6 +148,7 @@ class Login extends Component {
                 <div
                     className={style.social_button_list_wrapper + ' clear-self'}>
                     {view.renderFacebook()}
+                    {view.renderVk()}
                 </div>
 
                 <h3 className={style.popup__header}>Войти как пользователь</h3>
@@ -165,6 +187,7 @@ export default withRouter(connect(
         openPopupRestore: authAction.openPopupRestore,
         getClubHomeData: authAction.getClubHomeData,
         login: authAction.login,
-        loginFacebook: authAction.loginFacebook
+        loginFacebook: authAction.loginFacebook,
+        loginVk: authAction.loginVk
     }
 )(Login));
