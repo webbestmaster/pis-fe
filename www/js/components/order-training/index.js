@@ -458,6 +458,7 @@ class Order extends Component {
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
         const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
         const singleCacheBack = parseFloat(row.cashback);
+        const userCashback = parseFloat(user.cashback);
 
         return <div>
             <h3 className="section__header">Способы оплаты</h3>
@@ -498,7 +499,7 @@ class Order extends Component {
                     label={{
                         className: style.radio_label_pay_type,
                         onClick: () => {
-                            if (singleCacheBack < state.qty * singlePrice) {
+                            if (userCashback < state.qty * singlePrice) {
                                 return;
                             }
                             view.setState({orderType: 'cashback'});
