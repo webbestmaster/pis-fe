@@ -73,11 +73,16 @@ class ClubLeaveReviewForm extends Component {
         const {props, state} = view;
         const {auth} = props;
 
+        const avatar = get(auth, 'login.data.user.image') || null;
+        const role = get(auth, 'login.data.user.role') || null;
+
         if (state.waitForModeration === true) {
             return <h3 className={style.review_wait_for_moderation}>Ваш отзыв ожидает модерации</h3>;
         }
 
-        const avatar = get(auth, 'login.data.user.image') || null;
+        if (role === authConst.userType.fitnessClub) {
+            return <h3 className={style.review_wait_for_moderation}>Клуб не может оставить отзыв.</h3>;
+        }
 
         return [get(props.auth, 'login.data.user.id', false) ?
             null :
