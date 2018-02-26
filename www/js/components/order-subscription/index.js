@@ -89,11 +89,17 @@ class Order extends Component {
             .getSessionState()
             .then(() => {
                 if (view.props.auth.login.isLogin) {
+                    if (view.props.auth.login.data.user.role === authConst.userType.fitnessClub) {
+                        view.props.history.push('/');
+                    }
                     return;
                 }
 
                 (function wait() {
                     if (view.props.auth.login.isLogin) {
+                        if (view.props.auth.login.data.user.role === authConst.userType.fitnessClub) {
+                            view.props.history.push('/');
+                        }
                         return;
                     }
 
