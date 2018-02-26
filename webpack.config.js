@@ -175,10 +175,26 @@ if (IS_DEVELOPMENT) {
     webpackConfig.plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            minChunks: (jsModule, count) => { // eslint-disable-line no-unused-vars
-                const {context} = jsModule;
+            minChunks: (jsModule, count) => {
+                const {resource = ''} = jsModule;
 
-                return context === null || /node_modules|lib|util|helper|style/.test(context);
+                return /node_modules|lib|util|helper|module|\.scss/.test(resource);
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'node-modules',
+            minChunks: (jsModule, count) => {
+                const {resource = ''} = jsModule;
+
+                return /node_modules|\.scss/.test(resource);
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'style',
+            minChunks: (jsModule, count) => {
+                const {resource = ''} = jsModule;
+
+                return /\.scss/.test(resource);
             }
         })
     );
