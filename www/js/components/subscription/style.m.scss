@@ -252,6 +252,15 @@ body { // just add authority in front of swiper's classes
         }
     }
 
+    .club_can_not {
+        display: block;
+        color: $mainTextColor;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 33px;
+    }
+
     .club_info_rating {
         padding-bottom: 15px;
     }

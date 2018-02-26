@@ -13,6 +13,9 @@ import TrainingCard from './../club/training-card';
 import TextCap from '../util/text-cap';
 import TextEllipsis from '../util/text-ellipsis';
 
+const authConst = require('./../auth/const');
+const get = require('lodash/get');
+
 const globalAppConst = require('./../../app-const');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
@@ -98,7 +101,7 @@ class Description extends Component {
 
     renderCard() { // eslint-disable-line complexity
         const view = this;
-        const {state} = view;
+        const {props, state} = view;
         const {pageData} = state;
 
         if (pageData === null) {
@@ -127,6 +130,10 @@ class Description extends Component {
                 dateDate = currentDate.getDate() + ' ' + yearMonthsMap[currentDate.getMonth()];
         }
 
+        const {auth} = props;
+        const role = get(auth, 'login.data.user.role') || null;
+        const isClub = role === authConst.userType.fitnessClub;
+
         return <div className={style.card}>
             <p className={style.card__time}>{capitalizeFirstLetter(dateDate)}:&nbsp;
             {reduceSeconds(dayData.time_from)} - {reduceSeconds(dayData.time_to)}</p>
@@ -151,14 +158,18 @@ class Description extends Component {
             <p className={style.card_short_additional_info}>Цена действительна при бронировании на&nbsp;сайте</p>
             <br/>
             {/* <p className={style.card_old_cost}>&nbsp;&nbsp;80 руб.&nbsp;&nbsp;</p>*/}
-            <Link
-                to={'/order/training/' +
-                row.id + '/' +
-                firstSchedule[firstDayIndex].id + '/' +
-                firstSchedule[firstDayIndex].dayId + '/'}
-                className={style.card_button}>
-                забронировать
-            </Link>
+
+            {isClub ?
+                <p className={style.club_can_not}>Клуб не может<br/>забронировать тренировку</p> :
+                <Link
+                    to={'/order/training/' +
+                    row.id + '/' +
+                    firstSchedule[firstDayIndex].id + '/' +
+                    firstSchedule[firstDayIndex].dayId + '/'}
+                    className={style.card_button}>
+                    забронировать
+                </Link>
+            }
             <p className={style.card_cash_back}>Бонус:&nbsp;
             <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
             </p>
@@ -313,7 +324,8 @@ class Description extends Component {
 export default connect(
     state => ({
         // trainingsCatalog: state.trainingsCatalog,
-        app: state.app
+        app: state.app,
+        auth: state.auth
     }),
     {}
 )(Description);

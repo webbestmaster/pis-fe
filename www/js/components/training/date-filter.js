@@ -3,13 +3,15 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import cnx from './../../helper/cnx';
+import rcn from 'rcn';
 import {defaultDateFilter} from './../trainings-catalog/reducer';
 
 const {fetchX} = require('./../../helper/fetch-x');
 const {reduceSeconds} = require('./../../helper/date');
 const appConst = require('./../../app-const');
 const Swiper = require('./../../lib/swiper');
-
+const authConst = require('./../auth/const');
+const get = require('lodash/get');
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;
 
@@ -183,6 +185,10 @@ class DateFilter extends Component {
         const {row} = pageData;
         const {schedule} = row;
 
+        const {auth} = props;
+        const role = get(auth, 'login.data.user.role') || null;
+        const isClub = role === authConst.userType.fitnessClub;
+
         return <div className="clubs-catalog-date-filter">
             <div ref="swiperContainer" className="swiper-container">
                 <div className="swiper-wrapper">
@@ -214,26 +220,26 @@ class DateFilter extends Component {
                             </p>
                             <p className="clubs-catalog-date-filter__date-date">{dateDate}</p>
 
-                            <div className="clubs-catalog-date-filter__date-content">
+                            <div {...rcn('clubs-catalog-date-filter__date-content', {disabled: isClub})}>
                                 <div className="clubs-catalog-date-filter__date-time-wrapper">
                                     {schedule.map((scheduleItem, innerIi) =>
                                         scheduleItem.day & weekDaysMap[currentDate.getDay()].day ? // eslint-disable-line no-bitwise
                                             <Link
                                                 to={'/order/training/' +
-                                                    row.id + '/' +
-                                                    scheduleItem.id + '/' +
-                                                    (scheduleItem.day & weekDaysMap[currentDate.getDay()].day)} // eslint-disable-line no-bitwise
+                                                row.id + '/' +
+                                                scheduleItem.id + '/' +
+                                                (scheduleItem.day & weekDaysMap[currentDate.getDay()].day)} // eslint-disable-line no-bitwise
                                                 key={ii + '-' + innerIi} // eslint-disable-line complexity
                                                 {...cnx('clubs-catalog-date-filter__date-time', {
                                                     disabled: ii === 0 &&
-                                                        parseFloat(scheduleItem.time_from) <= (new Date()).getHours(),
+                                                    parseFloat(scheduleItem.time_from) <= (new Date()).getHours(),
                                                     'clubs-catalog-date-filter__date-time--active':
-                                                        preparedScheduleList.firstScheduleIndex === innerIi &&
-                                                        preparedScheduleList.firstDayIndex === ii
+                                                    preparedScheduleList.firstScheduleIndex === innerIi &&
+                                                    preparedScheduleList.firstDayIndex === ii
                                                 })}>
                                                 {reduceSeconds(scheduleItem.time_from) +
-                                                    ' - ' +
-                                                    reduceSeconds(scheduleItem.time_to)}
+                                                ' - ' +
+                                                reduceSeconds(scheduleItem.time_to)}
                                             </Link> :
                                             <div
                                                 key={ii + '-' + innerIi}
@@ -257,6 +263,7 @@ export default connect(
     state => ({
         // trainingsCatalog: state.trainingsCatalog,
         // app: state.app
+        auth: state.auth
     }),
     {
         // setDateFilter: trainingsCatalogAction.setDateFilter

@@ -16,6 +16,8 @@ const globalAppConst = require('./../../app-const');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const Swiper = require('./../../lib/swiper');
+const authConst = require('./../auth/const');
+const get = require('lodash/get');
 
 class Description extends Component {
     constructor() {
@@ -66,6 +68,10 @@ class Description extends Component {
         const {row} = pageData;
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
 
+        const {auth} = props;
+        const role = get(auth, 'login.data.user.role') || null;
+        const isClub = role === authConst.userType.fitnessClub;
+
         return <div {...cnx(style.card, {
             [style.card__no_promotion]: !promotion
         })}>
@@ -93,9 +99,14 @@ class Description extends Component {
                     <br/>
                 </div>}
 
-            <Link to={'/order/subscription/' + pageData.row.id} className={style.card_button}>забронировать</Link>
-            <p className={style.card_cash_back}>Бонус:&nbsp;
-            <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
+            {isClub ?
+                <p className={style.club_can_not}>Клуб не может<br/>забронировать абонемент</p> :
+                <Link to={'/order/subscription/' + pageData.row.id} className={style.card_button}>забронировать</Link>
+            }
+
+            <p className={style.card_cash_back}>
+                Бонус:&nbsp;
+                <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
             </p>
         </div>;
     }
@@ -245,7 +256,8 @@ class Description extends Component {
 export default connect(
     state => ({
         // trainingsCatalog: state.trainingsCatalog,
-        app: state.app
+        app: state.app,
+        auth: state.auth
     }),
     {}
 )(Description);
