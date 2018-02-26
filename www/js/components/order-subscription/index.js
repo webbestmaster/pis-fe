@@ -13,6 +13,7 @@ import {resolveImagePath} from '../../helper/path-x';
 import {reduceSeconds} from '../../helper/date';
 import * as authAction from '../auth/action';
 import {Link} from 'react-router-dom';
+import {ErrorLabel} from './../auth/popup/register';
 
 const globalAppConst = require('./../../app-const');
 const authConst = require('./../auth/const');
@@ -657,17 +658,3 @@ export default withRouter(connect(
         openPopupLogin: authAction.openPopupLogin
     }
 )(Order));
-
-class ErrorLabel extends Component {
-    render() {
-        const view = this;
-        const {props, state} = view;
-        const {propName, form} = props;
-
-        if (form.input[propName].isValid) {
-            return null;
-        }
-
-        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
-    }
-}

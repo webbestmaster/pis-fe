@@ -562,7 +562,7 @@ export default withRouter(connect(
     }
 )(Register));
 
-class ErrorLabel extends Component {
+export class ErrorLabel extends Component {
     render() {
         const view = this;
         const {props, state} = view;

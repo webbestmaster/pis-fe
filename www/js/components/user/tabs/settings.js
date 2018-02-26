@@ -9,6 +9,7 @@ import cnx from './../../../helper/cnx';
 import * as authAction from './../../auth/action';
 import * as authApi from '../../auth/api';
 import {store} from '../../../index';
+import {ErrorLabel} from './../../auth/popup/register';
 
 const authConst = require('./../../auth/const');
 const globalAppConst = require('./../../../app-const');
@@ -596,18 +597,3 @@ export default connect(
         login: authAction.login
     }
 )(Settings);
-
-
-class ErrorLabel extends Component {
-    render() {
-        const view = this;
-        const {props, state} = view;
-        const {propName, form} = props;
-
-        if (form.input[propName].isValid) {
-            return null;
-        }
-
-        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
-    }
-}

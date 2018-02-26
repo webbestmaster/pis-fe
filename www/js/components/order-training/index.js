@@ -15,6 +15,7 @@ import * as authAction from '../auth/action';
 import {Link} from 'react-router-dom';
 import {prepareScheduleList} from './../training/date-filter';
 import {defaultDateFilter} from '../trainings-catalog/reducer';
+import {ErrorLabel} from './../auth/popup/register';
 
 const find = require('lodash/find');
 const globalAppConst = require('./../../app-const');
@@ -695,17 +696,3 @@ export default withRouter(connect(
         openPopupLogin: authAction.openPopupLogin
     }
 )(Order));
-
-class ErrorLabel extends Component {
-    render() {
-        const view = this;
-        const {props, state} = view;
-        const {propName, form} = props;
-
-        if (form.input[propName].isValid) {
-            return null;
-        }
-
-        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
-    }
-}

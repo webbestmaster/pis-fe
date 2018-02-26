@@ -60,7 +60,7 @@ class UserShortInfo extends Component {
         </div>;
     }
 
-    renderUserClub() {
+    renderUserClub() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {auth} = props;
@@ -88,7 +88,10 @@ class UserShortInfo extends Component {
                     className={style.user_avatar__input_file}/>
                 <div className={style.user_avatar__edit_button}/>
             </div>
-            <h4 className={style.user_avatar__name}>{user.first_name || ''} {user.last_name || ''}</h4>
+            {user.first_name === user.last_name ?
+                <h4 className={style.user_avatar__name}>{user.first_name || ''}</h4> :
+                <h4 className={style.user_avatar__name}>{user.first_name || ''} {user.last_name || ''}</h4>
+            }
             <div className="ta-center">
                 <h3
                     onClick={() => props.openPopupChangePassword()}
