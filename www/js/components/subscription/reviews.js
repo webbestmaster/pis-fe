@@ -85,7 +85,9 @@ export default class Reviews extends Component {
                         {reviewItem.answer ?
                             <div className={style.review_item_admin}>
                                 <div className={style.review_image}
-                                    style={{backgroundImage: 'url(' + defaultUserAvatar + ')'}}/>
+                                    style={{backgroundImage: 'url(' +
+                                        (resolveImagePath(pageData.row.logo_image) || defaultUserAvatar) +
+                                        ')'}}/>
 
                                 <div className={style.review_text_holder + ' clear-self'}>
                                     <p className={style.review_user_name}>Администратор</p>
