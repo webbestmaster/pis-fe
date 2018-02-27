@@ -70,9 +70,9 @@ class Reviews extends Component {
                     <div className={style.review_text_holder + ' clear-self'}>
                         <p className={style.review_user_name}>{reviewItem.user.name}</p>
                         <p className={style.review_date}>
-                            {new Date(reviewItem.user.created_at).getDate()}&nbsp;
-                            {getMonthAfterDayName(new Date(reviewItem.user.created_at).getMonth())}&nbsp;
-                            {new Date(reviewItem.user.created_at).getFullYear()}
+                            {new Date(reviewItem.created_at).getDate()}&nbsp;
+                            {getMonthAfterDayName(new Date(reviewItem.created_at).getMonth())}&nbsp;
+                            {new Date(reviewItem.created_at).getFullYear()}
                         </p>
                         <div className={style.review_rating}><Rating
                             rating={reviewItem.rating}

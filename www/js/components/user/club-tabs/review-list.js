@@ -48,7 +48,8 @@ class ReviewList extends Component {
 
             <div className={clubStyle.review_text_holder + ' clear-self'}>
                 <p className={clubStyle.review_user_name}>
-                    {reviewItem.user.name || 'Аноним'}
+                    {reviewItem.user.first_name}&nbsp;
+                    {reviewItem.user.last_name}
                     {
                         // just created and NO answer
                         reviewItem.status === FEEDBACK_STATUS_CREATED && !reviewItem.answer ? // eslint-disable-line id-match
@@ -56,9 +57,9 @@ class ReviewList extends Component {
                             null}
                 </p>
                 <p className={clubStyle.review_date}>
-                    {new Date(reviewItem.user.created_at).getDate()}&nbsp;
-                    {getMonthAfterDayName(new Date(reviewItem.user.created_at).getMonth())}&nbsp;
-                    {new Date(reviewItem.user.created_at).getFullYear()}
+                    {new Date(reviewItem.created_at).getDate()}&nbsp;
+                    {getMonthAfterDayName(new Date(reviewItem.created_at).getMonth())}&nbsp;
+                    {new Date(reviewItem.created_at).getFullYear()}
                 </p>
                 <div className={clubStyle.review_rating}><Rating
                     rating={reviewItem.rating}
