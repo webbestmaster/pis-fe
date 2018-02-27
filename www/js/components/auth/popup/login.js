@@ -44,7 +44,7 @@ class Login extends Component {
                 language="ru_RU"
                 appId={globalAppConst.key.facebook}
                 autoLoad={false}
-                fields="email,picture,gender,first_name,last_name,id,birthday"
+                fields="email,picture,gender,first_name,last_name,birthday,id"
                 onClick={evt => {
                     console.log(evt);
                 }}
