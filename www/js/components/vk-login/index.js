@@ -92,11 +92,11 @@ export default class VkLogin extends Component<Props> {
 }
 
 // helper
-function getLoginStatus() {
+function getLoginStatus(): Promise<{session: {mid: string}}> {
     return new Promise(resolve => VK.Auth.getLoginStatus(resolve));
 }
 
-function getUserData(userId, fields) {
+function getUserData(userId: string, fields: string): Promise<Object | null> {
     return new Promise(resolve => VK.Api.call( // eslint-disable-line prefer-reflect
         'users.get',
         {
