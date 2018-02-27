@@ -79,7 +79,12 @@ class MyTrainings extends Component {
                     <td>На&nbsp;месте</td> :
                     <td>Бонусами</td>
             }
-            <td>+{parseFloat(cashback).toFixed(2)}</td>
+            {
+                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                    <td>+{parseFloat(cashback).toFixed(2)}</td> :
+                    <td>-{real_price}</td> // eslint-disable-line id-match, camelcase
+            }
+
             <td className={tableStyle.vertical_free}>
                 <div className={style.table__training_status}>
                     <span className={style.table__training_status_icon + ' ' + humanStatus.cssClass}/>
