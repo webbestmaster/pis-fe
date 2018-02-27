@@ -41,7 +41,8 @@ class MapItemTraining extends Component {
                     <p className="clubs-catalog-list-item__shot-price-info-text">
                         Цена:
                         <span className="clubs-catalog-list-item__shot-price-info-price">
-                            {promotion ? (data.price - promotion.discount).toFixed(2) : data.price}
+                            {/* {promotion ? (data.price - promotion.discount).toFixed(2) : data.price}*/}
+                            {data.price}
                         </span>
                         руб.
                     </p>
