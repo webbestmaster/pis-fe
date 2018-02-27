@@ -448,7 +448,7 @@ class Order extends Component {
                     <span
                         className={style.input_header_icon}
                         style={{backgroundImage: 'url(' + cachebackImage + ')'}}/>
-                    &nbsp;Оплата бонусами (бонус баланс: {singleCacheBack.toFixed(2)})
+                    &nbsp;Оплата бонусами (ваш баланс: {userCashback.toFixed(2)})
                 </h3>
                 <RadioLabel
                     ref="bonusRadioInput"
