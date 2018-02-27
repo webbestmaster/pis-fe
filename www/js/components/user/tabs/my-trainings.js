@@ -59,7 +59,8 @@ class MyTrainings extends Component {
             frontType
         } = order;
 
-        const humanStatus = getHumanOrderStatus(frontType);
+        const isReservation = order_type === 'reservation'; // eslint-disable-line id-match, camelcase
+        const humanStatus = getHumanOrderStatus(frontType, isReservation ? '' : 'HasBonus');
 
         return <tr key={id}>
             <td>{
@@ -75,16 +76,15 @@ class MyTrainings extends Component {
             } руб.</span>)
             </td>
             {
-                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                isReservation ?
                     <td>На&nbsp;месте</td> :
                     <td>Бонусами</td>
             }
             {
-                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                isReservation ?
                     <td>+{parseFloat(cashback).toFixed(2)}</td> :
                     <td>-{real_price}</td> // eslint-disable-line id-match, camelcase
             }
-
             <td className={tableStyle.vertical_free}>
                 <div className={style.table__training_status}>
                     <span className={style.table__training_status_icon + ' ' + humanStatus.cssClass}/>
@@ -107,7 +107,8 @@ class MyTrainings extends Component {
             frontType
         } = order;
 
-        const humanStatus = getHumanOrderStatus(frontType);
+        const isReservation = order_type === 'reservation'; // eslint-disable-line id-match, camelcase
+        const humanStatus = getHumanOrderStatus(frontType, isReservation ? '' : 'HasBonus');
 
         return <tr key={id}>
             <td>{
@@ -123,11 +124,15 @@ class MyTrainings extends Component {
             } руб.</span>)
             </td>
             {
-                order_type === 'reservation' ? // eslint-disable-line id-match, camelcase
+                isReservation ?
                     <td>На&nbsp;месте</td> :
                     <td>Бонусами</td>
             }
-            <td>+{parseFloat(cashback).toFixed(2)}</td>
+            {
+                isReservation ?
+                    <td>+{parseFloat(cashback).toFixed(2)}</td> :
+                    <td>-{real_price}</td> // eslint-disable-line id-match, camelcase
+            }
             <td className={tableStyle.vertical_free}>
                 <div className={style.table__training_status}>
                     <span className={style.table__training_status_icon + ' ' + humanStatus.cssClass}/>
