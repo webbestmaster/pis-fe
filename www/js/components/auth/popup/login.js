@@ -29,56 +29,8 @@ class Login extends Component {
         const email = view.refs.email.value;
         const password = view.refs.password.value;
 
-        props.login(email, password).then(({type, payload}) => {
-            if (payload.login.code === 200) {
-                authApi.setUserData({email, password});
-
-                if (payload.login.data.user.role === authConst.userType.fitnessClub) {
-                    props.getClubHomeData();
-                }
-
-                props.closePopup();
-                return;
-            }
-
-            const {data} = payload.login;
-
-            if (data instanceof Array) {
-                view.setState({error: data[0]});
-                return;
-            }
-
-            const errorKey = Object.keys(data)[0];
-
-            view.setState({error: data[errorKey][0]});
-        });
-    }
-
-    loginFacebook(responseFacebook) {
-        const view = this;
-        const {props} = view;
-
-        props.loginFacebook(responseFacebook).then(({type, payload}) => {
-            if (payload.login.code === 200) {
-                if (payload.login.data.user.role === authConst.userType.fitnessClub) {
-                    props.getClubHomeData();
-                }
-
-                props.closePopup();
-                return;
-            }
-
-            const {data} = payload.login;
-
-            if (data instanceof Array) {
-                view.setState({error: data[0]});
-                return;
-            }
-
-            const errorKey = Object.keys(data)[0];
-
-            view.setState({error: data[errorKey][0]});
-        });
+        props.login(email, password)
+            .then(loginResult => view.afterLoginCallback(loginResult));
     }
 
     renderFacebook() {
@@ -103,7 +55,8 @@ class Login extends Component {
                         return;
                     }
 
-                    view.loginFacebook(responseFacebook);
+                    view.props.loginFacebook(responseFacebook)
+                        .then(loginResult => view.afterLoginCallback(loginResult));
                 }}/>
         </div>;
     }
@@ -123,10 +76,39 @@ class Login extends Component {
                         return;
                     }
 
-                    view.props.loginVk(responseVk);
+                    view.props.loginVk(responseVk)
+                        .then(loginResult => view.afterLoginCallback(loginResult));
                 }}
             />
         </div>;
+    }
+
+    afterLoginCallback({type, payload}) {
+        const view = this;
+        const {props, state} = view;
+
+        if (payload.login.code === 200) {
+            // authApi.setUserData({email, password});
+
+            if (payload.login.data.user.role === authConst.userType.fitnessClub) {
+                props.getClubHomeData();
+            }
+
+            props.closePopup();
+            props.history.push('/user');
+            return;
+        }
+
+        const {data} = payload.login;
+
+        if (data instanceof Array) {
+            view.setState({error: data[0]});
+            return;
+        }
+
+        const errorKey = Object.keys(data)[0];
+
+        view.setState({error: data[errorKey][0]});
     }
 
     render() {
