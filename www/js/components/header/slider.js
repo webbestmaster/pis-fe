@@ -134,19 +134,22 @@ class Slider extends Component {
                     <h2 className={classnames('header-slider__promo-text', {
                         'header-slider__promo-text--active': state.activeSlide === 'leftSlide'
                     })}>
-                        Сетевые клубы рядом<br className="header-slider__promo-text-br"/>с домом и работой
+                        Найди клуб рядом<br className="header-slider__promo-text-br"/>с домом и работой
+                        {/* Сетевые клубы рядом<br className="header-slider__promo-text-br"/>с домом и работой*/}
                         <Link className="slider-navigation-item__button" to="/clubs">Подобрать</Link>
                     </h2>
                     <h2 className={classnames('header-slider__promo-text', {
                         'header-slider__promo-text--active': state.activeSlide === 'rightSlide'
                     })}>
-                        Попробуй прежде чем<br className="header-slider__promo-text-br"/>купить
+                        Выбери тренировку<br className="header-slider__promo-text-br"/>по душе
+                        {/* Попробуй прежде чем<br className="header-slider__promo-text-br"/>купить*/}
                         <Link className="slider-navigation-item__button" to="/trainings">Подобрать</Link>
                     </h2>
                     <h2 className={classnames('header-slider__promo-text', {
                         'header-slider__promo-text--active': state.activeSlide === 'centerSlide'
                     })}>
-                        Специальные цены при<br className="header-slider__promo-text-br"/>бронировании с сайта
+                        Забронируй абонемент<br className="header-slider__promo-text-br"/>по специальной цене
+                        {/* Специальные цены при<br className="header-slider__promo-text-br"/>бронировании с сайта*/}
                         <Link className="slider-navigation-item__button" to="/subscriptions">Подобрать</Link>
                     </h2>
                 </div>
