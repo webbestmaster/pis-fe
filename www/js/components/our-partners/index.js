@@ -33,7 +33,7 @@ export default class OurPartners extends Component {
                 {pageData.data.partners.map((partner, index, arr) => {
                     const link = <a
                         target="_blank"
-                        href={partner.external_link}
+                        href={resolveUrlToHttp(partner.external_link)}
                         className="our-partners__partner-item"
                         key={index}>
                         <img className="our-partners__partner-image"
@@ -53,4 +53,12 @@ export default class OurPartners extends Component {
             </div>
         </section>;
     }
+}
+
+function resolveUrlToHttp(url) {
+    if (url.indexOf('http') === 0) {
+        return url;
+    }
+
+    return 'http://' + url;
 }
