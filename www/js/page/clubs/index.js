@@ -27,7 +27,7 @@ export default class Clubs extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/clubs">Клубы</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Клубы</h3>
+                <h1 className="section__header">Фитнес-клубы Минска</h1>
             </TopBigBanner>
             <ClubsCatalog/>
             <Footer/>

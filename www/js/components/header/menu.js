@@ -26,7 +26,9 @@ class Menu extends Component {
 
         return <div key="header-desktop" className="header-menu-wrapper--desktop">
             <div className="hug">
-                <Link to="/" className="header__logo"/>
+                <Link to="/" className="header__logo">
+                    <h1>Спорт и фитнес в Минске</h1>
+                </Link>
                 <nav className="header-menu">
                     <Link {...cnx('header-menu__link', {
                         'header-menu__link--active': props.match.url === '/clubs'

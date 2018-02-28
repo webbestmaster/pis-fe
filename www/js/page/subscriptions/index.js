@@ -25,7 +25,7 @@ export default class Subscriptions extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/subscriptions">Абонементы</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Абонементы</h3>
+                <h1 className="section__header">Абонементы в Минске</h1>
             </TopBigBanner>
             <SubscriptionsCatalog/>
             <Footer/>
