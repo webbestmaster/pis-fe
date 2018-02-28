@@ -1,4 +1,4 @@
-/* global window, VK, setTimeout, document */
+/* global window, VK, setTimeout, document, HTMLDivElement, location */
 // https://vk.com/dev/objects/user
 // @flow
 import React, {Component} from 'react';
@@ -7,17 +7,25 @@ import type {Node} from 'react';
 type Props = {
     apiId: number;
     fields?: string;
-    callback?: Function;
+    callback?: (response: any) => {};
     cssClass?: string;
     redirectUri?: string;
     children?: Node[]
 }
 
+type Refs = {
+    transport: HTMLDivElement
+}
+
+const sdkScriptClassName = 'sdk-vk-script';
+
 export default class VkLogin extends Component<Props> {
+    refs: Refs
+
     addScript(): Promise<void> {
         const view = this;
 
-        if (typeof window.VK !== 'undefined') {
+        if (document.querySelector('.' + sdkScriptClassName)) {
             return Promise.resolve();
         }
 
@@ -25,6 +33,7 @@ export default class VkLogin extends Component<Props> {
             setTimeout(() => {
                 const scriptNode = document.createElement('script');
 
+                scriptNode.className = sdkScriptClassName;
                 scriptNode.type = 'text/javascript';
                 scriptNode.src = 'https://vk.com/js/api/openapi.js?152';
                 scriptNode.async = true;
@@ -45,7 +54,7 @@ export default class VkLogin extends Component<Props> {
                     return getUserData(loginStatusResponse.session.mid, props.fields || '');
                 }
 
-                window.location.href = view.getLoginUrl();
+                location.href = view.getLoginUrl();
 
                 return Promise.resolve(null);
             })
@@ -56,7 +65,7 @@ export default class VkLogin extends Component<Props> {
             });
     }
 
-    getLoginUrl() {
+    getLoginUrl():string {
         const view = this;
         const {props} = view;
 
@@ -68,7 +77,7 @@ export default class VkLogin extends Component<Props> {
             '&v=5.73';
     }
 
-    componentDidMount() {
+    componentDidMount():void {
         const view = this;
         const {props} = view;
 
@@ -78,7 +87,7 @@ export default class VkLogin extends Component<Props> {
             }));
     }
 
-    render() {
+    render():Node {
         const view = this;
         const {props} = view;
 
@@ -96,7 +105,7 @@ function getLoginStatus(): Promise<{session: {mid: string}}> {
     return new Promise(resolve => VK.Auth.getLoginStatus(resolve));
 }
 
-function getUserData(userId: string, fields: string): Promise<Object | null> {
+function getUserData(userId: string, fields: string): Promise<{response: [Object]} | null> {
     return new Promise(resolve => VK.Api.call( // eslint-disable-line prefer-reflect
         'users.get',
         {

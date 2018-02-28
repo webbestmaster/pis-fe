@@ -15,6 +15,9 @@ node_modules
 
 /_res
 
+# reports
+/flow-coverage
+
 # example
 # /* eslint-disable no-unused-vars */
 # var React = require('react');
