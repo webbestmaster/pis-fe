@@ -40,13 +40,12 @@ export default class PromoInstagram extends Component {
                         <div key="promo-instagram__about" className="promo-instagram__double-item">
                             <img className="square-image" src={spacerImg} alt=""/>
                             <div className="promo-instagram__double-item-container">
-                                <h3 className="promo-instagram__double-item-header">В РИТМЕ PIS</h3>
+                                <h3 className="promo-instagram__double-item-header">В СТИЛЕ</h3>
                                 <p className="promo-instagram__double-item-hash-tag">#peopleinsport</p>
-                                <p className="promo-instagram__double-item-promo-text">Они разделяют дух и ценности
-                                    PeopleInSport,
-                                    не покладая рук работают над собой и ставят хештэг #pis или #peopleinsport, чтобы
-                                    попасть на
-                                    нашу страницу почета.</p>
+                                <p className="promo-instagram__double-item-promo-text">
+                                    Упорные и стойкие, они непрерывно стремятся к совершенству - живут в стиле
+                                    People in Sport! Ставь #peopleinsport и займи свое почетное место среди
+                                    сильнейших в нашей ленте успеха.</p>
                             </div>
                         </div>
                     ];
