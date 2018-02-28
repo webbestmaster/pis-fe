@@ -1,3 +1,7 @@
+!! add to linter
+!! https://github.com/gajus/eslint-plugin-flowtype
+
+
 всё что в низу - смотреть в трелло
 
 + ! - ужимать картинку до 1000 на 1000 перед заливом на сервак
