@@ -1,0 +1,15 @@
+{
+    "concurrentFiles": 1,
+    "excludeGlob": [
+        "node_modules/**",
+        "www/js/lib/**"
+    ],
+    "flowCommandPath": "C:/Users/dmitry.turovtsov/user/master-git/pis-fe/node_modules/flow-bin/flow.exe",
+    "includeGlob": [
+        "www/js/**/*.js"
+    ],
+    "outputDir": "./output",
+    "projectDir": "./",
+    "threshold": 90,
+    "type": "text"
+}

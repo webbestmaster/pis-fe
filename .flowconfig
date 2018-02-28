@@ -4,8 +4,8 @@
 [include]
 
 [libs]
-.*/node_modules/.*
-.*/www/js/lib/.*
+# .*/node_modules/.*
+# .*/www/js/lib/.*
 
 [lints]
 
