@@ -23,7 +23,7 @@ class MapItemTraining extends Component {
                 <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
                 <p className="clubs-catalog-list-item__address">{data.fitnessClub.address}</p>
                 <div className="clubs-catalog-list-item__description">
-                    <p>{promotion ? promotion.description : data.description}</p>
+                    <p className="line-cap-4">{promotion ? promotion.description : data.description}</p>
                 </div>
 
                 <p className="clubs-catalog-list-item__available-training-item

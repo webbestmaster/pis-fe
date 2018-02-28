@@ -17,7 +17,7 @@ export default class MapItemClub extends Component {
                 <p className="clubs-catalog-list-item__address">{data.address}</p>
                 <div
                     className="clubs-catalog-list-item__description">
-                    <p>{data.description}</p>
+                    <p className="line-cap-4">{data.description}</p>
                 </div>
                 <Link
                     to={'/club/' + data.id + '/tab-index/2'}

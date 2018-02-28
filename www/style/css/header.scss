@@ -129,10 +129,8 @@
 }
 
 .header-slider__result-description {
+    height: 48px;
     @include line-cap(3);
-    p {
-        @include line-cap(3);
-    }
 }
 
 @media screen and (max-width: $tabletWidth) {

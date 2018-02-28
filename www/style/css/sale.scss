@@ -228,6 +228,7 @@
 
         p:first-child {
             @include line-cap(4);
+            max-height: 64px;
         }
     }
 
