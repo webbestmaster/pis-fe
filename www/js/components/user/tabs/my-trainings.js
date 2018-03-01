@@ -5,6 +5,7 @@ import moment from 'moment/moment';
 import tableStyle from './../table.m.scss';
 import Pagination from 'react-js-pagination';
 import {getHumanOrderStatus} from './../helper';
+import {Link} from 'react-router-dom';
 
 class MyTrainings extends Component {
     constructor() {
@@ -52,9 +53,10 @@ class MyTrainings extends Component {
             created_at, // eslint-disable-line id-match, camelcase
             start_order_date, // eslint-disable-line id-match, camelcase
             fitness_club, // eslint-disable-line id-match, camelcase
-            fitness_club_training, // eslint-disable-line id-match, camelcase
+            fitness_club_training: fitnessClubTraining, // eslint-disable-line id-match, camelcase
+            fitness_club_training_id: fitnessClubTrainingId, // eslint-disable-line id-match, camelcase
             order_type, // eslint-disable-line id-match, camelcase
-            real_price, // eslint-disable-line id-match, camelcase
+            real_price: realPrice, // eslint-disable-line id-match, camelcase
             cashback,
             frontType
         } = order;
@@ -69,11 +71,13 @@ class MyTrainings extends Component {
             <td>{
                 fitness_club.title // eslint-disable-line id-match, camelcase
             }</td>
-            <td>{
-                fitness_club_training.title // eslint-disable-line id-match, camelcase
-            } (<span className="main-color">{
-                real_price // eslint-disable-line id-match, camelcase
-            } руб.</span>)
+            <td>
+                <Link
+                    target="_blank"
+                    className={tableStyle.t_link}
+                    to={'/training/' + fitnessClubTrainingId}>
+                    {fitnessClubTraining.title} (<span className="main-color">{realPrice} руб.</span>)
+                </Link>
             </td>
             {
                 isReservation ?
@@ -83,7 +87,7 @@ class MyTrainings extends Component {
             {
                 isReservation ?
                     <td>+{parseFloat(cashback).toFixed(2)}</td> :
-                    <td>-{real_price}</td> // eslint-disable-line id-match, camelcase
+                    <td>-{realPrice}</td>
             }
             <td className={tableStyle.vertical_free}>
                 <div className={style.table__training_status}>
@@ -100,9 +104,10 @@ class MyTrainings extends Component {
             id,
             created_at, // eslint-disable-line id-match, camelcase
             fitness_club, // eslint-disable-line id-match, camelcase
-            fitness_club_subscription, // eslint-disable-line id-match, camelcase
+            fitness_club_subscription: fitnessClubSubscription, // eslint-disable-line id-match, camelcase
+            fitness_club_subscription_id: fitnessClubSubscriptionId, // eslint-disable-line id-match, camelcase
             order_type, // eslint-disable-line id-match, camelcase
-            real_price, // eslint-disable-line id-match, camelcase
+            real_price: realPrice, // eslint-disable-line id-match, camelcase
             cashback,
             frontType
         } = order;
@@ -117,11 +122,13 @@ class MyTrainings extends Component {
             <td>{
                 fitness_club.title // eslint-disable-line id-match, camelcase
             }</td>
-            <td>{
-                fitness_club_subscription.title // eslint-disable-line id-match, camelcase
-            } (<span className="main-color">{
-                real_price // eslint-disable-line id-match, camelcase
-            } руб.</span>)
+            <td>
+                <Link
+                    target="_blank"
+                    className={tableStyle.t_link}
+                    to={'/subscription/' + fitnessClubSubscriptionId}>
+                    {fitnessClubSubscription.title} (<span className="main-color">{realPrice} руб.</span>)
+                </Link>
             </td>
             {
                 isReservation ?
@@ -131,7 +138,7 @@ class MyTrainings extends Component {
             {
                 isReservation ?
                     <td>+{parseFloat(cashback).toFixed(2)}</td> :
-                    <td>-{real_price}</td> // eslint-disable-line id-match, camelcase
+                    <td>-{realPrice}</td>
             }
             <td className={tableStyle.vertical_free}>
                 <div className={style.table__training_status}>
