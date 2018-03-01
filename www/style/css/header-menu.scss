@@ -61,6 +61,8 @@
     }
 
     &.header-menu__button--login {
+        min-width: 126px;
+        max-width: 136px;
         &:before {
             background-image: url('./../i/header/icon-signin.svg');
             background-position: center 15px;
@@ -74,6 +76,12 @@
             background-size: 13px auto;
         }
     }
+}
+
+.header-menu__button-text {
+    font-weight: inherit;
+    font-size: inherit;
+    display: block;
 }
 
 // mobile part
@@ -118,7 +126,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 272px;
+    width: 260px;
     background-color: #192839;
     z-index: 4;
 }

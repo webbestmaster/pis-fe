@@ -8,6 +8,8 @@ import cnx from './../../helper/cnx';
 
 const globalAppConst = require('./../../app-const');
 const appConst = require('./../../app-const');
+const get = require('lodash/get');
+const privateOfficeLabelText = 'Личный кабинет';
 
 class Menu extends Component {
     constructor() {
@@ -23,12 +25,11 @@ class Menu extends Component {
     renderDesktop() {
         const view = this;
         const {props, state} = view;
+        const userName = get(props.auth, 'login.data.user.first_name') || privateOfficeLabelText;
 
         return <div key="header-desktop" className="header-menu-wrapper--desktop">
             <div className="hug">
-                <Link to="/" className="header__logo">
-                    <h1>Спорт и фитнес в Минске</h1>
-                </Link>
+                <Link to="/" className="header__logo"/>
                 <nav className="header-menu">
                     <Link {...cnx('header-menu__link', {
                         'header-menu__link--active': props.match.url === '/clubs'
@@ -40,7 +41,9 @@ class Menu extends Component {
                         'header-menu__link--active': props.match.url === '/trainings'
                     })} to="/trainings">Тренировки</Link>
                     <p onClick={() => view.openUserPage()}
-                        className="header-menu__button header-menu__button--login">Личный кабинет</p>
+                        className="header-menu__button header-menu__button--login">
+                        <span className="header-menu__button-text ellipsis">{userName}</span>
+                    </p>
                     <a href="tel:84995770137" className="header-menu__button header-menu__button--call">
                         8 (499) 577-01-37
                     </a>
@@ -69,7 +72,7 @@ class Menu extends Component {
                     </a>
                     <p onClick={() => view.openUserPage()}
                         className="header-mobile-menu__button header-mobile-menu__button--login">
-                        Личный кабинет
+                        {privateOfficeLabelText}
                     </p>
                     <div className="header-mobile-menu__link-list">
                         <Link {...cnx('header-mobile-menu__link', {
