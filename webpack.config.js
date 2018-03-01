@@ -208,7 +208,10 @@ if (IS_PRODUCTION) {
                 drop_console: true // eslint-disable-line camelcase
             }
         }),
-        new CopyWebpackPlugin([{from: './favicon.ico', to: './../../public/favicon.ico'}], {debug: true})
+        new CopyWebpackPlugin([
+            {from: './favicon.ico', to: './../../public/favicon.ico'},
+            {from: './robots.txt', to: './../../public/robots.txt'}
+        ], {debug: true})
     );
 }
 
