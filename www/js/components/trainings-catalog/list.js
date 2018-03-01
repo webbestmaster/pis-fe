@@ -62,7 +62,7 @@ class List extends Component {
             if (selected.underground && selected.underground.length) {
                 selected.underground.forEach(station => params.push('where[underground][]=' + station));
                 params.push('where[distance][from]=0');
-                params.push('where[distance][to]=5');
+                params.push('where[distance][to]=1');
             }
         }
 
