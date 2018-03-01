@@ -50,13 +50,13 @@ class Sale extends Component {
         }
 
         return <section className="section sale">
-            <h2 className="section__header">
-                Акции
+            <div className="section__header">
+                Акции: <h1 className="seo-header">спорт и фитнес в Минске</h1>
                 <Link to={{
                     pathname: '/subscriptions',
                     state: {fromSaleSwiper: true}
                 }} className="section__button">Смотреть все акции</Link>
-            </h2>
+            </div>
             <div className="sale-slider">
                 <div ref="swiperContainer" className="swiper-container">
                     <div className="swiper-wrapper">
