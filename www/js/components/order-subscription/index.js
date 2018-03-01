@@ -10,25 +10,21 @@ import RadioLabel from './../util/radio';
 import {withRouter} from 'react-router-dom';
 import {formatPhoneBY} from '../../helper/format';
 import {resolveImagePath} from '../../helper/path-x';
-import {reduceSeconds} from '../../helper/date';
+import {reduceSeconds, isDayOff} from '../../helper/date';
 import * as authAction from '../auth/action';
 import {Link} from 'react-router-dom';
 import {ErrorLabel} from './../auth/popup/register';
 
 const globalAppConst = require('./../../app-const');
 const authConst = require('./../auth/const');
-
 const mapPinImage = require('./../../../style/i/clubs/map-pin.svg');
 const trainingImage = require('./../../../style/i/category/dancing.svg');
-
 const timeImage = require('./../../../style/i/order/icon-time.png');
 const faceImage = require('./../../../style/i/order/icon-face.png');
 const phoneImage = require('./../../../style/i/order/icon-phone.png');
 const mailImage = require('./../../../style/i/order/icon-mail.png');
-
 const cacheImage = require('./../../../style/i/order/icon-cache.png');
 const cachebackImage = require('./../../../style/i/order/icon-cashe-back.png');
-
 const Swiper = require('./../../lib/swiper');
 const {fetchX} = require('./../../helper/fetch-x');
 
@@ -233,11 +229,19 @@ class Order extends Component {
                     <span className={style.input_header_icon} style={{backgroundImage: 'url(' + timeImage + ')'}}/>
                     Время действия
                 </h3>
-                <input
-                    className={style.input_node} type="text"
-                    defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
-                    ', Сб-Вс: ' + reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)}
-                    disabled/>
+                {isDayOff(row.weekend_work_from, row.weekend_work_to) ?
+                    <input
+                        className={style.input_node} type="text"
+                        defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
+                        ', Сб-Вс: выходной'}
+                        disabled/> :
+                    <input
+                        className={style.input_node} type="text"
+                        defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
+                        ', Сб-Вс: ' + reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)}
+                        disabled/>
+                }
+
             </div>
             <div className={style.arrow_block_wrapper}>
                 {/*
@@ -520,7 +524,11 @@ class Order extends Component {
                 <span>
                     Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
                     <br/>
-                    Сб-Вс: {reduceSeconds(row.weekend_work_from)} - {reduceSeconds(row.weekend_work_to)}
+                    Сб-Вс:&nbsp;
+                    {isDayOff(row.weekend_work_from, row.weekend_work_to) ?
+                        'выходной' :
+                        reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)
+                    }
                 </span>
             </p>
 

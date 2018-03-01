@@ -7,7 +7,7 @@ import Lightbox from 'react-images';
 import MapView from './../map';
 import MapItemClub from './../map/map-item-club';
 import {Link, withRouter} from 'react-router-dom';
-import {reduceSeconds} from '../../helper/date';
+import {isDayOff, reduceSeconds} from '../../helper/date';
 import {resolveImagePath} from '../../helper/path-x';
 import {connect} from 'react-redux';
 import TrainingCard from './training-card';
@@ -230,9 +230,12 @@ class Description extends Component {
                                         {reduceSeconds(filial.work_to)}
                                         <br/>
                                             Сб-Вс:&nbsp;
-                                        {reduceSeconds(filial.work_weekend_from)}
-                                            &nbsp;-&nbsp;
-                                        {reduceSeconds(filial.work_weekend_to)}
+                                        {isDayOff(filial.work_weekend_from, filial.work_weekend_to) ?
+                                            'выходной' :
+                                            reduceSeconds(filial.work_weekend_from) +
+                                            ' - ' +
+                                            reduceSeconds(filial.work_weekend_to)
+                                        }
                                     </p>
                                 </div>
                                 <div className={style.filial_details_block__w100}>

@@ -69,3 +69,7 @@ export function getTimePeriodName(periodType) {
 
     throw new Error('Unsupported period type: ' + periodType);
 }
+
+export function isDayOff(workFrom, workTo) {
+    return workFrom === workTo;
+}
