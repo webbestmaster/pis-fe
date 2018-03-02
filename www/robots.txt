@@ -12,4 +12,3 @@ Host: site.katran.by
 User-agent: *
 Disallow: /order/
 Disallow: /user/
-Disallow: /admin/
