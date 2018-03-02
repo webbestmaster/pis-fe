@@ -9,14 +9,6 @@ import {metaTagMaster} from '../../module/meta-tag';
 
 const topBanner = require('./../../../style/images/order/top-banner.png');
 
-const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
-    ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
-    'крутое помещение - красавцы. Приветливые тренера, обходительный персонал. Обязательно ' +
-    'зайдем сюда еще раз. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ' +
-    'cumque ipsam molestias possimus quaerat. Dolorem fugiat fugit similique soluta ' +
-    'temporibus. Delectus facilis optio qui unde velit vitae! Necessitatibus, ' +
-    'nulla suscipit?';
-
 class AboutCashback extends Component {
     componentDidMount() {
         metaTagMaster.updateByUrl('/about-cashback');
@@ -39,11 +31,16 @@ class AboutCashback extends Component {
 
             <div className="hug hug--simple-page">
                 <h3 className="section__header">Бонусы</h3>
-                <div className="section__text-wrapper">
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
-                    <p>{fishText}</p>
+                <div className="section__text-wrapper section__text-wrapper--big-font">
+
+                    <p className="bold">Станьте частью проекта People in Sport и занимайтесь бесплатно!</p>
+
+                    <p>Бонусы начинают начисляться сразу после регистрации. Для того чтобы их накопить, вам необходимо
+                        совершить бронирование абонемента/тренировки/процедуры на нашем сайте.</p>
+                    <p>Каждый раз, бронируя и оплачивая абонемент/тренировку/процедуру, вы получаете 10 % от стоимости в
+                        бонусах и можете оплачивать до 100 % от стоимости покупки.</p>
+                    <p style={{fontSize: 14}}>* 1 бонус = 1 белорусский рубль</p>
+
                 </div>
             </div>
             <Footer/>
