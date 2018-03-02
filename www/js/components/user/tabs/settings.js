@@ -10,6 +10,7 @@ import * as authAction from './../../auth/action';
 import * as authApi from '../../auth/api';
 import {store} from '../../../index';
 import {ErrorLabel} from './../../auth/popup/register';
+import Snackbar from 'material-ui/Snackbar';
 
 const authConst = require('./../../auth/const');
 const globalAppConst = require('./../../../app-const');
@@ -23,6 +24,11 @@ class Settings extends Component {
         const view = this;
 
         view.state = {
+            snackbar: {
+                saveChanges: {
+                    isOpen: false
+                }
+            },
             extraData: {
                 dob: null
             },
@@ -415,7 +421,14 @@ class Settings extends Component {
                     refs.password.value = '';
                     refs.confirmPassword.value = '';
 
-                    view.setState({error: null});
+                    // view.setState({error: null});
+
+                    view.setState(prevState => {
+                        Object.assign(prevState, {error: null});
+                        Object.assign(prevState.snackbar.saveChanges, {isOpen: true});
+                        return prevState;
+                    });
+
                     return;
                 }
 
@@ -581,7 +594,23 @@ class Settings extends Component {
 
             {state.error && <p className={style.user_form__error_p}>{state.error}</p>}
             <div onClick={() => view.updateUserData()} className={style.settings_form__submit_button}>Обновить</div>
-
+            <Snackbar
+                anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
+                open={state.snackbar.saveChanges.isOpen}
+                autoHideDuration={4000}
+                onClose={() => {
+                    view.setState(prevState => {
+                        Object.assign(prevState.snackbar.saveChanges, {isOpen: false});
+                        return prevState;
+                    });
+                }}
+                message={<p onClick={() => {
+                    view.setState(prevState => {
+                        Object.assign(prevState.snackbar.saveChanges, {isOpen: false});
+                        return prevState;
+                    });
+                }}>Изменения сохранены</p>}
+            />
         </div>;
     }
 }
