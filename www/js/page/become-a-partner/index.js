@@ -8,7 +8,7 @@ import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 import BecomeAPartner from './../../components/become-a-partner';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/become-a-partner/top-banner.jpg');
 
 class BecomeAPartnerPage extends Component {
     componentDidMount() {

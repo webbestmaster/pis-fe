@@ -8,7 +8,7 @@ import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 import YourProposal from '../../components/your-proposal';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/your-proposal/top-banner.jpg');
 
 class YourProposalPage extends Component {
     componentDidMount() {
