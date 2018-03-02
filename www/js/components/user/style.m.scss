@@ -24,6 +24,10 @@
     .text_label__wide {
         width: 100%;
     }
+    .error_label {
+        right: 15px;
+        top: 68px;
+    }
 }
 
 .input_error_text {
@@ -87,14 +91,14 @@
     box-sizing: border-box;
     padding-right: 22px;
     position: relative;
-    .input_error_text {
-        top: 32px;
+    .error_label {
+        top: 38px;
         right: 22px;
     }
     &:last-child {
         padding-right: 0;
         padding-left: 22px;
-        .input_error_text {
+        .error_label {
             right: 0;
         }
     }

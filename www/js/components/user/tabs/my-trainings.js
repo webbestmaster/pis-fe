@@ -190,68 +190,6 @@ class MyTrainings extends Component {
                 </thead>
                 <tbody className={tableStyle.t_body}>
                     {view.renderTableBody()}
-                    {/*
-                    <tr>
-                        <td>01.01.2017</td>
-                        <td>Фитнес клуб “Аргумент”</td>
-                        <td>Пробная тренировка для новичков (<span className="main-color">100 руб.</span>)</td>
-                        <td>Онлайн</td>
-                        <td>+7</td>
-                        <td className={tableStyle.vertical_free}>
-                            <div className={style.table__training_status}>
-                                <span className={style.table__training_status_icon + ' ' +
-                                style.table__training_status_icon__in_progress}/>
-                            Обработка
-                            </div>
-                        </td>
-                        <td>Ожидайте подтверждения</td>
-                    </tr>
-                    <tr>
-                        <td>01.01.2017</td>
-                        <td>Фитнес клуб “Аргумент”</td>
-                        <td>Пробная тренировка для новичков (<span className="main-color">100 руб.</span>)</td>
-                        <td>Онлайн</td>
-                        <td>+7</td>
-                        <td className={tableStyle.vertical_free}>
-                            <div className={style.table__training_status}>
-                                <span className={style.table__training_status_icon + ' ' +
-                                style.table__training_status_icon__taken}/>
-                            Забронировано
-                            </div>
-                        </td>
-                        <td>Клуб ждет вас</td>
-                    </tr>
-                    <tr>
-                        <td>01.01.2017</td>
-                        <td>Фитнес клуб “Аргумент”</td>
-                        <td>Пробная тренировка для новичков (<span className="main-color">100 руб.</span>)</td>
-                        <td>Онлайн</td>
-                        <td>+7</td>
-                        <td className={tableStyle.vertical_free}>
-                            <div className={style.table__training_status}>
-                                <span className={style.table__training_status_icon + ' ' +
-                                style.table__training_status_icon__rejected}/>
-                            Отклонено
-                            </div>
-                        </td>
-                        <td>Выберите другое предложение</td>
-                    </tr>
-                    <tr>
-                        <td>01.01.2017</td>
-                        <td>Фитнес клуб “Аргумент”</td>
-                        <td>Пробная тренировка для новичков (<span className="main-color">100 руб.</span>)</td>
-                        <td>Онлайн</td>
-                        <td>+7</td>
-                        <td className={tableStyle.vertical_free}>
-                            <div className={style.table__training_status}>
-                                <span className={style.table__training_status_icon + ' ' +
-                                style.table__training_status_icon__done}/>
-                            Завершено
-                            </div>
-                        </td>
-                        <td>Вам начислены бонусы</td>
-                    </tr>
-                    */}
                 </tbody>
             </table>
 

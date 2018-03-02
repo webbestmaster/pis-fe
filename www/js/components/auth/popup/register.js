@@ -566,12 +566,12 @@ export class ErrorLabel extends Component {
     render() {
         const view = this;
         const {props, state} = view;
-        const {propName, form} = props;
+        const {propName, form, className = ''} = props;
 
         if (form.input[propName].isValid) {
             return null;
         }
 
-        return <span className={style.input_error_text}>{form.input[propName].error.message}</span>;
+        return <span className={style.input_error_text + ' ' + className}>{form.input[propName].error.message}</span>;
     }
 }

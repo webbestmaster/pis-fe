@@ -453,7 +453,7 @@ class Settings extends Component {
                         type="text" defaultValue={user.first_name} {...cnx(style.input_text,
                             {[style.input_text__invalid]: !state.form.input.name.isValid}
                         )}/>
-                    <ErrorLabel propName="name" form={state.form}/>
+                    <ErrorLabel propName="name" form={state.form} className={style.error_label}/>
                 </label>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Email</p>
@@ -464,7 +464,7 @@ class Settings extends Component {
                         type="email" defaultValue={user.email} {...cnx(style.input_text,
                             {[style.input_text__invalid]: !state.form.input.email.isValid}
                         )}/>
-                    <ErrorLabel propName="email" form={state.form}/>
+                    <ErrorLabel propName="email" form={state.form} className={style.error_label}/>
                 </label>
                 <label className={style.text_label}>
                     <p className={style.text_label__label}>Фамилия</p>
@@ -475,7 +475,7 @@ class Settings extends Component {
                         type="text" defaultValue={user.last_name} {...cnx(style.input_text,
                             {[style.input_text__invalid]: !state.form.input.family.isValid}
                         )}/>
-                    <ErrorLabel propName="family" form={state.form}/>
+                    <ErrorLabel propName="family" form={state.form} className={style.error_label}/>
                 </label>
                 <label className={style.text_label + ' ' + style.text_label__phone}>
                     <p className={style.text_label__label}>Телефон</p>
@@ -489,7 +489,7 @@ class Settings extends Component {
                         placeholder="XX XXX XX XX"
                         {...cnx(style.input_text, {[style.input_text__invalid]: !state.form.input.phone.isValid})}
                     />
-                    <ErrorLabel propName="phone" form={state.form}/>
+                    <ErrorLabel propName="phone" form={state.form} className={style.error_label}/>
                 </label>
                 <div className={style.text_label + ' ' + style.text_label__wide}>
                     <label className={style.calendar_label}>
@@ -560,7 +560,7 @@ class Settings extends Component {
                                 type="password" placeholder="Пароль" {...cnx(style.input_text,
                                     {[style.input_text__invalid]: !state.form.input.password.isValid}
                                 )}/>
-                            <ErrorLabel propName="password" form={state.form}/>
+                            <ErrorLabel propName="password" form={state.form} className={style.error_label}/>
                         </div>
                         <span className={style.from_to_arrow} style={{visibility: 'hidden'}}/>
                         <div className={style.input_text__from_to}>
@@ -572,7 +572,7 @@ class Settings extends Component {
                                 {...cnx(style.input_text,
                                     {[style.input_text__invalid]: !state.form.input.confirmPassword.isValid})}
                             />
-                            <ErrorLabel propName="confirmPassword" form={state.form}/>
+                            <ErrorLabel propName="confirmPassword" form={state.form} className={style.error_label}/>
                         </div>
                     </div>
                 </div>
