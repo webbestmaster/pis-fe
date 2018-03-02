@@ -112,10 +112,10 @@ class Filter extends Component {
 
     onChangeTrainingPeriodSelect() {
         const view = this;
-        const {props, state, refs} = view;
-        const {value} = refs.selectedTrainingPeriod;
-        const [selectedOption] = refs.selectedTrainingPeriod.selectedOptions;
-        const text = selectedOption.innerText;
+        const {refs} = view;
+        const {selectedIndex} = refs.selectedTrainingPeriod;
+        const selectedOption = refs.selectedTrainingPeriod.options[selectedIndex];
+        const {value} = selectedOption;
         const item = find(trainingPeriodOptionList, {value});
 
         view.setState(prevState => {

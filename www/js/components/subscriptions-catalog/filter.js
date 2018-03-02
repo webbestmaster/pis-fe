@@ -92,10 +92,10 @@ class Filter extends Component {
 
     onChangeSubscriptionPeriodSelect() {
         const view = this;
-        const {props, state, refs} = view;
-        const {value} = refs.selectedSubscriptionPeriod;
-        const [selectedOption] = refs.selectedSubscriptionPeriod.selectedOptions;
-        const text = selectedOption.innerText;
+        const {refs} = view;
+        const {selectedIndex} = refs.selectedSubscriptionPeriod;
+        const selectedOption = refs.selectedSubscriptionPeriod.options[selectedIndex];
+        const {value, innerText: text} = selectedOption;
 
         view.setState(prevState => {
             Object.assign(prevState.selectedSubscriptionPeriod, {
