@@ -45,7 +45,7 @@ const webpackConfig = {
         {filename: '[name].js'},
         IS_PRODUCTION ?
             {path: path.join(CWD, './../public/assets'), publicPath: '/assets/'} :
-            {path: path.join(CWD, 'dist')}
+            {path: path.join(CWD, 'dist'), publicPath: '/'}
     ),
 
     watch: IS_DEVELOPMENT,
@@ -150,17 +150,15 @@ const webpackConfig = {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(definePluginParams),
-        new HtmlWebpackPlugin(Object.assign(
-            {
-                template: 'index.html',
-                minify: {
-                    collapseWhitespace: IS_PRODUCTION,
-                    removeComments: IS_PRODUCTION
-                },
-                hash: true
+        new HtmlWebpackPlugin({
+            template: 'index.html',
+            minify: {
+                collapseWhitespace: IS_PRODUCTION,
+                removeComments: IS_PRODUCTION
             },
-            IS_PRODUCTION ? {filename: './../../public/index.html'} : null
-        )),
+            hash: true,
+            filename: IS_PRODUCTION ? './../../public/index.html' : './index.html'
+        }),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: IS_PRODUCTION ? 'async' : 'defer'
         }),

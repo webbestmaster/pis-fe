@@ -2,7 +2,7 @@
 require('./lib/initialize-environment');
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, HashRouter, hashRouter} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import App from './components/app';
 
 import {createDevTools} from 'redux-devtools';
@@ -51,9 +51,9 @@ render(
                     <App/>
                 </BrowserRouter> :
                 <div>
-                    <HashRouter>
+                    <BrowserRouter>
                         <App/>
-                    </HashRouter>
+                    </BrowserRouter>
                     <div style={{fontSize: '13px'}}>
                         <DevTools/>
                     </div>
