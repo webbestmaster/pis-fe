@@ -39,7 +39,7 @@ const webpackConfig = {
     context: path.join(CWD, 'www'),
     entry: {
         // common: './js/common.js',
-        main: ['./js/index.js']
+        main: ['babel-polyfill', './js/index.js']
     },
     output: Object.assign(
         {filename: '[name].js'},
@@ -59,7 +59,7 @@ const webpackConfig = {
                 loader: 'babel-loader',
                 exclude: /(node_modules|bower_components)/,
                 options: {
-                    presets: ['env', 'stage-1', 'react', 'flow']
+                    presets: ['env', 'stage-1', 'stage-0', 'react', 'flow']
                 }
             },
             {

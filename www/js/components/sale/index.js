@@ -21,9 +21,14 @@ class Sale extends Component {
         view.state = {
             pageData: null
         };
+    }
 
-        fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home)
-            .then(pageData => view.setState({pageData}, () => view.initSwiper()));
+    async componentDidMount() {
+        const view = this;
+
+        const pageData = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home);
+
+        view.setState({pageData}, () => view.initSwiper());
     }
 
     initSwiper() {
