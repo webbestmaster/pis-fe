@@ -7,7 +7,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/about-us/top-banner.jpg');
 
 class AboutUs extends Component {
     componentDidMount() {

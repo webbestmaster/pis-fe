@@ -7,7 +7,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/about-cashback/top-banner.jpg');
 
 class AboutCashback extends Component {
     componentDidMount() {
