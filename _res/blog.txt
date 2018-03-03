@@ -1,0 +1,6 @@
+сделал блог:
+http://site.katran.by/admin/blog/list - админка
+
+http://site.katran.by/api/blog/index - роут для первой страницы блога
+http://site.katran.by/api/blog/getByCategory?category=event - все статьи по одной категирии (в данном случае по Событиям)
+http://site.katran.by/api/blog/getFullInfo?id=2 - конкретная статья в блоге
