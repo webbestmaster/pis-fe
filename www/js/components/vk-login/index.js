@@ -4,6 +4,8 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 
+const apiVersion = '5.73';
+
 type Props = {
     apiId: number;
     fields?: string;
@@ -74,7 +76,7 @@ export default class VkLogin extends Component<Props> {
             '&scope=' + (props.fields || '0') +
             '&redirect_uri=' + (props.redirectUri || '0') +
             '&response_type=code' +
-            '&v=5.73';
+            '&v=' + apiVersion;
     }
 
     componentDidMount():void {
@@ -110,7 +112,8 @@ function getUserData(userId: string, fields: string): Promise<{response: [Object
         'users.get',
         {
             user_ids: userId, // eslint-disable-line id-match, camelcase
-            fields
+            fields,
+            v: apiVersion // eslint-disable-line id-length
         },
         resolve)
     );

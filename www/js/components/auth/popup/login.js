@@ -4,7 +4,7 @@ import style from './style.m.scss';
 import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
-import * as authApi from './../api';
+// import * as authApi from './../api';
 import FacebookLogin from 'react-facebook-login';
 import VkLogin from './../../vk-login';
 
@@ -71,7 +71,7 @@ class Login extends Component {
                 fields="photo_400_orig,sex,bdate"
                 redirectUri={globalAppConst.pageDataUrl.host}
                 callback={responseVk => {
-                    if (!responseVk.hasOwnProperty('uid')) {
+                    if (!responseVk.hasOwnProperty('id')) {
                         console.warn('not login');
                         return;
                     }

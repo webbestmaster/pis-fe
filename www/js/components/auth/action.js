@@ -115,8 +115,8 @@ export function loginFacebook(responseFacebook) {
 }
 
 export function loginVk(responseVk) {
-    const email = 'pis-' + responseVk.uid + '@vk.com';
-    const userId = responseVk.uid;
+    const email = 'pis-' + responseVk.id + '@vk.com';
+    const userId = responseVk.id;
     const firstName = responseVk.first_name;
     const lastName = responseVk.last_name;
     const gender = responseVk.sex === 2 ? 1 : 0;
