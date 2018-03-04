@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import {metaTagMaster} from './../../../module/meta-tag';
 import Header from './../../components/header';
@@ -10,7 +11,7 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-export default class Category extends Component {
+export default class Category extends Component<{}> {
     componentDidMount() {
         metaTagMaster.updateByUrl('/blog/index');
     }

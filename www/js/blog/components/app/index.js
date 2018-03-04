@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import {Switch, Route, Link, BrowserRouter} from 'react-router-dom';
 

@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 // import {metaTagMaster} from './../../../module/meta-tag';
 
@@ -10,7 +11,7 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-export default class Header extends Component {
+export default class Header extends Component<{}> {
     render() {
         const view = this;
         // const {props, state} = view;
