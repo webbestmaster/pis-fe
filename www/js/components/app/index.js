@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route, Link} from 'react-router-dom';
+import {Switch, Route, Link, BrowserRouter} from 'react-router-dom';
 import Home from './../../page/home';
 import Clubs from './../../page/clubs';
 import Club from './../../page/club';
@@ -19,6 +19,8 @@ import BecomeAPartner from './../../page/become-a-partner';
 import PublicOffer from './../../page/public-offer';
 import YourProposal from './../../page/your-proposal';
 import Auth from './../auth';
+
+import Blog from './../../blog/components/app';
 
 export default () => [
     <Switch key="switch">
@@ -45,6 +47,8 @@ export default () => [
         <Route path='/become-a-partner' component={BecomeAPartner} exact/>
         <Route path='/public-offer' component={PublicOffer} exact/>
         <Route path='/your-proposal' component={YourProposal} exact/>
+
+        <Route path='/blog' component={Blog}/>
 
         <Route component={NotFoundPage}/>
     </Switch>,

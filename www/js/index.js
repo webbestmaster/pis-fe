@@ -34,7 +34,8 @@ if (IS_PRODUCTION) { // eslint-disable-line id-match
     store = createStore(reducer, applyMiddleware(thunk));
 } else {
     DevTools = createDevTools(
-        <DockMonitor defaultIsVisible={false}
+        <DockMonitor
+            defaultIsVisible={false}
             defaultSize={0.25}
             toggleVisibilityKey="ctrl-h"
             changePositionKey="ctrl-q">
