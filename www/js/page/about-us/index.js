@@ -33,7 +33,7 @@ class AboutUs extends Component {
 
             <div className="hug hug--simple-page">
                 <h3 className="section__header">О нас</h3>
-                <div className="section__text-wrapper section__text-wrapper--big-font">
+                <div className="section__text-wrapper">
                     <p>
                         Мы молоды и амбициозны, у нас много идей, и мы горим своей работой! У каждого из нас своя
                         социальная роль и сфера деятельности, но, несмотря на это, нами движет одно общее стремление –

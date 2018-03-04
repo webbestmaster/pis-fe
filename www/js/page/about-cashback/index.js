@@ -31,7 +31,7 @@ class AboutCashback extends Component {
 
             <div className="hug hug--simple-page">
                 <h3 className="section__header">Бонусы</h3>
-                <div className="section__text-wrapper section__text-wrapper--big-font">
+                <div className="section__text-wrapper">
 
                     <p className="bold">Станьте частью проекта People in Sport и занимайтесь бесплатно!</p>
 
@@ -39,7 +39,7 @@ class AboutCashback extends Component {
                         совершить бронирование абонемента/тренировки/процедуры на нашем сайте.</p>
                     <p>Каждый раз, бронируя и оплачивая абонемент/тренировку/процедуру, вы получаете 10 % от стоимости в
                         бонусах и можете оплачивать до 100 % от стоимости покупки.</p>
-                    <p style={{fontSize: 14}}>* 1 бонус = 1 белорусский рубль</p>
+                    <p style={{fontSize: 12}}>* 1 бонус = 1 белорусский рубль</p>
 
                 </div>
             </div>
