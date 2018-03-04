@@ -4,7 +4,7 @@
         "./node_modules/**",
         "./www/js/lib/**"
     ],
-    "flowCommandPath": "/home/ubuntu-16-64bit/master-git/pis-fe/node_modules/.bin/flow",
+    "flowCommandPath": "flow",
     "includeGlob": [
         "./www/js/**/*.js",
         "./flow-typed/**/*.js"

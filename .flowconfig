@@ -8,6 +8,8 @@
 # .*/www/js/lib/.*
 
 [lints]
+all=warn
 
 [options]
 module.name_mapper='.*\(.s?css\)' -> 'empty/object'
+include_warnings=true
