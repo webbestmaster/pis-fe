@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 import style from './style.m.scss';
 import {fetchX} from './../../../helper/fetch-x';
 import {Link} from 'react-router-dom';
@@ -14,27 +15,27 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-type Props = {||};
-type State = {|
+type PropsType = {||};
+type StateType = {|
     url: string
 |};
 
-export default class TopBanner extends Component<Props, State> {
+export default class TopBanner extends Component<PropsType, StateType> {
     state = {
         url: ''
     };
 
-    async componentDidMount() {
+    async componentDidMount(): Promise<void> {
         const view = this;
 
-        const bannerData = await fetchX('/api/get-blog-top-banner-data').catch(() => null);
+        const bannerData = await fetchX('/api/get-blog-top-banner-data').catch((): null => null);
 
         console.log(bannerData);
 
         view.setState({url: 'http://via.placeholder.com/1980x90'});
     }
 
-    render() {
+    render(): Node {
         const view = this;
         const {props, state} = view;
 

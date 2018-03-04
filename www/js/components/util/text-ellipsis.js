@@ -2,13 +2,13 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 
-type Props = {
+type PropsType = {
     readMore: Node,
     charCap: number,
     children: string
 };
 
-export default class TextEllipsis extends Component<Props> {
+export default class TextEllipsis extends Component<PropsType> {
     splitText(text: string): Node[] {
         const chunkList = [];
         const view = this;
@@ -22,9 +22,9 @@ export default class TextEllipsis extends Component<Props> {
         resultText
             .substr(0, charCap)
             .split('\n')
-            .map(textChunk => textChunk.trim())
-            .filter(textChunk => textChunk)
-            .forEach((textChunk, ii, arr) => {
+            .map((textChunk: string): string => textChunk.trim())
+            .filter((textChunk: string): string => textChunk)
+            .forEach((textChunk: string, ii: number, arr: string[]) => {
                 chunkList.push(textChunk);
 
                 if (ii < arr.length - 1) {
@@ -39,7 +39,7 @@ export default class TextEllipsis extends Component<Props> {
         return chunkList;
     }
 
-    render() {
+    render(): Node {
         const view = this;
         const {props} = view;
 

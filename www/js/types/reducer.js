@@ -1,9 +1,11 @@
-export type App = {
+// @flow
+
+export type AppType = {
     screen: {
         width: number;
-        height: number;
-    };
+        height: number
+    },
     window: {
-        isLoad: boolean;
-    };
+        isLoad: boolean
+    }
 };

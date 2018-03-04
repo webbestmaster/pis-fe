@@ -6,23 +6,31 @@ import type {Node} from 'react';
 
 const apiVersion = '5.73';
 
-type Props = {
+type PropsType = {
     apiId: number;
     fields?: string;
-    callback?: (response: any) => {};
+    callback?: (response: { [key: string]: string }) => void;
     cssClass?: string;
     redirectUri?: string;
     children?: Node[]
-}
+};
 
-type Refs = {
+type RefsType = {
     transport: HTMLDivElement
-}
+};
+
+type LoginStatusResponseType = {
+    session: { mid: string }
+};
+
+type UserDataResponseType = {
+    response: [{ [key: string]: string }]
+};
 
 const sdkScriptClassName = 'sdk-vk-script';
 
-export default class VkLogin extends Component<Props> {
-    refs: Refs
+export default class VkLogin extends Component<PropsType> {
+    refs: RefsType;
 
     addScript(): Promise<void> {
         const view = this;
@@ -31,7 +39,7 @@ export default class VkLogin extends Component<Props> {
             return Promise.resolve();
         }
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve: () => void, reject: () => void) => {
             setTimeout(() => {
                 const scriptNode = document.createElement('script');
 
@@ -39,8 +47,8 @@ export default class VkLogin extends Component<Props> {
                 scriptNode.type = 'text/javascript';
                 scriptNode.src = 'https://vk.com/js/api/openapi.js?152';
                 scriptNode.async = true;
-                scriptNode.onload = () => resolve();
-                scriptNode.onerror = () => reject();
+                scriptNode.onload = (): void => resolve();
+                scriptNode.onerror = (): void => reject();
                 view.refs.transport.appendChild(scriptNode);
             }, 0);
         });
@@ -51,23 +59,23 @@ export default class VkLogin extends Component<Props> {
         const {props} = view;
 
         return getLoginStatus()
-            .then(loginStatusResponse => {
-                if (loginStatusResponse.session) {
-                    return getUserData(loginStatusResponse.session.mid, props.fields || '');
+            .then((loginStatusResponse: LoginStatusResponseType): Promise<void> => {
+                if (!loginStatusResponse.session) {
+                    location.href = view.getLoginUrl();
+
+                    return Promise.resolve();
                 }
 
-                location.href = view.getLoginUrl();
-
-                return Promise.resolve(null);
-            })
-            .then(userDataResponse => {
-                if (typeof props.callback === 'function' && userDataResponse !== null) {
-                    props.callback(userDataResponse.response[0]);
-                }
+                return getUserData(loginStatusResponse.session.mid, props.fields || '')
+                    .then((userDataResponse: UserDataResponseType) => {
+                        if (typeof props.callback === 'function' && userDataResponse !== null) {
+                            props.callback(userDataResponse.response[0]);
+                        }
+                    });
             });
     }
 
-    getLoginUrl():string {
+    getLoginUrl(): string {
         const view = this;
         const {props} = view;
 
@@ -79,23 +87,23 @@ export default class VkLogin extends Component<Props> {
             '&v=' + apiVersion;
     }
 
-    componentDidMount():void {
+    componentDidMount() {
         const view = this;
         const {props} = view;
 
         view.addScript()
-            .then(() => VK.init({
+            .then((): void => VK.init({
                 apiId: props.apiId
             }));
     }
 
-    render():Node {
+    render(): Node {
         const view = this;
         const {props} = view;
 
         return <div
             className={props.cssClass}
-            onClick={() => view.onClick()}>
+            onClick={(): Promise<void> => view.onClick()}>
             {props.children}
             <div style={{display: 'none'}} ref="transport"/>
         </div>;
@@ -103,12 +111,12 @@ export default class VkLogin extends Component<Props> {
 }
 
 // helper
-function getLoginStatus(): Promise<{session: {mid: string}}> {
-    return new Promise(resolve => VK.Auth.getLoginStatus(resolve));
+function getLoginStatus(): Promise<LoginStatusResponseType> {
+    return new Promise((resolve: (response: LoginStatusResponseType) => void): void => VK.Auth.getLoginStatus(resolve));
 }
 
-function getUserData(userId: string, fields: string): Promise<{response: [Object]} | null> {
-    return new Promise(resolve => VK.Api.call( // eslint-disable-line prefer-reflect
+function getUserData(userId: string, fields: string): Promise<UserDataResponseType> {
+    return new Promise((resolve: (response: UserDataResponseType) => void): void => VK.Api.call( // eslint-disable-line prefer-reflect
         'users.get',
         {
             user_ids: userId, // eslint-disable-line id-match, camelcase

@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 import {metaTagMaster} from './../../../module/meta-tag';
 import Header from './../../components/header';
 import TopBanner from './../../components/top-banner';
@@ -17,7 +18,7 @@ export default class Home extends Component<{}> {
         metaTagMaster.updateByUrl('/blog/index');
     }
 
-    render() {
+    render(): Node {
         const view = this;
         // const {props, state} = view;
         // debugger

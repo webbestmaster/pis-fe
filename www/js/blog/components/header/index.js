@@ -1,12 +1,13 @@
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 import {withRouter, Link} from 'react-router-dom';
 
 const appConst = require('./../../../app-const');
 // import * as authAction from "../../../components/auth/action";
 
 import {connect} from 'react-redux';
-import type {App} from './../../../types/reducer';
+import type {AppType} from './../../../types/reducer';
 import style from './style.m.scss';
 // import {metaTagMaster} from './../../../module/meta-tag';
 
@@ -19,20 +20,20 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-type Props = {
-    app: App
-}
+type PropsType = {
+    app: AppType
+};
 
-type State = {
+type StateType = {
     isOpen: boolean
-}
+};
 
-class Header extends Component<Props, State> {
+class Header extends Component<PropsType, StateType> {
     state = {
         isOpen: false
     };
 
-    renderDesktop() {
+    renderDesktop(): Node {
         return <header
             key="header"
             className={style.block}>
@@ -45,7 +46,7 @@ class Header extends Component<Props, State> {
         </header>;
     }
 
-    renderMobile() {
+    renderMobile(): Node[] {
         const view = this;
         const {props, state} = view;
 
@@ -56,14 +57,16 @@ class Header extends Component<Props, State> {
                 key="header"
                 className={style.block_mobile}>
                 <Link to="/" className={style.logo}/>
-                <div onClick={() => view.setState({isOpen: true})}>outer menu button {state.isOpen ? '++' : '--'}</div>
+                <div onClick={(): void => view.setState({isOpen: true})}>
+                    outer menu button {state.isOpen ? '++' : '--'}
+                </div>
             </header>
         ];
 
         if (isOpen) {
             nodes.push(
                 <div
-                    onClick={() => view.setState({isOpen: false})}
+                    onClick={(): void => view.setState({isOpen: false})}
                     key={'fade'}
                     className={'fade'}>
                     <h1>
@@ -73,10 +76,10 @@ class Header extends Component<Props, State> {
                 <div
                     key={'link-list'}>
                     <div
-                        onClick={() => view.setState({isOpen: false})}>
+                        onClick={(): void => view.setState({isOpen: false})}>
                         inner menu button {state.isOpen ? '++' : '--'}
                     </div>
-                    <Link to="/category" onClick={() => view.setState({isOpen: false})} className={style.link}>
+                    <Link to="/category" onClick={(): void => view.setState({isOpen: false})} className={style.link}>
                         фитнес
                     </Link>
                     <Link to="/" className={style.link}>питание</Link>
@@ -90,7 +93,7 @@ class Header extends Component<Props, State> {
         return nodes;
     }
 
-    render() {
+    render(): Node {
         const view = this;
         const {props, state} = view;
         const {app} = props;
@@ -99,9 +102,15 @@ class Header extends Component<Props, State> {
     }
 }
 
-export default withRouter(connect(
-    state => ({
-        app: state.app
-    }),
-    {}
-)(Header));
+type GlobalStateType = {|
+    app: AppType
+|};
+
+export default withRouter(
+    connect(
+        (state: GlobalStateType): GlobalStateType => ({
+            app: state.app
+        }),
+        {}
+    )(Header)
+);

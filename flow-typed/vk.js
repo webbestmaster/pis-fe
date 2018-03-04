@@ -1,19 +1,20 @@
-type vkAuth = {
-    getLoginStatus(callback: Function): void;
-    getLoginStatus(callback: Function): void;
-}
+// @flow
 
-type TypeVk = {
+type VkAuthType = {
+    getLoginStatus(callback: (response: { session: { mid: string } }) => void): void
+};
+
+type VkType = {
     init(params: { apiId: number }): void;
-    Auth: vkAuth;
+    Auth: VkAuthType;
     Api: {
         call(methodName: string,
              methodParams: {
                  user_ids: string | number;
-                 fields: string;
+                 fields: string
              },
-             callback: Function): void
+             callback: (response: { response: [{ [key: string]: string }] }) => void): void
     }
 };
 
-declare var VK: TypeVk;
+declare var VK: VkType;

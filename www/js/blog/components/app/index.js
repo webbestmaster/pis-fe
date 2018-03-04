@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import type {Node} from 'react';
 import {Switch, Route, Link, BrowserRouter} from 'react-router-dom';
 
 import Home from './../../page/home';
@@ -26,7 +27,7 @@ import YourProposal from './../../page/your-proposal';
 import Auth from './../auth';
 */
 
-export default () =>
+export default (): Node =>
     <BrowserRouter basename="/blog">
         <Switch>
             <Route path='/' component={Home} exact/>
