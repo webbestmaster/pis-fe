@@ -1,0 +1,47 @@
+@import "./../../style/css/aaa-class";
+@import "./../../style/css/aaa-var";
+
+.block {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: $mainGray;
+    min-height: 200px;
+}
+
+.article_holder {
+    @extend .blog-hug;
+    position: relative;
+    height: 0;
+    padding-bottom: 50%;
+    background-color: #c00;
+}
+
+.article_1,
+.article_2,
+.article_3 {
+    position: absolute;
+}
+
+.article_1 {
+    left: 0;
+    top: 0;
+    background-color: #0c0;
+    width: 40%;
+    height: 100%;
+}
+
+.article_2 {
+    right: 0;
+    top: 0;
+    background-color: #0cc;
+    width: 40%;
+    height: 40%;
+}
+
+.article_3 {
+    right: 0;
+    bottom: 0;
+    background-color: #c0c;
+    width: 40%;
+    height: 40%;
+}
