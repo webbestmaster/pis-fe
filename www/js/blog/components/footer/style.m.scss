@@ -1,0 +1,23 @@
+@import "./../../style/css/aaa-var";
+
+.footer__blog {
+    :global {
+        .footer {
+            background-color: $mainGray;
+            .footer__logo {
+                background-image: url('./../header/image/logo.png');
+            }
+
+            .footer__text {
+                .footer__link {
+                    color: $mainHeaderColor;
+                }
+                &.footer__text--social-header,
+                &.footer__text--social,
+                &.footer__text--copyright {
+                    color: $mainTextColor;
+                }
+            }
+        }
+    }
+}
