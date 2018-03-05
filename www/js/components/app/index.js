@@ -18,6 +18,7 @@ import AboutUs from './../../page/about-us';
 import BecomeAPartner from './../../page/become-a-partner';
 import PublicOffer from './../../page/public-offer';
 import YourProposal from './../../page/your-proposal';
+import ContactsPage from './../../page/contatcs';
 import Auth from './../auth';
 
 import Blog from './../../blog/components/app';
@@ -47,6 +48,7 @@ export default () => [
         <Route path='/become-a-partner' component={BecomeAPartner} exact/>
         <Route path='/public-offer' component={PublicOffer} exact/>
         <Route path='/your-proposal' component={YourProposal} exact/>
+        <Route path='/contacts' component={ContactsPage} exact/>
 
         <Route path='/blog' component={Blog}/>
 

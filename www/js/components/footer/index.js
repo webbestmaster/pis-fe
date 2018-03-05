@@ -18,13 +18,13 @@ export default class Footer extends Component {
                     <Link to="/clubs" className="footer__link">Клубы</Link>
                     <Link to="/subscriptions" className="footer__link">Абонементы</Link>
                     <Link to="/trainings" className="footer__link">Тренировки</Link>
-                    {/* FIXME */}
-                    {/* <Link to="#" className="footer__link">Фитнес-блог</Link>*/}
+                    <Link to="/blog" className="footer__link">Фитнес-блог</Link>
                 </p>
                 <p className="footer__text footer__text--part-2">
                     <Link to="/become-a-partner" target="_blank" className="footer__link">Стать партнером</Link>
                     <Link to="/your-proposal" target="_blank" className="footer__link">Ваши предложения</Link>
                     <Link to="/terms" target="_blank" className="footer__link">Пользовательское соглашение</Link>
+                    <Link to="/contacts" target="_blank" className="footer__link">Контакты</Link>
                 </p>
                 <p className="footer__text footer__text--part-3">
                     <Link to="/about-cashback" target="_blank" className="footer__link">Бонусы</Link>
