@@ -8,7 +8,18 @@ import type {Node} from 'react';
 export default class Home extends Component<{}> {
     render(): Node {
         return <div>
-
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
+            <h1>home</h1>
 
         </div>;
     }

@@ -46,6 +46,14 @@ class Header extends Component<PropsType, StateType> {
         </header>;
     }
 
+    openMenu() {
+        this.setState({isOpen: true});
+    }
+
+    closeMenu() {
+        this.setState({isOpen: false});
+    }
+
     renderMobile(): Node[] {
         const view = this;
         const {props, state} = view;
@@ -57,8 +65,10 @@ class Header extends Component<PropsType, StateType> {
                 key="header"
                 className={style.block_mobile}>
                 <Link to="/" className={style.logo}/>
-                <div onClick={(): void => view.setState({isOpen: true})}>
-                    outer menu button {state.isOpen ? '++' : '--'}
+                <div
+                    className={style.menu_button}
+                    onClick={(): void => view.openMenu()}>
+                    <div className={style.menu_button_icon}/>
                 </div>
             </header>
         ];
@@ -66,26 +76,42 @@ class Header extends Component<PropsType, StateType> {
         if (isOpen) {
             nodes.push(
                 <div
-                    onClick={(): void => view.setState({isOpen: false})}
-                    key={'fade'}
-                    className={'fade'}>
-                    <h1>
-                        fade
-                    </h1>
-                </div>,
+                    onClick={(): void => view.closeMenu()}
+                    key="header-menu-fade"
+                    className={style.header_menu_fade}/>,
                 <div
-                    key={'link-list'}>
+                    key="header-mobile-menu"
+                    className={style.header_mobile_menu}>
                     <div
-                        onClick={(): void => view.setState({isOpen: false})}>
-                        inner menu button {state.isOpen ? '++' : '--'}
+                        className={style.menu_button + ' ' + style.menu_button__open}
+                        onClick={(): void => view.closeMenu()}>
+                        <div className={style.menu_button_icon}/>
                     </div>
-                    <Link to="/category" onClick={(): void => view.setState({isOpen: false})} className={style.link}>
-                        фитнес
-                    </Link>
-                    <Link to="/" className={style.link}>питание</Link>
-                    <Link to="/" className={style.link}>потивация</Link>
-                    <Link to="/" className={style.link}>события</Link>
-                    <Link to="/" className={style.link}>знания</Link>
+
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>главная</Link>
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>фитнес</Link>
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>питание</Link>
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>мотивация</Link>
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>события</Link>
+                    <Link
+                        to="/"
+                        onClick={(): void => view.closeMenu()}
+                        className={style.link}>знания</Link>
                 </div>
             );
         }
