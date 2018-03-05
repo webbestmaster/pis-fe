@@ -37,12 +37,12 @@ class Header extends Component<PropsType, StateType> {
         return <header
             key="header"
             className={style.block}>
-            <Link to="/" className={style.logo}/>
-            <Link to="/" className={style.link}>фитнес</Link>
-            <Link to="/" className={style.link}>питание</Link>
-            <Link to="/" className={style.link}>потивация</Link>
-            <Link to="/" className={style.link}>события</Link>
             <Link to="/" className={style.link}>знания</Link>
+            <Link to="/" className={style.link}>события</Link>
+            <Link to="/" className={style.link}>мотивация</Link>
+            <Link to="/" className={style.link}>питание</Link>
+            <Link to="/" className={style.link}>фитнес</Link>
+            <Link to="/" className={style.logo}/>
         </header>;
     }
 

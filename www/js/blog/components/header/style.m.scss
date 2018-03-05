@@ -1,27 +1,44 @@
 @import "./../../style/css/aaa-var";
+@import "./../../style/css/aaa-class";
 
 .block {
-    max-width: $maxWidth;
-    box-sizing: border-box;
+    @extend .blog-hug;
     position: relative;
     z-index: 1;
     height: 100px;
-    background-color: #c00;
 
     .logo {
-        display: block;
-        background-repeat: no-repeat;
-        width: 100px;
-        height: 50px;
-        background-color: #0cc;
+        width: 258px;
+        height: 60px;
         float: left;
+        margin-top: 22px;
+        background-repeat: no-repeat;
         background-image: url('./image/logo.png');
+        background-position: center center;
+
     }
 
     .link {
         float: right;
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        height: 60px;
+        line-height: 60px;
+        margin-right: 76px;
+        margin-top: 23px;
+        color: $mainHeaderColor;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
 
+        &.link__active,
+        &:hover {
+            color: $mainActiveColor;
+        }
+
+        &:first-child {
+            margin-right: 0;
+        }
     }
 
 }

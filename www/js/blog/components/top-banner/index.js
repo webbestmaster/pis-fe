@@ -15,12 +15,11 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-type PropsType = {||};
 type StateType = {|
     url: string
 |};
 
-export default class TopBanner extends Component<PropsType, StateType> {
+export default class TopBanner extends Component<{}, StateType> {
     state = {
         url: ''
     };
@@ -40,7 +39,7 @@ export default class TopBanner extends Component<PropsType, StateType> {
         const {props, state} = view;
 
         return <Link
-            to={'./'}
+            to={'/'}
             target="_blank"
             className={style.block}
             style={{backgroundImage: 'url(' + state.url + ')'}}
