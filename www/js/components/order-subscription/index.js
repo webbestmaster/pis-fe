@@ -352,6 +352,7 @@ class Order extends Component {
                             placeholder="XX XXX XX XX"/>,
                         <ErrorLabel
                             key="phone-error-label"
+                            className={style.input_error_text}
                             propName="phone"
                             form={state.form}/>
                     ]
@@ -361,7 +362,7 @@ class Order extends Component {
             <CheckboxLabel
                 ref="phoneCallBack"
                 label={{className: style.checkbox_label_phone}}
-                input={{ref: 'input', defaultChecked: true}}>
+                input={{ref: 'input', defaultChecked: false}}>
                 Жду звонок для подтверждение заказа
             </CheckboxLabel>
             <div className={style.input_block}>
