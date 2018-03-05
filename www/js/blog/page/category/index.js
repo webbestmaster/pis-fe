@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {metaTagMaster} from './../../../module/meta-tag';
+import TopBanner from './../../components/top-banner';
+import Footer from './../../components/footer';
 import Header from './../../components/header';
 
 /*
@@ -12,7 +14,7 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-export default class Category extends Component<{}> {
+export default class CategoryPage extends Component<{}> {
     componentDidMount() {
         metaTagMaster.updateByUrl('/blog/index');
     }
@@ -24,8 +26,10 @@ export default class Category extends Component<{}> {
         // const {app} = props;
 
         return <div>
+            <TopBanner/>
             <Header/>
             <h1>category</h1>
+            <Footer/>
         </div>;
     }
 }

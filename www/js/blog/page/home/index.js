@@ -4,6 +4,8 @@ import type {Node} from 'react';
 import {metaTagMaster} from './../../../module/meta-tag';
 import Header from './../../components/header';
 import TopBanner from './../../components/top-banner';
+import Footer from './../../components/footer';
+import Home from './../../components/home';
 
 /*
 import Sale from './../../components/sale';
@@ -13,7 +15,7 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-export default class Home extends Component<{}> {
+export default class HomePage extends Component<{}> {
     componentDidMount() {
         metaTagMaster.updateByUrl('/blog/index');
     }
@@ -27,7 +29,8 @@ export default class Home extends Component<{}> {
         return <div>
             <TopBanner/>
             <Header/>
-            <h1>home</h1>
+            <Home/>
+            <Footer/>
         </div>;
     }
 }

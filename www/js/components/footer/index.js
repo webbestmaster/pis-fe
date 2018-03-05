@@ -18,7 +18,7 @@ export default class Footer extends Component {
                     <Link to="/clubs" className="footer__link">Клубы</Link>
                     <Link to="/subscriptions" className="footer__link">Абонементы</Link>
                     <Link to="/trainings" className="footer__link">Тренировки</Link>
-                    <Link to="/blog" className="footer__link">Фитнес-блог</Link>
+                    <a href="/blog" className="footer__link">Фитнес-блог</a>
                 </p>
                 <p className="footer__text footer__text--part-2">
                     <Link to="/become-a-partner" target="_blank" className="footer__link">Стать партнером</Link>
