@@ -8,8 +8,11 @@
     min-height: 200px;
 }
 
-.article_holder {
+.block_hug {
     @extend .blog-hug;
+}
+
+.article_holder {
     position: relative;
     height: 0;
     padding-bottom: 50%;
