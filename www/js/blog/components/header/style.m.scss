@@ -2,7 +2,7 @@
 @import "./../../style/css/aaa-class";
 
 .block {
-    @extend .blog-hug;
+    @extend .blog-wide-hug;
     position: relative;
     z-index: 1;
     height: 100px;

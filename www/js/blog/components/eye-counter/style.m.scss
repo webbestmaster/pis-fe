@@ -1,0 +1,25 @@
+@import "./../../style/css/aaa-var";
+
+.block {
+    position: absolute;
+}
+
+.counter {
+    float: left;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 19px 8px 41px;
+    border-radius: 4px;
+    background-color: $mainActiveColor;
+    background-repeat: no-repeat;
+    background-position: 14px 11px;
+    background-image: url('./image/icon-eye-count.png');
+}
+
+.date {
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 19px 8px 23px;
+}
