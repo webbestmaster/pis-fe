@@ -1,4 +1,4 @@
-/* global setTimeout */
+/* global setTimeout, IS_DEVELOPMENT */
 import React, {Component} from 'react';
 import Promo from './popup/promo';
 import Register from './popup/register';
@@ -55,6 +55,10 @@ class Auth extends Component {
         const view = this;
         const {props} = view;
         const {auth, app} = props;
+
+        if (IS_DEVELOPMENT) { // eslint-disable-line id-match
+            return;
+        }
 
         if (app.screen.width <= globalAppConst.tabletWidth) {
             console.log('too narrow screen to show promo popup');

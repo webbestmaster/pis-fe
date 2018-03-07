@@ -1,0 +1,64 @@
+@import "./aaa-var";
+@import "./helper";
+
+.block_list {
+    display: block;
+    &.block_list__ads_padded {
+        margin-right: 280px;
+    }
+}
+
+.block {
+    display: block;
+    height: 225px;
+    margin-bottom: 32px;
+    padding-right: 10px;
+}
+
+.image {
+    height: 100%;
+    width: 370px;
+    margin-right: 31px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 4px;
+    float: left;
+}
+
+.text_block {
+    display: block;
+}
+
+.header {
+    font-weight: bold;
+    color: $mainHeaderColor;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 23px;
+    @include line-cap(2);
+    height: 48px;
+}
+
+.eye_counter_wrapper {
+    width: 100%;
+    height: 56px;
+}
+
+.eye_counter {
+    position: static;
+}
+
+.eye_counter__date {
+    color: $mainTextColor;
+    font-weight: normal;
+}
+
+.preview_text {
+    color: $mainTextColor;
+    font-size: 14px;
+    line-height: 24px;
+    @include line-cap(4);
+    height: 96px;
+}
