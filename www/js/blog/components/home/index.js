@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import type {Node} from 'react';
 import PromoArticle3 from './../promo-article-3';
 import PromoArticleText3 from './../promo-article-text-3';
+import PromoArticleRow3 from './../promo-article-row-3';
 import sectionStyle from './../../style/css/sercion.m.scss';
 import articleCardStyle from './../../style/css/article-card.m.scss';
 import EyeCounter from './../eye-counter';
@@ -98,6 +99,10 @@ export default class Home extends Component<{}> {
 
                 </div>
             </section>
+
+
+            <PromoArticleRow3/>
+
 
         </div>;
     }
