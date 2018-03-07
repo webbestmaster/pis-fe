@@ -65,3 +65,25 @@
     @include line-cap(4);
     height: 96px;
 }
+
+.block_list.block_list__3_in_row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .block {
+        width: 31.7%;
+        height: auto;
+        padding: 0;
+    }
+
+    .image {
+        height: 225px;
+        width: 100%;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+}
