@@ -1,5 +1,6 @@
 @import "./../../style/css/aaa-class";
 @import "./../../style/css/aaa-var";
+@import "./../../style/css/helper";
 
 .block {
     padding: 100px 0;
@@ -51,17 +52,17 @@
     left: 0;
     top: 0;
     width: 57.3%;
-    height: 100%;
+    height: 75%;
     .eye_counter {
         left: 35px;
         top: 34px;
     }
     .article_header {
-        bottom: 93px;
-    }
-
-    .article_sub_header {
-        bottom: 63px;
+        bottom: 34px;
+        font-size: 18px;
+        line-height: 26px;
+        @include line-cap(2);
+        height: 52px;
     }
 }
 
@@ -91,4 +92,17 @@
 
 .article_3 {
     bottom: 0;
+}
+
+.text {
+    left: 0;
+    bottom: -7px;
+    width: 57.3%;
+    //height: 75%;
+    font-size: 14px;
+    line-height: 24px;
+    color: $mainTextColor;
+    position: absolute;
+    @include line-cap(4);
+    height: 96px;
 }
