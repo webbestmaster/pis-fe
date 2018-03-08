@@ -5,6 +5,7 @@ import {Switch, Route, Link, BrowserRouter} from 'react-router-dom';
 
 import Home from './../../page/home';
 import Category from './../../page/category';
+import Article from './../../page/article';
 
 /*
 import Clubs from './../../page/clubs';
@@ -32,6 +33,7 @@ export default (): Node =>
         <Switch>
             <Route path='/' component={Home} exact/>
             <Route path='/category' component={Category} exact/>
+            <Route path='/article' component={Article} exact/>
         </Switch>
     </BrowserRouter>
 ;

@@ -14,9 +14,9 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-export default class CategoryPage extends Component<{}> {
+export default class ArticlePage extends Component<{}> {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/blog/category');
+        metaTagMaster.updateByUrl('/blog/article');
     }
 
     render(): Node {
@@ -28,7 +28,7 @@ export default class CategoryPage extends Component<{}> {
         return <div>
             <TopBanner/>
             <Header/>
-            <h1>category</h1>
+            <h1>article</h1>
             <Footer/>
         </div>;
     }
