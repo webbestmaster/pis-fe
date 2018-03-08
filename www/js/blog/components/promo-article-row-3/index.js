@@ -18,7 +18,7 @@ export default class PromoArticleRow3 extends Component<{}> {
             <div className={style.block_hug}>
                 <div className={style.article_holder}>
 
-                    <div className={style.article_1} style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}>
+                    <div className={style.article_1} style={{backgroundImage: 'url(//lorempixel.com/800/605/sports)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={''}/>
                         <h3 className={style.article_header}>
                             Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland
@@ -26,7 +26,7 @@ export default class PromoArticleRow3 extends Component<{}> {
                         <p className={style.article_sub_header}>1 September 2017</p>
                     </div>
 
-                    <div className={style.article_2} style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}>
+                    <div className={style.article_2} style={{backgroundImage: 'url(//lorempixel.com/800/606/sports)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={''}/>
                         <h3 className={style.article_header}>
                             Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland
@@ -34,7 +34,7 @@ export default class PromoArticleRow3 extends Component<{}> {
                         <p className={style.article_sub_header}>1 September 2017</p>
                     </div>
 
-                    <div className={style.article_3} style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}>
+                    <div className={style.article_3} style={{backgroundImage: 'url(//lorempixel.com/800/607/sports)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={''}/>
                         <h3 className={style.article_header}>
                             Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland

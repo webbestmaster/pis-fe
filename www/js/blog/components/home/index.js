@@ -32,7 +32,7 @@ export default class Home extends Component<{}> {
                                 .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
                                     <div
                                         className={articleCardStyle.image}
-                                        style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}
+                                        style={{backgroundImage: 'url(//lorempixel.com/801/600/sports)'}}
                                     />
                                     <div className={articleCardStyle.text_block}>
                                         <h4 className={articleCardStyle.header}>
@@ -82,7 +82,7 @@ export default class Home extends Component<{}> {
                                 .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
                                     <div
                                         className={articleCardStyle.image}
-                                        style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}
+                                        style={{backgroundImage: 'url(//lorempixel.com/802/600/sports)'}}
                                     />
                                     <div className={articleCardStyle.text_block}>
                                         <h4 className={articleCardStyle.header}>
@@ -128,7 +128,7 @@ export default class Home extends Component<{}> {
                             .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
                                 <div
                                     className={articleCardStyle.image}
-                                    style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}
+                                    style={{backgroundImage: 'url(//lorempixel.com/803/600/sports)'}}
                                 />
                                 <div className={articleCardStyle.text_block}>
                                     <h4 className={articleCardStyle.header}>

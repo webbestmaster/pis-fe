@@ -31,7 +31,7 @@ export default class TopBanner extends Component<{}, StateType> {
 
         console.log(bannerData);
 
-        view.setState({url: 'http://via.placeholder.com/1980x90'});
+        view.setState({url: '//lorempixel.com/1920/90/sports'});
     }
 
     render(): Node {
