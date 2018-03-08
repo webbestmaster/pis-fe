@@ -64,10 +64,10 @@ export default class Home extends Component<{}> {
                 </div>
             </section>
 
-            {/*
 
             <PromoArticleText3/>
 
+            {/*
 
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>

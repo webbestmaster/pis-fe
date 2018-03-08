@@ -32,7 +32,7 @@
 .article_header {
     color: #fff;
     position: absolute;
-    width: 88%;
+    width: 80%;
     left: 34px;
     //bottom: 93px;
     font-weight: bold;
@@ -42,7 +42,7 @@
 .article_sub_header {
     color: #fff;
     position: absolute;
-    width: 88%;
+    width: 80%;
     left: 34px;
     //bottom: 63px;
     font-size: 16px;
@@ -105,4 +105,84 @@
     position: absolute;
     @include line-cap(4);
     height: 96px;
+}
+
+:global .lt-desktop-width {
+    :local {
+        .block {
+            padding: 40px 0;
+        }
+        .article_holder {
+            padding-bottom: 62%;
+        }
+        .article_1,
+        .article_2,
+        .article_3 {
+            width: 48%;
+        }
+
+        .article_1 {
+            height: 100%;
+            .article_header {
+                bottom: 35px;
+                @include line-cap(3);
+                height: 75px;
+                //height: 56px;
+            }
+
+            //.article_sub_header {
+            //    bottom: 38px;
+            //}
+        }
+
+        .article_2,
+        .article_3 {
+            .article_header {
+                bottom: 111px;
+            }
+        }
+
+        .text {
+            display: none;
+        }
+
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+        .article_holder {
+            padding-bottom: 281%;
+        }
+        .article_1,
+        .article_2,
+        .article_3 {
+            width: 100%;
+            .article_header,
+            .article_sub_header,
+            .eye_counter {
+                left: 15px;
+            }
+        }
+
+        .article_1 {
+            height: 43.5%;
+            .article_header {
+                bottom: 35px;
+            }
+
+            //.article_sub_header {
+            //    bottom: 38px;
+            //}
+        }
+
+        .article_2,
+        .article_3 {
+            height: 27%;
+        }
+
+        .article_2 {
+            top: 44.8%;
+        }
+    }
 }
