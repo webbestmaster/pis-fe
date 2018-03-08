@@ -5,6 +5,7 @@ import {metaTagMaster} from './../../../module/meta-tag';
 import TopBanner from './../../components/top-banner';
 import Footer from './../../components/footer';
 import Header from './../../components/header';
+import Category from './../../components/category';
 
 /*
 import Sale from './../../components/sale';
@@ -28,7 +29,7 @@ export default class CategoryPage extends Component<{}> {
         return <div>
             <TopBanner/>
             <Header/>
-            <h1>category</h1>
+            <Category/>
             <Footer/>
         </div>;
     }
