@@ -1,5 +1,6 @@
 @import "./../../style/css/aaa-class";
 @import "./../../style/css/aaa-var";
+@import "./../../style/css/helper";
 
 .block {
     padding: 100px 0;
@@ -36,6 +37,8 @@
     //bottom: 93px;
     font-weight: bold;
     font-size: 25px;
+    @include line-cap(1);
+    height: 28px;
 }
 
 .article_sub_header {
@@ -91,4 +94,40 @@
 
 .article_3 {
     bottom: 0;
+}
+
+:global .lt-desktop-width {
+    :local {
+        .block {
+            padding: 40px 0;
+        }
+        .article_holder {
+            padding-bottom: 62%;
+        }
+        .article_1,
+        .article_2,
+        .article_3 {
+            width: 48%;
+        }
+
+        .article_1 {
+            .article_header {
+                bottom: 69px;
+                @include line-cap(2);
+                height: 56px;
+            }
+
+            .article_sub_header {
+                bottom: 38px;
+            }
+        }
+
+        .article_2,
+        .article_3 {
+            .article_header {
+                bottom: 111px;
+            }
+        }
+
+    }
 }

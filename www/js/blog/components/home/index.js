@@ -15,7 +15,11 @@ import EyeCounter from './../eye-counter';
 export default class Home extends Component<{}> {
     render(): Node {
         return <div>
+
             <PromoArticle3/>
+
+            {/*
+
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>
                     <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
@@ -66,6 +70,8 @@ export default class Home extends Component<{}> {
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>
                     <h3 className={sectionStyle.blog_section_header}>Мотивация</h3>
+
+                    <div className={adsStyle.block__type_1}/>
 
                     <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
 
@@ -147,6 +153,8 @@ export default class Home extends Component<{}> {
 
                 </div>
             </section>
+
+*/}
 
         </div>;
     }
