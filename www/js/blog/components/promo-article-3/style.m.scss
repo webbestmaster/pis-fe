@@ -131,3 +131,41 @@
 
     }
 }
+
+:global .lt-tablet-width {
+    :local {
+        .article_holder {
+            padding-bottom: 281%;
+        }
+        .article_1,
+        .article_2,
+        .article_3 {
+            width: 100%;
+            .article_header,
+            .article_sub_header,
+            .eye_counter {
+                left: 15px;
+            }
+        }
+
+        .article_1 {
+            height: 43.5%;
+            .article_header {
+                bottom: 69px;
+            }
+
+            .article_sub_header {
+                bottom: 38px;
+            }
+        }
+
+        .article_2,
+        .article_3 {
+            height: 27%;
+        }
+
+        .article_2 {
+            top: 44.8%;
+        }
+    }
+}

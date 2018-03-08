@@ -144,3 +144,17 @@
         }
     }
 }
+
+:global .lt-tablet-width {
+    :local {
+        .menu_button {
+            right: 0;
+        }
+
+        .block_mobile {
+            .logo {
+                margin-left: 10px;
+            }
+        }
+    }
+}
