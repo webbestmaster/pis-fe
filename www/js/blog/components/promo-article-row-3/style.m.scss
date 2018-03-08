@@ -92,3 +92,67 @@
 .article_3 {
     right: 0;
 }
+
+:global .lt-desktop-width {
+    :local {
+        .block {
+            padding: 40px 0;
+        }
+
+        .article_holder {
+            padding-bottom: 62%;
+        }
+
+        .article_1,
+        .article_2 {
+            width: 48%;
+        }
+
+        .article_3 {
+            display: none;
+        }
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+        .article_holder {
+            padding-bottom: 372%;
+        }
+        .article_1,
+        .article_2,
+        .article_3 {
+            display: block;
+            width: 100%;
+            height: 32.7%;
+            left: 0;
+            .article_header,
+            .article_sub_header,
+            .eye_counter {
+                left: 15px;
+            }
+
+            .article_header {
+                bottom: 69px;
+            }
+
+            .article_sub_header {
+                bottom: 38px;
+            }
+
+        }
+
+        .article_1 {
+            top: 0;
+        }
+
+        .article_2 {
+            top: 33.7%;
+        }
+
+        .article_3 {
+            top: auto;
+            bottom: 0;
+        }
+    }
+}
