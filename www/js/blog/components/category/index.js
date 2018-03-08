@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import type {Node} from 'react';
-// import {withRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // const appConst = require('./../../../app-const');
 // import * as authAction from "../../../components/auth/action";
@@ -9,6 +9,11 @@ import type {Node} from 'react';
 // import {connect} from 'react-redux';
 // import type {AppType} from './../../../types/reducer';
 import style from './style.m.scss';
+import sectionStyle from './../../style/css/sercion.m.scss';
+import articleCardStyle from './../../style/css/article-card.m.scss';
+import EyeCounter from './../eye-counter';
+import BreadCrumbs from './../bread-crumbs';
+
 // import {metaTagMaster} from './../../../module/meta-tag';
 
 /*
@@ -28,6 +33,49 @@ export default class Category extends Component<PropsType, StateType> {
     render(): Node {
         const view = this;
 
-        return <h1>category page</h1>;
+        return [
+            <BreadCrumbs key="bread-crumbs">
+                <Link to="/">Главная</Link>
+                <Link to="/">Фитнес</Link>
+            </BreadCrumbs>,
+
+            <section key="page" className={sectionStyle.blog_section}>
+                <div className={sectionStyle.blog_section_content}>
+                    <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
+
+                    <div className={articleCardStyle.block_list}>
+
+                        {'012345'
+                            .split('')
+                            .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
+                                <div
+                                    className={articleCardStyle.image}
+                                    style={{backgroundImage: 'url(//via.placeholder.com/100x100)'}}
+                                />
+                                <div className={articleCardStyle.text_block}>
+                                    <h4 className={articleCardStyle.header}>
+                                        Ireland’s top Fitness Enthusiasts’ health and fitness tips:
+                                        Aaron Smyth NUTrition Ireland
+                                    </h4>
+                                    <div className={articleCardStyle.eye_counter_wrapper}>
+                                        <EyeCounter
+                                            className={articleCardStyle.eye_counter}
+                                            count={288}
+                                            date={'1 September 2017'}
+                                            dateClassName={articleCardStyle.eye_counter__date}
+                                        />
+                                    </div>
+                                    <p className={articleCardStyle.preview_text}>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a
+                                        type specimen book.
+                                    </p>
+                                </div>
+                            </div>)}
+
+                    </div>
+                </div>
+            </section>];
     }
 }
