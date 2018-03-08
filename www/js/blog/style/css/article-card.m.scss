@@ -4,7 +4,30 @@
 .block_list {
     display: block;
     &.block_list__ads_padded {
-        margin-right: 330px;
+        margin-right: 340px;
+    }
+    &.block_list__separated {
+        .block {
+            position: relative;
+            margin-bottom: 59px;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                bottom: -30px;
+                left: 0;
+                background-color: $mainTextColor;
+                opacity: 0.25;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+                &:after {
+                    display: none;
+                }
+            }
+        }
     }
 }
 
@@ -12,7 +35,7 @@
     display: block;
     height: 225px;
     margin-bottom: 32px;
-    padding-right: 10px;
+    //padding-right: 10px;
     &:last-child {
         margin-bottom: 0;
     }
@@ -89,16 +112,18 @@
 
 :global .lt-desktop-width {
     :local {
-        .block {
-            padding-right: 0;
-            height: auto;
-        }
-        .image {
-            height: 225px;
-            width: 100%;
-            margin-right: 0;
-            margin-bottom: 25px;
-            float: none;
+        .block_list__ads_padded {
+            .block {
+                padding-right: 0;
+                height: auto;
+            }
+            .image {
+                height: 225px;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 25px;
+                float: none;
+            }
         }
         .block_list__3_in_row {
             .block {
@@ -110,6 +135,18 @@
 
 :global .lt-tablet-width {
     :local {
+        .block {
+            padding-right: 0;
+            height: auto;
+        }
+        .image {
+            height: 225px;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 25px;
+            float: none;
+        }
+
         .block_list__ads_padded {
             margin-right: 0;
         }

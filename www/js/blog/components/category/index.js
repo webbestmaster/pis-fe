@@ -43,7 +43,7 @@ export default class Category extends Component<PropsType, StateType> {
                 <div className={sectionStyle.blog_section_content}>
                     <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
 
-                    <div className={articleCardStyle.block_list}>
+                    <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__separated}>
 
                         {'012345'
                             .split('')
