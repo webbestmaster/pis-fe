@@ -5,6 +5,7 @@ import {metaTagMaster} from './../../../module/meta-tag';
 import TopBanner from './../../components/top-banner';
 import Footer from './../../components/footer';
 import Header from './../../components/header';
+import Article from '../../components/article';
 
 /*
 import Sale from './../../components/sale';
@@ -28,7 +29,7 @@ export default class ArticlePage extends Component<{}> {
         return <div>
             <TopBanner/>
             <Header/>
-            <h1>article</h1>
+            <Article/>
             <Footer/>
         </div>;
     }

@@ -21,6 +21,9 @@
     &:hover {
         color: $mainActiveColor;
     }
+    &:last-child {
+        color: $mainTextColor;
+    }
 }
 
 .arrow {
