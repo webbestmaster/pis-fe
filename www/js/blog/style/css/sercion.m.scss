@@ -1,10 +1,12 @@
 @import "./aaa-var";
 
+/*
 .blog_header {
     font-weight: bold;
     color: $mainTextColor;
     position: relative;
 }
+*/
 
 .blog_section {
     padding: 86px 0 104px;
@@ -40,4 +42,28 @@
     }
 }
 
+:global .lt-desktop-width {
+    :local {
+        .blog_section {
+            padding: 31px 0 104px;
+        }
 
+        .blog_section_header {
+            font-size: 24px;
+            padding-left: 0;
+            padding-bottom: 57px;
+            &:before {
+                bottom: 43px;
+            }
+        }
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+        .blog_section_content {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}

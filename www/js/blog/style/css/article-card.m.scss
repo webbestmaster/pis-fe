@@ -85,5 +85,42 @@
         margin-right: 0;
         margin-bottom: 20px;
     }
+}
 
+:global .lt-desktop-width {
+    :local {
+        .block {
+            padding-right: 0;
+            height: auto;
+        }
+        .image {
+            height: 225px;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 25px;
+            float: none;
+        }
+    }
+}
+
+:global .lt-tablet-width {
+    :local {
+        .block_list__ads_padded {
+            margin-right: 0;
+        }
+
+        /*
+        .block {
+            padding-right: 0;
+            height: auto;
+        }
+        .image {
+            height: 225px;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 25px;
+            float: none;
+        }
+        */
+    }
 }

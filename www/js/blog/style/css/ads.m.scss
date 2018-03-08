@@ -4,3 +4,27 @@
     width: 300px;
     height: 600px;
 }
+
+:global .lt-tablet-width {
+    :local {
+        .block__type_1 {
+            margin: 20px auto;
+            float: none;
+        }
+
+        /*
+        .block {
+            padding-right: 0;
+            height: auto;
+        }
+        .image {
+            height: 225px;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 25px;
+            float: none;
+        }
+        */
+    }
+}
+
