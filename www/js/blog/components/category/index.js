@@ -76,6 +76,13 @@ export default class Category extends Component<PropsType, StateType> {
 
                     </div>
                 </div>
-            </section>];
+            </section>,
+            <div key="show-more" className={style.show_more_wrapper}>
+                <div className={style.show_more_button}>
+                    <span className={style.show_more_icon}/>
+                    Показать ещё
+                </div>
+            </div>
+        ];
     }
 }
