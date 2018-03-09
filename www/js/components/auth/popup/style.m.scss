@@ -107,9 +107,9 @@
     }
 
     &.social_button__facebook {
-        display: block;
         background-image: url('./../../../../style/i/popup/social/icon-facebook.png');
 
+        /*
         .social_button__facebook_content {
             display: block;
             width: 100%;
@@ -117,17 +117,19 @@
             line-height: 0;
             font-size: 0;
         }
+        */
     }
 
     &.social_button__vk {
-        display: block;
         background-image: url('./../../../../style/i/popup/social/icon-vk.png');
 
+        /*
         .social_button__vk_content {
             display: block;
             width: 100%;
             height: 100%;
         }
+        */
     }
 }
 

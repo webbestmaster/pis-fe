@@ -45,8 +45,8 @@ module.exports = {
         trainings: host + '/api/training/search' + (postfixQuestionAmp || '?')
     },
     key: {
-        googleMap: 'AIzaSyCgl3fWrTUUYRtPM8WDsjnAlaI6OFdCK0Q',
-        facebook: '151031658945087',
-        vKontakte: 6379669
+        googleMap: 'AIzaSyCgl3fWrTUUYRtPM8WDsjnAlaI6OFdCK0Q'
+        // facebook: '151031658945087',
+        // vKontakte: 6379669
     }
 };

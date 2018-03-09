@@ -22,6 +22,7 @@ module.exports = {
         makeSubscriptionOrder: '/member/order/create?productType=subscription&orderType={{orderType}}&amount={{amount}}&subscriptionId={{subscriptionId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}' + postfixAmp, // eslint-disable-line max-len
         makeTrainingOrder: '/member/order/create?productType=training&orderType={{orderType}}&amount={{amount}}&trainingId={{trainingId}}&trainingScheduleId={{trainingScheduleId}}&day={{dayId}}&needCall={{needCall}}&orderUserPhone={{userPhone}}&startOrderDate={{startOrderDate}}' + postfixAmp, // eslint-disable-line max-len
         proposal: '/member/proposal/create?type={{type}}&message={{message}}' + postfixAmp,
+        socialLoginLinks: '/api/oauth/index' + postfixAmp,
         loginFacebook: '/api/auth/social?email={{email}}&social=facebook&socialId={{userId}}&firstName={{firstName}}&lastName={{lastName}}&sex={{gender}}&birthday={{birthday}}&image={{avatar}}' + postfixAmp, // eslint-disable-line max-len
         loginVk: '/api/auth/social?email={{email}}&social=vk&socialId={{userId}}&firstName={{firstName}}&lastName={{lastName}}&sex={{gender}}&birthday={{birthday}}&image={{avatar}}' + postfixAmp // eslint-disable-line max-len
     },

@@ -85,6 +85,7 @@ export function login(email, password) {
         }));
 }
 
+/*
 export function loginFacebook(responseFacebook) {
     const email = responseFacebook.email;
     const userId = responseFacebook.userID;
@@ -113,7 +114,9 @@ export function loginFacebook(responseFacebook) {
             payload: {login: Object.assign(parsedData, {isLogin: true})}
         }));
 }
+*/
 
+/*
 export function loginVk(responseVk) {
     const email = 'pis-' + responseVk.id + '@vk.com';
     const userId = responseVk.id;
@@ -146,6 +149,7 @@ export function loginVk(responseVk) {
             payload: {login: Object.assign(parsedData, {isLogin: true})}
         }));
 }
+*/
 
 export function logout() {
     return dispatch => fetch(
