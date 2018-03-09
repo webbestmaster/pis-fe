@@ -18,7 +18,7 @@ export default class PromoArticleText3 extends Component<{}> {
             <div className={style.block_hug}>
                 <div className={style.article_holder}>
 
-                    <div className={style.article_1} style={{backgroundImage: 'url(//lorempixel.com/800/602/sports)'}}>
+                    <div className={style.article_1} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
                         <h3 className={style.article_header}>
                             Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland
@@ -32,13 +32,13 @@ export default class PromoArticleText3 extends Component<{}> {
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
 
-                    <div className={style.article_2} style={{backgroundImage: 'url(//lorempixel.com/800/603/sports)'}}>
+                    <div className={style.article_2} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
                         <h3 className={style.article_header + ' ellipsis'}>Describe your design process.</h3>
                         <h4 className={style.article_sub_header + ' ellipsis'}>Unlike others in the office services</h4>
                     </div>
 
-                    <div className={style.article_3} style={{backgroundImage: 'url(//lorempixel.com/800/604/sports)'}}>
+                    <div className={style.article_3} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
                         <h3 className={style.article_header + ' ellipsis'}>Describe your design process.</h3>
                         <h4 className={style.article_sub_header + ' ellipsis'}>Unlike others in the office services</h4>

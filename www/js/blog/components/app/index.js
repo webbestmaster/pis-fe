@@ -32,8 +32,8 @@ export default (): Node =>
     <BrowserRouter basename="/blog">
         <Switch>
             <Route path='/' component={Home} exact/>
-            <Route path='/category' component={Category} exact/>
-            <Route path='/article' component={Article} exact/>
+            {/* <Route path='/category' component={Category} exact/>*/}
+            {/* <Route path='/article' component={Article} exact/>*/}
         </Switch>
     </BrowserRouter>
 ;

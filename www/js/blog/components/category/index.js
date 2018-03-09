@@ -50,7 +50,7 @@ export default class Category extends Component<PropsType, StateType> {
                             .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
                                 <div
                                     className={articleCardStyle.image}
-                                    style={{backgroundImage: 'url(//lorempixel.com/800/601/sports)'}}
+                                    style={{backgroundImage: 'url(//picsum.photos/800/600)'}}
                                 />
                                 <div className={articleCardStyle.text_block}>
                                     <h4 className={articleCardStyle.header}>

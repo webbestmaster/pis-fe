@@ -31,7 +31,7 @@ export default class TopBanner extends Component<{}, StateType> {
 
         console.log(bannerData);
 
-        view.setState({url: '//lorempixel.com/1920/90/sports'});
+        view.setState({url: '//picsum.photos/800/600'});
     }
 
     render(): Node {
