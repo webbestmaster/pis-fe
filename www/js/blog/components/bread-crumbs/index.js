@@ -1,5 +1,4 @@
-// \@\f\l\o\w
-// FIXME: fix the flow
+// @flow
 
 import React, {Component} from 'react';
 import type {Node} from 'react';
@@ -22,7 +21,7 @@ export default class BreadCrumbs extends Component<PropsType, StateType> {
         return React.cloneElement(child, updatedProps);
     }
 
-    render() {
+    render(): Node {
         const view = this;
         const {props, state} = view;
         const {children} = props;
@@ -31,7 +30,7 @@ export default class BreadCrumbs extends Component<PropsType, StateType> {
             <div className={sectionStyle.blog_section_content}>
                 {React.Children
                     .map(children,
-                        (child: Node, ii: number) => ii === 0 ?
+                        (child: Node, ii: number): Array<Node> => ii === 0 ?
                             view.modifyChildren(child) :
                             [<span className={style.arrow}/>, view.modifyChildren(child)]
                     )
