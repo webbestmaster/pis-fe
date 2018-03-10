@@ -8,7 +8,7 @@ export default class Footer extends Component {
             <div className="section">
                 <p className="footer__text footer__text--copyright">
                     <span className="footer__logo"/>
-                    &copy; 2018 PIS&trade;<br/>
+                    &copy; {new Date().getFullYear()} PIS&trade;<br/>
                     Все права защищены
                 </p>
                 <p className="footer__text footer__text--part-1">

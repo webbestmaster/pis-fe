@@ -10,13 +10,44 @@ import sectionStyle from './../../style/css/sercion.m.scss';
 import articleCardStyle from './../../style/css/article-card.m.scss';
 import adsStyle from './../../style/css/ads.m.scss';
 import EyeCounter from './../eye-counter';
+import {fetchX} from '../../../helper/fetch-x';
+
+const appConst = require('./../../../app-const');
 // import {Link} from 'react-router-dom';
 
-export default class Home extends Component<{}> {
-    render(): Node {
-        return <div>
+type StateType = {
+    pageData: mixed
+};
 
-            <PromoArticle3/>
+export default class Home extends Component<{}, StateType> {
+    state = {
+        pageData: null
+    };
+
+    async componentDidMount(): Promise<void> {
+        const view = this;
+
+        const rawResponse = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.home)
+            .catch((): null => null);
+
+        if (rawResponse === null) {
+            return;
+        }
+
+        view.setState({pageData: rawResponse});
+    }
+
+    render(): Node {
+        const view = this;
+        const {state} = view;
+        const {pageData} = state;
+
+        if (pageData === null) {
+            return null;
+        }
+
+        return <div>
+            <PromoArticle3 list={pageData.data.promoRows}/>
 
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>

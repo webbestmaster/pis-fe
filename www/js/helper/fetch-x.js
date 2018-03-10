@@ -19,7 +19,7 @@ export function fetchX(url: string, options: OptionsType = {}): Promise<any> { /
     promiseCache[cacheProperty] = fetch(url, {
         credentials: options.credentials || 'include',
         method: options.method || 'GET',
-        body: options.body || null
+        body: options.body
     })
         .then((rawResult: Response): any => rawResult.json()); // eslint-disable-line flowtype/no-weak-types
 

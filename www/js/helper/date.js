@@ -38,6 +38,12 @@ export function dateToDay(time) {
     return dateDate;
 }
 
+export function dateToHuman(date) {
+    const currentDate = new Date(date);
+
+    return currentDate.getDate() + ' ' + yearMonthsMap[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
+}
+
 export function reduceSeconds(date) {
     return date.substr(0, 5).replace(/^0/, '');
 }

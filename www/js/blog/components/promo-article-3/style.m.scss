@@ -27,6 +27,7 @@
     background-position: center center;
     position: absolute;
     border-radius: 4px;
+    text-decoration: none;
 }
 
 .article_header {
@@ -37,7 +38,7 @@
     //bottom: 93px;
     font-weight: bold;
     font-size: 25px;
-    @include line-cap(1);
+    //@include line-cap(1);
     height: 28px;
 }
 
