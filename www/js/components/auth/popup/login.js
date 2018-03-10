@@ -75,7 +75,8 @@ class Login extends Component {
 
         return <div
             onClick={() => {
-                const newWindow = window.open(state.links.facebook, '_blank');
+                // const newWindow = window.open(state.links.facebook, '_blank');
+                const newWindow = window.open(state.links.facebook, 'facebook', 'width=800,height=600');
 
                 if (typeof window.focus === 'function') {
                     newWindow.focus();
@@ -114,7 +115,8 @@ class Login extends Component {
 
         return <div
             onClick={() => {
-                const newWindow = window.open(state.links.vk, '_blank');
+                // const newWindow = window.open(state.links.vk, '_blank');
+                const newWindow = window.open(state.links.vk, 'vk', 'width=800,height=600');
 
                 if (typeof window.focus === 'function') {
                     newWindow.focus();
