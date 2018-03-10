@@ -33,8 +33,8 @@ export default (): Node =>
     <BrowserRouter basename="/blog">
         <Switch>
             <Route path='/' component={Home} exact/>
-            <Route path='/category' component={Category} exact/>
-            <Route path='/article' component={Article} exact/>
+            <Route path='/category/:categoryName' component={Category} exact/>
+            <Route path='/article/:articleId' component={Article} exact/>
             <Route component={NotFoundPage}/>
         </Switch>
     </BrowserRouter>
