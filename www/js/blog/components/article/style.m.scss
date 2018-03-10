@@ -129,7 +129,7 @@
             border-bottom: none;
         }
 
-        .extra_article:nth-child(2) {
+        .extra_article:last-child {
             display: none;
         }
     }
@@ -137,6 +137,23 @@
 
 :global .lt-tablet-width {
     :local {
+        .article_padded_wrapper {
+            padding-bottom: 44px;
+            margin-bottom: 46px;
+        }
 
+        .extra_article_list {
+            display: block;
+        }
+
+        .extra_article {
+            width: 100%;
+            border-bottom: 1px solid $mainBorderColor;
+        }
+
+        .extra_article:last-child {
+            display: block;
+            border-bottom: 1px solid transparent;
+        }
     }
 }
