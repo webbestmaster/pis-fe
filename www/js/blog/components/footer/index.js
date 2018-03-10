@@ -14,9 +14,6 @@ export default class Footer extends Component<{}> {
                         <span className="footer__logo"/>
                         &copy; 2018 PIS&trade;<br/>
                         Все права защищены
-                        {/* FIXME */}
-                        {/* <br/>*/}
-                        {/* Тел: 8 (029) 577-01-37*/}
                     </p>
                     <p className="footer__text footer__text--part-1">
                         <Link to="/../clubs" target="_blank" className="footer__link">Клубы</Link>
