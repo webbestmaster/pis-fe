@@ -14,6 +14,14 @@
     &.blog_section__gray {
         background-color: $mainGray;
     }
+    &.blog_section__article {
+        padding-bottom: 160px;
+    }
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 }
 
 .blog_section_content {
@@ -39,6 +47,14 @@
         left: 0;
         width: 70px;
         height: 2px;
+    }
+    &.blog_section_header__article {
+        padding-left: 0;
+        padding-bottom: 34px;
+        &:before {
+            left: -101px;
+            bottom: 43px;
+        }
     }
 }
 
