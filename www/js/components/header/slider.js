@@ -1,3 +1,4 @@
+/* global setTimeout */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -10,6 +11,8 @@ const leftSlideImage = require('./../../../style/images/header/clubs.jpg');
 const centerSlideImage = require('./../../../style/images/header/subscriptions.jpg');
 const rightSlideImage = require('./../../../style/images/header/trainings.jpg');
 const globalAppConst = require('./../../app-const');
+const {fetchX} = require('./../../helper/fetch-x');
+const appConst = require('./../../app-const');
 
 class Slider extends Component {
     constructor() {
@@ -18,8 +21,17 @@ class Slider extends Component {
         const view = this;
 
         view.state = {
-            activeSlide: null
+            activeSlide: null,
+            pageData: null
         };
+    }
+
+    async componentDidMount() {
+        const view = this;
+
+        const pageData = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home);
+
+        setTimeout(() => view.setState({pageData}), 300);
     }
 
     render() {
@@ -29,30 +41,37 @@ class Slider extends Component {
         const deltaTop = app.screen.width > globalAppConst.tabletWidth ?
             Math.min(Math.round((app.screen.height - headerMaxHeight) / 2 * 1.5), 0) :
             0;
+        const isReady = state.pageData !== null;
 
-        return <div className="header-slider">
+        return <div className={classnames('header-slider', {'no-transition': !isReady})}>
             <div className={classnames('header-slider__slide', 'header-slider__slide--back')}>
                 <div className="header-slider__slide-image" style={{backgroundImage: 'url(' + backSlideImage + ')'}}/>
             </div>
             {/* slides begin */}
-            <div className={classnames('header-slider__slide', {
-                'header-slider__slide--active': state.activeSlide === 'leftSlide'
-            })}>
-                {/* className="header-slider__slide header-slider__slide--left hidden" */}
-                <div className="header-slider__slide-image" style={{backgroundImage: 'url(' + leftSlideImage + ')'}}/>
-            </div>
-            <div className={classnames('header-slider__slide', {
-                'header-slider__slide--active': state.activeSlide === 'rightSlide'
-            })}>
-                {/* <div className="header-slider__slide header-slider__slide--right hidden">*/}
-                <div className="header-slider__slide-image" style={{backgroundImage: 'url(' + rightSlideImage + ')'}}/>
-            </div>
-            <div className={classnames('header-slider__slide', {
-                'header-slider__slide--active': state.activeSlide === 'centerSlide'
-            })}>
-                {/* <div className="header-slider__slide header-slider__slide--center hidden">*/}
-                <div className="header-slider__slide-image" style={{backgroundImage: 'url(' + centerSlideImage + ')'}}/>
-            </div>
+            {isReady ?
+                [
+                    <div key="left-slide" className={classnames('header-slider__slide', {
+                        'header-slider__slide--active': state.activeSlide === 'leftSlide'
+                    })}>
+                        <div
+                            className="header-slider__slide-image"
+                            style={{backgroundImage: 'url(' + leftSlideImage + ')'}}/>
+                    </div>,
+                    <div key="right-slide" className={classnames('header-slider__slide', {
+                        'header-slider__slide--active': state.activeSlide === 'rightSlide'
+                    })}>
+                        <div className="header-slider__slide-image"
+                            style={{backgroundImage: 'url(' + rightSlideImage + ')'}}/>
+                    </div>,
+                    <div key="center-slide" className={classnames('header-slider__slide', {
+                        'header-slider__slide--active': state.activeSlide === 'centerSlide'
+                    })}>
+                        <div className="header-slider__slide-image"
+                            style={{backgroundImage: 'url(' + centerSlideImage + ')'}}/>
+                    </div>
+                ] :
+                null
+            }
             {/* slides end */}
 
             <div className="header-slider__slide-pattern"/>
@@ -161,7 +180,7 @@ class Slider extends Component {
                 'header-slider__search--active': state.activeSlide === null
             })}
             style={{marginTop: deltaTop}}>
-                <Search />
+                <Search/>
             </div>
         </div>;
     }

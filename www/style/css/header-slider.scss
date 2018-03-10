@@ -45,7 +45,7 @@
 
 .header-slider__slide-pattern {
     @extend .header-slider__slide;
-    background-image: url('./../i/header/pattern.png'), linear-gradient(to bottom, #1a2a3a 0%, rgba(26,42,58,0) 100%);
+    background-image: url('./../i/header/pattern.png'), linear-gradient(to bottom, #1a2a3a 0%, rgba(26, 42, 58, 0) 100%);
     background-repeat: repeat, repeat-x;
     z-index: 5; // to be over all slides, increase if you need
 }
@@ -340,7 +340,6 @@
             text-indent: -13px;
         }
 
-
         .header-slider__promo-texts--mobile {
             top: 209px;
 
@@ -372,5 +371,15 @@
         .slider-navigation-item__button {
             margin: 57px auto 0;
         }
+    }
+}
+
+.no-transition {
+    .header-slider__slide-image,
+    .slider-navigation-item,
+    .header-slider__search,
+    .header-slider__promo-text,
+    .slider-navigation-item__button {
+        transition: none;
     }
 }
