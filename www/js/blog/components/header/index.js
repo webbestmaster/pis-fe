@@ -2,13 +2,11 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {withRouter, Link} from 'react-router-dom';
-
-const appConst = require('./../../../app-const');
-// import * as authAction from "../../../components/auth/action";
-
 import {connect} from 'react-redux';
 import type {AppType} from './../../../types/reducer';
 import style from './style.m.scss';
+
+const appConst = require('./../../../app-const');
 // import {metaTagMaster} from './../../../module/meta-tag';
 
 /*
@@ -33,25 +31,25 @@ class Header extends Component<PropsType, StateType> {
         isOpen: false
     };
 
-    renderDesktop(): Node {
-        return <header
-            key="header"
-            className={style.block}>
-            <Link to="/" className={style.link}>знания</Link>
-            <Link to="/" className={style.link}>события</Link>
-            <Link to="/" className={style.link}>мотивация</Link>
-            <Link to="/" className={style.link}>питание</Link>
-            <Link to="/" className={style.link}>фитнес</Link>
-            <Link to="/" className={style.logo}/>
-        </header>;
-    }
-
     openMenu() {
         this.setState({isOpen: true});
     }
 
     closeMenu() {
         this.setState({isOpen: false});
+    }
+
+    renderDesktop(): Node {
+        return <header
+            key="header"
+            className={style.block}>
+            <Link to="/category/knowledge" className={style.link}>знания</Link>
+            <Link to="/category/event" className={style.link}>события</Link>
+            <Link to="/category/motivation" className={style.link}>мотивация</Link>
+            <Link to="/category/food" className={style.link}>питание</Link>
+            <Link to="/category/fitness" className={style.link}>фитнес</Link>
+            <Link to="/" className={style.logo}/>
+        </header>;
     }
 
     renderMobile(): Node[] {
@@ -93,23 +91,23 @@ class Header extends Component<PropsType, StateType> {
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>главная</Link>
                     <Link
-                        to="/"
+                        to="/category/fitness"
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>фитнес</Link>
                     <Link
-                        to="/"
+                        to="/category/food"
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>питание</Link>
                     <Link
-                        to="/"
+                        to="/category/motivation"
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>мотивация</Link>
                     <Link
-                        to="/"
+                        to="/category/event"
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>события</Link>
                     <Link
-                        to="/"
+                        to="/category/knowledge"
                         onClick={(): void => view.closeMenu()}
                         className={style.link}>знания</Link>
                 </div>

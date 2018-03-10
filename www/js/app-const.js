@@ -30,7 +30,12 @@ module.exports = {
         trainings: '/api/training/index' + postfixQuestion,
         training: '/api/training/getFullInfo?id={{trainingId}}' + postfixAmp,
         clubFilials: '/api/club/getAllFilials?id={{clubId}}' + postfixAmp,
-        metaTag: '/api/page/getByUrl?url={{url}}' + postfixAmp
+        metaTag: '/api/page/getByUrl?url={{url}}' + postfixAmp,
+        blog: {
+            home: '/api/blog/index' + postfixQuestion,
+            getByCategory: '/api/blog/getByCategory?category={{categoryName}}' + postfixAmp,
+            article: '/api/blog/getFullInfo?id={{articleId}}' + postfixAmp
+        }
     },
     phone: {
         by: { // eslint-disable-line id-length
