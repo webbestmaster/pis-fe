@@ -31,7 +31,7 @@ export default class BreadCrumbs extends Component<PropsType, StateType> {
                 {React.Children
                     .map(children,
                         (child: Node, ii: number): Array<Node> => ii === 0 ?
-                            view.modifyChildren(child) :
+                            [view.modifyChildren(child)] :
                             [<span className={style.arrow}/>, view.modifyChildren(child)]
                     )
                 }

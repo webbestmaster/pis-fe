@@ -40,13 +40,18 @@ class Menu extends Component {
                     <Link {...cnx('header-menu__link', {
                         'header-menu__link--active': props.match.url === '/trainings'
                     })} to="/trainings">Тренировки</Link>
+                    <Link {...cnx('header-menu__link', {
+                        'header-menu__link--active': props.match.url === '/blog'
+                    })} to="/blog">Фитнес-блог</Link>
                     <p onClick={() => view.openUserPage()}
                         className="header-menu__button header-menu__button--login">
                         <span className="header-menu__button-text ellipsis">{userName}</span>
                     </p>
+                    {/*
                     <a href="tel:84995770137" className="header-menu__button header-menu__button--call">
                         8 (499) 577-01-37
                     </a>
+                    */}
                 </nav>
             </div>
         </div>;
@@ -67,9 +72,11 @@ class Menu extends Component {
                     className="header-mobile-menu__menu-button header-mobile-menu__menu-button--open"/>,
                 <nav key="header-mobile-menu" className="header-mobile-menu">
                     {app.screen.width > globalAppConst.tabletWidth ? null : <UserShortInfo/>}
+                    {/*
                     <a href="tel:84995770137" className="header-mobile-menu__button header-mobile-menu__button--call">
                         8 (499) 577-01-37
                     </a>
+                    */}
                     <p onClick={() => view.openUserPage()}
                         className="header-mobile-menu__button header-mobile-menu__button--login">
                         {privateOfficeLabelText}
@@ -87,6 +94,9 @@ class Menu extends Component {
                         <Link {...cnx('header-mobile-menu__link', {
                             'header-mobile-menu__link--active': props.match.url === '/trainings'
                         })} to="/trainings">Тренировки</Link>
+                        <Link {...cnx('header-mobile-menu__link', {
+                            'header-mobile-menu__link--active': props.match.url === '/blog'
+                        })} to="/blog">Фитнес-блог</Link>
                     </div>
                 </nav>,
                 <div
