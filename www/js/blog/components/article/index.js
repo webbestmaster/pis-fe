@@ -77,7 +77,7 @@ export default class Article extends Component<PropsType, StateType> {
                         date={'1 September 2017'}
                         dateClassName={articleCardStyle.eye_counter__date}/>
 
-                    <div>
+                    <div className="lt-desktop-width-reverse">
                         {view.renderExtraArticleList()}
                         <div className={style.article_padded_wrapper}>
                             <img className={style.title_image} src="//picsum.photos/800/600" alt=""/>
