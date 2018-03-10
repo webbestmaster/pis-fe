@@ -31,7 +31,7 @@ class Slider extends Component {
 
         const pageData = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.home);
 
-        setTimeout(() => view.setState({pageData}), 300);
+        setTimeout(() => view.setState({pageData}), 500);
     }
 
     render() {

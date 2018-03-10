@@ -124,3 +124,13 @@
 .bold {
     font-weight: bold;
 }
+
+.desktop-width {
+    .fade-out {
+        opacity: 0;
+        transition: ease-out opacity 0.3s;
+        &.fade-out_visible {
+            opacity: 1;
+        }
+    }
+}

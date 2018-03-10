@@ -44,6 +44,7 @@
     "react-dom": "^16.2.0",
     "react-images": "^0.5.17",
     "react-js-pagination": "^3.0.1",
+    "react-lazy-load": "^3.0.13",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-tabs": "^2.2.1",
