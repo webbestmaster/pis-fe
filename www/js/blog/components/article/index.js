@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import type {Node} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 // const appConst = require('./../../../app-const');
 // import * as authAction from "../../../components/auth/action";
@@ -13,6 +13,13 @@ import sectionStyle from './../../style/css/sercion.m.scss';
 import articleCardStyle from './../../style/css/article-card.m.scss';
 import EyeCounter from './../eye-counter';
 import BreadCrumbs from './../bread-crumbs';
+import {connect} from 'react-redux';
+import {routeToSectionName} from '../bread-crumbs/helper';
+import {fetchX} from '../../../helper/fetch-x';
+import {dateToHuman} from '../../../helper/date';
+import {resolveImagePath} from '../../../helper/path-x';
+
+const appConst = require('./../../../app-const');
 
 // import {metaTagMaster} from './../../../module/meta-tag';
 
@@ -33,11 +40,37 @@ fishText.push(...fishText);
 fishText.push(...fishText);
 fishText.push(...fishText);
 
-type PropsType = {||};
+type PropsType = {};
 
-type StateType = {||};
+type StateType = {};
 
-export default class Article extends Component<PropsType, StateType> {
+class Article extends Component<PropsType, StateType> {
+    state = {
+        pageData: null
+    };
+
+    async componentDidMount(): Promise<void> {
+        const view = this;
+
+        return view.fetchArticle();
+    }
+
+    async fetchArticle(): Promise<void> {
+        const view = this;
+        const {state, props} = view;
+        const {articleId} = props.match.params;
+
+        const response = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.article
+            .replace('{{articleId}}', articleId))
+            .catch((): null => null);
+
+        if (response === null) {
+            return;
+        }
+
+        view.setState({pageData: response});
+    }
+
     renderExtraArticleList(): Node {
         const view = this;
 
@@ -56,36 +89,44 @@ export default class Article extends Component<PropsType, StateType> {
 
     render(): Node {
         const view = this;
+        const {state, props} = view;
+        const {categoryName, articleId} = props.match.params;
+        const humanCategoryName = routeToSectionName(categoryName);
+        const {pageData} = state;
+
+        if (pageData === null) {
+            return null;
+        }
+
+        const article = pageData.data[0];
 
         return [
             <BreadCrumbs key="bread-crumbs">
                 <Link to="/">Главная</Link>
-                <Link to="/">Фитнес</Link>
-                <Link to="/">Новость 1</Link>
+                <Link to={'/article/' + categoryName}>{humanCategoryName}</Link>
+                {/* <Link to={'/article/' + categoryName + '/' + articleId}>*/}
+                {/* {article.title}*/}
+                {/* </Link>*/}
             </BreadCrumbs>,
 
             <section key="page" className={sectionStyle.blog_section + ' ' + sectionStyle.blog_section__article}>
                 <div className={sectionStyle.blog_section_content}>
-                    <h3 className={sectionStyle.blog_section_header + ' ' + sectionStyle.blog_section_header__article}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                    </h3>
+                    <h2 className={sectionStyle.blog_section_header + ' ' + sectionStyle.blog_section_header__article}>
+                        {article.title}
+                    </h2>
 
                     <EyeCounter
                         className={style.eye_counter}
                         count={288}
-                        date={'1 September 2017'}
+                        date={dateToHuman(article.created_at)}
                         dateClassName={articleCardStyle.eye_counter__date}/>
 
                     <div className="lt-desktop-width-reverse">
                         {view.renderExtraArticleList()}
                         <div className={style.article_padded_wrapper}>
-                            <img className={style.title_image} src="//picsum.photos/800/600" alt=""/>
+                            <img className={style.title_image} src={resolveImagePath(article.image)} alt=""/>
                             <div className={style.article_text_wrapper}>
-                                <p>{fishText[0]}</p>
-                                <p>{fishText[1]}</p>
-                                <p>{fishText[2]}</p>
-                                <p>{fishText}</p>
+                                {article.html}
                             </div>
                             <div className={style.share}>
                                 <p className={style.share_label}>Поделиться:</p>
@@ -106,3 +147,10 @@ export default class Article extends Component<PropsType, StateType> {
         ];
     }
 }
+
+export default withRouter(
+    connect(
+        state => ({}),
+        {}
+    )(Article)
+);
