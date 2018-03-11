@@ -52,69 +52,64 @@ class Header extends Component<PropsType, StateType> {
         </header>;
     }
 
-    renderMobile(): Node[] {
+    renderMobile(): Node {
         const view = this;
         const {props, state} = view;
 
         const {isOpen} = state;
 
-        const nodes = [
-            <header
-                key="header"
-                className={style.block_mobile}>
-                <Link to="/" className={style.logo}/>
-                <div
-                    className={style.menu_button}
-                    onClick={(): void => view.openMenu()}>
-                    <div className={style.menu_button_icon}/>
-                </div>
-            </header>
-        ];
+        return <header
+            key="header"
+            className={style.block_mobile}>
+            <Link to="/" className={style.logo}/>
+            <div
+                className={style.menu_button}
+                onClick={(): void => view.openMenu()}>
+                <div className={style.menu_button_icon}/>
+            </div>
 
-        if (isOpen) {
-            nodes.push(
-                <div
-                    onClick={(): void => view.closeMenu()}
-                    key="header-menu-fade"
-                    className={style.header_menu_fade}/>,
-                <div
-                    key="header-mobile-menu"
-                    className={style.header_mobile_menu}>
+            {isOpen ?
+                [
                     <div
-                        className={style.menu_button + ' ' + style.menu_button__open}
-                        onClick={(): void => view.closeMenu()}>
-                        <div className={style.menu_button_icon}/>
+                        onClick={(): void => view.closeMenu()}
+                        key="header-menu-fade"
+                        className={style.header_menu_fade}/>,
+                    <div
+                        key="header-mobile-menu"
+                        className={style.header_mobile_menu}>
+                        <div
+                            className={style.menu_button + ' ' + style.menu_button__open}
+                            onClick={(): void => view.closeMenu()}>
+                            <div className={style.menu_button_icon}/>
+                        </div>
+                        <Link
+                            to="/"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>главная</Link>
+                        <Link
+                            to="/category/fitness"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>фитнес</Link>
+                        <Link
+                            to="/category/food"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>питание</Link>
+                        <Link
+                            to="/category/motivation"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>мотивация</Link>
+                        <Link
+                            to="/category/event"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>события</Link>
+                        <Link
+                            to="/category/knowledge"
+                            onClick={(): void => view.closeMenu()}
+                            className={style.link}>знания</Link>
                     </div>
-
-                    <Link
-                        to="/"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>главная</Link>
-                    <Link
-                        to="/category/fitness"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>фитнес</Link>
-                    <Link
-                        to="/category/food"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>питание</Link>
-                    <Link
-                        to="/category/motivation"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>мотивация</Link>
-                    <Link
-                        to="/category/event"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>события</Link>
-                    <Link
-                        to="/category/knowledge"
-                        onClick={(): void => view.closeMenu()}
-                        className={style.link}>знания</Link>
-                </div>
-            );
-        }
-
-        return nodes;
+                ] :
+                null}
+        </header>;
     }
 
     render(): Node {

@@ -37,6 +37,58 @@ export default class Home extends Component<{}, StateType> {
         view.setState({pageData: rawResponse});
     }
 
+    renderFitness(articleList: Array<{}>): Node {
+        const view = this;
+        const {state} = view;
+        const {pageData} = state;
+
+        return <section className={sectionStyle.blog_section}>
+            <div className={sectionStyle.blog_section_content}>
+                <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
+
+                <div className="lt-tablet-width-reverse">
+                    <div className={adsStyle.block__type_1}/>
+
+                    <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
+
+                        {'012'
+                            .split('')
+                            .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
+                                <div
+                                    className={articleCardStyle.image}
+                                    style={{backgroundImage: 'url(//picsum.photos/800/600)'}}
+                                />
+                                <div className={articleCardStyle.text_block}>
+                                    <h4 className={articleCardStyle.header}>
+                                        Ireland’s top Fitness Enthusiasts’ health and fitness tips:
+                                        Aaron Smyth NUTrition Ireland
+                                    </h4>
+                                    <div className={articleCardStyle.eye_counter_wrapper}>
+                                        <EyeCounter
+                                            className={articleCardStyle.eye_counter}
+                                            count={288}
+                                            date={'1 September 2017'}
+                                            dateClassName={articleCardStyle.eye_counter__date}
+                                        />
+                                    </div>
+                                    <p className={articleCardStyle.preview_text}>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the
+                                        1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a
+                                        type specimen book.
+                                    </p>
+                                </div>
+                            </div>)}
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>;
+    }
+
     render(): Node {
         const view = this;
         const {state} = view;
@@ -49,52 +101,7 @@ export default class Home extends Component<{}, StateType> {
         return <div>
             <PromoArticle3 list={pageData.data.promoRows}/>
 
-            <section className={sectionStyle.blog_section}>
-                <div className={sectionStyle.blog_section_content}>
-                    <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
-
-                    <div className="lt-tablet-width-reverse">
-                        <div className={adsStyle.block__type_1}/>
-
-                        <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
-
-                            {'012'
-                                .split('')
-                                .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
-                                    <div
-                                        className={articleCardStyle.image}
-                                        style={{backgroundImage: 'url(//picsum.photos/800/600)'}}
-                                    />
-                                    <div className={articleCardStyle.text_block}>
-                                        <h4 className={articleCardStyle.header}>
-                                            Ireland’s top Fitness Enthusiasts’ health and fitness tips:
-                                            Aaron Smyth NUTrition Ireland
-                                        </h4>
-                                        <div className={articleCardStyle.eye_counter_wrapper}>
-                                            <EyeCounter
-                                                className={articleCardStyle.eye_counter}
-                                                count={288}
-                                                date={'1 September 2017'}
-                                                dateClassName={articleCardStyle.eye_counter__date}
-                                            />
-                                        </div>
-                                        <p className={articleCardStyle.preview_text}>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s,
-                                            when an unknown printer took a galley of type and scrambled it to make a
-                                            type specimen book.
-                                        </p>
-                                    </div>
-                                </div>)}
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
+            {view.renderFitness(pageData)}
 
             <PromoArticleText3/>
 

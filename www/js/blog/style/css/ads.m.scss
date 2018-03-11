@@ -3,6 +3,8 @@
     width: 300px;
     height: 600px;
     background-image: url('//picsum.photos/800/600');
+    background-position: center center;
+    background-size: cover;
 }
 
 :global .lt-tablet-width {

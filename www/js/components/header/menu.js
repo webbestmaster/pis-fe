@@ -42,7 +42,7 @@ class Menu extends Component {
                     })} to="/trainings">Тренировки</Link>
                     <Link {...cnx('header-menu__link', {
                         'header-menu__link--active': props.match.url === '/blog'
-                    })} to="/blog">Фитнес-блог</Link>
+                    })} to="/blog">Фитнес - Блог</Link>
                     <p onClick={() => view.openUserPage()}
                         className="header-menu__button header-menu__button--login">
                         <span className="header-menu__button-text ellipsis">{userName}</span>
@@ -96,7 +96,7 @@ class Menu extends Component {
                         })} to="/trainings">Тренировки</Link>
                         <Link {...cnx('header-mobile-menu__link', {
                             'header-mobile-menu__link--active': props.match.url === '/blog'
-                        })} to="/blog">Фитнес-блог</Link>
+                        })} to="/blog">Фитнес - Блог</Link>
                     </div>
                 </nav>,
                 <div
