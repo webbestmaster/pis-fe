@@ -71,12 +71,15 @@
             margin-top: 15px;
             &.footer__social-link--vk {
                 background-image: url('./../i/footer/icon_vk.svg');
-                background-size: 21px;
+                background-size: 21px auto;
+                background-position: 44% 50%;
+
             }
             &.footer__social-link--instagram {
                 background-image: url('./../i/footer/icon_instagram.svg');
-                background-size: 21px;
+                background-size: 21px auto;
                 margin-left: 20px;
+                background-position: 48% 47%;
             }
         }
     }
