@@ -34,7 +34,7 @@ export default (): Node =>
         <Switch>
             <Route path='/' component={Home} exact/>
             <Route path='/category/:categoryName' component={Category} exact/>
-            <Route path='/__article__/:articleId' component={Article} exact/>
+            <Route path='/article/:categoryName/:articleId' component={Article} exact/>
             <Route component={NotFoundPage}/>
         </Switch>
     </BrowserRouter>
