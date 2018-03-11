@@ -93,6 +93,55 @@ export default class Home extends Component<{}, StateType> {
         </section>;
     }
 
+    renderRow(articleList: Array<{}>, data: {}): Node {
+        const view = this;
+        const {state} = view;
+        const [
+            article1,
+            article2 = articleList[0],
+            article3 = articleList[0],
+            article4 = articleList[0],
+            article5 = articleList[0],
+            article6 = articleList[0]
+        ] = articleList;
+
+        return <section className={sectionStyle.blog_section}>
+            <div className={sectionStyle.blog_section_content}>
+                <h3 className={sectionStyle.blog_section_header}>{data.header}</h3>
+
+                <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__3_in_row}>
+
+                    {[article1, article2, article3, article4, article5, article6]
+                        .map((article: {}): Node => <Link
+                            to={'/article/' + article.id}
+                            key={article.id}
+                            className={articleCardStyle.block}>
+                            <div
+                                className={articleCardStyle.image}
+                                style={{backgroundImage: 'url(' + resolveImagePath(article.image) + ')'}}
+                            />
+                            <div className={articleCardStyle.text_block}>
+                                <h4 className={articleCardStyle.header + ' section_htdu'}>
+                                    {article.title}
+                                </h4>
+                                <div className={articleCardStyle.eye_counter_wrapper}>
+                                    <EyeCounter
+                                        className={articleCardStyle.eye_counter}
+                                        count={288}
+                                        date={dateToHuman(article.created_at)}
+                                        dateClassName={articleCardStyle.eye_counter__date}
+                                    />
+                                </div>
+                                <p className={articleCardStyle.preview_text + ' section_htdu'}>
+                                    {article.html}
+                                </p>
+                            </div>
+                        </Link>)}
+                </div>
+            </div>
+        </section>;
+    }
+
     render(): Node {
         const view = this;
         const {state} = view;
@@ -160,43 +209,7 @@ export default class Home extends Component<{}, StateType> {
 
             <PromoArticleRow3 list={pageData.data.indexRows.event}/>
 
-            <section className={sectionStyle.blog_section}>
-                <div className={sectionStyle.blog_section_content}>
-                    <h3 className={sectionStyle.blog_section_header}>Знания</h3>
-
-                    <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__3_in_row}>
-
-                        {'012345'
-                            .split('')
-                            .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
-                                <div
-                                    className={articleCardStyle.image}
-                                    style={{backgroundImage: 'url(//picsum.photos/800/600)'}}
-                                />
-                                <div className={articleCardStyle.text_block}>
-                                    <h4 className={articleCardStyle.header}>
-                                        Ireland’s top Fitness Enthusiasts’ health and fitness tips:
-                                        Aaron Smyth NUTrition Ireland
-                                    </h4>
-                                    <div className={articleCardStyle.eye_counter_wrapper}>
-                                        <EyeCounter
-                                            className={articleCardStyle.eye_counter}
-                                            count={288}
-                                            date={'1 September 2017'}
-                                            dateClassName={articleCardStyle.eye_counter__date}
-                                        />
-                                    </div>
-                                    <p className={articleCardStyle.preview_text}>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book.
-                                    </p>
-                                </div>
-                            </div>)}
-                    </div>
-                </div>
-            </section>
+            {view.renderRow(pageData.data.indexRows.knowledge, {header: 'Знания'})}
 
         </div>;
     }
