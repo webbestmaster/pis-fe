@@ -13,6 +13,7 @@ import EyeCounter from './../eye-counter';
 import {fetchX} from '../../../helper/fetch-x';
 import {resolveImagePath} from '../../../helper/path-x';
 import {dateToHuman} from '../../../helper/date';
+import {Link} from 'react-router-dom';
 
 const appConst = require('./../../../app-const');
 // import {Link} from 'react-router-dom';
@@ -53,18 +54,21 @@ export default class Home extends Component<{}, StateType> {
                 <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
 
                 <div className="lt-tablet-width-reverse">
-                    <div className={adsStyle.block__type_1}/>
+                    <Link to={'/'} className={adsStyle.block__type_1}/>
 
                     <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
 
                         {[article1, article2, article3]
-                            .map((article: {}): Node => <div key={article.id} className={articleCardStyle.block}>
+                            .map((article: {}): Node => <Link
+                                to={'/article/' + article.id}
+                                key={article.id}
+                                className={articleCardStyle.block}>
                                 <div
                                     className={articleCardStyle.image}
                                     style={{backgroundImage: 'url(' + resolveImagePath(article.image) + ')'}}
                                 />
                                 <div className={articleCardStyle.text_block}>
-                                    <h4 className={articleCardStyle.header}>
+                                    <h4 className={articleCardStyle.header + ' section_htdu'}>
                                         {article.title}
                                     </h4>
                                     <div className={articleCardStyle.eye_counter_wrapper}>
@@ -75,11 +79,11 @@ export default class Home extends Component<{}, StateType> {
                                             dateClassName={articleCardStyle.eye_counter__date}
                                         />
                                     </div>
-                                    <p className={articleCardStyle.preview_text}>
+                                    <p className={articleCardStyle.preview_text + ' section_htdu'}>
                                         {article.html}
                                     </p>
                                 </div>
-                            </div>)}
+                            </Link>)}
 
                     </div>
 
