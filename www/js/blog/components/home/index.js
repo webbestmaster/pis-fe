@@ -107,8 +107,7 @@ export default class Home extends Component<{}, StateType> {
 
             {view.renderFitness(pageData.data.indexRows.fitness)}
 
-            <PromoArticleText3/>
-
+            <PromoArticleText3 list={pageData.data.indexRows.food}/>
 
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>

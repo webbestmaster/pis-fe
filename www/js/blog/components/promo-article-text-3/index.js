@@ -6,9 +6,17 @@ import type {Node} from 'react';
 import style from './style.m.scss';
 import EyeCounter from './../eye-counter';
 import sectionStyle from './../../style/css/sercion.m.scss';
+import {resolveImagePath} from '../../../helper/path-x';
+import {dateToHuman} from '../../../helper/date';
+import {Link} from 'react-router-dom';
 
 export default class PromoArticleText3 extends Component<{}> {
     render(): Node {
+        const view = this;
+        const {props} = view;
+        const {list} = props;
+        const [article1, article2 = list[0], article3 = list[0]] = list;
+
         return <div className={style.block}>
 
             <div className={sectionStyle.blog_section_content}>
@@ -18,38 +26,55 @@ export default class PromoArticleText3 extends Component<{}> {
             <div className={style.block_hug}>
                 <div className={style.article_holder}>
 
-                    <div className={style.article_1} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
-                        <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
+                    <Link
+                        to={'/article/' + article1.id}
+                        className={style.article_1}
+                        style={{backgroundImage: 'url(' + resolveImagePath(article1.image) + ')'}}>
+                        <EyeCounter
+                            className={style.eye_counter}
+                            count={288}
+                            date={dateToHuman(article1.created_at)}/>
                         <h3 className={style.article_header}>
-                            Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland
+                            {article1.title}
                         </h3>
-                    </div>
+                    </Link>
 
-                    <p className={style.text}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </p>
+                    <Link
+                        to={'/article/' + article1.id}
+                        className={style.text + ' section_htdu'}>
+                        {article1.html}
+                    </Link>
 
-                    <div className={style.article_2} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
-                        <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
-                        <h3 className={style.article_header + ' ellipsis'}>Describe your design process.</h3>
-                        <h4 className={style.article_sub_header + ' ellipsis'}>Unlike others in the office services</h4>
-                    </div>
+                    <Link
+                        to={'/article/' + article2.id}
+                        className={style.article_2}
+                        style={{backgroundImage: 'url(' + resolveImagePath(article2.image) + ')'}}>
+                        <EyeCounter
+                            className={style.eye_counter}
+                            count={288}
+                            date={dateToHuman(article2.created_at)}/>
+                        <h3 className={style.article_header + ' ellipsis'}>
+                            {article2.title}
+                        </h3>
+                        <h4 className={style.article_sub_header + ' ellipsis'}>
+                            {article2.html}
+                        </h4>
+                    </Link>
 
-                    <div className={style.article_3} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}>
-                        <EyeCounter className={style.eye_counter} count={288} date={'1 September 2017'}/>
-                        <h3 className={style.article_header + ' ellipsis'}>Describe your design process.</h3>
-                        <h4 className={style.article_sub_header + ' ellipsis'}>Unlike others in the office services</h4>
-                    </div>
-
-
+                    <Link
+                        to={'/article/' + article3.id}
+                        className={style.article_3}
+                        style={{backgroundImage: 'url(' + resolveImagePath(article3.image) + ')'}}>
+                        <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article3.created_at)}/>
+                        <h3 className={style.article_header + ' ellipsis'}>
+                            {article3.title}
+                        </h3>
+                        <h4 className={style.article_sub_header + ' ellipsis'}>
+                            {article3.html}
+                        </h4>
+                    </Link>
                 </div>
             </div>
-
         </div>;
     }
 }
