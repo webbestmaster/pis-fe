@@ -63,7 +63,7 @@
     letter-spacing: 0.5px;
     margin-bottom: 23px;
     @include line-cap(2);
-    height: 48px;
+    max-height: 48px;
 }
 
 .eye_counter_wrapper {

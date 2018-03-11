@@ -11,6 +11,8 @@ import articleCardStyle from './../../style/css/article-card.m.scss';
 import adsStyle from './../../style/css/ads.m.scss';
 import EyeCounter from './../eye-counter';
 import {fetchX} from '../../../helper/fetch-x';
+import {resolveImagePath} from '../../../helper/path-x';
+import {dateToHuman} from '../../../helper/date';
 
 const appConst = require('./../../../app-const');
 // import {Link} from 'react-router-dom';
@@ -40,7 +42,11 @@ export default class Home extends Component<{}, StateType> {
     renderFitness(articleList: Array<{}>): Node {
         const view = this;
         const {state} = view;
-        const {pageData} = state;
+        const [
+            article1,
+            article2 = articleList[0],
+            article3 = articleList[0]
+        ] = articleList;
 
         return <section className={sectionStyle.blog_section}>
             <div className={sectionStyle.blog_section_content}>
@@ -51,32 +57,26 @@ export default class Home extends Component<{}, StateType> {
 
                     <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
 
-                        {'012'
-                            .split('')
-                            .map((key: string): Node => <div key={key} className={articleCardStyle.block}>
+                        {[article1, article2, article3]
+                            .map((article: {}): Node => <div key={article.id} className={articleCardStyle.block}>
                                 <div
                                     className={articleCardStyle.image}
-                                    style={{backgroundImage: 'url(//picsum.photos/800/600)'}}
+                                    style={{backgroundImage: 'url(' + resolveImagePath(article.image) + ')'}}
                                 />
                                 <div className={articleCardStyle.text_block}>
                                     <h4 className={articleCardStyle.header}>
-                                        Ireland’s top Fitness Enthusiasts’ health and fitness tips:
-                                        Aaron Smyth NUTrition Ireland
+                                        {article.title}
                                     </h4>
                                     <div className={articleCardStyle.eye_counter_wrapper}>
                                         <EyeCounter
                                             className={articleCardStyle.eye_counter}
                                             count={288}
-                                            date={'1 September 2017'}
+                                            date={dateToHuman(article.created_at)}
                                             dateClassName={articleCardStyle.eye_counter__date}
                                         />
                                     </div>
                                     <p className={articleCardStyle.preview_text}>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s,
-                                        when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book.
+                                        {article.html}
                                     </p>
                                 </div>
                             </div>)}
@@ -101,7 +101,7 @@ export default class Home extends Component<{}, StateType> {
         return <div>
             <PromoArticle3 list={pageData.data.promoRows}/>
 
-            {view.renderFitness(pageData)}
+            {view.renderFitness(pageData.data.indexRows.fitness)}
 
             <PromoArticleText3/>
 
