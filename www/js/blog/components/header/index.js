@@ -5,6 +5,7 @@ import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import type {AppType} from './../../../types/reducer';
 import style from './style.m.scss';
+import classnames from 'classnames';
 
 const appConst = require('./../../../app-const');
 // import {metaTagMaster} from './../../../module/meta-tag';
@@ -40,15 +41,34 @@ class Header extends Component<PropsType, StateType> {
     }
 
     renderDesktop(): Node {
+        const view = this;
+        const {state, props} = view;
+        const {categoryName} = props.match.params;
+
         return <header
             key="header"
             className={style.block}>
             <a href="/" className={style.link + ' ' + style.to_main_site}>&nbsp;</a>
-            <Link to="/category/knowledge" className={style.link}>знания</Link>
-            <Link to="/category/event" className={style.link}>события</Link>
-            <Link to="/category/motivation" className={style.link}>мотивация</Link>
-            <Link to="/category/food" className={style.link}>питание</Link>
-            <Link to="/category/fitness" className={style.link}>фитнес</Link>
+            <Link
+                to="/category/knowledge"
+                className={classnames(style.link, {[style.link__active]: categoryName === 'knowledge'})}
+            >знания</Link>
+            <Link
+                to="/category/event"
+                className={classnames(style.link, {[style.link__active]: categoryName === 'event'})}
+            >события</Link>
+            <Link
+                to="/category/motivation"
+                className={classnames(style.link, {[style.link__active]: categoryName === 'motivation'})}
+            >мотивация</Link>
+            <Link
+                to="/category/food"
+                className={classnames(style.link, {[style.link__active]: categoryName === 'food'})}
+            >питание</Link>
+            <Link
+                to="/category/fitness"
+                className={classnames(style.link, {[style.link__active]: categoryName === 'fitness'})}
+            >фитнес</Link>
             <Link to="/" className={style.logo}/>
         </header>;
     }
@@ -56,7 +76,7 @@ class Header extends Component<PropsType, StateType> {
     renderMobile(): Node {
         const view = this;
         const {props, state} = view;
-
+        const {categoryName} = props.match.params;
         const {isOpen} = state;
 
         return <header
@@ -86,27 +106,33 @@ class Header extends Component<PropsType, StateType> {
                         <Link
                             to="/"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>главная</Link>
+                            className={classnames(style.link, {[style.link__active]: props.match.url === '/'})}
+                        >главная</Link>
                         <Link
                             to="/category/fitness"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>фитнес</Link>
+                            className={classnames(style.link, {[style.link__active]: categoryName === 'fitness'})}
+                        >фитнес</Link>
                         <Link
                             to="/category/food"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>питание</Link>
+                            className={classnames(style.link, {[style.link__active]: categoryName === 'food'})}
+                        >питание</Link>
                         <Link
                             to="/category/motivation"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>мотивация</Link>
+                            className={classnames(style.link, {[style.link__active]: categoryName === 'motivation'})}
+                        >мотивация</Link>
                         <Link
                             to="/category/event"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>события</Link>
+                            className={classnames(style.link, {[style.link__active]: categoryName === 'event'})}
+                        >события</Link>
                         <Link
                             to="/category/knowledge"
                             onClick={(): void => view.closeMenu()}
-                            className={style.link}>знания</Link>
+                            className={classnames(style.link, {[style.link__active]: categoryName === 'knowledge'})}
+                        >знания</Link>
                         <a href="/" className={style.link + ' ' + style.to_main_site}>&nbsp;</a>
                     </div>
                 ] :
