@@ -40,7 +40,7 @@ export default class Home extends Component<{}, StateType> {
         view.setState({pageData: rawResponse});
     }
 
-    renderFitness(articleList: Array<{}>): Node {
+    renderList(articleList: Array<{}>, data: {}): Node {
         const view = this;
         const {state} = view;
         const [
@@ -51,7 +51,7 @@ export default class Home extends Component<{}, StateType> {
 
         return <section className={sectionStyle.blog_section}>
             <div className={sectionStyle.blog_section_content}>
-                <h3 className={sectionStyle.blog_section_header}>Фитнес</h3>
+                <h3 className={sectionStyle.blog_section_header}>{data.header}</h3>
 
                 <div className="lt-tablet-width-reverse">
                     <Link to={'/'} className={adsStyle.block__type_1}/>
@@ -105,10 +105,13 @@ export default class Home extends Component<{}, StateType> {
         return <div>
             <PromoArticle3 list={pageData.data.promoRows}/>
 
-            {view.renderFitness(pageData.data.indexRows.fitness)}
+            {view.renderList(pageData.data.indexRows.fitness, {header: 'Фитнес'})}
 
             <PromoArticleText3 list={pageData.data.indexRows.food}/>
 
+            {view.renderList(pageData.data.indexRows.motivation, {header: 'Мотивация'})}
+
+            {/*
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>
                     <h3 className={sectionStyle.blog_section_header}>Мотивация</h3>
@@ -153,10 +156,9 @@ export default class Home extends Component<{}, StateType> {
 
                 </div>
             </section>
-
+*/}
 
             <PromoArticleRow3/>
-
 
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>
@@ -192,10 +194,7 @@ export default class Home extends Component<{}, StateType> {
                                     </p>
                                 </div>
                             </div>)}
-
                     </div>
-
-
                 </div>
             </section>
 
