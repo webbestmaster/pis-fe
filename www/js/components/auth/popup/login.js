@@ -43,14 +43,14 @@ class Login extends Component {
         const view = this;
 
         if (IS_PRODUCTION) { // eslint-disable-line id-match
-            fetch(authConst.url.socialLoginLinks,
+            fetch(globalAppConst.pageDataUrl.host + authConst.url.socialLoginLinks,
                 {credentials: 'include', method: 'GET'})
                 .then(rawResponse => rawResponse.json())
                 .then(response => {
                     view.setState({links: response.data.links});
                 });
         } else {
-            fetch(authConst.url.socialLoginLinks,
+            fetch(globalAppConst.pageDataUrl.host + authConst.url.socialLoginLinks,
                 {credentials: 'include', method: 'GET'})
                 .then(response => {
                     view.setState({links: fakeResponse.data.links});
