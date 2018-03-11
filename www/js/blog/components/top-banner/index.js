@@ -27,9 +27,9 @@ export default class TopBanner extends Component<{}, StateType> {
     async componentDidMount(): Promise<void> {
         const view = this;
 
-        const bannerData = await fetchX('/api/get-blog-top-banner-data').catch((): null => null);
+        // const bannerData = await fetchX('/api/get-blog-top-banner-data').catch((): null => null);
 
-        console.log(bannerData);
+        // console.log(bannerData);
 
         view.setState({url: '//picsum.photos/800/600'});
     }
