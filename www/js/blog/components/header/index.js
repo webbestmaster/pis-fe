@@ -43,6 +43,7 @@ class Header extends Component<PropsType, StateType> {
         return <header
             key="header"
             className={style.block}>
+            <a href="/" className={style.link + ' ' + style.to_main_site}>&nbsp;</a>
             <Link to="/category/knowledge" className={style.link}>знания</Link>
             <Link to="/category/event" className={style.link}>события</Link>
             <Link to="/category/motivation" className={style.link}>мотивация</Link>
@@ -106,6 +107,7 @@ class Header extends Component<PropsType, StateType> {
                             to="/category/knowledge"
                             onClick={(): void => view.closeMenu()}
                             className={style.link}>знания</Link>
+                        <a href="/" className={style.link + ' ' + style.to_main_site}>&nbsp;</a>
                     </div>
                 ] :
                 null}

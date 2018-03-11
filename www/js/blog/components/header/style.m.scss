@@ -42,6 +42,18 @@
     &:first-child {
         margin-right: 0;
     }
+
+    &.to_main_site {
+        background-image: url('./image/exit.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 21px auto;
+        width: 40px;
+        margin-left: -32px;
+        &:hover {
+            background-image: url('./image/exit-active.svg');
+        }
+    }
 }
 
 .block_mobile {
@@ -90,6 +102,11 @@
         text-align: center;
         text-indent: -5px;
         letter-spacing: 2px;
+
+        &.to_main_site {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
 
