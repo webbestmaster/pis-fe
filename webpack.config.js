@@ -154,7 +154,9 @@ const webpackConfig = {
             template: 'index.html',
             minify: {
                 collapseWhitespace: IS_PRODUCTION,
-                removeComments: IS_PRODUCTION
+                removeComments: IS_PRODUCTION,
+                minifyCSS: IS_PRODUCTION,
+                minifyJS: IS_PRODUCTION
             },
             hash: true,
             filename: IS_PRODUCTION ? './../../public/index.html' : './index.html'
