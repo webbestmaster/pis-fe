@@ -14,7 +14,7 @@ export default class PromoArticle3 extends Component<{}> {
         const view = this;
         const {props} = view;
         const {list} = props;
-        const [article1, article2, article3] = list;
+        const [article1, article2 = list[0], article3 = list[0]] = list;
 
         return <div className={style.block}>
             <div className={style.block_hug}>

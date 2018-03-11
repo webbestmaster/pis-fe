@@ -158,7 +158,7 @@ export default class Home extends Component<{}, StateType> {
             </section>
 */}
 
-            <PromoArticleRow3/>
+            <PromoArticleRow3 list={pageData.data.indexRows.event}/>
 
             <section className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>

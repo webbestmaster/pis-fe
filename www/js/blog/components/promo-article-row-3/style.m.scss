@@ -1,5 +1,6 @@
 @import "./../../style/css/aaa-class";
 @import "./../../style/css/aaa-var";
+@import "./../../style/css/helper";
 
 .block {
     padding: 100px 0;
@@ -65,6 +66,8 @@
         bottom: 72px;
         line-height: 28px;
         font-size: 18px;
+        @include line-cap(4);
+        max-height: 108px;
     }
     //.article_sub_header {
     //    bottom: 38px;
@@ -81,7 +84,8 @@
     .article_header {
         font-size: 16px;
         line-height: 24px;
-        //bottom: 120px;
+        @include line-cap(4);
+        max-height: 96px;
     }
 }
 
