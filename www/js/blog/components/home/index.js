@@ -30,14 +30,14 @@ export default class Home extends Component<{}, StateType> {
     async componentDidMount(): Promise<void> {
         const view = this;
 
-        const rawResponse = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.home)
+        const response = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.home)
             .catch((): null => null);
 
-        if (rawResponse === null) {
+        if (response === null) {
             return;
         }
 
-        view.setState({pageData: rawResponse});
+        view.setState({pageData: response});
     }
 
     renderList(articleList: Array<{}>, data: {}): Node {
