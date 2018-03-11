@@ -7,7 +7,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const topBanner = require('./../../../style/images/contacts/top-banner.png');
+const topBanner = require('./../../../style/images/contacts/top-banner.jpg');
 
 class ContactsPage extends Component {
     componentDidMount() {
