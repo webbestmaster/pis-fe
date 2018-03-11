@@ -98,7 +98,7 @@ class Category extends Component<{}, {}> {
                         {rows
                             .filter((node: Node, nodeII: number): boolean => nodeII < rowsToShow)
                             .map((row: {}): Node => <Link
-                                to={'/article/' + row.id}
+                                to={'/article/' + row.category + '/' + row.id}
                                 key={row.id}
                                 className={articleCardStyle.block}>
                                 <div

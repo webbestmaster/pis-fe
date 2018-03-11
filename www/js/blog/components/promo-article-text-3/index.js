@@ -27,7 +27,7 @@ export default class PromoArticleText3 extends Component<{}> {
                 <div className={style.article_holder}>
 
                     <Link
-                        to={'/article/' + article1.id}
+                        to={'/article/' + article1.category + '/' + article1.id}
                         className={style.article_1}
                         style={{backgroundImage: 'url(' + resolveImagePath(article1.image) + ')'}}>
                         <EyeCounter
@@ -40,13 +40,13 @@ export default class PromoArticleText3 extends Component<{}> {
                     </Link>
 
                     <Link
-                        to={'/article/' + article1.id}
+                        to={'/article/' + article1.category + '/' + article1.id}
                         className={style.text + ' section_htdu'}>
                         {article1.html}
                     </Link>
 
                     <Link
-                        to={'/article/' + article2.id}
+                        to={'/article/' + article2.category + '/' + article2.id}
                         className={style.article_2}
                         style={{backgroundImage: 'url(' + resolveImagePath(article2.image) + ')'}}>
                         <EyeCounter
@@ -62,7 +62,7 @@ export default class PromoArticleText3 extends Component<{}> {
                     </Link>
 
                     <Link
-                        to={'/article/' + article3.id}
+                        to={'/article/' + article3.category + '/' + article3.id}
                         className={style.article_3}
                         style={{backgroundImage: 'url(' + resolveImagePath(article3.image) + ')'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article3.created_at)}/>

@@ -60,7 +60,7 @@ export default class Home extends Component<{}, StateType> {
 
                         {[article1, article2, article3]
                             .map((article: {}): Node => <Link
-                                to={'/article/' + article.id}
+                                to={'/article/' + article.category + '/' + article.id}
                                 key={article.id}
                                 className={articleCardStyle.block}>
                                 <div
@@ -113,7 +113,7 @@ export default class Home extends Component<{}, StateType> {
 
                     {[article1, article2, article3, article4, article5, article6]
                         .map((article: {}): Node => <Link
-                            to={'/article/' + article.id}
+                            to={'/article/' + article.category + '/' + article.id}
                             key={article.id}
                             className={articleCardStyle.block}>
                             <div

@@ -21,7 +21,7 @@ export default class PromoArticle3 extends Component<{}> {
                 <div className={style.article_holder} style={{width: '100%', maxWidth: '100%'}}>
 
                     <Link
-                        to={'/article/' + article1.id}
+                        to={'/article/' + article1.category + '/' + article1.id}
                         className={style.article_1}
                         style={{backgroundImage: 'url(' + resolveImagePath(article1.image) + ')'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article1.created_at)}/>
@@ -30,7 +30,7 @@ export default class PromoArticle3 extends Component<{}> {
                     </Link>
 
                     <Link
-                        to={'/article/' + article2.id}
+                        to={'/article/' + article2.category + '/' + article2.id}
                         className={style.article_2}
                         style={{backgroundImage: 'url(' + resolveImagePath(article2.image) + ')'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article2.created_at)}/>
@@ -39,7 +39,7 @@ export default class PromoArticle3 extends Component<{}> {
                     </Link>
 
                     <Link
-                        to={'/article/' + article3.id}
+                        to={'/article/' + article3.category + '/' + article3.id}
                         className={style.article_3}
                         style={{backgroundImage: 'url(' + resolveImagePath(article3.image) + ')'}}>
                         <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article3.created_at)}/>
