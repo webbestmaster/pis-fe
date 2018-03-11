@@ -1,31 +1,17 @@
-/* global window, fetch, IS_PRODUCTION */
+/* global window */
 import React, {Component} from 'react';
 import Dialog from './../../util/dialog';
 import style from './style.m.scss';
 import {connect} from 'react-redux';
 import * as authAction from '../action';
 import {withRouter} from 'react-router-dom';
+import {fetchX} from './../../../helper/fetch-x';
 // import * as authApi from './../api';
 // import FacebookLogin from 'react-facebook-login';
 // import VkLogin from './../../vk-login';
 
 const authConst = require('./../const');
 const globalAppConst = require('./../../../app-const');
-
-const fakeResponse = {
-    sig: 'a451d3209745dbf211bcecaf81345970a6d768a1',
-    code: 200,
-    data: {
-        links: {
-            vk: 'https://oauth.vk.com/authorize?client_id=6400831&' + // eslint-disable-line id-length
-            'display=popup&redirect_uri=http%3A%2F%2Fsite.katran.by%2Fapi%2Foauth%2Fredirect%3Fprovider%3Dvk&' +
-            'scope=email&response_type=code&v=5.73',
-            facebook: 'https://www.facebook.com/v2.12/dialog/oauth?client_id=151915955476021&' +
-            'redirect_uri=http%3A%2F%2Fsite.katran.by%2Fapi%2Foauth%2Fredirect%3Fprovider%3Dfacebook&' +
-            'state={public_profile,email,user_birthday}&response_type=code&display=popup'
-        }
-    }
-};
 
 class Login extends Component {
     constructor() {
@@ -39,23 +25,11 @@ class Login extends Component {
         };
     }
 
-    componentDidMount() {
+    getSocialLoginLinks() {
         const view = this;
 
-        if (IS_PRODUCTION) { // eslint-disable-line id-match
-            fetch(globalAppConst.pageDataUrl.host + authConst.url.socialLoginLinks,
-                {credentials: 'include', method: 'GET'})
-                .then(rawResponse => rawResponse.json())
-                .then(response => {
-                    view.setState({links: response.data.links});
-                });
-        } else {
-            fetch(globalAppConst.pageDataUrl.host + authConst.url.socialLoginLinks,
-                {credentials: 'include', method: 'GET'})
-                .then(response => {
-                    view.setState({links: fakeResponse.data.links});
-                });
-        }
+        return fetchX(globalAppConst.pageDataUrl.host + authConst.url.socialLoginLinks)
+            .then(response => view.setState({links: response.data.links}));
     }
 
     login() {
@@ -71,16 +45,19 @@ class Login extends Component {
 
     renderFacebook() {
         const view = this;
-        const {props, state} = view;
 
         return <div
             onClick={() => {
                 // const newWindow = window.open(state.links.facebook, '_blank');
-                const newWindow = window.open(state.links.facebook, 'facebook', 'width=800,height=600');
 
-                if (typeof window.focus === 'function') {
-                    newWindow.focus();
-                }
+                view.getSocialLoginLinks()
+                    .then(() => {
+                        const newWindow = window.open(view.state.links.facebook, 'facebook', 'width=800,height=600');
+
+                        if (typeof window.focus === 'function') {
+                            newWindow.focus();
+                        }
+                    });
             }}
             className={style.social_button + ' ' + style.social_button__facebook}>
             {/*
@@ -111,16 +88,19 @@ class Login extends Component {
 
     renderVk() {
         const view = this;
-        const {props, state} = view;
 
         return <div
             onClick={() => {
                 // const newWindow = window.open(state.links.vk, '_blank');
-                const newWindow = window.open(state.links.vk, 'vk', 'width=800,height=600');
 
-                if (typeof window.focus === 'function') {
-                    newWindow.focus();
-                }
+                view.getSocialLoginLinks()
+                    .then(() => {
+                        const newWindow = window.open(view.state.links.vk, 'vk', 'width=800,height=600');
+
+                        if (typeof window.focus === 'function') {
+                            newWindow.focus();
+                        }
+                    });
             }}
             className={style.social_button + ' ' + style.social_button__vk}>
             {/*
