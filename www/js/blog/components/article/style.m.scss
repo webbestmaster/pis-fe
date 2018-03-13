@@ -1,4 +1,5 @@
 @import "./../../style/css/aaa-var";
+@import "./../../style/css/helper";
 
 .article_padded_wrapper {
     margin-right: 370px;
@@ -64,6 +65,7 @@
 }
 
 .extra_article {
+    display: block;
     border-bottom: 1px solid $mainBorderColor;
     padding-bottom: 33px;
     margin-bottom: 32px;
@@ -88,6 +90,8 @@
     line-height: 24px;
     font-weight: bold;
     margin-bottom: 19px;
+    @include line-cap(3);
+    height: 72px;
 }
 
 .extra_article_date {

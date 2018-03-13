@@ -46,7 +46,8 @@ type StateType = {};
 
 class Article extends Component<PropsType, StateType> {
     state = {
-        pageData: null
+        pageData: null,
+        indexResponse: null
     };
 
     async componentDidMount(): Promise<void> {
@@ -64,26 +65,42 @@ class Article extends Component<PropsType, StateType> {
             .replace('{{articleId}}', articleId))
             .catch((): null => null);
 
-        if (response === null) {
-            return;
+        if (response !== null) {
+            view.setState({pageData: response});
         }
 
-        view.setState({pageData: response});
+        const indexResponse = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.home)
+            .catch((): null => null);
+
+        if (indexResponse !== null) {
+            view.setState({indexResponse});
+        }
     }
 
     renderExtraArticleList(): Node {
         const view = this;
+        const {state, props} = view;
+        const {indexResponse} = state;
+
+        if (indexResponse === null) {
+            return null;
+        }
+
+        const {categoryName} = props.match.params;
+        const allIndexArticleList = indexResponse.data.indexRows[categoryName];
+        const [article1, article2 = allIndexArticleList[0], article3 = allIndexArticleList[0]] = allIndexArticleList;
 
         return <div className={style.extra_article_list}>
-            {'012'.split('').map((key: string): Node => <div key={key} className={style.extra_article}>
-                <div className={style.extra_article_image} style={{backgroundImage: 'url(//picsum.photos/800/600)'}}/>
-                <h4 className={style.extra_article_header}>
-                    Ireland’s top Fitness Enthusiasts’ health and fitness tips: Aaron Smyth NUTrition Ireland
-                </h4>
-                <span className={style.extra_article_date}>
-                    1 September 2017
-                </span>
-            </div>)}
+            {[article1, article2, article3].map((article: {}): Node => <Link
+                to={'/article/' + categoryName + '/' + article.id}
+                key={article.id}
+                className={style.extra_article}>
+                <div
+                    className={style.extra_article_image}
+                    style={{backgroundImage: 'url(' + resolveImagePath(article.image) + ')'}}/>
+                <h4 className={style.extra_article_header + ' section_htdu'}>{article.title}</h4>
+                <span className={style.extra_article_date}>{dateToHuman(article.created_at)}</span>
+            </Link>)}
         </div>;
     }
 
