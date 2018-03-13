@@ -1,5 +1,5 @@
 // @flow
-/* global requestAnimationFrame */
+/* global requestAnimationFrame, location */
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {Link, withRouter} from 'react-router-dom';
@@ -20,6 +20,22 @@ import {fetchX} from '../../../helper/fetch-x';
 import {dateToHuman} from '../../../helper/date';
 import {resolveImagePath} from '../../../helper/path-x';
 import * as appAction from '../../../components/app/action';
+
+import {
+    FacebookShareButton,
+    GooglePlusShareButton,
+    LinkedinShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+    PinterestShareButton,
+    VKShareButton,
+    OKShareButton,
+    RedditShareButton,
+    TumblrShareButton,
+    LivejournalShareButton,
+    EmailShareButton,
+} from 'react-share';
 
 const appConst = require('./../../../app-const');
 
@@ -77,6 +93,33 @@ class Article extends Component<PropsType, StateType> {
         if (indexResponse !== null) {
             view.setState({indexResponse});
         }
+    }
+
+    renderShare(): Node {
+        const url = location.href;
+
+        return <div className={style.share}>
+            <p className={style.share_label}>Поделиться:</p>
+            {/* <p className={style.share_label}>Share:</p>*/}
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+
+{/*
+            <FacebookShareButton url={url}>
+                <br/>
+                <br/>
+                <br/>
+                fb
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </FacebookShareButton>
+*/}
+
+        </div>;
     }
 
     renderExtraArticleList(): Node {
@@ -152,20 +195,9 @@ class Article extends Component<PropsType, StateType> {
                             <div className={style.article_text_wrapper}>
                                 {article.html}
                             </div>
-                            <div className={style.share}>
-                                <p className={style.share_label}>Поделиться:</p>
-                                {/* <p className={style.share_label}>Share:</p>*/}
-                                <span className={style.share_button}/>
-                                <span className={style.share_button}/>
-                                <span className={style.share_button}/>
-                                <span className={style.share_button}/>
-                            </div>
+                            {view.renderShare()}
                         </div>
                     </div>
-
-
-                    {/* <h1>the text of article</h1> */}
-
                 </div>
             </section>
         ];

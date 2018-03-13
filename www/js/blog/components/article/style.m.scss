@@ -25,6 +25,9 @@
         color: $mainHeaderColor;
         padding-bottom: 18px;
     }
+    img {
+        max-width: 100% !important; // sorry, any html can arrive from server
+    }
 }
 
 .share {
