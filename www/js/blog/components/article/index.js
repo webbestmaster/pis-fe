@@ -1,4 +1,5 @@
 // @flow
+/* global requestAnimationFrame */
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {Link, withRouter} from 'react-router-dom';
@@ -18,6 +19,7 @@ import {routeToSectionName} from '../bread-crumbs/helper';
 import {fetchX} from '../../../helper/fetch-x';
 import {dateToHuman} from '../../../helper/date';
 import {resolveImagePath} from '../../../helper/path-x';
+import * as appAction from '../../../components/app/action';
 
 const appConst = require('./../../../app-const');
 
@@ -53,7 +55,7 @@ class Article extends Component<PropsType, StateType> {
     async componentDidMount(): Promise<void> {
         const view = this;
 
-        return view.fetchArticle();
+        return view.fetchArticle().then(() => appAction.scrollToTop());
     }
 
     async fetchArticle(): Promise<void> {
@@ -94,6 +96,11 @@ class Article extends Component<PropsType, StateType> {
             {[article1, article2, article3].map((article: {}): Node => <Link
                 to={'/article/' + categoryName + '/' + article.id}
                 key={article.id}
+                onClick={() => {
+                    requestAnimationFrame(() => {
+                        view.componentDidMount();
+                    });
+                }}
                 className={style.extra_article}>
                 <div
                     className={style.extra_article_image}
@@ -120,7 +127,7 @@ class Article extends Component<PropsType, StateType> {
         return [
             <BreadCrumbs key="bread-crumbs">
                 <Link to="/">Главная</Link>
-                <Link to={'/article/' + categoryName}>{humanCategoryName}</Link>
+                <Link to={'/category/' + categoryName}>{humanCategoryName}</Link>
                 {/* <Link to={'/article/' + categoryName + '/' + articleId}>*/}
                 {/* {article.title}*/}
                 {/* </Link>*/}
