@@ -3,7 +3,11 @@ import React, {Component} from 'react';
 import type {Node} from 'react';
 import style from './style.m.scss';
 import {fetchX} from './../../../helper/fetch-x';
-import {Link} from 'react-router-dom';
+import {resolveImagePath} from '../../../helper/path-x';
+import {resolveUrlToHttp} from '../../../components/our-partners';
+
+const find = require('lodash/find');
+const appConst = require('./../../../app-const');
 // import {metaTagMaster} from './../../../module/meta-tag';
 
 /*
@@ -16,12 +20,16 @@ import Footer from './../../components/footer';
 */
 
 type StateType = {|
-    url: string
+    ads: {
+        data: Array<{}>
+    }
 |};
 
 export default class TopBanner extends Component<{}, StateType> {
     state = {
-        url: ''
+        ads: {
+            data: [[]]
+        }
     };
 
     async componentDidMount(): Promise<void> {
@@ -30,19 +38,32 @@ export default class TopBanner extends Component<{}, StateType> {
         // const bannerData = await fetchX('/api/get-blog-top-banner-data').catch((): null => null);
 
         // console.log(bannerData);
+        const ads = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.ads
+            .replace('{{category}}', 'index'))
+            .catch((): null => null);
 
-        view.setState({url: '//picsum.photos/800/600'});
+        view.setState({ads});
     }
 
     render(): Node {
         const view = this;
         const {props, state} = view;
+        const {ads} = state;
 
-        return <Link
-            to={'/'}
+        if (ads === null) {
+            return null;
+        }
+
+        const adsItem = find(ads.data[0], {size: '1920x90'}) || null;
+
+        if (adsItem === null) {
+            return null;
+        }
+
+        return <a
+            href={resolveUrlToHttp(adsItem.external_link)}
             target="_blank"
-            className={style.block}
-            style={{backgroundImage: 'url(' + state.url + ')'}}
-        />;
+            style={{backgroundImage: 'url(' + resolveImagePath(adsItem.image) + ')'}}
+            className={style.block}/>;
     }
 }
