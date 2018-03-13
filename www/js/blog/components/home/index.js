@@ -14,17 +14,26 @@ import {fetchX} from '../../../helper/fetch-x';
 import {resolveImagePath} from '../../../helper/path-x';
 import {dateToHuman} from '../../../helper/date';
 import {Link} from 'react-router-dom';
+import {resolveUrlToHttp} from './../../../components/our-partners';
 
+const find = require('lodash/find');
+const findLast = require('lodash/findLast');
 const appConst = require('./../../../app-const');
 // import {Link} from 'react-router-dom';
 
 type StateType = {
-    pageData: mixed
+    pageData: mixed;
+    ads: {
+        data: Array<{}>
+    }
 };
 
 export default class Home extends Component<{}, StateType> {
     state = {
-        pageData: null
+        pageData: null,
+        ads: {
+            data: [[]]
+        }
     };
 
     async componentDidMount(): Promise<void> {
@@ -33,14 +42,20 @@ export default class Home extends Component<{}, StateType> {
         const response = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.home)
             .catch((): null => null);
 
-        if (response === null) {
-            return;
+        if (response !== null) {
+            view.setState({pageData: response});
         }
 
-        view.setState({pageData: response});
+        const ads = await fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.blog.ads
+            .replace('{{category}}', 'index'))
+            .catch((): null => null);
+
+        if (response !== null) {
+            view.setState({ads});
+        }
     }
 
-    renderList(articleList: Array<{}>, data: {}): Node {
+    renderList(articleList: Array<{}>, data: {}, ads?: {}): Node {
         const view = this;
         const {state} = view;
         const [
@@ -54,7 +69,13 @@ export default class Home extends Component<{}, StateType> {
                 <h3 className={sectionStyle.blog_section_header}>{data.header}</h3>
 
                 <div className="lt-tablet-width-reverse">
-                    <Link to={'/'} className={adsStyle.block__type_1}/>
+                    {ads ?
+                        <a
+                            href={resolveUrlToHttp(ads.external_link)}
+                            target="_blank"
+                            style={{backgroundImage: 'url(' + resolveImagePath(ads.image) + ')'}}
+                            className={adsStyle.block__type_1}/> :
+                        null}
 
                     <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__ads_padded}>
 
@@ -145,7 +166,7 @@ export default class Home extends Component<{}, StateType> {
     render(): Node {
         const view = this;
         const {state} = view;
-        const {pageData} = state;
+        const {pageData, ads} = state;
 
         if (pageData === null) {
             return null;
@@ -154,11 +175,19 @@ export default class Home extends Component<{}, StateType> {
         return <div>
             <PromoArticle3 list={pageData.data.promoRows}/>
 
-            {view.renderList(pageData.data.indexRows.fitness, {header: 'Фитнес'})}
+            {view.renderList(
+                pageData.data.indexRows.fitness,
+                {header: 'Фитнес'},
+                find(ads.data[0], {size: '300x600'})
+            )}
 
             <PromoArticleText3 list={pageData.data.indexRows.food}/>
 
-            {view.renderList(pageData.data.indexRows.motivation, {header: 'Мотивация'})}
+            {view.renderList(
+                pageData.data.indexRows.motivation,
+                {header: 'Мотивация'},
+                findLast(ads.data[0], {size: '300x600'})
+            )}
 
             {/*
             <section className={sectionStyle.blog_section}>

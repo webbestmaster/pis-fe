@@ -55,7 +55,7 @@ export default class OurPartners extends Component {
     }
 }
 
-function resolveUrlToHttp(url) {
+export function resolveUrlToHttp(url) {
     if (url.indexOf('http') === 0) {
         return url;
     }

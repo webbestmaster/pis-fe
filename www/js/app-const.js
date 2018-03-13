@@ -34,7 +34,8 @@ module.exports = {
         blog: {
             home: '/api/blog/index' + postfixQuestion,
             getByCategory: '/api/blog/getByCategory?category={{categoryName}}' + postfixAmp,
-            article: '/api/blog/getFullInfo?id={{articleId}}' + postfixAmp
+            article: '/api/blog/getFullInfo?id={{articleId}}' + postfixAmp,
+            ads: '/api/advertising/getByCategory?category={{category}}' + postfixAmp
         }
     },
     phone: {
