@@ -192,9 +192,13 @@ class Article extends Component<PropsType, StateType> {
                         {view.renderExtraArticleList()}
                         <div className={style.article_padded_wrapper}>
                             <img className={style.title_image} src={resolveImagePath(article.image)} alt=""/>
-                            <div className={style.article_text_wrapper}>
-                                {article.html}
-                            </div>
+                            <div
+                                className={style.article_text_wrapper}
+                                dangerouslySetInnerHTML={{
+                                    __html: article.html // eslint-disable-line id-match
+                                }}
+                            />
+                            {/* {article.html}*/}
                             {view.renderShare()}
                         </div>
                     </div>
