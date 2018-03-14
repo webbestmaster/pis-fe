@@ -34,7 +34,7 @@ import {
     RedditShareButton,
     TumblrShareButton,
     LivejournalShareButton,
-    EmailShareButton,
+    EmailShareButton
 } from 'react-share';
 
 const appConst = require('./../../../app-const');
@@ -106,7 +106,7 @@ class Article extends Component<PropsType, StateType> {
             <span className={style.share_button}/>
             <span className={style.share_button}/>
 
-{/*
+            {/*
             <FacebookShareButton url={url}>
                 <br/>
                 <br/>
