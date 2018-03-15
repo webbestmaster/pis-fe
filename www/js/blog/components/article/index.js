@@ -71,7 +71,9 @@ class Article extends Component<PropsType, StateType> {
     async componentDidMount(): Promise<void> {
         const view = this;
 
-        return view.fetchArticle().then(() => appAction.scrollToTop());
+        return view.fetchArticle().then(() => {
+            appAction.scrollToTop();
+        });
     }
 
     async fetchArticle(): Promise<void> {
@@ -210,7 +212,7 @@ class Article extends Component<PropsType, StateType> {
 
 export default withRouter(
     connect(
-        state => ({}),
+        (): {} => ({}),
         {}
     )(Article)
 );
