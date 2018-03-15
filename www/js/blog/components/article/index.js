@@ -3,12 +3,6 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-
-// const appConst = require('./../../../app-const');
-// import * as authAction from "../../../components/auth/action";
-
-// import {connect} from 'react-redux';
-// import type {AppType} from './../../../types/reducer';
 import style from './style.m.scss';
 import sectionStyle from './../../style/css/sercion.m.scss';
 import articleCardStyle from './../../style/css/article-card.m.scss';
@@ -19,36 +13,11 @@ import {routeToSectionName} from '../bread-crumbs/helper';
 import {fetchX} from '../../../helper/fetch-x';
 import {dateToHuman} from '../../../helper/date';
 import {resolveImagePath} from '../../../helper/path-x';
+import {FacebookShareButton, VKShareButton, OKShareButton} from 'react-share';
+import {FacebookIcon, VKIcon, OKIcon} from 'react-share';
 import * as appAction from '../../../components/app/action';
 
-import {
-    FacebookShareButton,
-    GooglePlusShareButton,
-    LinkedinShareButton,
-    TwitterShareButton,
-    TelegramShareButton,
-    WhatsappShareButton,
-    PinterestShareButton,
-    VKShareButton,
-    OKShareButton,
-    RedditShareButton,
-    TumblrShareButton,
-    LivejournalShareButton,
-    EmailShareButton
-} from 'react-share';
-
 const appConst = require('./../../../app-const');
-
-// import {metaTagMaster} from './../../../module/meta-tag';
-
-/*
-import Header from './../../components/header';
-import Sale from './../../components/sale';
-import PromoSteps from './../../components/promo-steps';
-import OurPartners from './../../components/our-partners';
-import PromoInstagram from './../../components/promo-instagram';
-import Footer from './../../components/footer';
-*/
 
 type PropsType = {
     match: {
@@ -116,25 +85,26 @@ class Article extends Component<PropsType, StateType> {
         const url = location.href;
 
         return <div className={style.share}>
-            <p className={style.share_label}>Поделиться:</p>
-            {/* <p className={style.share_label}>Share:</p>*/}
-            <span className={style.share_button}/>
-            <span className={style.share_button}/>
-            <span className={style.share_button}/>
-            <span className={style.share_button}/>
 
             {/*
-            <FacebookShareButton url={url}>
-                <br/>
-                <br/>
-                <br/>
-                fb
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+            <p className={style.share_label}>Share:</p>
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+            <span className={style.share_button}/>
+            */}
+
+            <p className={style.share_label}>Поделиться:</p>
+
+            <FacebookShareButton className={style.share_button} url={url}>
+                <FacebookIcon size={52} round={true}/>
             </FacebookShareButton>
-*/}
+            <VKShareButton className={style.share_button} url={url}>
+                <VKIcon size={52} round={true}/>
+            </VKShareButton>
+            <OKShareButton className={style.share_button} url={url}>
+                <OKIcon size={52} round={true}/>
+            </OKShareButton>
 
         </div>;
     }
