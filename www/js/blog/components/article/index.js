@@ -50,17 +50,32 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-const fishText = ['Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-'Asperiores earum minus porro sint vitae? A aliquid assumenda distinctio ea expedita fugiat, ' +
-'iure laudantium, molestias nam, odit officia possimus quibusdam saepe.'];
+type PropsType = {
+    match: {
+        params: {
+            articleId: string,
+            categoryName: string
+        }
+    }
+};
 
-fishText.push(...fishText);
-fishText.push(...fishText);
-fishText.push(...fishText);
-
-type PropsType = {};
-
-type StateType = {};
+type StateType = {
+    pageData: null | {
+        data: {}
+    },
+    indexResponse: null | {
+        data: {
+            indexRows: {
+                [key: string]: Array<{
+                    id: string,
+                    image: string,
+                    title: string,
+                    created_at: string
+                }>
+            }
+        }
+    }
+};
 
 class Article extends Component<PropsType, StateType> {
     state = {
@@ -138,7 +153,12 @@ class Article extends Component<PropsType, StateType> {
         const [article1, article2 = allIndexArticleList[0], article3 = allIndexArticleList[0]] = allIndexArticleList;
 
         return <div className={style.extra_article_list}>
-            {[article1, article2, article3].map((article: {}): Node => <Link
+            {[article1, article2, article3].map((article: {
+                id: string,
+                image: string,
+                title: string,
+                created_at: string
+            }): Node => <Link
                 to={'/article/' + categoryName + '/' + article.id}
                 key={article.id}
                 onClick={() => {

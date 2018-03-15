@@ -31,11 +31,18 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 */
 
-// type PropsType = {||};
+type PropsType = {
+    match: {
+        params: {
+            articleId: string,
+            categoryName: string
+        }
+    }
+};
 
-// type StateType = {||};
+type StateType = {};
 
-class Category extends Component<{}, {}> {
+class Category extends Component<PropsType, StateType> {
     state = {
         pageData: null,
         rowsToShow: 10,
@@ -48,7 +55,7 @@ class Category extends Component<{}, {}> {
         await view.fetchList();
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps: PropsType, prevState: StateType) {
         const view = this;
         const {state, props} = view;
 
@@ -128,7 +135,9 @@ class Category extends Component<{}, {}> {
             <div key="show-more" className={style.show_more_wrapper}>
                 {rowsToShow < rows.length ?
                     <div
-                        onClick={() => view.setState({rowsToShow: rowsToShow + state.increaseRowsToShow})}
+                        onClick={() => {
+                            view.setState({rowsToShow: rowsToShow + state.increaseRowsToShow});
+                        }}
                         className={style.show_more_button}>
                         <span className={style.show_more_icon}/>
                         Показать ещё
@@ -141,7 +150,7 @@ class Category extends Component<{}, {}> {
 
 export default withRouter(
     connect(
-        state => ({}),
+        (): {} => ({}),
         {}
     )(Category)
 );
