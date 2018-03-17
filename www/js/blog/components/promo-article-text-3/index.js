@@ -32,7 +32,7 @@ export default class PromoArticleText3 extends Component<{}> {
                         style={{backgroundImage: 'url(' + resolveImagePath(article1.image) + ')'}}>
                         <EyeCounter
                             className={style.eye_counter}
-                            count={288}
+                            count={article1.views}
                             date={dateToHuman(article1.created_at)}/>
                         <h3 className={style.article_header}>
                             {article1.title}
@@ -51,7 +51,7 @@ export default class PromoArticleText3 extends Component<{}> {
                         style={{backgroundImage: 'url(' + resolveImagePath(article2.image) + ')'}}>
                         <EyeCounter
                             className={style.eye_counter}
-                            count={288}
+                            count={article2.views}
                             date={dateToHuman(article2.created_at)}/>
                         <h3 className={style.article_header + ' ellipsis'}>
                             {article2.title}
@@ -65,7 +65,10 @@ export default class PromoArticleText3 extends Component<{}> {
                         to={'/article/' + article3.category + '/' + article3.id}
                         className={style.article_3}
                         style={{backgroundImage: 'url(' + resolveImagePath(article3.image) + ')'}}>
-                        <EyeCounter className={style.eye_counter} count={288} date={dateToHuman(article3.created_at)}/>
+                        <EyeCounter
+                            className={style.eye_counter}
+                            count={article3.views}
+                            date={dateToHuman(article3.created_at)}/>
                         <h3 className={style.article_header + ' ellipsis'}>
                             {article3.title}
                         </h3>

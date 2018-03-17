@@ -96,7 +96,7 @@ export default class Home extends Component<{}, StateType> {
                                     <div className={articleCardStyle.eye_counter_wrapper}>
                                         <EyeCounter
                                             className={articleCardStyle.eye_counter}
-                                            count={288}
+                                            count={article.views}
                                             date={dateToHuman(article.created_at)}
                                             dateClassName={articleCardStyle.eye_counter__date}
                                         />
@@ -149,7 +149,7 @@ export default class Home extends Component<{}, StateType> {
                                 <div className={articleCardStyle.eye_counter_wrapper}>
                                     <EyeCounter
                                         className={articleCardStyle.eye_counter}
-                                        count={288}
+                                        count={article.views}
                                         date={dateToHuman(article.created_at)}
                                         dateClassName={articleCardStyle.eye_counter__date}
                                     />

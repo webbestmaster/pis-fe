@@ -119,7 +119,7 @@ class Category extends Component<PropsType, StateType> {
                                     <div className={articleCardStyle.eye_counter_wrapper}>
                                         <EyeCounter
                                             className={articleCardStyle.eye_counter}
-                                            count={288}
+                                            count={row.views}
                                             date={dateToHuman(row.created_at)}
                                             dateClassName={articleCardStyle.eye_counter__date}
                                         />

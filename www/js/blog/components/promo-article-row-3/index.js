@@ -36,7 +36,7 @@ export default class PromoArticleRow3 extends Component<{}> {
                         style={{backgroundImage: 'url(' + resolveImagePath(article1.image) + ')'}}>
                         <EyeCounter
                             className={style.eye_counter}
-                            count={288}
+                            count={article1.views}
                             date={''}/>
                         <h3 className={style.article_header}>
                             {article1.title}
@@ -50,7 +50,7 @@ export default class PromoArticleRow3 extends Component<{}> {
                         style={{backgroundImage: 'url(' + resolveImagePath(article2.image) + ')'}}>
                         <EyeCounter
                             className={style.eye_counter}
-                            count={288} date={''}/>
+                            count={article2.views} date={''}/>
                         <h3 className={style.article_header}>
                             {article2.title}
                         </h3>
@@ -63,7 +63,7 @@ export default class PromoArticleRow3 extends Component<{}> {
                         style={{backgroundImage: 'url(' + resolveImagePath(article3.image) + ')'}}>
                         <EyeCounter
                             className={style.eye_counter}
-                            count={288}
+                            count={article3.views}
                             date={''}/>
                         <h3 className={style.article_header}>
                             {article3.title}

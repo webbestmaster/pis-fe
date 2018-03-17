@@ -176,7 +176,7 @@ class Article extends Component<PropsType, StateType> {
 
                     <EyeCounter
                         className={style.eye_counter}
-                        count={288}
+                        count={article.views}
                         date={dateToHuman(article.created_at)}
                         dateClassName={articleCardStyle.eye_counter__date}/>
 
