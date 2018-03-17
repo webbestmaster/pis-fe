@@ -13,7 +13,13 @@ export default class MapItemClub extends Component {
                 <div
                     className="clubs-catalog-list-item__logo"
                     style={{backgroundImage: 'url(' + resolveImagePath(data.logo_image) + ')'}}/>
-                <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
+                <h4 className="clubs-catalog-list-item__header">
+                    <Link
+                        to={'/club/' + data.id}
+                        className="clubs-catalog-list-item__header-link">
+                        {data.title}
+                    </Link>
+                </h4>
                 <p className="clubs-catalog-list-item__address">{data.address}</p>
                 <div
                     className="clubs-catalog-list-item__description">

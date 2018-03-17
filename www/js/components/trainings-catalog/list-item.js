@@ -41,7 +41,13 @@ class ListItem extends Component {
             <div className="clubs-catalog-list-item__info">
                 <h4 className={classnames('clubs-catalog-list-item__header',
                     'clubs-catalog-list-item__header--icon',
-                    'clubs-catalog-list-item__header--icon-' + data.category)}>{data.title}</h4>
+                    'clubs-catalog-list-item__header--icon-' + data.category)}>
+                    <Link
+                        to={'/training/' + data.id}
+                        className="clubs-catalog-list-item__header-link">
+                        {data.title}
+                    </Link>
+                </h4>
                 <p className="clubs-catalog-list-item__address">{data.fitnessClub.address}</p>
                 <div className="clubs-catalog-list-item__short-additional-info clear-full">
                     {comfort & 2 ? // eslint-disable-line no-bitwise

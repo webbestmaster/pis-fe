@@ -68,6 +68,16 @@
         background-position: 0 0;
         background-size: auto 26px;
     }
+    .clubs-catalog-list-item__header-link {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .clubs-catalog-list-item__address {

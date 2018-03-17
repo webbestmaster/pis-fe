@@ -22,7 +22,13 @@ class ListItem extends Component {
             <div className="clubs-catalog-list-item__info">
                 <div className="clubs-catalog-list-item__logo"
                     style={{backgroundImage: 'url(' + (host + data.logo_image) + ')'}}/>
-                <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
+                <h4 className="clubs-catalog-list-item__header">
+                    <Link
+                        to={'/club/' + data.id}
+                        className="clubs-catalog-list-item__header-link">
+                        {data.title}
+                    </Link>
+                </h4>
                 <p className="clubs-catalog-list-item__address">{data.address}</p>
                 <div className="clubs-catalog-list-item__short-additional-info clear-full">
                     {comfort & 2 ? // eslint-disable-line no-bitwise

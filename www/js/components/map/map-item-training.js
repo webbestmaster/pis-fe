@@ -20,7 +20,13 @@ class MapItemTraining extends Component {
                     style={
                         {backgroundImage: 'url(' + resolveImagePath(promotion ? promotion.image : data.image) + ')'}
                     }/>
-                <h4 className="clubs-catalog-list-item__header">{data.title}</h4>
+                <h4 className="clubs-catalog-list-item__header">
+                    <Link
+                        to={'/training/' + data.id}
+                        className="clubs-catalog-list-item__header-link">
+                        {data.title}
+                    </Link>
+                </h4>
                 <p className="clubs-catalog-list-item__address">{data.fitnessClub.address}</p>
                 <div className="clubs-catalog-list-item__description">
                     <p className="line-cap-4">{promotion ? promotion.description : data.description}</p>
