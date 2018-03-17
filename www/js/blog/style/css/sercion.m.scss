@@ -32,6 +32,7 @@
 }
 
 .blog_section_header {
+    display: block;
     font-weight: bold;
     font-size: 36px;
     color: $mainHeaderColor;
@@ -47,6 +48,16 @@
         left: 0;
         width: 70px;
         height: 2px;
+    }
+}
+
+.blog_section_header_link {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
     }
 }
 

@@ -14,7 +14,7 @@ export default class PromoArticleRow3 extends Component<{}> {
     render(): Node {
         const view = this;
         const {props} = view;
-        const {list} = props;
+        const {list, header} = props;
         const [
             article1,
             article2 = list[0],
@@ -24,7 +24,7 @@ export default class PromoArticleRow3 extends Component<{}> {
         return <div className={style.block}>
 
             <div className={sectionStyle.blog_section_content}>
-                <h3 className={sectionStyle.blog_section_header}>События</h3>
+                {header}
             </div>
 
             <div className={style.block_hug}>
