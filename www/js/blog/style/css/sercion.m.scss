@@ -40,7 +40,6 @@
     letter-spacing: 1px;
     padding-bottom: 80px;
     &:before {
-        display: none;
         content: '';
         background-color: $mainActiveColor;
         position: absolute;
@@ -58,8 +57,7 @@
                 padding-left: 0;
                 padding-bottom: 34px;
                 &:before {
-                    left: -101px;
-                    bottom: 43px;
+                    display: none;
                 }
             }
         }
@@ -96,7 +94,6 @@
             padding-left: 0;
             padding-bottom: 57px;
             &:before {
-                display: block;
                 bottom: 43px;
             }
         }
