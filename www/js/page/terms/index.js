@@ -9,7 +9,7 @@ import {metaTagMaster} from '../../module/meta-tag';
 import classnames from 'classnames';
 import style from './style.m.scss';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/terms/top-banner.png');
 
 class Terms extends Component {
     componentDidMount() {

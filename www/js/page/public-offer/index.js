@@ -7,7 +7,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/public-offer/top-banner.jpg');
 
 const fishText = 'Замечательный клуб В самом центре. Радует выбор. атмосфера неповторимая, как в' +
     ' настоящем клубе. Интерьер грандиозный. Кажется тут советская Яма была раньше - очень ' +
