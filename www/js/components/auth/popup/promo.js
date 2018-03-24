@@ -21,14 +21,14 @@ class Promo extends Component {
                     <div className={style.left_path_2}>
                         <img src={require('./../../../../style/i/popup/promo/cashback.png')} alt=""/>
                         <h4>Оплачивайте занятия
-                        <br/>
+                            <br/>
                             и получайте бонусы <span className="main-color">*</span></h4>
                         <p><span className="main-color">*</span> 1 бонус = 1 руб.</p>
                     </div>
                     <div className={style.left_path_3}>
                         <img src={require('./../../../../style/i/popup/promo/money.png')} alt=""/>
                         <h4>Оплачивайте бонусами
-                        <br/>
+                            <br/>
                             до 100% покупки</h4>
                         <p>&nbsp;</p>
                     </div>

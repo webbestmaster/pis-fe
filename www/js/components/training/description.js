@@ -136,7 +136,7 @@ class Description extends Component {
 
         return <div className={style.card}>
             <p className={style.card__time}>{capitalizeFirstLetter(dateDate)}:&nbsp;
-            {reduceSeconds(dayData.time_from)} - {reduceSeconds(dayData.time_to)}</p>
+                {reduceSeconds(dayData.time_from)} - {reduceSeconds(dayData.time_to)}</p>
             {/* <div className={style.card_percent}>%</div>*/}
             <div className={style.card_short_info_wrapper}>
                 <div className={style.card_short_info_icon + ' clubs-catalog-filter__header-icon--' + row.category}/>
@@ -146,7 +146,7 @@ class Description extends Component {
             {promotion ?
                 <div>
                     <p className={style.card_cost}>Цена со скидкой:&nbsp;
-                    {(row.price - promotion.discount).toFixed(2)} руб.
+                        {(row.price - promotion.discount).toFixed(2)} руб.
                     </p>
                     <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
                 </div> :
@@ -171,7 +171,7 @@ class Description extends Component {
                 </Link>
             }
             <p className={style.card_cash_back}>Бонус:&nbsp;
-            <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
+                <span className={style.card_cash_back_value}>+{parseFloat(row.cashback).toFixed(2)}</span>
             </p>
         </div>;
     }

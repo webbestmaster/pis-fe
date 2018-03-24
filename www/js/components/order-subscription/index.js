@@ -583,7 +583,7 @@ class Order extends Component {
                 className={cardStyle.button}>забронировать
             </div>
             <p className={cardStyle.cash_back}>Бонус:&nbsp;
-            <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
+                <span className={cardStyle.cash_back_value}>+{(state.qty * singleCacheBack).toFixed(2)}</span>
             </p>
         </div>;
     }
