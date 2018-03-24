@@ -30,6 +30,7 @@
     border-radius: 4px;
     text-decoration: none;
     text-shadow: $textShadow;
+    overflow: hidden;
     &:before {
         content: '';
         position: absolute;
