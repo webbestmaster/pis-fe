@@ -45,7 +45,7 @@ class PublicOffer extends Component {
                         ООО «АтлантСпорт»
                     </h4>
                     <p className={style.centered_text}>
-                        Утвержден приказом № 26-03/1 от 26 марта 2018 г.
+                        Утвержден приказом № 26-03/1 от&nbsp;26&nbsp;марта&nbsp;2018&nbsp;г.
                     </p>
 
 
