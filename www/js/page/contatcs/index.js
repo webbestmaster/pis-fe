@@ -29,9 +29,15 @@ class ContactsPage extends Component {
             </TopBigBanner>
 
             <div className="hug hug--simple-page">
-                <h3 className="section__header">Контакты</h3>
+                <h3 className="section__header">Связаться с нами:</h3>
                 <div className="section__text-wrapper">
-                    <p>People in Sport - Контакты</p>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p>Телефон:&nbsp;&nbsp;<a href="tel:375291882699">+375 (29) 188-26-99</a></p>
+                    <p>E-mail:&nbsp;&nbsp;<a href="mailto:admin@pis.by">admin@pis.by</a></p>
                 </div>
             </div>
 

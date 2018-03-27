@@ -43,6 +43,8 @@
     & + .section__text-wrapper {
         margin-top: -23px;
         padding-bottom: 72px;
+        position: relative;
+        z-index: 0;
     }
 
     &.section__header--plus-swiper + .sale-slider {
