@@ -5,9 +5,9 @@
 # Disallow: /
 
 # add site map in future
-Sitemap: http://site.katran.by/sitemap.xml
+Sitemap: http://pis.by/sitemap.xml
 
-Host: site.katran.by
+Host: pis.by
 
 User-agent: *
 Disallow: /order/
