@@ -10,7 +10,9 @@ const postfix = '';
 const postfixAmp = '';
 const postfixQuestion = '';
 const postfixQuestionAmp = '';
-const host = IS_PRODUCTION ? '' : 'http://site.katran.by'; // eslint-disable-line id-match
+// const host = IS_PRODUCTION ? '' : 'http://site.katran.by'; // eslint-disable-line id-match
+// const host = 'https://pis.by'; // eslint-disable-line id-match
+const host = ''; // eslint-disable-line id-match
 
 module.exports = {
     tabletWidth: 1260,
