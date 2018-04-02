@@ -132,7 +132,7 @@ class TrainingCard extends Component {
                 <p className="sale-swiper-card__subscription-cost">{promotion ?
                     (training.price - promotion.discount).toFixed(2) :
                     training.price} <span
-                    className="sale-swiper-card__subscription-cost-currency">руб.</span></p>
+                    className="sale-swiper-card__subscription-cost-currency"> руб.</span></p>
                 <div className="sale-swiper-card__button">Забронировать</div>
             </div>
         </Link>;

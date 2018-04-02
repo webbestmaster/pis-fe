@@ -115,7 +115,7 @@ class SubscriptionCard extends Component {
                     (subscription.price - promotion.discount).toFixed(2) :
                     subscription.price}
                 <span
-                    className="sale-swiper-card__subscription-cost-currency">руб.</span></p>
+                    className="sale-swiper-card__subscription-cost-currency"> руб.</span></p>
                 <div className="sale-swiper-card__button">Забронировать</div>
             </div>
         </Link>;
