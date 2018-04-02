@@ -27,7 +27,7 @@ export default class OurPartners extends Component {
         }
 
         return <section className="section hug our-partners">
-            <h3 className="section__header">Наши партнёры</h3>
+            <h3 className="section__header">Наши партнeры</h3>
 
             <div className="our-partners__partner-list">
                 {pageData.data.partners.map((partner, index, arr) => {

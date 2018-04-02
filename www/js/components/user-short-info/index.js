@@ -54,7 +54,7 @@ class UserShortInfo extends Component {
 */}
                 <div className={style.extra_info_block}>
                     <p className={style.extra_info_value}>{login.data.finished.length}</p>
-                    <p className={style.extra_info_key}>Завершённые</p>
+                    <p className={style.extra_info_key}>Завершeнные</p>
                 </div>
             </div>
         </div>;

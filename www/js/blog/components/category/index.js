@@ -140,7 +140,7 @@ class Category extends Component<PropsType, StateType> {
                         }}
                         className={style.show_more_button}>
                         <span className={style.show_more_icon}/>
-                        Показать ещё
+                        Показать ещe
                     </div> :
                     null}
             </div>

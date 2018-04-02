@@ -332,7 +332,7 @@ class Description extends Component {
                         readMore={<span
                             key="read-more"
                             className="section__show-more"
-                            onClick={() => view.setState({isShowFullDescription: true})}>ещё&hellip;</span>}>
+                            onClick={() => view.setState({isShowFullDescription: true})}>ещe&hellip;</span>}>
                         {row.description}
                     </TextEllipsis>
                 </div>

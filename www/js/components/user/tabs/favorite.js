@@ -65,7 +65,7 @@ class Favorite extends Component {
                 <p
                     style={{paddingTop: 100, paddingBottom: 100}}
                     className={style.favorite__description}>
-                    Здесь пока нет сохранённых тренировок. Чтобы добавить тренировку в избранное, нажмите
+                    Здесь пока нет сохранeнных тренировок. Чтобы добавить тренировку в избранное, нажмите
                     <span className={style.favorite__description_heart}/>
                 </p> :
                 <p className={style.favorite__description}>
