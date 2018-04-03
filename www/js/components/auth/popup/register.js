@@ -160,8 +160,21 @@ class Register extends Component {
             return prevState;
         });
 
+        /*
         if (value === '') {
             return true;
+        }
+        */
+
+        if (value === '') {
+            view.setState(prevState => {
+                Object.assign(prevState.form.input.phone,
+                    {isValid: false, error: {message: 'Это поле обязательно к заполнению.'}}
+                );
+
+                return prevState;
+            });
+            return false;
         }
 
         if ((value.match(/\d/g) || []).length !== 9) {
