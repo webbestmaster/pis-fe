@@ -453,6 +453,8 @@ class Settings extends Component {
 
         const {user} = login.data;
 
+        const dob = state.extraData.dob || (user.birthday !== '0000-00-00' ? user.birthday : '1990-01-01');
+
         return <div className="hug">
             <h3 className="section__header">Редактировать данные</h3>
 
@@ -509,8 +511,8 @@ class Settings extends Component {
                         <p className={style.text_label__label}>Дата рождения</p>
                         <DatePicker
                             locale="ru-RU"
-                            startDate={moment(state.extraData.dob || user.birthday)}
-                            selected={moment(state.extraData.dob || user.birthday)}
+                            startDate={moment(dob)}
+                            selected={moment(dob)}
                             dateFormat="DD/MM/YYYY"
                             className={style.calendar_input}
                             onChange={time => view.setState(prevState => {
