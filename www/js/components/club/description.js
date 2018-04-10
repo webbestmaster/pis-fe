@@ -233,8 +233,8 @@ class Description extends Component {
                                         {isDayOff(filial.work_weekend_from, filial.work_weekend_to) ?
                                             'выходной' :
                                             reduceSeconds(filial.work_weekend_from) +
-                                            ' - ' +
-                                            reduceSeconds(filial.work_weekend_to)
+                                                ' - ' +
+                                                reduceSeconds(filial.work_weekend_to)
                                         }
                                     </p>
                                 </div>
@@ -276,7 +276,7 @@ class Description extends Component {
                 <div ref="swiperSubscription"
                     className="swiper-container">
                     <div className="swiper-wrapper">
-                        {subscriptions.filter((item, ii) => ii <= 3)
+                        {subscriptions
                             .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
                     </div>
                     {/* <div className="swiper__arrow"/>*/}
