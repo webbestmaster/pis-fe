@@ -229,13 +229,21 @@ class Description extends Component {
                                             &nbsp;-&nbsp;
                                         {reduceSeconds(filial.work_to)}
                                         <br/>
-                                            Сб-Вс:&nbsp;
-                                        {isDayOff(filial.work_weekend_from, filial.work_weekend_to) ?
+                                            Сб:&nbsp;
+                                        {isDayOff(filial.weekend_worktime.saturday.from,
+                                            filial.weekend_worktime.saturday.to) ?
                                             'выходной' :
-                                            reduceSeconds(filial.work_weekend_from) +
+                                            reduceSeconds(filial.weekend_worktime.saturday.from) +
                                                 ' - ' +
-                                                reduceSeconds(filial.work_weekend_to)
-                                        }
+                                                reduceSeconds(filial.weekend_worktime.saturday.to)}
+                                        <br/>
+                                            Вс:&nbsp;
+                                        {isDayOff(filial.weekend_worktime.saturday.from,
+                                            filial.weekend_worktime.saturday.to) ?
+                                            'выходной' :
+                                            reduceSeconds(filial.weekend_worktime.sunday.from) +
+                                                ' - ' +
+                                                reduceSeconds(filial.weekend_worktime.sunday.to)}
                                     </p>
                                 </div>
                                 <div className={style.filial_details_block__w100}>
