@@ -238,8 +238,8 @@ class Description extends Component {
                                                 reduceSeconds(filial.weekend_worktime.saturday.to)}
                                         <br/>
                                             Вс:&nbsp;
-                                        {isDayOff(filial.weekend_worktime.saturday.from,
-                                            filial.weekend_worktime.saturday.to) ?
+                                        {isDayOff(filial.weekend_worktime.sunday.from,
+                                            filial.weekend_worktime.sunday.to) ?
                                             'выходной' :
                                             reduceSeconds(filial.weekend_worktime.sunday.from) +
                                                 ' - ' +

@@ -195,7 +195,7 @@ class Order extends Component {
         requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }
 
-    renderOrderInfo() {
+    renderOrderInfo() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {pageData, qty} = state;
@@ -204,6 +204,16 @@ class Order extends Component {
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
         const singlePrice = parseFloat(promotion ? (row.price - promotion.discount).toFixed(2) : row.price);
         const singleCacheBack = parseFloat(row.cashback);
+        const worksTime1to5 = 'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to);
+        const worksTime6 = 'Сб: ' + (isDayOff(row.weekend_worktime.saturday.from, row.weekend_worktime.saturday.to) ?
+            'выходной' :
+            reduceSeconds(row.weekend_worktime.saturday.from) + ' - ' +
+            reduceSeconds(row.weekend_worktime.saturday.to));
+        const worksTime7 = 'Вс: ' + (isDayOff(row.weekend_worktime.sunday.from, row.weekend_worktime.sunday.to) ?
+            'выходной' :
+            reduceSeconds(row.weekend_worktime.sunday.from) + ' - ' +
+            reduceSeconds(row.weekend_worktime.sunday.to));
+        const weekWorksTime = [worksTime1to5, worksTime6, worksTime7].join(', ');
 
         return <div>
             <h3 className="section__header">Информация об абонементе</h3>
@@ -229,19 +239,10 @@ class Order extends Component {
                     <span className={style.input_header_icon} style={{backgroundImage: 'url(' + timeImage + ')'}}/>
                     Время действия
                 </h3>
-                {isDayOff(row.weekend_work_from, row.weekend_work_to) ?
-                    <input
-                        className={style.input_node} type="text"
-                        defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
-                        ', Сб-Вс: выходной'}
-                        disabled/> :
-                    <input
-                        className={style.input_node} type="text"
-                        defaultValue={'Пн-Пт: ' + reduceSeconds(row.work_from) + ' - ' + reduceSeconds(row.work_to) +
-                        ', Сб-Вс: ' + reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)}
-                        disabled/>
-                }
-
+                <input
+                    className={style.input_node} type="text"
+                    defaultValue={weekWorksTime}
+                    disabled/>
             </div>
             <div className={style.arrow_block_wrapper}>
                 {/*
@@ -483,7 +484,7 @@ class Order extends Component {
         </div>;
     }
 
-    renderCard() {
+    renderCard() { // eslint-disable-line complexity
         const view = this;
         const {props, state} = view;
         const {pageData} = state;
@@ -525,11 +526,21 @@ class Order extends Component {
                 <span>
                     Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
                     <br/>
-                    Сб-Вс:&nbsp;
-                    {isDayOff(row.weekend_work_from, row.weekend_work_to) ?
+                    Сб:&nbsp;
+                    {isDayOff(row.weekend_worktime.saturday.from,
+                        row.weekend_worktime.saturday.to) ?
                         'выходной' :
-                        reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)
-                    }
+                        reduceSeconds(row.weekend_worktime.saturday.from) +
+                        ' - ' +
+                        reduceSeconds(row.weekend_worktime.saturday.to)},
+                    <br/>
+                    Вс:&nbsp;
+                    {isDayOff(row.weekend_worktime.sunday.from,
+                        row.weekend_worktime.sunday.to) ?
+                        'выходной' :
+                        reduceSeconds(row.weekend_worktime.sunday.from) +
+                        ' - ' +
+                        reduceSeconds(row.weekend_worktime.sunday.to)}
                 </span>
             </p>
 

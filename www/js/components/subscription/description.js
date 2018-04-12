@@ -142,11 +142,22 @@ class Description extends Component {
                             <h3 className={style.description_info_item_header}>Время действия:</h3>
                             <p className={style.description_info_item_text}>
                                 Пн-Пт: {reduceSeconds(row.work_from)} - {reduceSeconds(row.work_to)},
-                                Сб-Вс:&nbsp;
-                                {isDayOff(row.weekend_work_from, row.weekend_work_to) ?
+                                <br/>
+                                Сб:&nbsp;
+                                {isDayOff(row.weekend_worktime.saturday.from,
+                                    row.weekend_worktime.saturday.to) ?
                                     'выходной' :
-                                    reduceSeconds(row.weekend_work_from) + ' - ' + reduceSeconds(row.weekend_work_to)
-                                }
+                                    reduceSeconds(row.weekend_worktime.saturday.from) +
+                                    ' - ' +
+                                    reduceSeconds(row.weekend_worktime.saturday.to)},
+                                <br/>
+                                Вс:&nbsp;
+                                {isDayOff(row.weekend_worktime.sunday.from,
+                                    row.weekend_worktime.sunday.to) ?
+                                    'выходной' :
+                                    reduceSeconds(row.weekend_worktime.sunday.from) +
+                                    ' - ' +
+                                    reduceSeconds(row.weekend_worktime.sunday.to)}
                             </p>
                         </div>
                     </div>
