@@ -172,8 +172,8 @@
             border-left: 1px solid $mainBorderColor;
             padding: 1px 0 2px 11px;
             margin-bottom: 21px;
-            height: 60px; // 3 x line-height
-            @include line-cap(3);
+            height: 80px; // 4 x line-height
+            @include line-cap(4);
         }
         .sale-swiper-card__subscription-single-header {
             @extend .sale-swiper-card__subscription-header;
@@ -328,7 +328,7 @@
         font-weight: bold;
         font-size: 18px;
         margin-bottom: 11px;
-        height: 40px;
+        height: 60px;
     }
 
     .sale-swiper-card__description {

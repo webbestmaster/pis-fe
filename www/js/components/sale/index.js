@@ -74,7 +74,7 @@ class Sale extends Component {
                                         style={{
                                             backgroundImage: 'url(' + resolveImagePath(promotion.image) + ')'
                                         }}/>
-                                    <h3 className="sale-swiper-card__header line-cap-2">{promotion.title}</h3>
+                                    <h3 className="sale-swiper-card__header line-cap-3">{promotion.title}</h3>
                                     <p className="sale-swiper-card__description">{promotion.description}</p>
                                     {/* <p className="sale-swiper-card__details">
                                     12&nbsp;абонементов | 3&nbsp;тренировки
