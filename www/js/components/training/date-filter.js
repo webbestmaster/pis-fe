@@ -119,6 +119,9 @@ export function prepareScheduleList(scheduleList) {
         firstDayIndex = dayIi;
     });
 
+    // in a case we have only one schedule firstDayIndex === null
+    firstDayIndex = firstDayIndex === null ? 0 : firstDayIndex;
+
     return {
         scheduleTable,
         firstSchedule,
