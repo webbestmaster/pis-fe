@@ -82,7 +82,17 @@ class Article extends Component<PropsType, StateType> {
     }
 
     renderShare(): Node {
+        const view = this;
+        const {props, state} = view;
         const url = location.href;
+
+        const {pageData} = state;
+
+        if (pageData === null) {
+            return null;
+        }
+
+        const data = pageData.data[0];
 
         return <div className={style.share}>
 
@@ -96,13 +106,25 @@ class Article extends Component<PropsType, StateType> {
 
             <p className={style.share_label}>Поделиться:</p>
 
-            <FacebookShareButton className={style.share_button} url={url}>
+            <FacebookShareButton
+                title={data.title}
+                image={appConst.pageDataUrl.host + data.image}
+                url={url}
+                className={style.share_button}>
                 <FacebookIcon size={52} round={true}/>
             </FacebookShareButton>
-            <VKShareButton className={style.share_button} url={url}>
+            <VKShareButton
+                title={data.title}
+                image={appConst.pageDataUrl.host + data.image}
+                url={url}
+                className={style.share_button}>
                 <VKIcon size={52} round={true}/>
             </VKShareButton>
-            <OKShareButton className={style.share_button} url={url}>
+            <OKShareButton
+                title={data.title}
+                image={appConst.pageDataUrl.host + data.image}
+                url={url}
+                className={style.share_button}>
                 <OKIcon size={52} round={true}/>
             </OKShareButton>
 
