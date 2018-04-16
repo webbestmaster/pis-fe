@@ -197,6 +197,14 @@ class Description extends Component {
                 {props.app.screen.width > globalAppConst.mobileWidth ? view.renderCard() : null}
 
                 <div className={style.description}>
+                    <img className={style.description_image}
+                        src={resolveImagePath(promotion ? promotion.image : row.image)}
+                        alt=""/>
+
+                    <br/>
+                    <br/>
+
+                    {/*
                     <div
                         className={style.description_image}
                         style={{
@@ -204,8 +212,7 @@ class Description extends Component {
                             resolveImagePath(promotion ? promotion.image : row.image) +
                             ')'
                         }}/>
-                    <br/>
-                    <br/>
+                    */}
 
                     <div className={style.description_short_info}>
                         <div {...cnx(style.description_short_info_icon, style.description_short_info_icon__map)}/>
