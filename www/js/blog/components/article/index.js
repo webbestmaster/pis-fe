@@ -1,5 +1,5 @@
 // @flow
-/* global requestAnimationFrame, location */
+/* global requestAnimationFrame, location, window, VK */
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {Link, withRouter} from 'react-router-dom';
@@ -16,6 +16,8 @@ import {resolveImagePath} from '../../../helper/path-x';
 import {FacebookShareButton, VKShareButton, OKShareButton} from 'react-share';
 import {FacebookIcon, VKIcon, OKIcon} from 'react-share';
 import * as appAction from '../../../components/app/action';
+
+const vkButton = require('./i/social/vk.svg.raw');
 
 const appConst = require('./../../../app-const');
 
@@ -49,11 +51,20 @@ type StateType = {
 class Article extends Component<PropsType, StateType> {
     state = {
         pageData: null,
-        indexResponse: null
+        indexResponse: null,
+        isVkLoad: false
     };
 
     async componentDidMount(): Promise<void> {
         const view = this;
+
+        (function wait() {
+            if (window.VK) {
+                view.setState({isVkLoad: true});
+                return;
+            }
+            window.setTimeout(wait, 100);
+        })();
 
         return view.fetchArticle().then(() => {
             appAction.scrollToTop();
@@ -86,9 +97,9 @@ class Article extends Component<PropsType, StateType> {
         const {props, state} = view;
         const url = location.href;
 
-        const {pageData} = state;
+        const {pageData, isVkLoad} = state;
 
-        if (pageData === null) {
+        if (pageData === null || isVkLoad === false) {
             return null;
         }
 
@@ -113,6 +124,24 @@ class Article extends Component<PropsType, StateType> {
                 className={style.share_button}>
                 <FacebookIcon size={52} round={true}/>
             </FacebookShareButton>
+
+            <div
+                className={style.share_button}
+                dangerouslySetInnerHTML={{
+                    __html: VK.Share.button( // eslint-disable-line id-match
+                        {
+                            url,
+                            title: data.title,
+                            image: appConst.pageDataUrl.host + data.image,
+                            noparse: true
+                        },
+                        {
+                            type: 'custom',
+                            text: vkButton
+                        })
+                }}/>
+
+            {/*
             <VKShareButton
                 title={data.title}
                 image={appConst.pageDataUrl.host + data.image}
@@ -120,6 +149,8 @@ class Article extends Component<PropsType, StateType> {
                 className={style.share_button}>
                 <VKIcon size={52} round={true}/>
             </VKShareButton>
+            */}
+
             <OKShareButton
                 title={data.title}
                 image={appConst.pageDataUrl.host + data.image}
