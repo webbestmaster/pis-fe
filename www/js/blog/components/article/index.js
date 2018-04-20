@@ -133,7 +133,7 @@ class Article extends Component<PropsType, StateType> {
                             url,
                             title: data.title,
                             image: appConst.pageDataUrl.host + data.image,
-                            noparse: true
+                            noparse: false
                         },
                         {
                             type: 'custom',
