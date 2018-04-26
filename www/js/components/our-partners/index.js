@@ -36,12 +36,13 @@ export default class OurPartners extends Component {
                         href={resolveUrlToHttp(partner.external_link)}
                         className="our-partners__partner-item"
                         key={index}>
-                        <img className="our-partners__partner-image"
+                        <img
+                            className="our-partners__partner-image"
                             src={resolveImagePath(partner.image)}
                             alt=""/>
                     </a>;
 
-                    if (index === 3 && arr.length >= 5) {
+                    if (index % 4 === 3) {
                         return [
                             link,
                             <div key="our-partners--divider" className="our-partners__divider"/>
