@@ -37,5 +37,4 @@ export default (): Node =>
             <Route path='/article/:categoryName/:articleId' component={Article} exact/>
             <Route component={NotFoundPage}/>
         </Switch>
-    </BrowserRouter>
-;
+    </BrowserRouter>;
