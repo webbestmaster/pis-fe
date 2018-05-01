@@ -1,0 +1,61 @@
+pis.by
+
+хедер
+
+/ - корень сайта
+
+/clubs
+/subscriptions
+/trainings
+/blog
+
+
+личный кабинет
+
+/user
+/user/tab-index/0
+/user/tab-index/1
+/user/tab-index/2
+/forgotPassword
+
+
+футер
+
+/clubs - дубль из хедера
+/subscriptions - дубль из хедера
+/trainings - дубль из хедера
+/blog - дубль из хедера
+
+/become-a-partner
+/your-proposal
+/terms
+/contacts
+
+/about-cashback
+/about-us
+/public-offer
+
+
+контент
+
+/club/:clubId === :clubId - айди клуба
+/club/:clubId/tab-index/:tabIndex === :clubId - айди клуба, :tabIndex - 0..5 (включая 0 и 5)
+/subscription/:subscriptionId === :subscriptionId - айди абонемента
+/training/:trainingId === :trainingId - айди тренировки
+
+
+заказ
+
+/order/subscription/:id === :id - айди абонемента
+/order/training/:id/:scheduleId/:dayId === :id - айди ренировки, :scheduleId - айди расписания тренировки, :dayId - айди дня
+
+
+pis.by/blog
+
+/blog - корень блога
+
+
+контент
+
+/blog/category/:categoryName === :categoryName - айди категории: fitness, food, motivation, event, knowledge
+/blog/article/:categoryName/:articleId === :categoryName - айди категории, :articleId - айди статьи
