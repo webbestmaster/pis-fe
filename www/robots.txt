@@ -5,7 +5,7 @@
 # Disallow: /
 
 # add site map in future
-Sitemap: http://pis.by/sitemap.xml
+Sitemap: https://pis.by/sitemap.xml
 
 Host: pis.by
 
