@@ -81,7 +81,7 @@ const webpackConfig = {
                             name: 'img/img-[name]-[hash:6].[ext]'
                         } :
                         {
-                            limit: 10e3, // 10k bytes
+                            limit: 3e3, // 10k bytes
                             name: 'img/img-[name]-[hash:6].[ext]'
                         }
                 }

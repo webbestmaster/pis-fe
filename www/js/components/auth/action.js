@@ -1,8 +1,6 @@
 /* global fetch, window, FormData */
 import * as authApi from './api';
 import * as fileApi from './../../helper/file';
-import get from 'lodash/get';
-import moment from 'moment/moment';
 
 const appGlobalConst = require('./../../app-const');
 const authConst = require('./const');
