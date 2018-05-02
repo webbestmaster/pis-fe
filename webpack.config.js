@@ -161,6 +161,7 @@ const webpackConfig = {
     },
 
     plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(definePluginParams),
         new HtmlWebpackPlugin({
