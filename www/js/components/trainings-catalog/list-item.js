@@ -10,7 +10,7 @@ import {resolveImagePath} from './../../helper/path-x';
 import {prepareScheduleList} from '../training/date-filter';
 import {defaultDateFilter} from './reducer';
 import TextCap from './../util/text-cap';
-
+import {getCategoryNameFromRow} from './helper';
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;
 
@@ -41,7 +41,7 @@ class ListItem extends Component {
             <div className="clubs-catalog-list-item__info">
                 <h4 className={classnames('clubs-catalog-list-item__header',
                     'clubs-catalog-list-item__header--icon',
-                    'clubs-catalog-list-item__header--icon-' + data.category)}>
+                    'clubs-catalog-list-item__header--icon-' + getCategoryNameFromRow(data))}>
                     <Link
                         to={'/training/' + data.id}
                         className="clubs-catalog-list-item__header-link">

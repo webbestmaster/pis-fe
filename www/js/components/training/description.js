@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom';
 import TrainingCard from './../club/training-card';
 import TextCap from '../util/text-cap';
 import TextEllipsis from '../util/text-ellipsis';
+import {getCategoryNameFromRow} from './../trainings-catalog/helper';
 
 const authConst = require('./../auth/const');
 const get = require('lodash/get');
@@ -139,7 +140,8 @@ class Description extends Component {
                 {reduceSeconds(dayData.time_from)} - {reduceSeconds(dayData.time_to)}</p>
             {/* <div className={style.card_percent}>%</div>*/}
             <div className={style.card_short_info_wrapper}>
-                <div className={style.card_short_info_icon + ' clubs-catalog-filter__header-icon--' + row.category}/>
+                <div className={style.card_short_info_icon +
+                ' clubs-catalog-filter__header-icon--' + getCategoryNameFromRow(row)}/>
                 <p className={style.card_short_info_description}>{row.title}</p>
             </div>
 
