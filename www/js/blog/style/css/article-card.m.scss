@@ -1,27 +1,31 @@
-@import "./aaa-var";
-@import "./helper";
+@import './aaa-var';
+@import './helper';
 
 .block_list {
     display: block;
+
     &.block_list__ads_padded {
         margin-right: 340px;
     }
+
     &.block_list__separated {
         .block {
-            position: relative;
             margin-bottom: 59px;
+            position: relative;
+
             &:after {
+                background-color: $mainBorderColor;
+                bottom: -30px;
                 content: '';
+                height: 1px;
+                left: 0;
                 position: absolute;
                 width: 100%;
-                height: 1px;
-                bottom: -30px;
-                left: 0;
-                background-color: $mainBorderColor;
             }
 
             &:last-child {
                 margin-bottom: 0;
+
                 &:after {
                     display: none;
                 }
@@ -41,14 +45,14 @@
 }
 
 .image {
-    height: 100%;
-    width: 370px;
-    margin-right: 31px;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
     border-radius: 4px;
     float: left;
+    height: 100%;
+    margin-right: 31px;
+    width: 370px;
 }
 
 .text_block {
@@ -56,19 +60,21 @@
 }
 
 .header {
-    font-weight: bold;
+
+    @include line-cap(2);
     color: $mainHeaderColor;
     font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 23px;
-    @include line-cap(2);
+    font-weight: bold;
+
     height: 48px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    margin-bottom: 23px;
 }
 
 .eye_counter_wrapper {
-    width: 100%;
     height: 56px;
+    width: 100%;
 }
 
 .eye_counter {
@@ -81,31 +87,33 @@
 }
 
 .preview_text {
+
+    @include line-cap(4);
     color: $mainTextColor;
     font-size: 14px;
-    line-height: 24px;
-    @include line-cap(4);
+
     height: 96px;
+    line-height: 24px;
 }
 
 .block_list.block_list__3_in_row {
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     .block {
-        width: 31.7%;
         height: auto;
         padding: 0;
+        width: 31.7%;
     }
 
     .image {
-        height: 225px;
-        width: 100%;
         float: none;
-        margin-right: 0;
+        height: 225px;
         margin-bottom: 20px;
+        margin-right: 0;
+        width: 100%;
     }
 }
 
@@ -113,17 +121,19 @@
     :local {
         .block_list__ads_padded {
             .block {
-                padding-right: 0;
                 height: auto;
+                padding-right: 0;
             }
+
             .image {
-                height: 225px;
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 25px;
                 float: none;
+                height: 225px;
+                margin-bottom: 25px;
+                margin-right: 0;
+                width: 100%;
             }
         }
+
         .block_list__3_in_row {
             .block {
                 width: 48%;
@@ -135,20 +145,22 @@
 :global .lt-tablet-width {
     :local {
         .block {
-            padding-right: 0;
             height: auto;
+            padding-right: 0;
         }
+
         .image {
-            height: 225px;
-            width: 100%;
-            margin-right: 0;
-            margin-bottom: 25px;
             float: none;
+            height: 225px;
+            margin-bottom: 25px;
+            margin-right: 0;
+            width: 100%;
         }
 
         .block_list__ads_padded {
             margin-right: 0;
         }
+
         .block_list__3_in_row {
             .block {
                 width: 100%;

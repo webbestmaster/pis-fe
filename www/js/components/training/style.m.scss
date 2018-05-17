@@ -1,5 +1,5 @@
-@import "../../../style/css/aaa-var";
-@import "../subscription/style.m";
+@import '../../../style/css/aaa-var';
+@import '../subscription/style.m';
 //@import "../../../style/css/helper";
 
 body { // just add authority in front of swiper's classes
@@ -9,56 +9,58 @@ body { // just add authority in front of swiper's classes
     }
 
     .card__time {
-        font-size: 16px;
-        color: $mainTextColor;
-        text-align: center;
         border-bottom: 1px solid $mainBorderColor;
-        padding-bottom: 19px;
+        color: $mainTextColor;
+        font-size: 16px;
         margin-bottom: 31px;
+        padding-bottom: 19px;
+        text-align: center;
+
         &:before {
+            background-image: url('./../../../style/i/subscription/time.svg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 10px auto;
             content: '';
             display: inline-block;
-            width: 13px;
             height: 13px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-image: url('./../../../style/i/subscription/time.svg');
-            background-size: 10px auto;
             margin-right: 9px;
+            width: 13px;
         }
     }
 
     .card_short_info_description {
         box-sizing: border-box;
         min-height: 44px;
-        padding-top: 0;
         padding-bottom: 0;
+        padding-top: 0;
     }
 
     .card_short_info_icon {
         @extend .card_short_info_number;
-        min-height: 41px;
         background-position: center center;
         background-repeat: no-repeat;
+
+        min-height: 41px;
         transform: scale(0.8);
     }
 
     .training_date_filter {
-        float: left;
-        clear: left;
-        width: 100%;
-        margin-top: 93px;
         box-sizing: border-box;
-        padding-left: 92px;
+        clear: left;
+        float: left;
         margin-bottom: -79px;
+        margin-top: 93px;
+        padding-left: 92px;
+        width: 100%;
     }
 
     :global .lt-desktop-width {
         :local {
             .training_date_filter {
-                padding-left: 0;
-                margin-top: 50px;
                 margin-bottom: 0;
+                margin-top: 50px;
+                padding-left: 0;
             }
         }
     }

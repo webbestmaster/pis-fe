@@ -5,17 +5,15 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
 
-// I do not know how to build on windows
 process.env.NODE_ENV = process.env.NODE_ENV || DEVELOPMENT;
-// process.env.NODE_ENV = process.env.NODE_ENV || PRODUCTION;
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -25,65 +23,92 @@ const IS_PRODUCTION = NODE_ENV === PRODUCTION;
 const CWD = __dirname;
 
 const definePluginParams = {
-    NODE_ENV: JSON.stringify(NODE_ENV),
-    IS_PRODUCTION: JSON.stringify(IS_PRODUCTION),
-    IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
+    // NODE_ENV: JSON.stringify(NODE_ENV),
+    IS_PRODUCTION: JSON.stringify(IS_PRODUCTION)
+    // IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
 };
 
-if (IS_PRODUCTION) {
-    definePluginParams['process.env'] = {NODE_ENV: JSON.stringify('production')};
-}
+const fileRETest = /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/;
 
 const webpackConfig = {
 
-    context: path.join(CWD, 'www'),
-    entry: {
+    // context: path.join(CWD, 'www'),
+    entry: [
         // common: './js/common.js',
-        main: ['babel-polyfill', './js/index.js']
-    },
-    output: Object.assign(
-        {filename: '[name].js'},
-        IS_PRODUCTION ?
-            {path: path.join(CWD, './../public/assets'), publicPath: '/assets/'} :
-            {path: path.join(CWD, 'dist'), publicPath: '/'}
+        'babel-polyfill',
+        'whatwg-fetch',
+        './www/js/index.js',
+        'react-datepicker/dist/react-datepicker.css',
+        './www/style/css/_root.scss'
+    ],
+
+    output: IS_PRODUCTION ?
+        {path: path.join(CWD, './../public/assets'), publicPath: '/assets/'} :
+        {path: path.join(CWD, 'dist'), publicPath: '/'},
+
+    devtool: IS_PRODUCTION ? false : 'source-map',
+
+    optimization: Object.assign(
+        {},
+        IS_DEVELOPMENT ?
+            {
+                splitChunks: {
+                    cacheGroups: {
+                        main: {
+                            chunks: 'initial',
+                            name: 'main',
+                            priority: -25,
+                            reuseExistingChunk: true
+                        },
+                        style: {
+                            chunks: 'initial',
+                            name: 'style',
+                            priority: -20,
+                            reuseExistingChunk: true,
+                            test: /\.scss$/
+                        },
+                        file: {
+                            chunks: 'initial',
+                            name: 'file',
+                            priority: -15,
+                            test: fileRETest
+                        },
+                        vendor: {
+                            chunks: 'initial',
+                            name: 'vendor',
+                            priority: -10,
+                            test: /node_modules/
+                        }
+                    }
+                }
+            } :
+            null
     ),
-
-    watch: IS_DEVELOPMENT,
-
-    devtool: IS_DEVELOPMENT ? 'source-map' : false,
 
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /(node_modules|bower_components)/,
-                options: {
-                    presets: ['env', 'stage-1', 'stage-0', 'react', 'flow']
-                }
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
+                // exclude: /node_modules/,
+                // query-string: query-string|strict-uri-encode
+                // pixi-viewport: pixi-viewport|yy-[\w]+
+                exclude: /node_modules(?!(\/|\\)(query-string|strict-uri-encode|pixi-viewport|yy-[\w]+))/,
+                loader: 'babel-loader'
             },
             // {test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'},
             {
-                test: /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/,
+                test: fileRETest,
                 use: {
                     loader: 'base64-inline-loader',
                     // - limit - The limit can be specified with a query parameter. (Defaults to no limit).
                     // If the file is greater than the limit (in bytes) the file-loader is used and
                     // all query parameters are passed to it.
                     // - name - The name is a standard option.
-                    query: IS_DEVELOPMENT ?
-                        {
-                            limit: 0,
-                            name: 'img/img-[name]-[hash:6].[ext]'
-                        } :
-                        {
-                            limit: 3e3, // 10k bytes
-                            name: 'img/img-[name]-[hash:6].[ext]'
-                        }
+                    query: {
+                        limit: 3e3, // 10k bytes
+                        name: 'img/img-[name]-[hash:6].[ext]'
+                    }
+
                 }
             },
 
@@ -91,7 +116,6 @@ const webpackConfig = {
             {
                 test: /\.m\.scss$/,
                 use: [
-                    {loader: 'css-hot-loader'},
                     {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
                     {
                         loader: 'css-loader', options: {
@@ -101,7 +125,6 @@ const webpackConfig = {
                             minimize: IS_PRODUCTION
                         }
                     },
-                    {loader: 'resolve-url-loader'},
                     {
                         loader: 'postcss-loader', options: {
                             sourceMap: true,
@@ -118,20 +141,18 @@ const webpackConfig = {
             {
                 test: /(_root\.scss|\.css)$/,
                 use: [
-                    {loader: 'css-hot-loader'},
                     {loader: 'style-loader', options: {sourceMap: IS_DEVELOPMENT}},
                     {
                         loader: 'css-loader', options: {
                             sourceMap: IS_DEVELOPMENT,
-                            modules: IS_DEVELOPMENT,
+                            modules: true,
                             localIdentName: '[local]',
                             minimize: IS_PRODUCTION
                         }
                     },
-                    {loader: 'resolve-url-loader'},
                     {
                         loader: 'postcss-loader', options: {
-                            sourceMap: IS_DEVELOPMENT,
+                            sourceMap: true,
                             config: {
                                 path: './postcss.config.js'
                             }
@@ -143,29 +164,15 @@ const webpackConfig = {
             {
                 test: /\.raw$/,
                 loader: 'raw-loader'
-            },
-            {
-                test: /\.(eot|ttf|otf|woff|woff2)$/,
-                loader: 'file-loader?name=fonts/[name].[ext]'
             }
         ]
     },
 
-    resolve: {
-        // alias: {
-        //     root: path.resolve(CWD, 'www', 'js'),
-        //     mc: path.resolve(CWD, 'www', 'js', 'component', 'main')
-        // },
-        modules: ['www', 'node_modules'],
-        extensions: ['.js', '.jsx']
-    },
-
     plugins: [
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-        new webpack.NoEmitOnErrorsPlugin(),
+        new CleanWebpackPlugin(['./dist']),
         new webpack.DefinePlugin(definePluginParams),
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: './www/index.html',
             minify: {
                 collapseWhitespace: IS_PRODUCTION,
                 removeComments: IS_PRODUCTION,
@@ -176,58 +183,14 @@ const webpackConfig = {
             filename: IS_PRODUCTION ? './../../public/index.html' : './index.html'
         }),
         new ScriptExtHtmlWebpackPlugin({
-            defaultAttribute: IS_PRODUCTION ? 'async' : 'defer'
-        }),
-        new ExtractTextPlugin({
-            filename: 'style.css',
-            allChunks: true
-        })
-    ]
-};
-
-if (IS_DEVELOPMENT) {
-    webpackConfig.plugins.push(
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            minChunks: (jsModule, count) => {
-                const {resource = ''} = jsModule;
-
-                return /node_modules|lib|util|helper|module|\.scss/.test(resource);
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'node-modules',
-            minChunks: (jsModule, count) => {
-                const {resource = ''} = jsModule;
-
-                return /node_modules|\.scss/.test(resource);
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'style',
-            minChunks: (jsModule, count) => {
-                const {resource = ''} = jsModule;
-
-                return /\.scss/.test(resource);
-            }
-        })
-    );
-}
-
-if (IS_PRODUCTION) {
-    webpackConfig.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true // eslint-disable-line camelcase
-            }
+            defaultAttribute: 'defer'
         }),
         new CopyWebpackPlugin([
-            {from: './favicon.ico', to: './../../public/favicon.ico'},
-            {from: './robots.txt', to: './../../public/robots.txt'}
+            {from: './www/favicon.ico', to: './../../public/favicon.ico'},
+            {from: './www/robots.txt', to: './../../public/robots.txt'}
         ], {debug: true})
-    );
-}
+    ]
+};
 
 // webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 

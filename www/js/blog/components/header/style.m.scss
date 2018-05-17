@@ -1,37 +1,38 @@
-@import "./../../style/css/aaa-var";
-@import "./../../style/css/aaa-class";
+@import './../../style/css/aaa-var';
+@import './../../style/css/aaa-class';
 
 .block {
     @extend .blog-wide-hug;
+    background-color: #fff;
+    height: 100px;
+
     position: relative;
     z-index: 1;
-    height: 100px;
-    background-color: #fff;
 
     .logo {
-        width: 258px;
-        height: 60px;
-        float: left;
-        margin-top: 22px;
-        background-repeat: no-repeat;
         background-image: url('./image/logo.svg');
         background-position: center center;
+        background-repeat: no-repeat;
+        float: left;
+        height: 60px;
+        margin-top: 22px;
+        width: 258px;
 
     }
 }
 
 .link {
+    color: $mainHeaderColor;
     float: right;
     font-size: 16px;
     font-weight: bold;
     height: 60px;
+    letter-spacing: 0.5px;
     line-height: 60px;
     margin-right: 76px;
     margin-top: 23px;
-    color: $mainHeaderColor;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     user-select: none;
 
     &.link__active,
@@ -45,11 +46,12 @@
 
     &.to_main_site {
         background-image: url('./image/exit.svg');
-        background-repeat: no-repeat;
         background-position: center center;
+        background-repeat: no-repeat;
         background-size: 21px auto;
-        width: 40px;
         margin-left: -32px;
+        width: 40px;
+
         &:hover {
             background-image: url('./image/exit-active.svg');
         }
@@ -57,52 +59,52 @@
 }
 
 .block_mobile {
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    height: 70px;
     background-color: #fff;
+    height: 70px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
 
     .logo {
-        height: 100%;
+        background-image: url('./image/logo.svg');
         background-position: center center;
         background-repeat: no-repeat;
-        background-image: url('./image/logo.svg');
         background-size: contain;
-        width: 222px;
-        margin-left: 15px;
         float: left;
+        height: 100%;
+        margin-left: 15px;
+        width: 222px;
     }
 }
 
 .header_menu_fade {
-    position: fixed;
-    z-index: 5;
     background-color: rgba(0, 0, 0, 0.25);
+    height: 100%;
     left: 0;
+    position: fixed;
     top: 0;
     width: 100%;
-    height: 100%;
+    z-index: 5;
 }
 
 .header_mobile_menu {
     background-color: #fff;
+    box-shadow: 0 0 13px 2px rgba(0, 0, 0, 0.5);
+    //padding: 163px 10px 164px;
+    padding: 82px 10px;
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 6;
     width: 250px;
-    //padding: 163px 10px 164px;
-    padding: 82px 10px;
-    box-shadow: 0 0 13px 2px rgba(0, 0, 0, 0.5);
+    z-index: 6;
 
     .link {
         display: block;
-        margin: 0;
         float: none;
+        letter-spacing: 2px;
+        margin: 0;
         text-align: center;
         text-indent: -5px;
-        letter-spacing: 2px;
 
         &.to_main_site {
             margin-left: auto;
@@ -112,34 +114,37 @@
 }
 
 .menu_button {
-    height: 70px;
-    width: 42px;
     cursor: pointer;
+    height: 70px;
     position: absolute;
     right: 5px;
     top: 0;
+    width: 42px;
 
     .menu_button_icon {
-        position: absolute;
         background-color: $mainHeaderColor;
-        width: 22px;
         height: 2px;
         left: 50%;
-        top: 50%;
         margin-left: -11px;
         margin-top: -1px;
+        position: absolute;
+        top: 50%;
+        width: 22px;
+
         &:before,
         &:after {
             background-color: $mainHeaderColor;
             content: '';
-            position: absolute;
-            width: 100%;
             height: 100%;
             left: 0;
+            position: absolute;
+            width: 100%;
         }
+
         &:before {
             top: 6px;
         }
+
         &:after {
             top: -6px;
         }
@@ -148,14 +153,17 @@
     &.menu_button__open {
         .menu_button_icon {
             background-color: transparent;
+
             &:before,
             &:after {
                 background-color: $mainActiveColor;
                 top: 0;
             }
+
             &:before {
                 transform: rotateZ(-45deg);
             }
+
             &:after {
                 transform: rotateZ(45deg);
             }

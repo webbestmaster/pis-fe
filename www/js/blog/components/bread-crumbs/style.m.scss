@@ -1,37 +1,40 @@
-@import "./../../style/css/aaa-var";
+@import './../../style/css/aaa-var';
 
 .block {
-    display: block;
     background-color: $mainGray;
+    display: block;
     padding: 21px 0 17px;
+
     &:after {
+        clear: both;
         content: '';
         display: block;
-        clear: both;
     }
 }
 
 .link {
+    color: $mainHeaderColor;
     float: left;
     font-size: 14px;
-    padding-top: 15px;
     padding-bottom: 15px;
-    color: $mainHeaderColor;
+    padding-top: 15px;
     text-decoration: none;
+
     &:hover {
         color: $mainActiveColor;
     }
+
     &:last-child {
         color: $mainTextColor;
     }
 }
 
 .arrow {
-    padding: 41px 7px 0;
-    float: left;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 4px;
-    width: 21px;
     background-image: url('./image/arrow.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    height: 4px;
+    padding: 41px 7px 0;
+    width: 21px;
 }

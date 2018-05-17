@@ -1,4 +1,4 @@
-/* global setTimeout, IS_DEVELOPMENT */
+/* global setTimeout, IS_PRODUCTION */
 import React, {Component} from 'react';
 import Promo from './popup/promo';
 import Register from './popup/register';
@@ -56,7 +56,7 @@ class Auth extends Component {
         const {props} = view;
         const {auth, app} = props;
 
-        if (IS_DEVELOPMENT) { // eslint-disable-line id-match
+        if (!IS_PRODUCTION) { // eslint-disable-line id-match
             return;
         }
 

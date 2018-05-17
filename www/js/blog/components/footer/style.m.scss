@@ -1,4 +1,4 @@
-@import "./../../style/css/aaa-var";
+@import './../../style/css/aaa-var';
 
 .footer__blog {
     //margin-top: 1000px;
@@ -6,6 +6,7 @@
     :global {
         .footer {
             background-color: $mainGray;
+
             .footer__logo {
                 background-image: url('./../header/image/logo.svg');
             }
@@ -14,6 +15,7 @@
                 .footer__link {
                     color: $mainHeaderColor;
                 }
+
                 &.footer__text--social-header,
                 &.footer__text--social,
                 &.footer__text--copyright {

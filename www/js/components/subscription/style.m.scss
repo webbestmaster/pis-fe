@@ -1,4 +1,4 @@
-@import "../../../style/css/aaa-var";
+@import '../../../style/css/aaa-var';
 //@import "../../../style/css/helper";
 
 body { // just add authority in front of swiper's classes
@@ -9,50 +9,54 @@ body { // just add authority in front of swiper's classes
     }
 
     .description_image {
-        float: left;
-        display: block;
-        width: 268px;
         //height: 237px;
         //background-repeat: no-repeat;
         //background-size: cover;
         //background-position: center center;
         border-radius: 4px;
+        display: block;
+        float: left;
+        width: 268px;
     }
 
     .description_short_info {
-        position: relative;
         margin-left: 340px;
         //margin-right: 110px;
         padding-bottom: 25px;
+        position: relative;
     }
 
     .description_short_info_icon {
-        position: absolute;
-        left: -40px;
-        top: 5px;
-        width: 24px;
-        height: 24px;
-        background-repeat: no-repeat;
         background-position: center center;
-        box-sizing: border-box;
+        background-repeat: no-repeat;
         border: 1px solid $mainBorderColor;
         border-radius: 3px;
+        box-sizing: border-box;
+        height: 24px;
+        left: -40px;
+        position: absolute;
+        top: 5px;
+        width: 24px;
+
         &.description_short_info_icon__time {
             background-image: url('./../../../style/i/subscription/time.svg');
             background-size: 10px auto;
         }
+
         &.description_short_info_icon__map {
             background-image: url('./../../../style/i/subscription/map-pin.svg');
             background-size: 10px auto;
         }
+
         &.description_short_info_icon__metro {
             background-image: url('./../../../style/i/subscription/metro.svg');
             background-size: 13px auto;
         }
+
         &.description_short_info_icon__parking {
             background-image: url('./../../../style/i/subscription/parking.svg');
-            background-size: 8px auto;
             background-position: center 5px;
+            background-size: 8px auto;
         }
     }
 
@@ -73,23 +77,23 @@ body { // just add authority in front of swiper's classes
     }
 
     .description_text {
-        padding: 40px 0 40px 104px;
-        margin-right: 390px;
-        line-height: 20px;
-        font-size: 14px;
-        min-height: 244px;
         clear: left;
+        font-size: 14px;
+        line-height: 20px;
+        margin-right: 390px;
+        min-height: 244px;
+        padding: 40px 0 40px 104px;
     }
 
     .card {
+        border: 1px solid $mainColor;
+        border-radius: 5px;
+        box-sizing: border-box;
+        float: right;
+        padding: 100px 36px 37px;
         position: sticky;
         top: 30px;
-        float: right;
         width: 370px;
-        box-sizing: border-box;
-        border: 1px solid $mainColor;
-        padding: 100px 36px 37px;
-        border-radius: 5px;
         //position: relative;
         &.card__no_promotion {
             padding-top: 44px;
@@ -100,22 +104,23 @@ body { // just add authority in front of swiper's classes
         background-color: $mainColor;
         color: #fff;
         font-size: 18px;
-        line-height: 18px;
         font-weight: bold;
         left: 0;
+        line-height: 18px;
+        padding: 5px 24px 5px 31px;
         position: absolute;
         top: 38px;
-        padding: 5px 24px 5px 31px;
+
         &:after {
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
             border: 14px transparent solid;
             border-left-color: $mainColor;
+            border-left-width: 10px;
+            content: '';
+            height: 0;
+            position: absolute;
             right: -24px;
             top: 0;
-            border-left-width: 10px;
+            width: 0;
         }
     }
 
@@ -125,78 +130,81 @@ body { // just add authority in front of swiper's classes
     }
 
     .card_short_info_number {
-        display: block;
         color: $mainTextColor;
+        display: block;
+        float: left;
         font-size: 36px;
         font-weight: bold;
         text-align: center;
         width: 58px;
-        float: left;
     }
 
     .card_short_info_description {
-        display: block;
+        border-left: 1px solid $mainBorderColor;
         color: $mainTextColor;
+        display: block;
         font-size: 18px;
         font-weight: bold;
-        border-left: 1px solid $mainBorderColor;
         margin-left: 58px;
         padding: 9px 0 15px 19px;
     }
 
     .card_short_additional_info {
+        color: $secondaryTextColor;
         font-size: 14px;
         line-height: 20px;
-        text-align: center;
-        color: $secondaryTextColor;
         padding-bottom: 14px;
+        text-align: center;
     }
 
     .card_cost {
         color: $mainColor;
-        text-align: center;
-        font-weight: bold;
         font-size: 24px;
+        font-weight: bold;
         padding-bottom: 10px;
+        text-align: center;
     }
 
     .card_old_cost {
         color: $secondaryTextColor;
-        text-align: center;
-        font-weight: bold;
         font-size: 24px;
-        text-decoration: line-through;
+        font-weight: bold;
         padding-bottom: 32px;
+        text-align: center;
+        text-decoration: line-through;
     }
 
     .card_button {
-        text-transform: uppercase;
-        font-size: 18px;
-        color: #fff;
-        text-align: center;
         background-color: $mainColor;
-        padding: 18px 10px 17px 10px;
-        position: relative;
-        cursor: pointer;
-        font-weight: bold;
-        text-indent: -19px;
         border-radius: 50px;
-        margin-bottom: 35px;
+        color: #fff;
+        cursor: pointer;
         display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 35px;
+        padding: 18px 10px 17px;
+        position: relative;
+        text-align: center;
         text-decoration: none;
+        text-indent: -19px;
+        text-transform: uppercase;
+
         &:before,
         &:after {
-            content: '';
             background-color: #fff;
-            width: 13px;
+            content: '';
             height: 2px;
             position: absolute;
             right: 22px;
+            width: 13px;
         }
+
         &:before {
             top: 23px;
             transform: rotateZ(45deg);
         }
+
         &:after {
             top: 31px;
             transform: rotateZ(-45deg);
@@ -204,34 +212,34 @@ body { // just add authority in front of swiper's classes
     }
 
     .card_cash_back {
+        background-image: url('./../../../style/i/subscription/cash-back-label.svg');
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: 130px auto;
+        color: $mainTextColor;
         display: block;
         font-size: 16px;
-        color: $mainTextColor;
-        background-image: url('./../../../style/i/subscription/cash-back-label.svg');
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-size: 130px auto;
-        padding: 4px 0 9px 133px;
         font-weight: bold;
+        padding: 4px 0 9px 133px;
         text-align: right;
     }
 
     .card_cash_back_value {
-        color: $mainColor;
-        font-size: 18px;
-        display: inline-block;
         background-image: url('./../../../style/i/subscription/cash-back-small-label.png');
         background-position: 8px 4px;
         background-repeat: no-repeat;
         background-size: 25px 14px;
-        padding: 0 0 0 38px;
+        color: $mainColor;
+        display: inline-block;
+        font-size: 18px;
         font-weight: bold;
+        padding: 0 0 0 38px;
     }
 
     .club_info {
+        border-bottom: none;
         display: block;
         padding: 0 0 0 100px;
-        border-bottom: none;
 
         :global {
             .clubs-catalog-list-item__image {
@@ -254,12 +262,12 @@ body { // just add authority in front of swiper's classes
     }
 
     .club_can_not {
-        display: block;
         color: $mainTextColor;
-        text-align: center;
+        display: block;
         font-size: 18px;
         font-weight: bold;
         padding-bottom: 33px;
+        text-align: center;
     }
 
     .club_info_rating {
@@ -273,10 +281,10 @@ body { // just add authority in front of swiper's classes
             }
 
             .description_image {
-                width: 100%;
                 //height: 237px;
                 float: none;
                 margin-bottom: 25px;
+                width: 100%;
             }
 
             .description_short_info {
@@ -284,12 +292,12 @@ body { // just add authority in front of swiper's classes
             }
 
             .card {
-                position: relative;
                 margin-right: 15px;
-                top: 0;
-                width: 313px;
                 padding-left: 20px;
                 padding-right: 20px;
+                position: relative;
+                top: 0;
+                width: 313px;
             }
 
             .card_cost {
@@ -298,20 +306,21 @@ body { // just add authority in front of swiper's classes
 
             .card_cash_back {
                 background-position: center 0;
-                padding: 55px 0 0 0;
+                padding: 55px 0 0;
                 text-align: center;
             }
 
             .description_text {
                 margin-right: 0;
-                padding: 8px 15px 61px;
                 min-height: auto;
+                padding: 8px 15px 61px;
             }
 
             :global.clubs-catalog-list-item {
                 padding-left: 15px;
                 padding-right: 15px;
             }
+
             :global.clubs-catalog-list-item__image {
                 left: 15px;
             }
@@ -321,10 +330,10 @@ body { // just add authority in front of swiper's classes
     :global .lt-tablet-width {
         :local {
             .card {
+                float: none;
+                margin-bottom: 35px;
                 margin-left: auto;
                 margin-right: auto;
-                margin-bottom: 35px;
-                float: none;
             }
 
             .description {

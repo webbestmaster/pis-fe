@@ -1,27 +1,30 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .bread-crumbs {
     @extend .clear-full;
+    color: #fff;
+
     display: block;
     //background-color: #c00;
     font-size: 14px;
-    color: #fff;
     padding: 61px 0 49px 102px;
 }
 
 .bread-crumbs__link {
+    color: inherit;
     float: left;
     text-decoration: none;
-    color: inherit;
+
     &:hover {
         color: $mainColor;
     }
 }
 
 .bread-crumbs__arrow {
-    padding: 0 10px;
     float: left;
+    padding: 0 10px;
     position: relative;
+
     &:before {
         content: '\02192';
     }

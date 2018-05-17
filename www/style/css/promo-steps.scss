@@ -1,20 +1,20 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .promo-steps {
-    max-width: 100%;
     background-color: #192739;
+    max-width: 100%;
     min-height: 339px;
-    padding-top: 82px;
-    padding-bottom: 81px;
-    position: relative;
     overflow: hidden;
+    padding-bottom: 81px;
+    padding-top: 82px;
+    position: relative;
     //border-top: 88px solid #fff;
 
     .promo-steps__image {
-        position: absolute;
+        bottom: 0;
         left: 50%;
         margin-left: 130px;
-        bottom: 0;
+        position: absolute;
         width: 520px;
     }
 
@@ -30,54 +30,58 @@
     }
 
     .promo-step-card {
-        position: relative;
         float: left;
+        position: relative;
         width: 177px;
 
         .promo-step-card__number {
-            opacity: 0.5;
+            color: #475e8a;
             display: none;
+            font-family: 'Anonymous Pro', monospace;
+            font-size: 136px;
+            font-weight: bold;
+            left: 0;
+            opacity: 0.5;
             //text-align: center;
             //width: 100%;
             position: absolute;
-            left: 0;
-            top: 0;
-            font-family: 'Anonymous Pro', monospace;
-            font-size: 136px;
-            color: #475e8a;
-            font-weight: bold;
             text-indent: 4px;
+            top: 0;
             z-index: 0;
         }
 
         .promo-step-card__icon {
-            position: relative;
-            top: 75px;
-            z-index: 1;
             background-repeat: no-repeat;
-            width: 100%;
-            height: 100px;
             color: #475e8a;
             float: left;
+            height: 100px;
+            position: relative;
+            top: 75px;
+            width: 100%;
+            z-index: 1;
+
             &.promo-step-card__icon--step-1 {
+                background-image: url('./../i/promo-steps/icon_step1.svg');
                 background-position: 67px 21px;
                 background-size: 63px auto;
-                background-image: url('./../i/promo-steps/icon_step1.svg');
             }
+
             &.promo-step-card__icon--step-2 {
+                background-image: url('./../i/promo-steps/icon_step2.svg');
                 background-position: center 23px;
                 background-size: 65px auto;
-                background-image: url('./../i/promo-steps/icon_step2.svg');
             }
+
             &.promo-step-card__icon--step-3 {
+                background-image: url('./../i/promo-steps/icon_step3.svg');
                 background-position: center 21px;
                 background-size: 65px auto;
-                background-image: url('./../i/promo-steps/icon_step3.svg');
             }
+
             &.promo-step-card__icon--step-4 {
+                background-image: url('./../i/promo-steps/icon_step4.svg');
                 background-position: center 29px;
                 background-size: 73px auto;
-                background-image: url('./../i/promo-steps/icon_step4.svg');
             }
         }
 
@@ -111,23 +115,28 @@
         }
 
         .promo-step-card {
-            width: 50%;
             padding-bottom: 24px;
+            width: 50%;
+
             .promo-step-card__number {
                 display: block;
-                width: 100%;
                 text-align: center;
+                width: 100%;
             }
+
             .promo-step-card__icon {
                 &.promo-step-card__icon--step-1 {
                     background-position: center 21px;
                 }
+
                 &.promo-step-card__icon--step-2 {
                     background-position: center 29px;
                 }
+
                 &.promo-step-card__icon--step-3 {
                     background-position: center 25px;
                 }
+
                 &.promo-step-card__icon--step-4 {
                     background-position: center 38px;
                 }

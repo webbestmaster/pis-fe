@@ -1,9 +1,9 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .club-header-rating {
     display: block;
-    margin: -60px 0 0 98px;
     float: left;
+    margin: -60px 0 0 98px;
 }
 
 .club-header-rating__stars {
@@ -12,21 +12,22 @@
 }
 
 .club-header-rating__star {
-    background-repeat: no-repeat;
-    background-position: center center;
     background-image: url('./../i/club/star.svg');
-    width: 36px;
-    height: 36px;
-    float: left;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: 30px auto;
+    float: left;
+    height: 36px;
+    width: 36px;
+
     &.club-header-rating__star-active {
         background-image: url('./../i/club/star-active.svg');
     }
 }
 
 .club-header-reviews {
-    float: left;
     color: #fff;
+    float: left;
     font-size: 20px;
     padding: 5px 0 0 31px;
 }
@@ -36,39 +37,40 @@
     margin-top: -34px;
 
     .club-header__service {
-        float: left;
         color: #fff;
-        font-weight: bold;
+        float: left;
         font-size: 16px;
-        position: relative;
-        padding-left: 80px;
+        font-weight: bold;
         margin-left: 36px;
+        padding-left: 80px;
+        position: relative;
+
         &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: -20px;
-            background-repeat: no-repeat;
-            background-position: center center;
             background-color: $mainColor;
-            width: 60px;
-            height: 60px;
+            background-position: center center;
+            background-repeat: no-repeat;
             border-radius: 30px;
+            content: '';
+            height: 60px;
+            left: 0;
+            position: absolute;
+            top: -20px;
+            width: 60px;
         }
 
         &.club-header__service--subscriptions {
             &:before {
                 background-image: url('./../i/club/icon_abonement_white.svg');
-                background-size: 30px auto;
                 background-position: center 14px;
+                background-size: 30px auto;
             }
         }
 
         &.club-header__service--trainings {
             &:before {
                 background-image: url('./../i/club/icon_traning_white.svg');
-                background-size: 32px auto;
                 background-position: center 18px;
+                background-size: 32px auto;
             }
         }
     }
@@ -85,9 +87,9 @@
     }
 
     .club-header-rating__star {
-        width: 30px;
-        height: 30px;
         background-size: 24px auto;
+        height: 30px;
+        width: 30px;
     }
 
     .club-header-reviews {
@@ -106,9 +108,9 @@
     }
 
     .club-header-rating__star {
-        width: 24px;
-        height: 24px;
         background-size: 20px auto;
+        height: 24px;
+        width: 24px;
     }
 
     .club-header-reviews {

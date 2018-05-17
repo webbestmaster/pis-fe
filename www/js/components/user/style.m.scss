@@ -1,4 +1,4 @@
-@import "../../../style/css/aaa-var";
+@import '../../../style/css/aaa-var';
 
 .settings_form {
     display: block;
@@ -8,22 +8,24 @@
     background-color: $mainBorderColor;
     clear: left;
     height: 1px;
-    margin-left: 100px;
     margin-bottom: 14px;
+    margin-left: 100px;
     position: relative;
     top: -7px;
 }
 
 .text_label {
-    display: block;
-    padding: 0 15px 27px 100px;
     box-sizing: border-box;
-    width: 50%;
+    display: block;
     float: left;
+    padding: 0 15px 27px 100px;
     position: relative;
+    width: 50%;
+
     .text_label__wide {
         width: 100%;
     }
+
     .error_label {
         right: 15px;
         top: 68px;
@@ -31,14 +33,14 @@
 }
 
 .input_error_text {
+    background-color: $mainColor;
+    border-radius: 4px 0;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
     position: absolute;
     right: 15px;
     top: 69px;
-    font-size: 12px;
-    padding: 4px 8px;
-    background-color: $mainColor;
-    color: #fff;
-    border-radius: 4px 0;
 }
 
 .text_label__wide {
@@ -50,8 +52,8 @@
 }
 
 .text_label__label {
-    font-size: 16px;
     color: $mainTextColor;
+    font-size: 16px;
     font-weight: bold;
     padding-bottom: 12px;
 }
@@ -63,22 +65,23 @@
 }
 
 .text_label__phone_prefix {
-    position: absolute;
-    top: 50px;
-    left: 119px;
     color: $mainTextColor;
     font-size: 14px;
+    left: 119px;
+    position: absolute;
+    top: 50px;
 }
 
 .input_text {
-    font-size: 14px;
-    color: $mainTextColor;
-    padding: 19px 18px 16px;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
-    width: 100%;
-    display: block;
     box-sizing: border-box;
+    color: $mainTextColor;
+    display: block;
+    font-size: 14px;
+    padding: 19px 18px 16px;
+    width: 100%;
+
     &:invalid,
     &.input_text__invalid {
         border-color: $mainColor;
@@ -86,18 +89,21 @@
 }
 
 .input_text__from_to {
-    float: left;
-    width: 50%;
     box-sizing: border-box;
+    float: left;
     padding-right: 22px;
     position: relative;
+    width: 50%;
+
     .error_label {
-        top: 38px;
         right: 22px;
+        top: 38px;
     }
+
     &:last-child {
-        padding-right: 0;
         padding-left: 22px;
+        padding-right: 0;
+
         .error_label {
             right: 0;
         }
@@ -105,27 +111,28 @@
 }
 
 .from_to_arrow {
-    background-repeat: no-repeat;
+    background-image: url('./../../../style/i/user/arrow-from-to.png');
     background-position: center center;
+    background-repeat: no-repeat;
     display: block;
     float: left;
-    width: 44px;
     height: 52px;
-    background-image: url('./../../../style/i/user/arrow-from-to.png');
     margin-left: -22px;
     margin-right: -22px;
+    width: 44px;
 }
 
 .calendar_label {
-    float: left;
     box-sizing: border-box;
-    padding-right: 33px;
     cursor: pointer;
+    float: left;
+    padding-right: 33px;
 }
 
 .gender_label {
-    float: left;
     box-sizing: border-box;
+    float: left;
+
     .text_label__label {
         padding-bottom: 20px;
     }
@@ -139,111 +146,118 @@
 }
 
 .calendar_input {
-    display: block;
-    height: 53px;
     background-image: url('./../../../style/i/user/icon-calendar.png');
+    background-position: right 18px top 22px;
     background-repeat: no-repeat;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    height: 53px;
     max-width: 202px;
     padding: 19px 18px 16px;
-    box-sizing: border-box;
-    background-position: right 18px top 22px;
 }
 
 .gender_label_container {
-    float: left;
     clear: none;
-    width: auto;
+    float: left;
     margin-bottom: 0;
     padding: 10px 0;
+    width: auto;
+
     &:last-child {
         margin-left: 15px;
     }
 }
 
 .settings_form__submit_button {
-    font-size: 14px;
-    text-align: center;
-    min-width: 192px;
     background-color: $mainColor;
     border-radius: 40px;
     color: #fff;
-    float: right;
-    padding: 15px 0 16px;
     cursor: pointer;
+    float: right;
+    font-size: 14px;
+    min-width: 192px;
+    padding: 15px 0 16px;
+    text-align: center;
 }
 
 .table__training_status {
     background-color: $mainTextColor;
     border-radius: 30px;
-    text-align: center;
     color: #fff;
     font-size: 14px;
-    width: 168px;
-    padding: 8px 0 11px;
     margin-top: 15px;
+    padding: 8px 0 11px;
+    text-align: center;
     user-select: none;
+    width: 168px;
+
     &.table__training_status__free {
-        width: auto;
         padding-left: 15px;
         padding-right: 15px;
+        width: auto;
     }
 }
 
 .table__training_status_icon {
-    background-repeat: no-repeat;
     background-position: center center;
-    position: relative;
+    background-repeat: no-repeat;
     display: inline-block;
-    width: 16px;
     height: 16px;
-    margin-right: 5px;
-    top: 0;
     left: 0;
+    margin-right: 5px;
+    position: relative;
+    top: 0;
+    width: 16px;
+
     &.table__training_status_icon__done {
         background-image: url('./../../../style/i/user/icon-status--done.png');
         top: 4px;
     }
+
     &.table__training_status_icon__in_progress {
         background-image: url('./../../../style/i/user/icon-status--in-progress.png');
         top: 3px;
     }
+
     &.table__training_status_icon__rejected {
         background-image: url('./../../../style/i/user/icon-status--rejected.png');
-        top: 4px;
         left: 1px;
+        top: 4px;
     }
+
     &.table__training_status_icon__taken {
         background-image: url('./../../../style/i/user/icon-status--taken.png');
-        top: 3px;
         left: 2px;
+        top: 3px;
     }
 }
 
 .favorite__description {
-    font-size: 14px;
     color: $mainTextColor;
+    font-size: 14px;
     margin-left: 100px;
     margin-top: -30px;
 }
 
 .favorite__description_heart {
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 15px;
-    height: 14px;
     background-image: url('./../../../style/i/club/heart-filled.svg');
     background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 14px;
     margin-left: 5px;
     position: relative;
     top: 2px;
+    width: 15px;
 }
 
 .one_button_wrapper {
     .table__training_status {
         cursor: pointer;
+
         &:hover,
         &:active {
             background-color: #808080;
@@ -254,17 +268,21 @@
 .two_button_wrapper {
     display: block;
     width: 268px;
+
     .table__training_status {
         cursor: pointer;
+
         &:hover,
         &:active {
             background-color: #808080;
         }
     }
+
     .table__training_status:first-child {
         float: left;
         width: 135px;
     }
+
     .table__training_status:last-child {
         float: right;
         width: 120px;
@@ -272,26 +290,27 @@
 }
 
 .open_review_list_button {
-    font-size: 14px;
-    color: $mainTextColor;
-    cursor: pointer;
     border: 1px solid $mainBorderColor;
     border-radius: 40px;
+    box-sizing: border-box;
+    color: $mainTextColor;
+    cursor: pointer;
     float: right;
+    font-size: 14px;
+    padding-bottom: 11px;
+    padding-top: 14px;
+    position: relative;
+    text-align: center;
+    top: -124px;
     //margin-top: 0px;
     width: 192px;
-    box-sizing: border-box;
-    text-align: center;
-    padding-top: 14px;
-    padding-bottom: 11px;
-    top: -124px;
-    position: relative;
     z-index: 1;
 
     &.open_review_list_button__active {
         background-color: $mainColor;
         border-color: $mainColor;
         color: #fff;
+
         .open_review_list_button__icon {
             background-image: url('./../../../style/i/user/icon-review--active.png');
         }
@@ -300,41 +319,42 @@
 
 .open_review_list_button__icon {
     background-image: url('./../../../style/i/user/icon-review.png');
-    width: 14px;
-    height: 13px;
     display: inline-block;
-    position: relative;
+    height: 13px;
     margin-left: 11px;
+    position: relative;
     top: 2px;
+    width: 14px;
 }
 
 .open_review_list_button__counter {
     background-color: $mainColor;
-    color: #fff;
-    font-size: 12px;
-    display: inline-block;
-    position: relative;
-    min-width: 19px;
-    height: 19px;
-    box-sizing: border-box;
-    border-radius: 40px;
     border: 2px solid #fff;
-    padding: 1px 4px 0;
-    text-align: center;
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    height: 19px;
     margin-left: -6px;
+    min-width: 19px;
+    padding: 1px 4px 0;
+    position: relative;
+    text-align: center;
     top: -10px;
+
     &.open_review_list_button__counter__hidden {
         visibility: hidden;
     }
 }
 
 .user_form__error_p {
-    display: block;
-    width: 100%;
-    text-align: center;
     color: $mainColor;
+    display: block;
     font-size: 16px;
     padding-bottom: 16px;
+    text-align: center;
+    width: 100%;
 }
 
 //.decline__form {
@@ -350,24 +370,25 @@
 }
 
 .decline__text_input {
-    font-size: 14px;
-    color: $mainTextColor;
-    padding: 19px 18px 16px;
+    background-color: #fff;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
-    width: 100%;
-    display: block;
     box-sizing: border-box;
-    background-color: #fff;
+    color: $mainTextColor;
+    display: block;
+    font-size: 14px;
+    padding: 19px 18px 16px;
+    width: 100%;
 }
 
 .decline__close_button {
+    cursor: pointer;
     display: block;
     float: right;
+    margin-top: 10px;
     position: relative;
     z-index: 1;
-    cursor: pointer;
-    margin-top: 10px;
+
     &:hover,
     &:active {
         background-color: #808080;
@@ -380,33 +401,40 @@
             .text_label {
                 padding-left: 15px;
             }
+
             .calendar_label {
                 padding-right: 15px;
             }
+
             .text_label__mobile_wide {
                 width: 100%;
             }
+
             .gender_label_container:last-child {
                 float: left;
                 margin-left: 15px;
             }
+
             .settings_form__submit_button {
+                float: none;
                 margin-left: auto;
                 margin-right: auto;
-                float: none;
                 width: 192px;
             }
+
             .settings_form_bottom_line {
                 margin-left: 15px;
                 margin-right: 15px;
             }
+
             .open_review_list_button {
-                top: -115px;
                 margin-right: 15px;
+                top: -115px;
             }
+
             .favorite__description {
-                margin-top: 0;
                 margin-left: 15px;
+                margin-top: 0;
             }
 
             .text_label__phone_prefix {
@@ -420,15 +448,18 @@
             .text_label {
                 width: 100%;
             }
+
             .calendar_label {
                 padding-bottom: 39px;
             }
+
             .open_review_list_button {
-                top: 0;
                 float: none;
-                width: auto;
                 margin: 0 10px 16px;
+                top: 0;
+                width: auto;
             }
+
             .favorite__description {
                 margin-left: 10px;
             }
@@ -446,6 +477,7 @@
             */
             .sale-swiper-card__stopwatch {
                 height: 166px;
+
                 & ~ .sale-swiper-card__subscription-data {
                     margin-bottom: 34px;
                 }

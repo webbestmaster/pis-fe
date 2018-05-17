@@ -1,10 +1,10 @@
-@import "./../../style/css/aaa-class";
-@import "./../../style/css/aaa-var";
-@import "./../../style/css/helper";
+@import './../../style/css/aaa-class';
+@import './../../style/css/aaa-var';
+@import './../../style/css/helper';
 
 .block {
-    padding: 100px 0;
     background-color: $mainGray;
+    padding: 100px 0;
 }
 
 .block_hug {
@@ -12,88 +12,95 @@
 }
 
 .article_holder {
-    position: relative;
     height: 0;
-    padding-bottom: 33.5%;
-    max-width: $maxWidth;
     margin: 0 auto;
+    max-width: $maxWidth;
+    padding-bottom: 33.5%;
+    position: relative;
 }
 
 .article_1,
 .article_2,
 .article_3 {
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    position: absolute;
     border-radius: 4px;
+    position: absolute;
     text-shadow: $textShadow;
+
     &:before {
+        background-color: $promoArticleBgc;
         content: '';
-        position: absolute;
+        height: 100%;
         left: 0;
+        position: absolute;
         top: 0;
         width: 100%;
-        height: 100%;
-        background-color: $promoArticleBgc;
         z-index: 0;
     }
 }
 
 .article_header {
     color: #fff;
-    position: absolute;
-    width: 80%;
-    left: 34px;
+    font-size: 25px;
     //bottom: 93px;
     font-weight: bold;
-    font-size: 25px;
+    left: 34px;
+    position: absolute;
+    width: 80%;
 }
 
 .article_sub_header {
     color: #fff;
-    position: absolute;
-    width: 80%;
-    left: 34px;
     //bottom: 63px;
     font-size: 16px;
+    left: 34px;
+    position: absolute;
+    width: 80%;
 }
 
 .article_1 {
+    height: 75%;
     left: 0;
     top: 0;
     width: 57.3%;
-    height: 75%;
+
     .eye_counter {
         left: 35px;
         top: 34px;
     }
+
     .article_header {
+
+        @include line-cap(2);
         bottom: 34px;
         font-size: 18px;
-        line-height: 26px;
-        @include line-cap(2);
+
         height: 52px;
+        line-height: 26px;
     }
 }
 
 .article_2,
 .article_3 {
+    height: 46.8%;
     right: 0;
     width: 40.1%;
-    height: 46.8%;
+
     .eye_counter {
-        left: 35px;
         bottom: 36px;
+        left: 35px;
     }
+
     .article_header {
-        font-size: 19px;
         bottom: 120px;
+        font-size: 19px;
     }
 
     .article_sub_header {
-        font-size: 14px;
         bottom: 94px;
+        font-size: 14px;
     }
 }
 
@@ -106,16 +113,18 @@
 }
 
 .text {
-    left: 0;
-    bottom: 0px;
-    width: 57.3%;
+
+    @include line-cap(4);
+    bottom: 0;
+    color: $mainTextColor;
     //height: 75%;
     font-size: 14px;
-    line-height: 24px;
-    color: $mainTextColor;
-    position: absolute;
-    @include line-cap(4);
+
     height: 96px;
+    left: 0;
+    line-height: 24px;
+    position: absolute;
+    width: 57.3%;
 }
 
 :global .lt-desktop-width {
@@ -123,9 +132,11 @@
         .block {
             padding: 40px 0;
         }
+
         .article_holder {
             padding-bottom: 62%;
         }
+
         .article_1,
         .article_2,
         .article_3 {
@@ -134,9 +145,12 @@
 
         .article_1 {
             height: 100%;
+
             .article_header {
-                bottom: 35px;
+
                 @include line-cap(3);
+                bottom: 35px;
+
                 height: 75px;
                 //height: 56px;
             }
@@ -165,10 +179,12 @@
         .article_holder {
             padding-bottom: 281%;
         }
+
         .article_1,
         .article_2,
         .article_3 {
             width: 100%;
+
             .article_header,
             .article_sub_header,
             .eye_counter {
@@ -178,6 +194,7 @@
 
         .article_1 {
             height: 43.5%;
+
             .article_header {
                 bottom: 35px;
             }

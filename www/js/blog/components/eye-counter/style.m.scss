@@ -1,4 +1,4 @@
-@import "./../../style/css/aaa-var";
+@import './../../style/css/aaa-var';
 
 .block {
     display: block;
@@ -6,23 +6,23 @@
 }
 
 .counter {
+    background-color: $mainActiveColor;
+    background-image: url('./image/icon-eye-count.svg');
+    background-position: 14px 11px;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    color: #fff;
     float: left;
     font-size: 14px;
-    color: #fff;
-    padding: 10px 19px 8px 41px;
-    border-radius: 4px;
-    background-color: $mainActiveColor;
-    background-repeat: no-repeat;
-    background-position: 14px 11px;
-    background-image: url('./image/icon-eye-count.svg');
-    text-shadow: none;
     min-width: 24px;
+    padding: 10px 19px 8px 41px;
+    text-shadow: none;
 }
 
 .date {
-    font-weight: bold;
+    color: #fff;
     float: left;
     font-size: 14px;
-    color: #fff;
+    font-weight: bold;
     padding: 10px 19px 8px 23px;
 }

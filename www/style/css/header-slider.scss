@@ -1,10 +1,10 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .header-slider {
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
     height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
     z-index: 0; // to be under header menu
     &:hover {
         .header-slider__slide--back {
@@ -16,18 +16,20 @@
 }
 
 .header-slider__slide {
-    position: absolute;
+    height: 100%;
     left: 0;
+    overflow: hidden;
+    position: absolute;
     top: 0;
     width: 100%;
-    height: 100%;
     z-index: 0;
-    overflow: hidden;
+
     &.header-slider__slide--active {
         .header-slider__slide-image {
             opacity: 1;
         }
     }
+
     &.header-slider__slide--back {
         .header-slider__slide-image {
             opacity: 1;
@@ -37,14 +39,16 @@
 
 .header-slider__slide-image {
     @extend .header-slider__slide;
-    opacity: 0;
     background-position: center center;
     background-size: cover;
+
+    opacity: 0;
     transition: all 1s ease-out;
 }
 
 .header-slider__slide-pattern {
     @extend .header-slider__slide;
+
     background-image: url('./../i/header/pattern.png'), linear-gradient(to bottom, #1a2a3a 0%, rgba(26, 42, 58, 0) 100%);
     background-repeat: repeat, repeat-x;
     z-index: 5; // to be over all slides, increase if you need
@@ -56,42 +60,45 @@
 }
 
 .header-slider__navigation {
-    position: absolute;
-    z-index: 10; // to be over pattern
     left: 0;
+    position: absolute;
     top: 698px;
     width: 100%;
+    z-index: 10; // to be over pattern
 
     .slider-navigation-item {
-        display: block;
-        text-decoration: none;
-        padding-top: 100px;
-        font-size: 28px;
-        font-weight: bold;
-        width: 260px;
-        cursor: pointer;
-        opacity: 0.7;
-        text-transform: uppercase;
-        text-align: center;
         background-repeat: no-repeat;
         color: #fff;
-        transition: all ease-out 0.3s;
+        cursor: pointer;
+        display: block;
+        font-size: 28px;
+        font-weight: bold;
+        opacity: 0.7;
+        padding-top: 100px;
         position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all ease-out 0.3s;
+        width: 260px;
+
         &:before {
-            content: '';
             background-color: $mainColor;
+            content: '';
             height: 2px;
-            width: 68px;
-            position: absolute;
             left: 94px;
+            position: absolute;
             top: 148px;
+            width: 68px;
         }
 
         &:hover {
-            transform: translateY(-50px);
             opacity: 1;
+            transform: translateY(-50px);
+
             .slider-navigation-item__button {
                 opacity: 1;
+
                 &:hover {
                     opacity: 0.8;
                 }
@@ -100,10 +107,11 @@
     }
 
     .slider-navigation-item--left {
-        background-position: center 21px;
         background-image: url('./../i/header/slider/icon_club_white.svg');
-        float: left;
+        background-position: center 21px;
         background-size: 64px auto;
+        float: left;
+
         &.slider-navigation-item--active,
         &:hover {
             background-image: url('./../i/header/slider/icon_club_color.svg');
@@ -111,10 +119,11 @@
     }
 
     .slider-navigation-item--right {
-        background-position: center 22px;
         background-image: url('./../i/header/slider/icon_traning_white.svg');
+        background-position: center 22px;
         background-size: 69px auto;
         float: right;
+
         &.slider-navigation-item--active,
         &:hover {
             background-image: url('./../i/header/slider/icon_traning_color.svg');
@@ -122,11 +131,12 @@
     }
 
     .slider-navigation-item--center {
+        background-image: url('./../i/header/slider/icon_abonement_white.svg');
         background-position: center 25px;
         background-size: 69px auto;
         float: none;
         margin: 0 auto;
-        background-image: url('./../i/header/slider/icon_abonement_white.svg');
+
         &.slider-navigation-item--active,
         &:hover {
             background-image: url('./../i/header/slider/icon_abonement_color.svg');
@@ -134,28 +144,30 @@
     }
 
     .slider-navigation-item__button {
-        opacity: 0;
-        transition: all ease-out 0.5s;
+        background: $mainColor;
+        border-radius: 25px;
         color: #fff;
-        padding: 14px 10px;
+        cursor: pointer;
+        display: block;
         font-size: 14px;
         line-height: 20px;
-        position: relative;
-        border-radius: 25px;
-        text-align: center;
-        display: block;
-        width: 166px;
         margin: 34px auto 0;
-        background: $mainColor;
-        cursor: pointer;
+        opacity: 0;
+        padding: 14px 10px;
+        position: relative;
+        text-align: center;
         text-decoration: none;
+        transition: all ease-out 0.5s;
+        width: 166px;
     }
 }
 
 .header-slider__promo-texts {
     @extend .header-slider__navigation;
-    z-index: 9; // to be under .header-slider__navigation
     top: 415px;
+
+    z-index: 9; // to be under .header-slider__navigation
+
     .slider-navigation-item__button { // for mobile only
         display: none;
     }
@@ -168,29 +180,31 @@
 }
 
 .header-slider__promo-text {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 62px;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
     top: 0;
-    opacity: 0;
     transform: translateY(100px);
-    color: #fff;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 62px;
     transition: all ease-out 0.5s;
-    pointer-events: none;
+
     &.header-slider__promo-text--active {
-        pointer-events: auto;
         opacity: 1;
+        pointer-events: auto;
         transform: translateY(0);
     }
+
     &:before {
+        background: $mainColor;
         content: '';
         height: 3px;
-        width: 142px;
-        background: $mainColor;
-        position: absolute;
         left: -192px;
+        position: absolute;
         top: 30px;
+        width: 142px;
     }
 }
 
@@ -206,22 +220,23 @@
     }
 
     .slider-navigation-item {
-        width: 190px;
         font-size: 20px;
-        padding-top: 95px;
         opacity: 0.85;
+        padding-top: 95px;
+        width: 190px;
+
         &:before {
             content: none;
         }
 
         &:hover {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
         }
 
         &.slider-navigation-item--active {
-            transform: translateY(-15px);
             opacity: 1;
+            transform: translateY(-15px);
         }
     }
 
@@ -240,8 +255,8 @@
 }
 
 .header-slider__promo-texts--mobile {
-    z-index: 9; // to be under .header-slider__navigation
     top: 207px;
+    z-index: 9; // to be under .header-slider__navigation
 
     .header-slider__promo-texts-hug {
         padding: 0 141px;
@@ -249,10 +264,10 @@
 
     .slider-navigation-item__button {
         display: block;
-        opacity: 1;
-        margin: 30px 0 0 0;
-        font-weight: bold;
         font-size: 16px;
+        font-weight: bold;
+        margin: 30px 0 0;
+        opacity: 1;
         padding: 18px 19px 16px;
     }
 
@@ -266,10 +281,11 @@
             transform: translateY(0);
             z-index: 1;
         }
+
         &:before {
-            width: 91px;
             left: -123px;
             top: 20px;
+            width: 91px;
         }
     }
 
@@ -277,26 +293,26 @@
 
 @media screen and (max-width: $tabletWidth) {
     .header-slider__search {
-        width: 534px;
         top: 346px;
+        width: 534px;
     }
 }
 
 @media screen and (max-width: $mobileWidth) {
     .header--mobile {
-
         & ~ .header-mobile-menu__menu-button {
-            top: 24px;
-            right: 2px;
-            width: 42px;
             height: 42px;
+            right: 2px;
+            top: 24px;
+            width: 42px;
+
             &:after,
             &:before {
-                width: 23px;
-                height: 2px;
-                top: 22px;
-                left: 11px;
                 box-shadow: 0 -6px 0 #fff, 0 6px 0 #fff;
+                height: 2px;
+                left: 11px;
+                top: 22px;
+                width: 23px;
             }
 
             &.header-mobile-menu__menu-button--open {
@@ -317,10 +333,11 @@
         }
 
         .slider-navigation-item {
-            width: 93px;
             color: transparent;
             font-size: 16px;
             padding-top: 94px;
+            width: 93px;
+
             &.slider-navigation-item--active {
                 color: #fff;
             }
@@ -345,8 +362,8 @@
 
             .header-slider__promo-text {
                 font-size: 26px;
-                line-height: 36px;
                 left: 50%;
+                line-height: 36px;
                 text-align: center;
                 transform: translate3d(-50%, 60px, 0);
 
@@ -355,11 +372,11 @@
                 }
 
                 &:before {
+                    bottom: 84px;
                     left: 50%;
-                    width: 90px;
                     margin-left: -45px;
                     top: auto;
-                    bottom: 84px;
+                    width: 90px;
                 }
             }
         }

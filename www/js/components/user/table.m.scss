@@ -1,37 +1,40 @@
-@import "../../../style/css/aaa-var";
+@import '../../../style/css/aaa-var';
 
 .table {
-    width: 100%;
     border-collapse: collapse;
     margin-bottom: 25px;
+    width: 100%;
 }
 
 .t_head {
     background-color: $mainTextColor;
+
     td {
-        padding: 28px 13px 24px;
-        text-align: left;
-        vertical-align: middle;
         color: #fff;
         font-size: 14px;
         letter-spacing: 1px;
+        padding: 28px 13px 24px;
+        text-align: left;
+        vertical-align: middle;
     }
 }
 
 .t_body {
     td {
+        color: $mainTextColor;
+        font-size: 14px;
         padding: 28px 13px 26px;
         text-align: left;
         vertical-align: top;
-        color: $mainTextColor;
-        font-size: 14px;
+
         &.vertical_free {
-            padding-top: 0;
             padding-bottom: 0;
-        }
-        &.decline__td {
             padding-top: 0;
+        }
+
+        &.decline__td {
             padding-bottom: 20px;
+            padding-top: 0;
         }
     }
 
@@ -41,8 +44,9 @@
 }
 
 .t_link {
-    text-decoration: none;
     color: $mainTextColor;
+    text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
@@ -52,8 +56,8 @@
     .lt-desktop-width {
         :local {
             .table {
-                max-width: 100%;
                 display: block;
+                max-width: 100%;
                 overflow-x: auto;
             }
         }

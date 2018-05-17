@@ -1,9 +1,10 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .section {
     @extend .hug;
-    padding: 138px 0 94px;
     color: $mainTextColor;
+
+    padding: 138px 0 94px;
 }
 
 .section__with-sticky-card {
@@ -23,21 +24,21 @@
 .section__header {
     font-size: 36px;
     font-weight: bold;
-    position: relative;
     padding: 0 0 70px 100px;
+    position: relative;
 
     &:before {
-        content: '';
-        position: absolute;
         background-color: $mainColor;
-        left: 0;
-        top: 30px;
+        content: '';
         height: 2px;
+        left: 0;
+        position: absolute;
+        top: 30px;
         width: 70px;
     }
 
     &.section__header--white {
-        color: #FFF;
+        color: #fff;
     }
 
     & + .section__text-wrapper {
@@ -58,9 +59,10 @@
         color: $mainTextColor;
         font-size: 14px;
         line-height: 20px;
-        padding-left: 104px;
         margin-bottom: 20px;
+        padding-left: 104px;
     }
+
     /*
     &.section__text-wrapper--big-font {
         p {
@@ -77,14 +79,15 @@
 }
 
 .section__button {
-    display: inline-block;
-    font-size: 14px;
     border: 1px solid $mainBorderColor;
-    padding: 15px 28px 14px;
     border-radius: 47px;
-    text-decoration: none;
     color: $mainTextColor;
     cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 15px 28px 14px;
+    text-decoration: none;
+
     &.section__button--active,
     &:hover {
         background-color: $mainColor;
@@ -151,19 +154,21 @@
 
     .section__header {
         font-size: 28px;
-        padding-left: 0;
-        padding-bottom: 15px;
-        margin-left: 15px;
         margin-bottom: 15px;
+        margin-left: 15px;
+        padding-bottom: 15px;
+        padding-left: 0;
+
         &:before {
-            top: auto;
             bottom: 11px;
+            top: auto;
         }
 
         & + .section__text-wrapper {
             margin-top: 26px;
             padding-bottom: 30px;
         }
+
         &.section__header--plus-swiper + .sale-slider {
             margin-top: 10px;
         }
@@ -184,123 +189,127 @@
 
     .section__header {
         margin-left: 10px;
+
         &:before {
-            top: auto;
             bottom: 0;
+            top: auto;
         }
     }
 }
 
 .section__checkbox {
-    display: block;
-    width: 100%;
+    clear: both;
     color: $mainTextColor;
+    cursor: pointer;
+    display: block;
     font-size: 14px;
     line-height: 20px;
-    cursor: pointer;
-    clear: both;
     margin-bottom: 12px;
-    user-select: none;
     position: relative;
+    user-select: none;
+    width: 100%;
 
     .section__checkbox-node {
         display: none;
+
         &:checked + .section__checkbox-state {
-            border-color: $mainColor;
             background-color: $mainColor;
             background-image: url('./../i/section/input-tick.png');
             background-position: center center;
             background-repeat: no-repeat;
+            border-color: $mainColor;
         }
 
     }
 
     .section__checkbox-state {
-        margin-right: 11px;
-        float: left;
-        width: 20px;
-        height: 20px;
+        background-color: #fff;
         border: 1px solid $mainBorderColor;
         border-radius: 3px;
-        background-color: #fff;
+        float: left;
+        height: 20px;
+        margin-right: 11px;
+        width: 20px;
     }
 
     .section__checkbox-error-message {
-        color: #fff;
-        font-size: 12px;
+        background-color: $mainColor;
+        border-radius: 4px;
         box-sizing: border-box;
+        clear: both;
+        color: #fff;
+        display: block;
+        font-size: 12px;
+        margin-top: 14px;
         max-width: 100%;
         padding: 1px 8px 2px;
-        border-radius: 4px;
-        display: block;
         text-align: center;
-        clear: both;
-        margin-top: 14px;
-        background-color: $mainColor;
     }
 }
 
 .section__radio {
-    display: block;
-    width: 100%;
+    clear: both;
     color: $mainTextColor;
+    cursor: pointer;
+    display: block;
     font-size: 14px;
     line-height: 20px;
-    cursor: pointer;
-    clear: both;
     margin-bottom: 12px;
     user-select: none;
+    width: 100%;
 
     .section__radio-node {
         display: none;
+
         &:checked + .section__radio-state {
             &:before {
-                content: '';
-                width: 10px;
-                height: 10px;
                 background-color: $mainColor;
-                margin: 5px 0 0 5px;
-                display: block;
                 border-radius: 50%;
+                content: '';
+                display: block;
+                height: 10px;
+                margin: 5px 0 0 5px;
+                width: 10px;
             }
         }
     }
 
     .section__radio-state {
-        margin-right: 11px;
-        float: left;
-        width: 20px;
-        height: 20px;
+        background-color: #fff;
         border: 1px solid $mainBorderColor;
         border-radius: 10px;
-        background-color: #fff;
+        float: left;
+        height: 20px;
+        margin-right: 11px;
+        width: 20px;
     }
 }
 
 .section__input {
+    box-sizing: border-box;
     color: $mainTextColor;
     display: block;
     font-size: 14px;
-    padding: 7px 12px 6px 18px;
     height: 40px;
     max-width: 100%;
-    box-sizing: border-box;
+    padding: 7px 12px 6px 18px;
 }
 
 .section__spinner {
     background-image: url('./../i/section/spinner.gif');
-    margin: 0 auto;
-    width: 128px;
-    height: 128px;
-    padding: 50px;
-    background-repeat: no-repeat;
     background-position: center center;
+    background-repeat: no-repeat;
     background-size: 128px 128px;
+    height: 128px;
+    margin: 0 auto;
+    padding: 50px;
+    width: 128px;
 }
 
 .section_htdu {
-    text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
@@ -323,18 +332,19 @@
 }
 
 .section__no-search-result {
-    padding: 100px 20px 100px;
-    text-align: center;
     font-size: 16px;
+    padding: 100px 20px;
+    text-align: center;
 }
 
 .section__show-more {
-    margin-left: 5px;
-    color: #00a1fe;
-    padding-bottom: 2px;
     border-bottom: 1px dotted #00a1fe;
-    text-decoration: none;
+    color: #00a1fe;
     cursor: pointer;
+    margin-left: 5px;
+    padding-bottom: 2px;
+    text-decoration: none;
+
     &:hover {
         border-bottom-color: transparent;
     }

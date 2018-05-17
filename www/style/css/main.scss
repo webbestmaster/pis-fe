@@ -1,4 +1,4 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 body {
     overflow-y: scroll;
@@ -6,16 +6,19 @@ body {
 
 .hug {
     @extend .clear-full;
+
     margin: 0 auto;
     max-width: 1170px;
+
     &.hug--simple-page {
-        padding-top: 70px;
         padding-bottom: 70px;
+        padding-top: 70px;
     }
 
     &.hug--section {
         padding-bottom: 100px;
     }
+
     &.hug--no-clear {
         &:after {
             clear: none;
@@ -27,9 +30,10 @@ body {
 .lt-tablet-width {
     .hug {
         &.hug--simple-page {
-            padding-top: 35px;
             padding-bottom: 35px;
+            padding-top: 35px;
         }
+
         &.hug--section {
             padding-bottom: 40px;
         }

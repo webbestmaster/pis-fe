@@ -1,31 +1,31 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .clubs-catalog-search {
     position: relative;
 }
 
 .clubs-catalog-search__input {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
-    font-size: 14px;
+    box-sizing: border-box;
     color: $mainTextColor;
+    display: block;
+    font-size: 14px;
     padding: 13px 56px 12px 19px;
+    width: 100%;
 }
 
 .clubs-catalog-search__input-icon {
     background-image: url('./../i/search/icon-search.svg');
-    background-repeat: no-repeat;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px auto;
+    height: 36px;
     position: absolute;
     right: 10px;
     top: 4px;
-    z-index: 1;
     width: 36px;
-    height: 36px;
-    background-size: 20px auto;
+    z-index: 1;
 }
 
 .lt-desktop-width {

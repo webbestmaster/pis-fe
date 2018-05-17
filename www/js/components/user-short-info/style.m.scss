@@ -1,11 +1,12 @@
-@import "../../../style/css/aaa-var";
+@import '../../../style/css/aaa-var';
 
 $userInfoWidth: 260px;
 $paddingFonUserPanel: 50px;
 
 .left_padded_wrapper {
-    position: relative;
     margin-left: $userInfoWidth;
+    position: relative;
+
     :global {
         /*
         .top-big-banner {
@@ -16,16 +17,19 @@ $paddingFonUserPanel: 50px;
         .section__header {
             padding-bottom: 40px;
         }
+
         .hug.swiper-container {
             clear: none;
         }
+
         .hug.swiper-container {
             margin-left: $paddingFonUserPanel;
             margin-right: 15px;
         }
+
         .hug {
-            margin-left: $paddingFonUserPanel;
             clear: none;
+            margin-left: $paddingFonUserPanel;
             margin-right: 15px;
         }
 
@@ -48,6 +52,7 @@ $paddingFonUserPanel: 50px;
                     min-height: 756px;
                 }
             }
+
             .left_padded_wrapper__club {
                 :global .section__tabs-wrapper {
                     min-height: 954px;
@@ -58,24 +63,25 @@ $paddingFonUserPanel: 50px;
 }
 
 .main_block {
-    display: block;
     background-color: #192639;
-    width: 100%;
-    max-width: $userInfoWidth;
+    box-shadow: 0 806px 0 #192639;
+    display: block;
     float: left;
+    max-width: $userInfoWidth;
     min-height: 100px;
     padding: 54px 0 50px;
     position: absolute;
+    width: 100%;
     z-index: 0;
-    box-shadow: 0 806px 0 #192639;
 }
 
 .user_avatar {
-    width: 136px;
+    cursor: pointer;
     height: 136px;
     margin: 0 auto 19px;
     position: relative;
-    cursor: pointer;
+    width: 136px;
+
     &:hover,
     &:active {
         .user_avatar__edit_button {
@@ -85,101 +91,105 @@ $paddingFonUserPanel: 50px;
 }
 
 .user_avatar__input_file {
-    opacity: 0;
     background-color: #c00;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
     cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .user_avatar_image {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    width: 136px;
-    height: 136px;
-    border-radius: 50%;
     background-color: #111c2a;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    height: 136px;
+    width: 136px;
 }
 
 .user_avatar__edit_button {
-    background-repeat: no-repeat;
-    background-position: center center;
     background-color: $mainColor;
     background-image: url('./../../../style/i/user/icon-edit.png');
-    width: 54px;
-    height: 54px;
+    background-position: center center;
+    background-repeat: no-repeat;
     border-radius: 50%;
+    bottom: -3px;
+    cursor: pointer;
+    font-size: 0;
+    height: 54px;
+    opacity: 0;
     position: absolute;
     right: -10px;
-    bottom: -3px;
-    opacity: 0;
-    font-size: 0;
     text-indent: -100px;
-    cursor: pointer;
+    width: 54px;
 }
 
 .user_avatar__name {
     color: #fff;
     font-size: 16px;
-    text-align: center;
     padding-bottom: 4px;
+    text-align: center;
 }
 
 .user_avatar__email {
+    color: #8899ae;
     display: block;
     font-size: 14px;
-    color: #8899ae;
-    text-align: center;
     padding-bottom: 4px;
+    text-align: center;
 }
 
 .user_avatar__change_password {
     @extend .user_avatar__email;
+
     border-bottom: 1px solid #8899ae;
-    margin-top: 14px;
-    display: inline-block;
-    padding-bottom: 2px;
-    margin-bottom: 12px;
     cursor: pointer;
+    display: inline-block;
+    margin-bottom: 12px;
+    margin-top: 14px;
+    padding-bottom: 2px;
+
     &:after {
+        background-image: url('./../../../style/i/user/icon-lock.png');
         content: '';
         display: inline-block;
-        background-image: url('./../../../style/i/user/icon-lock.png');
-        width: 11px;
         height: 14px;
         margin-left: 10px;
+        width: 11px;
     }
+
     &:hover {
         border-bottom-color: transparent;
     }
 }
 
 .user_avatar__logout_button {
-    color: #fff;
     background-color: $mainColor;
-    max-width: 190px;
-    text-align: center;
-    padding: 16px 10px 15px 10px;
-    box-sizing: border-box;
-    font-size: 14px;
     border-radius: 40px;
-    margin: 20px auto 10px;
+    box-sizing: border-box;
+    color: #fff;
     cursor: pointer;
+    font-size: 14px;
+    margin: 20px auto 10px;
+    max-width: 190px;
+    padding: 16px 10px 15px;
+    text-align: center;
+
     .user_avatar__logout_icon {
-        display: inline-block;
-        width: 13px;
-        height: 12px;
-        background-repeat: no-repeat;
         background-image: url('./../../../style/i/user/icon-logout.png');
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: 12px;
         margin-left: 9px;
         position: relative;
         top: 2px;
+        width: 13px;
     }
 }
 
@@ -189,54 +199,57 @@ $paddingFonUserPanel: 50px;
 }
 
 .extra_info_block {
+    box-sizing: border-box;
     display: block;
     min-height: 172px;
-    box-sizing: border-box;
     padding-top: 40px;
 }
 
 .extra_info_value {
-    text-align: center;
-    position: relative;
     color: $mainColor;
     font-size: 44px;
     font-weight: bold;
-    padding-bottom: 13px;
     margin-bottom: 11px;
+    padding-bottom: 13px;
+    position: relative;
+    text-align: center;
+
     &:after {
-        content: '';
-        width: 50px;
-        height: 1px;
         background-color: $mainBorderColor;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         bottom: 0;
+        content: '';
+        height: 1px;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 50px;
     }
 }
 
 .extra_info_key {
-    text-align: center;
-    font-size: 18px;
     color: #fff;
+    font-size: 18px;
+    text-align: center;
 }
 
 :global {
     .lt-desktop-width {
         :local {
             .main_block {
-                float: none;
-                margin-top: -48px;
                 background-color: transparent;
-                margin-bottom: -25px;
-                position: static;
                 box-shadow: none;
+                float: none;
+                margin-bottom: -25px;
+                margin-top: -48px;
+                position: static;
             }
+
             .extra_info_wrapper {
-                margin-top: 24px;
                 background-color: #111c2a;
+                margin-top: 24px;
                 padding-top: 0;
             }
+
             .extra_info_block {
                 min-height: 122px;
                 padding-top: 28px;

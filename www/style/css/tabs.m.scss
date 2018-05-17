@@ -1,4 +1,4 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 body { // just add authority in front of swiper's classes
     .tab_wrapper {
@@ -7,17 +7,18 @@ body { // just add authority in front of swiper's classes
     }
 
     .tab {
-        margin-right: 54px;
-        font-size: 14px;
+        border-bottom: 2px solid transparent;
         color: $mainTextColor;
-        width: auto;
-        padding: 40px 0 37px;
         cursor: pointer;
+        display: block;
+        font-size: 14px;
+        list-style: none;
+        margin-right: 54px;
+        padding: 40px 0 37px;
         position: relative;
         user-select: none;
-        list-style: none;
-        display: block;
-        border-bottom: 2px solid transparent;
+        width: auto;
+
         &:global.react-tabs__tab--selected {
             border-bottom: 2px solid $mainColor;
         }
@@ -26,10 +27,10 @@ body { // just add authority in front of swiper's classes
     .tab_text_mark {
         color: $mainColor;
         font-size: 14px;
-        right: -12px;
-        top: 27px;
         font-weight: bold;
         position: absolute;
+        right: -12px;
+        top: 27px;
     }
 
     :global .lt-desktop-width {
@@ -37,26 +38,27 @@ body { // just add authority in front of swiper's classes
             .tab_text_mark {
                 top: 13px;
             }
+
             .tab_wrapper {
                 margin-bottom: 59px;
             }
+
             .tab {
-                padding: 27px 0 21px;
                 margin: 0 24px 0 16px;
+                padding: 27px 0 21px;
             }
         }
     }
 
     :global .lt-tablet-width {
         :local {
-
             .tab_wrapper {
                 margin-bottom: 20px;
             }
 
             .tab {
-                padding: 27px 0 21px;
                 margin: 0 24px 0 16px;
+                padding: 27px 0 21px;
             }
         }
     }

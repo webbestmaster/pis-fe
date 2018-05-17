@@ -1,65 +1,33 @@
-/* global window, IS_PRODUCTION, IS_DEVELOPMENT */
+/* global window */
 require('./lib/initialize-environment');
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import App from './components/app';
-
-import {createDevTools} from 'redux-devtools';
-import LogMonitor from 'redux-devtools-log-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+
+import App from './components/app';
 import {initAppScreenHelper} from './components/app/helper';
 
-import styles from 'style/css/_root.scss'; // do not remove me
-
-// import * as reducers from './reducer';
 import * as reducers from './reducer';
 
-// c.log(reducers.default);
-
-// const reducer = combineReducers({
-//     ...reducers
-// });
 const reducer = combineReducers({
     ...reducers
 });
 
-let store = null;
-let DevTools = null;
+const composeEnhancers = composeWithDevTools({
+    // options like actionSanitizer, stateSanitizer
+});
 
-if (IS_PRODUCTION) { // eslint-disable-line id-match
-    store = createStore(reducer, applyMiddleware(thunk));
-} else {
-    DevTools = createDevTools(
-        <DockMonitor
-            defaultIsVisible={false}
-            defaultSize={0.25}
-            toggleVisibilityKey="ctrl-h"
-            changePositionKey="ctrl-q">
-            <LogMonitor/>
-        </DockMonitor>);
-    store = createStore(reducer, DevTools.instrument(), applyMiddleware(thunk));
-}
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 render(
     <Provider store={store}>
-        {
-            IS_PRODUCTION ? // eslint-disable-line id-match
-                <BrowserRouter>
-                    <App/>
-                </BrowserRouter> :
-                <div>
-                    <BrowserRouter>
-                        <App/>
-                    </BrowserRouter>
-                    <div style={{fontSize: '13px'}}>
-                        <DevTools/>
-                    </div>
-                </div>
-        }
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
     </Provider>,
     window.document.querySelector('.js-app-wrapper')
 );

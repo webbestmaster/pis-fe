@@ -11,75 +11,83 @@
 
     .footer__text {
         color: #fff;
-        font-weight: bold;
         font-size: 14px;
+        font-weight: bold;
         line-height: 20px;
+
         .footer__text--social-header {
             display: block;
         }
+
         .footer__link {
             color: inherit;
-            text-decoration: none;
             display: block;
             font-weight: inherit;
             margin-bottom: 12px;
+            text-decoration: none;
         }
+
         &.footer__text--social-header,
         &.footer__text--social {
             font-weight: normal;
         }
+
         &.footer__text--copyright {
-            width: 25.5%;
             font-weight: normal;
+            width: 25.5%;
         }
     }
 
     .footer__logo {
         background-image: url(./../i/header/logo.svg);
         background-repeat: no-repeat;
-        width: 206px;
-        height: 17px;
         background-size: contain;
-        margin-bottom: 15px;
         display: block;
+        height: 17px;
+        margin-bottom: 15px;
+        width: 206px;
     }
 
     .footer__text--copyright {
-        width: 10%;
         padding-top: 3px;
+        width: 10%;
     }
 
     .footer__text--part-1 {
         width: 17%;
     }
+
     .footer__text--part-2 {
         width: 25.5%;
     }
+
     .footer__text--part-3 {
         width: 17.5%;
     }
 
     .footer__text--social {
         .footer__social-link {
-            width: 36px;
-            height: 36px;
             background-color: $mainColor;
-            background-repeat: no-repeat;
             background-position: center center;
-            float: left;
+            background-repeat: no-repeat;
             border-radius: 100%;
+            float: left;
+            height: 36px;
             margin-top: 15px;
+            width: 36px;
+
             &.footer__social-link--vk {
                 background-image: url('./../i/footer/icon_vk.svg');
-                background-size: 21px auto;
                 background-position: 44% 50%;
+                background-size: 21px auto;
 
             }
+
             &.footer__social-link--instagram {
                 background-image: url('./../i/footer/icon_instagram.svg');
+                background-position: 48% 47%;
                 background-size: 21px auto;
                 margin-left: 20px;
-                background-position: 48% 47%;
             }
         }
     }
@@ -91,45 +99,52 @@
 
         .section {
             flex-wrap: wrap;
-            padding: 68px 15px 0 15px;
+            padding: 68px 15px 0;
         }
 
         .footer__text {
             font-size: 16px;
             padding-bottom: 68px;
+
             &.footer__text--copyright {
                 font-size: 14px;
-                width: 50%;
                 order: 4;
+                width: 50%;
             }
+
             &.footer__text--social-header {
-                padding: 34px 0 0 84px;
                 float: left;
+                padding: 34px 0 0 84px;
             }
         }
 
         .footer__text--part-1 {
             width: 26%;
         }
+
         .footer__text--part-2 {
             width: 45%;
         }
+
         .footer__text--part-3 {
-            width: 26%;
             order: -1;
+            width: 26%;
         }
 
         .footer__text--social {
             order: 5;
+
             .footer__social-link {
-                width: 52px;
-                height: 52px;
                 float: left;
+                height: 52px;
                 margin-top: 19px;
+                width: 52px;
+
                 &.footer__social-link--vk {
                     background-size: 28px;
                     margin-left: 31px;
                 }
+
                 &.footer__social-link--instagram {
                     background-size: 28px;
                 }
@@ -144,8 +159,8 @@
         background-color: #192639;
 
         .footer__logo {
-            padding-top: 0;
             margin: 0 auto 15px;
+            padding-top: 0;
         }
 
         .section {
@@ -153,12 +168,14 @@
         }
 
         .footer__text {
-            text-align: center;
             padding-bottom: 38px;
+            text-align: center;
+
             &.footer__text--copyright {
-                width: auto;
                 order: 0;
+                width: auto;
             }
+
             &.footer__text--social-header {
                 float: none;
                 padding: 0;
@@ -169,26 +186,31 @@
             order: 1;
             width: auto;
         }
+
         .footer__text--part-2 {
             order: 1;
             width: auto;
         }
+
         .footer__text--part-3 {
             order: 1;
             width: auto;
         }
 
         .footer__text--social {
-            order: 1;
-            width: 146px;
             margin: 0 auto;
+            order: 1;
             padding-bottom: 74px;
+            width: 146px;
+
             .footer__social-link {
                 margin-top: 27px;
+
                 &.footer__social-link--vk {
                     float: left;
                     margin-left: 0;
                 }
+
                 &.footer__social-link--instagram {
                     float: right;
                 }

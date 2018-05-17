@@ -1,4 +1,4 @@
-@import "./aaa-var";
+@import './aaa-var';
 
 /*
 .blog_header {
@@ -9,45 +9,49 @@
 */
 
 .blog_section {
-    padding: 86px 0 104px;
     background-color: #fff;
+    padding: 86px 0 104px;
+
     &.blog_section__gray {
         background-color: $mainGray;
     }
+
     &.blog_section__article {
         padding-bottom: 160px;
     }
+
     &:after {
+        clear: both;
         content: '';
         display: block;
-        clear: both;
     }
 }
 
 .blog_section_content {
-    max-width: $maxWidth;
     margin: 0 auto;
+    max-width: $maxWidth;
     padding-left: 15px;
     padding-right: 15px;
 }
 
 .blog_section_header {
-    display: block;
-    font-weight: bold;
-    font-size: 36px;
     color: $mainHeaderColor;
-    position: relative;
-    padding-left: 101px;
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
     letter-spacing: 1px;
     padding-bottom: 80px;
+    padding-left: 101px;
+    position: relative;
+
     &:before {
-        content: '';
         background-color: $mainActiveColor;
-        position: absolute;
         bottom: 89px;
-        left: 0;
-        width: 70px;
+        content: '';
         height: 2px;
+        left: 0;
+        position: absolute;
+        width: 70px;
     }
 }
 
@@ -56,6 +60,7 @@
     font-size: inherit;
     font-weight: inherit;
     text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
@@ -65,8 +70,9 @@
     :local {
         .blog_section_header {
             &.blog_section_header__article {
-                padding-left: 0;
                 padding-bottom: 34px;
+                padding-left: 0;
+
                 &:before {
                     display: none;
                 }
@@ -76,16 +82,17 @@
 }
 
 .button {
-    padding: 13px 38px 14px;
+    background-color: #fff;
+    border: 1px solid $mainBorderColor;
+    border-radius: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    text-align: center;
-    box-sizing: border-box;
-    border-radius: 50px;
-    border: 1px solid $mainBorderColor;
-    background-color: #fff;
-    cursor: pointer;
     letter-spacing: 0.5px;
+    padding: 13px 38px 14px;
+    text-align: center;
+
     &:hover {
         background-color: $mainBorderColor;
     }
@@ -95,6 +102,7 @@
     :local {
         .blog_section {
             padding: 31px 0 47px;
+
             &.blog_section__article {
                 padding-bottom: 20px;
             }
@@ -102,8 +110,9 @@
 
         .blog_section_header {
             font-size: 24px;
-            padding-left: 0;
             padding-bottom: 57px;
+            padding-left: 0;
+
             &:before {
                 bottom: 43px;
             }

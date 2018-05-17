@@ -1,113 +1,115 @@
-@import "aaa-var";
-@import "helper";
+@import 'aaa-var';
+@import 'helper';
 
 .header {
+    height: 500px;
     //height: 980px;
     position: relative;
-    height: 500px;
 }
 
 .header__logo {
-    float: left;
     background-image: url('./../i/header/logo.svg');
-    width: 270px;
-    height: 60px;
     background-position: center center;
     background-repeat: no-repeat;
+    float: left;
+    height: 60px;
     margin: 51px 0 0 18px;
     position: absolute;
-    top: 0;
-    z-index: 1;
     text-indent: -9999px;
+    top: 0;
+    width: 270px;
+    z-index: 1;
 }
 
 .header-slider__search {
-    pointer-events: none;
     display: block;
-    padding: 0 15px;
+    height: 60px;
     margin: 0 auto;
     max-width: 831px;
-    position: relative;
-    z-index: 10;
-    top: 528px;
-    height: 60px;
     opacity: 0;
+    padding: 0 15px;
+    pointer-events: none;
+    position: relative;
+    top: 528px;
     transform: translateY(100%);
     transition: all 0.5s ease-out;
+    z-index: 10;
+
     &.header-slider__search--active {
-        pointer-events: auto;
         opacity: 1;
+        pointer-events: auto;
         transform: translateY(0);
     }
 }
 
 .header-slider__search-input {
+    background-color: #fff;
     border-radius: 30px;
+    box-sizing: border-box;
+    display: block;
     font-size: 14px;
     height: 100%;
-    background-color: #fff;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
     padding: 4px 210px 0 48px;
+    width: 100%;
 }
 
 .header-slider__search-button {
+    background-color: $mainColor;
     border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
     font-size: 14px;
+    font-weight: bold;
+    height: 60px;
+    padding-top: 4px;
     position: absolute;
     right: 14px;
-    top: 0;
-    z-index: 1;
-    background-color: $mainColor;
-    height: 60px;
-    color: #fff;
-    font-weight: bold;
     text-align: center;
-    text-transform: uppercase;
-    width: 200px;
-    padding-top: 4px;
-    cursor: pointer;
     text-indent: 16px;
+    text-transform: uppercase;
+    top: 0;
     transition: opacity 0.3s ease-out;
     transition-delay: 0.5s;
+    width: 200px;
+    z-index: 1;
 }
 
 .header-slider__search-result-list-wrapper {
-    z-index: 3;
-    position: absolute;
+    box-sizing: border-box;
     left: 50%;
+    padding: 0 50px;
+    position: absolute;
     top: 63px;
     transform: translateX(-50%);
     width: 100%;
-    box-sizing: border-box;
-    padding: 0 50px;
+    z-index: 3;
 }
 
 .header-slider__search-result-list {
     background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
     max-height: 480px;
     overflow: auto;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     width: 100%;
-    box-sizing: border-box;
 }
 
 .header-slider__search-result-list--search-empty {
-    text-align: center;
     padding: 40px 20px;
+    text-align: center;
 }
 
 .header-slider__search-result-item {
-    display: block;
-    text-decoration: none;
-    padding: 10px;
     border-bottom: 1px solid $mainBorderColor;
     color: $mainTextColor;
+    display: block;
     font-size: 12px;
     min-height: 70px; // image height
+    padding: 10px;
+    text-decoration: none;
     &:hover {
         background-color: $mainBorderColor;
+
         .header-slider__search-result-name {
             text-decoration: underline;
         }
@@ -115,24 +117,26 @@
 }
 
 .header-slider__search-result-image {
-    width: 70px;
-    height: 70px;
-    float: left;
-    background-size: cover;
     background-position: center center;
-    margin-right: 10px;
+    background-size: cover;
     border-radius: 6px;
+    float: left;
+    height: 70px;
+    margin-right: 10px;
+    width: 70px;
 }
 
 .header-slider__search-result-name {
     @include line-cap(1);
+
     font-weight: bold;
     margin: 5px 0 8px;
 }
 
 .header-slider__result-description {
-    height: 48px;
+
     @include line-cap(3);
+    height: 48px;
 }
 
 @media screen and (max-width: $tabletWidth) {
@@ -148,17 +152,17 @@
 @media screen and (max-width: $mobileWidth) {
     .header--mobile {
         & + .header__logo {
-            margin: 25px 0 0 10px;
-            width: 159px;
-            height: 13px;
             background-size: 159px 13px;
+            height: 13px;
+            margin: 25px 0 0 10px;
             padding: 20px 0 10px;
+            width: 159px;
         }
 
         .header-slider__search {
-            width: 300px;
-            top: 320px;
             padding: 0 10px;
+            top: 320px;
+            width: 300px;
         }
 
         .header-slider__search-input {
@@ -167,15 +171,15 @@
         }
 
         .header-slider__search-button {
+            background-image: url(./../i/header/icon-search.svg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 22px;
             font-size: 0;
-            width: 60px;
             height: 60px;
             padding: 0;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-image: url(./../i/header/icon-search.svg);
-            background-size: 22px;
             right: 10px;
+            width: 60px;
         }
     }
 }

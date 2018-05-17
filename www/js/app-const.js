@@ -1,5 +1,3 @@
-/* global IS_PRODUCTION, IS_DEVELOPMENT */
-
 // const postfix = '$url=http://site.katran.by';
 // const postfixAmp = '&' + postfix;
 // const postfixQuestion = '?' + postfix;

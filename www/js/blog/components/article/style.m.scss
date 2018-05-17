@@ -1,5 +1,5 @@
-@import "./../../style/css/aaa-var";
-@import "./../../style/css/helper";
+@import './../../style/css/aaa-var';
+@import './../../style/css/helper';
 
 .article_padded_wrapper {
     margin-right: 370px;
@@ -11,23 +11,26 @@
 }
 
 .title_image {
-    display: block;
-    width: 100%;
     border-radius: 4px;
+    display: block;
     margin-bottom: 32px;
+    width: 100%;
 }
 
 .article_text_wrapper {
     padding-bottom: 67px;
+
     p {
+        color: $mainHeaderColor;
         font-size: 14px;
         line-height: 20px;
-        color: $mainHeaderColor;
         padding-bottom: 18px;
     }
+
     img {
         max-width: 100% !important; // sorry, any html can arrive from server
     }
+
     strong {
         font-weight: bold;
     }
@@ -38,106 +41,114 @@
 }
 
 .share_label {
+    color: $mainHeaderColor;
     display: block;
     float: left;
     font-size: 18px;
-    color: $mainHeaderColor;
     font-weight: bold;
-    padding-top: 14px;
     margin-right: 29px;
+    padding-top: 14px;
 }
 
 .share_button {
-    float: left;
-    width: 52px;
-    height: 52px;
     border-radius: 26px;
     cursor: pointer;
+    float: left;
+    height: 52px;
     //background-color: $mainTextColor;
     margin-right: 27px;
+    width: 52px;
+
     &:hover {
         opacity: 0.75;
     }
+
     &:last-child {
         margin-right: 0;
     }
 }
 
 .extra_article_list {
-    width: 268px;
     float: right;
     min-width: 200px;
+    width: 268px;
     //background-color: #0c0;
 }
 
 .extra_article {
-    display: block;
     border-bottom: 1px solid $mainBorderColor;
-    padding-bottom: 33px;
+    display: block;
     margin-bottom: 32px;
+    padding-bottom: 33px;
+
     &:last-child {
         border-bottom-color: transparent;
     }
 }
 
 .extra_article_image {
-    display: block;
-    width: 100%;
-    height: 164px;
-    background-repeat: no-repeat;
     background-position: center center;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 4px;
+    display: block;
+    height: 164px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .extra_article_header {
+
+    @include line-cap(3);
     color: $mainHeaderColor;
     font-size: 16px;
-    line-height: 24px;
     font-weight: bold;
-    margin-bottom: 19px;
-    @include line-cap(3);
+
     height: 72px;
+    line-height: 24px;
+    margin-bottom: 19px;
 }
 
 .extra_article_date {
-    font-size: 14px;
     color: $mainTextColor;
     display: block;
+    font-size: 14px;
 }
 
 :global .lt-desktop-width {
     :local {
         .article_padded_wrapper {
+            border-bottom: 1px solid $mainBorderColor;
+            margin-bottom: 65px;
             margin-right: 0;
             padding-bottom: 61px;
-            margin-bottom: 65px;
-            border-bottom: 1px solid $mainBorderColor;
         }
+
         .title_image {
             margin-bottom: 26px;
         }
+
         .article_text_wrapper {
             padding-bottom: 16px;
         }
+
         .share_label {
             float: none;
-            width: 100%;
             padding-bottom: 30px;
+            width: 100%;
         }
 
         .extra_article_list {
-            float: none;
             display: flex;
-            justify-content: space-between;
             flex-direction: row;
+            float: none;
+            justify-content: space-between;
             width: 100%;
         }
 
         .extra_article {
-            width: 48%;
             border-bottom: none;
+            width: 48%;
         }
 
         .extra_article:last-child {
@@ -149,8 +160,8 @@
 :global .lt-tablet-width {
     :local {
         .article_padded_wrapper {
-            padding-bottom: 44px;
             margin-bottom: 46px;
+            padding-bottom: 44px;
         }
 
         .extra_article_list {
@@ -158,13 +169,13 @@
         }
 
         .extra_article {
-            width: 100%;
             border-bottom: 1px solid $mainBorderColor;
+            width: 100%;
         }
 
         .extra_article:last-child {
-            display: block;
             border-bottom: 1px solid transparent;
+            display: block;
         }
     }
 }

@@ -1,8 +1,8 @@
 .category-icon {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
     background-image: url('./../i/category/strength.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .category-icon:hover {
@@ -24,13 +24,14 @@ $list: gym yoga cardio combat mind strength dancing games mothers after;
     .clubs-catalog-filter__header-icon--#{$item},
     .clubs-catalog-list-item__header--icon-#{$item} {
         background-image: url('./../i/category/#{$item}.svg');
+
         &:before { // just preload 'hover' image
+            background-image: url('./../i/category/#{$item}-active.svg');
             content: '';
-            position: absolute;
-            width: 1px;
             height: 1px;
             opacity: 0;
-            background-image: url('./../i/category/#{$item}-active.svg');
+            position: absolute;
+            width: 1px;
         }
     }
 

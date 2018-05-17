@@ -1,14 +1,14 @@
-@import "../../../style/css/aaa-var";
+@import '../../../style/css/aaa-var';
 //@import "../../../style/css/helper";
 
 body { // just add authority in front of swiper's classes
 
     // gallery
     .gallery_swiper_full_width_wrapper {
-        width: 100%;
         background-color: #192739;
-        padding: 28px 0 32px;
         margin-bottom: 129px;
+        padding: 28px 0 32px;
+        width: 100%;
     }
 
     .gallery_swiper_container {
@@ -16,74 +16,79 @@ body { // just add authority in front of swiper's classes
     }
 
     .gallery_swiper_slide {
-        display: block;
-        background-repeat: no-repeat;
         background-position: center center;
+        background-repeat: no-repeat;
         background-size: cover;
-        width: 320px;
+        cursor: pointer;
+        display: block;
         height: 320px;
         position: relative;
-        cursor: pointer;
+        width: 320px;
+
         &:hover:before {
+            background-color: #192739;
+            background-image: url('./../../../style/i/club/cross-white-46x2.svg');
+            background-position: center center;
+            background-repeat: no-repeat;
             content: '';
-            position: absolute;
+            height: 100%;
             left: 0;
+            opacity: 0.8;
+            position: absolute;
             top: 0;
             width: 100%;
-            height: 100%;
-            background-color: #192739;
-            opacity: 0.8;
-            background-image: url('./../../../style/i/club/cross-white-46x2.svg');
-            background-repeat: no-repeat;
-            background-position: center center;
         }
     }
 
     .gallery_image_wrapper {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .gallery_image {
         @extend .gallery_swiper_slide;
+
         display: block;
         float: none;
-        width: 370px;
         height: 256px;
         margin-bottom: 30px;
+        width: 370px;
     }
 
     // filials
     .filial_info_wrapper {
         display: block;
-        position: relative;
         margin-bottom: 130px;
+        position: relative;
     }
 
     .filial_list {
-        width: 338px;
         border: 1px solid $mainBorderColor;
-        max-height: 100%;
-        position: absolute;
         left: 0;
-        top: 0;
+        max-height: 100%;
         overflow: auto;
+        position: absolute;
+        top: 0;
+        width: 338px;
     }
 
     .filial_list_item {
-        list-style: none;
         background-color: #f7f7f7;
         border-bottom: 1px solid $mainBorderColor;
-        padding: 34px 32px 29px;
         cursor: pointer;
+        list-style: none;
+        padding: 34px 32px 29px;
+
         &:global:hover,
         &:global.react-tabs__tab--selected {
             background-color: #fff;
+
             :local .filial_list_item_h {
                 color: $mainColor;
             }
+
             :local .filial_list_item_p {
                 color: $mainTextColor;
             }
@@ -95,15 +100,15 @@ body { // just add authority in front of swiper's classes
     }
 
     .filial_list_item_h {
-        font-size: 14px;
         color: #aaaeb5;
+        font-size: 14px;
         font-weight: bold;
         padding-bottom: 3px;
     }
 
     .filial_list_item_p {
-        font-size: 14px;
         color: #aaaeb5;
+        font-size: 14px;
     }
 
     .filial_detailed_info {
@@ -115,23 +120,23 @@ body { // just add authority in front of swiper's classes
     }
 
     .filial_details_block {
-        float: left;
-        width: 50%;
         box-sizing: border-box;
+        float: left;
         padding: 0 16px 39px 0;
+        width: 50%;
     }
 
     .filial_details_block__w100 {
-        width: 100%;
         box-sizing: border-box;
         padding: 0 16px 39px 0;
+        width: 100%;
     }
 
     .filial_details_block_h {
         color: $mainColor;
         font-size: 16px;
-        line-height: 20px;
         font-weight: bold;
+        line-height: 20px;
         padding-bottom: 6px;
     }
 
@@ -147,16 +152,18 @@ body { // just add authority in front of swiper's classes
 
     .filial_details_block_li {
         @extend .filial_details_block_p;
-        color: #c3c6ca;
-        padding: 0 16px 0 21px;
         box-sizing: border-box;
+
+        color: #c3c6ca;
         float: left;
-        width: 50%;
         line-height: 28px;
+        padding: 0 16px 0 21px;
+        width: 50%;
+
         &.filial_details_block_li__active {
             background-image: url('./../../../style/i/sale/details-tick.png');
-            background-repeat: no-repeat;
             background-position: 1px 7px;
+            background-repeat: no-repeat;
             color: $mainTextColor;
         }
     }
@@ -164,6 +171,7 @@ body { // just add authority in front of swiper's classes
     .filial_details_wrapper {
         display: block;
         margin-left: 400px;
+
         &:global.react-tabs__tab-panel--selected {
             padding-bottom: 43px;
         }
@@ -172,10 +180,10 @@ body { // just add authority in front of swiper's classes
     .filial_info_header {
         color: $mainTextColor;
         font-size: 18px;
-        line-height: 20px;
         font-weight: bold;
-        padding: 13px 0 47px 0;
+        line-height: 20px;
         margin-right: 270px;
+        padding: 13px 0 47px;
     }
 
     .filial_info_show_on_map {
@@ -183,20 +191,20 @@ body { // just add authority in front of swiper's classes
     }
 
     .filial_info_image {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 100%;
         display: block;
         float: left;
-        width: 238px;
         height: 238px;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
         margin-top: 7px;
-        border-radius: 100%;
+        width: 238px;
     }
 
     .filial_details_map {
-        width: 100%;
         height: 600px;
+        width: 100%;
     }
 
     // reviews
@@ -205,17 +213,17 @@ body { // just add authority in front of swiper's classes
     }
 
     .review_item {
-        display: block;
+        border-bottom: 1px solid $mainBorderColor;
         clear: both;
+        display: block;
+        margin-bottom: 73px;
         padding: 0 0 89px 100px;
         position: relative;
-        border-bottom: 1px solid $mainBorderColor;
-        margin-bottom: 73px;
     }
 
     .review_item_admin {
         clear: both;
-        padding: 36px 0 0 0;
+        padding: 36px 0 0;
     }
 
     .review_text_holder {
@@ -223,15 +231,16 @@ body { // just add authority in front of swiper's classes
     }
 
     .review_enter_text {
-        display: block;
-        padding: 5px 0 2px;
-        color: #4285f4;
         border-bottom: 1px dotted #4285f4;
+        color: #4285f4;
         cursor: pointer;
+        display: block;
         float: left;
-        margin-left: 104px;
-        margin-bottom: 22px;
         font-size: 16px;
+        margin-bottom: 22px;
+        margin-left: 104px;
+        padding: 5px 0 2px;
+
         &:hover {
             border-bottom-color: transparent;
         }
@@ -240,26 +249,26 @@ body { // just add authority in front of swiper's classes
     .review_error_text {
         color: $mainColor;
         font-size: 16px;
-        text-align: center;
         padding-bottom: 22px;
+        text-align: center;
     }
 
     .review_image {
-        display: block;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
         background-color: #ccc;
-        width: 88px;
-        height: 88px;
-        float: left;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
         border-radius: 100%;
-        margin: 4px 0 0 0;
+        display: block;
+        float: left;
+        height: 88px;
+        margin: 4px 0 0;
+        width: 88px;
     }
 
     .review_user_name {
-        display: block;
         color: $mainTextColor;
+        display: block;
         font-size: 16px;
         font-weight: bold;
         padding-bottom: 8px;
@@ -268,108 +277,108 @@ body { // just add authority in front of swiper's classes
 
     .review_mark_as_new {
         background-color: $mainColor;
-        color: #fff;
-        font-size: 14px;
-        text-align: center;
-        width: 60px;
-        display: inline-block;
+        border: 2px solid #fff;
         border-radius: 40px;
         box-sizing: border-box;
+        color: #fff;
+        display: inline-block;
+        font-size: 14px;
         height: 30px;
         margin-left: 12px;
-        padding-top: 6px;
         margin-top: -6px;
-        border: 2px solid #fff;
+        padding-top: 6px;
+        text-align: center;
+        width: 60px;
     }
 
     .review_date {
+        color: $secondaryTextColor;
         display: block;
         font-size: 14px;
-        color: $secondaryTextColor;
         padding-bottom: 9px;
     }
 
     .review_rating {
-        width: 100px;
         position: absolute;
         right: 0;
         top: 0;
+        width: 100px;
     }
 
     .review_text {
+        color: $mainTextColor;
         display: block;
         font-size: 14px;
         line-height: 20px;
-        color: $mainTextColor;
         //@include line-cap(3);
     }
 
     .review_show_full_review {
+        border-bottom: 1px dotted #4285f4;
+        color: #4285f4;
+        cursor: pointer;
         display: block;
+        float: left;
         font-size: 14px;
         padding: 5px 0 2px;
-        color: #4285f4;
-        border-bottom: 1px dotted #4285f4;
-        cursor: pointer;
-        float: left;
     }
 
     .reply_to_review_button {
-        font-size: 14px;
-        color: $mainTextColor;
-        cursor: pointer;
         border: 1px solid $mainBorderColor;
         border-radius: 40px;
-        width: 192px;
         box-sizing: border-box;
-        text-align: center;
-        padding-top: 14px;
-        padding-bottom: 11px;
-        float: right;
         clear: both;
+        color: $mainTextColor;
+        cursor: pointer;
+        float: right;
+        font-size: 14px;
+        padding-bottom: 11px;
+        padding-top: 14px;
+        text-align: center;
+        width: 192px;
     }
 
     // review form
     .review_form {
-        display: block;
         background-color: #f7f8fa;
-        padding: 33px 38px 40px 36px;
-        margin: 0 0 0 100px;
         border-radius: 4px;
+        display: block;
+        margin: 0 0 0 100px;
+        padding: 33px 38px 40px 36px;
     }
 
     .reply_form {
-        margin-left: 0;
-        margin-top: 27px;
+        box-sizing: border-box;
         clear: both;
         float: left;
+        margin-left: 0;
+        margin-top: 27px;
         width: 100%;
-        box-sizing: border-box;
     }
 
     .review_wait_for_moderation {
-        text-align: center;
         font-size: 18px;
+        text-align: center;
     }
 
     .review_form__avatar {
-        display: block;
-        width: 60px;
-        height: 60px;
-        float: left;
-        border-radius: 100%;
         background-image: url('./../../../style/i/club/no-avatar.png');
-        background-repeat: no-repeat;
         background-position: center center;
+        background-repeat: no-repeat;
         background-size: cover;
+        border-radius: 100%;
+        display: block;
+        float: left;
+        height: 60px;
+        width: 60px;
     }
 
     .review_form__header {
         color: $mainTextColor;
-        font-weight: bold;
         font-size: 24px;
-        margin: 3px 0 4px 77px;
+        font-weight: bold;
         letter-spacing: 1px;
+        margin: 3px 0 4px 77px;
     }
 
     .review_form__stars_label {
@@ -379,43 +388,44 @@ body { // just add authority in front of swiper's classes
     }
 
     .review_form__stars_wrapper {
-        width: 100px;
-        margin: 0 8px 0 14px;
         float: left;
+        margin: 0 8px 0 14px;
+        width: 100px;
+
         :global .clubs-catalog-list-item__rating-star {
             cursor: pointer;
         }
     }
 
     .review_form__text_area {
-        color: $mainTextColor;
-        font-size: 14px;
-        display: block;
-        box-sizing: border-box;
-        border: 1px solid $mainBorderColor;
-        width: 100%;
-        border-radius: 3px;
         background-color: #fff;
-        margin: 36px 0 40px 0;
+        border: 1px solid $mainBorderColor;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: $mainTextColor;
+        display: block;
+        font-size: 14px;
         height: 141px;
+        margin: 36px 0 40px;
         overflow: auto;
         padding: 29px 32px 20px;
         resize: none;
+        width: 100%;
     }
 
     .review_form__button {
         background-color: $mainColor;
+        border-radius: 50px;
         color: #fff;
-        text-align: center;
+        cursor: pointer;
+        float: right;
         font-size: 14px;
-        text-transform: uppercase;
         font-weight: bold;
         padding: 16px 34px 15px;
-        float: right;
         position: relative;
         right: -6px;
-        border-radius: 50px;
-        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
     }
 
     :global .lt-desktop-width {
@@ -423,27 +433,34 @@ body { // just add authority in front of swiper's classes
             .gallery_swiper_full_width_wrapper {
                 margin-bottom: 87px;
             }
+
             .filial_list {
                 width: 312px;
             }
+
             .filial_info_wrapper {
+                margin-bottom: 40px;
                 margin-left: 16px;
                 margin-right: 16px;
-                margin-bottom: 40px;
             }
+
             .filial_details_wrapper {
                 margin-left: 343px;
+
                 :global .clubs-catalog-sort__button-colored {
                     display: none;
                 }
             }
+
             .filial_info_header {
                 margin-right: 0;
             }
+
             .filial_info_image {
                 float: none;
                 margin-bottom: 33px;
             }
+
             .filial_details_block_wrapper {
                 margin-left: 0;
             }
@@ -480,17 +497,17 @@ body { // just add authority in front of swiper's classes
             }
 
             .gallery_image_wrapper {
-                padding-top: 14px;
-                padding-left: 15px;
                 //padding-right: 15px;
                 justify-content: center;
+                padding-left: 15px;
+                padding-top: 14px;
             }
 
             .gallery_image {
-                width: 228px;
                 height: 158px;
                 margin-bottom: 21px;
                 margin-right: 21px;
+                width: 228px;
             }
         }
     }
@@ -500,22 +517,26 @@ body { // just add authority in front of swiper's classes
             .gallery_swiper_full_width_wrapper {
                 margin-bottom: 30px;
             }
+
             .filial_info_wrapper {
                 margin: 23px 10px 0;
             }
+
             .filial_list {
-                max-height: 160px;
-                width: 100%;
-                position: static;
                 margin-bottom: 9px;
+                max-height: 160px;
+                position: static;
+                width: 100%;
             }
+
             .filial_details_wrapper {
                 margin-left: 0;
             }
+
             .filial_details_block_li,
             .filial_details_block {
-                float: none;
                 clear: both;
+                float: none;
                 width: 100%;
             }
 
@@ -524,14 +545,14 @@ body { // just add authority in front of swiper's classes
             }
 
             .review_image {
-                margin-right: 23px;
                 margin-bottom: 12px;
+                margin-right: 23px;
             }
 
             .review_rating {
-                position: static;
-                height: 20px;
                 float: left;
+                height: 20px;
+                position: static;
             }
 
             .review_text {
@@ -545,9 +566,9 @@ body { // just add authority in front of swiper's classes
             .review_form {
                 margin-left: 10px;
                 margin-right: 10px;
+                padding-bottom: 29px;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-bottom: 29px;
             }
 
             .reply_form {
@@ -556,8 +577,8 @@ body { // just add authority in front of swiper's classes
             }
 
             .review_form__header {
-                margin-left: 67px;
                 letter-spacing: 0;
+                margin-left: 67px;
                 padding-top: 14px;
             }
 
@@ -571,8 +592,8 @@ body { // just add authority in front of swiper's classes
             }
 
             .review_form__text_area {
-                margin-top: 22px;
                 margin-bottom: 26px;
+                margin-top: 22px;
                 padding: 22px 13px 13px;
             }
 
@@ -583,10 +604,10 @@ body { // just add authority in front of swiper's classes
             }
 
             .gallery_image {
-                width: 145px;
                 height: 100px;
                 margin-bottom: 13px;
                 margin-right: 10px;
+                width: 145px;
             }
 
             .review_mark_as_new {
@@ -596,8 +617,8 @@ body { // just add authority in front of swiper's classes
             }
 
             .reply_to_review_button {
-                width: 100%;
                 margin-top: 11px;
+                width: 100%;
             }
         }
     }

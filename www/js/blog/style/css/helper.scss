@@ -19,20 +19,22 @@
 @mixin line-cap($line) {
     @include prefix-key(line-clamp, $line);
     @include prefix-key(box-orient, vertical);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
 
     //@include prefix-value(display, box);
     display: -webkit-box;
     display: -moz-box;
     display: -ms-box;
     display: -o-box;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 @for $i from 1 through 10 {
     .line-cap-#{$i} {
         @include line-cap(#{$i});
+
         p, div {
             @include line-cap(#{$i});
         }

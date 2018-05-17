@@ -1,20 +1,20 @@
-@import "./../../../style/css/aaa-var";
+@import './../../../style/css/aaa-var';
 
 .card {
-    margin-top: 6px;
-    width: 370px;
-    padding: 43px 30px 33px;
-    min-height: 200px;
-    box-sizing: border-box;
-    border-radius: 5px;
     border: 2px solid $mainColor;
+    border-radius: 5px;
+    box-sizing: border-box;
     float: right;
+    margin-top: 6px;
+    min-height: 200px;
+    padding: 43px 30px 33px;
+    width: 370px;
 }
 
 .header {
-    position: relative;
     border-bottom: 1px solid $mainBorderColor;
     padding-bottom: 21px;
+    position: relative;
 }
 
 .company_name {
@@ -23,83 +23,87 @@
 }
 
 .company_name_value {
+    color: $mainTextColor;
     display: block;
     font-size: 16px;
-    color: $mainTextColor;
-    max-width: 100%;
     font-weight: bold;
+    max-width: 100%;
 }
 
 .company_logo {
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 50px;
-    width: 115px;
     position: absolute;
     right: 0;
     top: -23px;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
+    width: 115px;
 }
 
 .your_order {
+    color: $mainTextColor;
     display: block;
     font-size: 24px;
     font-weight: bold;
     padding: 24px 10px 16px;
-    color: $mainTextColor;
 }
 
 .order_data_item {
-    display: block;
     color: $mainTextColor;
+    display: block;
     font-size: 14px;
-    line-height: 20px;
     font-weight: bold;
+    line-height: 20px;
     padding: 0 12px 8px;
+
     span {
-        font-weight: normal;
         color: $secondaryTextColor;
+        font-weight: normal;
     }
 }
 
 .full_cost {
-    display: block;
     color: $mainColor;
-    font-weight: bold;
-    text-align: center;
+    display: block;
     font-size: 24px;
+    font-weight: bold;
     padding: 20px 0 32px;
+    text-align: center;
 }
 
 .button {
-    text-transform: uppercase;
-    font-size: 18px;
-    color: #fff;
-    text-align: center;
     background-color: $mainColor;
-    padding: 18px 10px 17px 10px;
-    position: relative;
-    cursor: pointer;
-    font-weight: bold;
-    text-indent: -19px;
     border-radius: 50px;
-    margin: 0 auto 35px;
+    color: #fff;
+    cursor: pointer;
     display: block;
-    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto 35px;
     max-width: 256px;
+    padding: 18px 10px 17px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-indent: -19px;
+    text-transform: uppercase;
+
     &:before,
     &:after {
-        content: '';
         background-color: #fff;
-        width: 13px;
+        content: '';
         height: 2px;
         position: absolute;
         right: 22px;
+        width: 13px;
     }
+
     &:before {
         top: 23px;
         transform: rotateZ(45deg);
     }
+
     &:after {
         top: 31px;
         transform: rotateZ(-45deg);
@@ -108,27 +112,27 @@
 }
 
 .cash_back {
+    background-image: url('./../../../style/i/subscription/cash-back-label.svg');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 130px auto;
+    color: $mainTextColor;
     display: block;
     font-size: 16px;
-    color: $mainTextColor;
-    background-image: url('./../../../style/i/subscription/cash-back-label.svg');
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 130px auto;
-    padding: 4px 0 9px 156px;
     font-weight: bold;
+    padding: 4px 0 9px 156px;
 }
 
 .cash_back_value {
-    color: $mainColor;
-    font-size: 18px;
-    display: inline-block;
     background-image: url('./../../../style/i/subscription/cash-back-small-label.png');
     background-position: 8px 4px;
     background-repeat: no-repeat;
     background-size: 25px 14px;
-    padding: 0 0 0 38px;
+    color: $mainColor;
+    display: inline-block;
+    font-size: 18px;
     font-weight: bold;
+    padding: 0 0 0 38px;
 }
 
 .arrow_arrow_holder {
@@ -139,13 +143,14 @@
 :global .lt-desktop-width {
     :local {
         .card {
-            width: 326px;
             margin-right: 15px;
-            padding: 33px 10px 33px;
+            padding: 33px 10px;
+            width: 326px;
         }
+
         .cash_back {
             background-position: center 0;
-            padding: 55px 0 0 0;
+            padding: 55px 0 0;
             text-align: center;
         }
     }
@@ -154,11 +159,11 @@
 :global .lt-tablet-width {
     :local {
         .card {
+            clear: both;
+            float: none;
+            margin: 115px auto 0;
             max-width: 326px;
             width: auto;
-            float: none;
-            clear: both;
-            margin: 115px auto 0;
         }
     }
 }

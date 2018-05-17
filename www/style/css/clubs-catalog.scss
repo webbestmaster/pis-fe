@@ -1,4 +1,4 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .clubs-catalog {
     display: block;
@@ -6,9 +6,9 @@
 }
 
 .clubs-catalog-map {
+    height: 800px;
     padding: 39px 0 64px;
     width: 800px;
-    height: 800px;
 }
 
 .clubs-catalog__left-part {
@@ -17,7 +17,7 @@
 
 .clubs-catalog__right-part {
     margin: 0 0 0 370px;
-    padding: 35px 0 0 0;
+    padding: 35px 0 0;
 }
 
 .lt-desktop-width {

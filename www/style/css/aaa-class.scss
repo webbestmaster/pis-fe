@@ -1,4 +1,4 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .hidden {
     display: none !important;
@@ -11,25 +11,26 @@
 
 .clear-self {
     &:after {
-        display: block;
-        content: '';
         clear: both;
+        content: '';
+        display: block;
     }
 }
 
 .clear-full {
     clear: both;
+
     &:after {
-        display: block;
-        content: '';
         clear: both;
+        content: '';
+        display: block;
     }
 }
 
 .ellipsis {
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .d-block {
@@ -58,28 +59,28 @@
 
 .square-image {
     display: block;
-    width: 100%;
     height: auto;
+    width: 100%;
 }
 
 .scroll-bar {
-    &::-webkit-scrollbar {width:6px;height:6px;}
+    &::-webkit-scrollbar {height:6px;width:6px;}
     &::-webkit-scrollbar-thumb {background-color:rgb(207,207,207);}
     &::-webkit-scrollbar-track {background:rgb(244,244,244);}
 
-    &::-moz-scrollbar {width:6px;height:6px;}
+    &::-moz-scrollbar {height:6px;width:6px;}
     &::-moz-scrollbar-thumb {background-color:rgb(207,207,207);}
     &::-moz-scrollbar-track {background:rgb(244,244,244);}
 
-    &::-ms-scrollbar {width:6px;height:6px;}
+    &::-ms-scrollbar {height:6px;width:6px;}
     &::-ms-scrollbar-thumb {background-color:rgb(207,207,207);}
     &::-ms-scrollbar-track {background:rgb(244,244,244);}
 
-    &::-o-scrollbar {width:6px;height:6px;}
+    &::-o-scrollbar {height:6px;width:6px;}
     &::-o-scrollbar-thumb {background-color:rgb(207,207,207);}
     &::-o-scrollbar-track {background:rgb(244,244,244);}
 
-    &::scrollbar {width:6px;height:6px;}
+    &::scrollbar {height:6px;width:6px;}
     &::scrollbar-thumb {background-color:rgb(207,207,207);}
     &::scrollbar-track {background:rgb(244,244,244);}
 }
@@ -129,6 +130,7 @@
     .fade-out {
         opacity: 0;
         transition: ease-out opacity 0.3s;
+
         &.fade-out_visible {
             opacity: 1;
         }

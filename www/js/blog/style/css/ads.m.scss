@@ -1,17 +1,17 @@
 .block__type_1 {
-    float: right;
-    width: 300px;
-    height: 600px;
     background-position: center center;
     background-size: cover;
     border-radius: 4px;
+    float: right;
+    height: 600px;
+    width: 300px;
 }
 
 :global .lt-tablet-width {
     :local {
         .block__type_1 {
-            margin: 20px auto;
             float: none;
+            margin: 20px auto;
         }
 
         /*

@@ -1,12 +1,12 @@
-@import "aaa-var";
-@import "helper";
+@import 'aaa-var';
+@import 'helper';
 
 .sale {
     .section__header {
         .section__button {
+            margin-left: 102px;
             position: relative;
             top: -7px;
-            margin-left: 102px;
         }
     }
 
@@ -19,25 +19,28 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+
         .sale-swiper-card {
             display: block;
         }
     }
 
     .sale-swiper-card {
-        margin: 10px 0;
-        cursor: pointer;
-        width: 288px;
-        min-height: 423px;
         box-sizing: border-box;
-        position: relative;
-        z-index: 10;
-        text-decoration: none;
         color: $mainTextColor;
+        cursor: pointer;
+        margin: 10px 0;
+        min-height: 423px;
+        position: relative;
+        text-decoration: none;
+        width: 288px;
+        z-index: 10;
+
         .sale-swiper-card__button {
-            opacity: 0;
             margin-top: 31px;
+            opacity: 0;
         }
+
         &:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
@@ -48,6 +51,7 @@
             .sale-swiper-card:first-child {
                 margin-left: 10px;
             }
+
             .sale-swiper-card:last-child {
                 margin-right: 10px;
             }
@@ -56,26 +60,29 @@
     }
 
     .sale-swiper-card__week-schedule {
+        border-bottom: 1px solid $mainBorderColor;
+        border-top: 1px solid $mainBorderColor;
         display: flex;
         flex-direction: row;
-        border-top: 1px solid $mainBorderColor;
-        border-bottom: 1px solid $mainBorderColor;
-        padding: 11px 0 11px;
-        margin-top: 3px;
         margin-bottom: 21px;
+        margin-top: 3px;
+        padding: 11px 0;
+
         .sale-swiper-card__week-day {
-            display: block;
-            width: 14.285714%; // 100 / 7
-            text-transform: capitalize;
-            color: $mainBorderColor;
             border-right: 1px solid $mainBorderColor;
+            box-sizing: border-box;
+            color: $mainBorderColor;
+            display: block;
             font-size: 14px;
             line-height: 19px;
-            box-sizing: border-box;
             text-align: center;
+            text-transform: capitalize;
+            width: 14.285714%; // 100 / 7
+
             &:last-child {
                 border-right-color: transparent;
             }
+
             &.sale-swiper-card__week-day--active {
                 color: $mainColor;
             }
@@ -83,61 +90,67 @@
     }
 
     .sale-swiper-card__label {
-        position: absolute;
         background-color: $mainColor;
         color: #fff;
         font-size: 18px;
         font-weight: bold;
-        top: 35px;
         padding: 4px 15px 4px 22px;
+        position: absolute;
+        top: 35px;
+
         &:before {
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
             border: 14px transparent solid;
             border-left-color: $mainColor;
+            border-left-width: 10px;
+            content: '';
+            height: 0;
+            position: absolute;
             right: -24px;
             top: 0;
-            border-left-width: 10px;
+            width: 0;
         }
+
         &:after {
-            content: '';
-            width: 1px;
-            height: 312px;
-            position: absolute;
-            left: 0;
-            top: 0;
             background-color: $mainBorderColor;
+            content: '';
+            height: 312px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 1px;
         }
+
         &.sale-swiper-card__label--line-only {
-            width: 100%;
             font-size: 0;
             padding: 0;
+            width: 100%;
+
             &:before {
+                background-color: $mainBorderColor;
+                border: none;
                 content: '';
-                width: 1px;
                 height: 312px;
                 position: absolute;
                 right: -1px;
                 top: 0;
-                background-color: $mainBorderColor;
-                border: none;
+                width: 1px;
             }
 
         }
     }
 
     .sale-swiper-card__content {
-        width: 235px;
+        box-sizing: border-box;
+        height: 100%;
         margin: 0 auto;
         padding: 100px 0 20px;
         position: relative;
-        height: 100%;
-        box-sizing: border-box;
         transition: all ease-out 0.5s;
+        width: 235px;
+
         &:hover {
             transform: translateY(-34px);
+
             .sale-swiper-card__button {
                 opacity: 1;
             }
@@ -146,9 +159,11 @@
 
     .sale-swiper-card__static-content {
         @extend .sale-swiper-card__content;
+
         .sale-swiper-card__button {
             opacity: 1;
         }
+
         &:hover {
             transform: translateY(0);
         }
@@ -157,66 +172,75 @@
     .sale-swiper-card__subscription-data {
         display: flex;
         flex-direction: row;
+
         .sale-swiper-card__subscription-count {
+            color: $mainTextColor;
             font-size: 36px;
             font-weight: bold;
             min-width: 51px;
-            color: $mainTextColor;
         }
+
         .sale-swiper-card__subscription-header {
-            font-size: 18px;
-            line-height: 20px;
+
+            @include line-cap(4);
+            border-left: 1px solid $mainBorderColor;
             color: $mainTextColor;
             flex-grow: 1;
+            font-size: 18px;
             font-weight: bold;
-            border-left: 1px solid $mainBorderColor;
-            padding: 1px 0 2px 11px;
-            margin-bottom: 21px;
             height: 80px; // 4 x line-height
-            @include line-cap(4);
+            line-height: 20px;
+            margin-bottom: 21px;
+            padding: 1px 0 2px 11px;
         }
+
         .sale-swiper-card__subscription-single-header {
             @extend .sale-swiper-card__subscription-header;
-            text-align: center;
+            border: none;
             padding-left: 10px;
             padding-right: 10px;
-            border: none;
+
+            text-align: center;
         }
     }
 
     .sale-swiper-card__subscription-description p {
-        font-size: 14px;
-        line-height: 16px;
-        color: $secondaryTextColor;
-        height: 67px;
+
         @include line-cap(4);
+        color: $secondaryTextColor;
+        font-size: 14px;
+        height: 67px;
+        line-height: 16px;
     }
 
     .sale-swiper-card__subscription-description {
-        height: 67px;
+        color: $secondaryTextColor;
         //overflow: hidden;
         font-size: 14px;
-        color: $secondaryTextColor;
+        height: 67px;
+        margin-bottom: 24px;
         padding-bottom: 27px;
         position: relative;
-        margin-bottom: 24px;
         text-align: center;
+
         &:before {
-            content: '';
             background-color: $mainBorderColor;
-            height: 1px;
-            width: 152px;
             bottom: 0;
-            position: absolute;
+            content: '';
+            height: 1px;
             left: 50%;
             margin-left: -76px;
+            position: absolute;
+            width: 152px;
         }
     }
 
     .sale-swiper-card__subscription-training-description {
         @extend .sale-swiper-card__subscription-description;
-        padding-bottom: 0;
         margin-bottom: 18px;
+
+        padding-bottom: 0;
+
         &:before {
             display: none;
         }
@@ -229,71 +253,79 @@
 
         p:first-child {
             @include line-cap(4);
+
             max-height: 64px;
         }
     }
 
     .sale-swiper-card__subscription-cost {
-        font-weight: bold;
-        text-align: center;
         color: $mainTextColor;
         font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+
         .sale-swiper-card__subscription-cost-currency {
-            font-weight: bold;
             font-size: 18px;
+            font-weight: bold;
         }
+
         .sale-swiper-card__subscription-old-cost {
             color: $secondaryTextColor;
             font-size: 20px;
             font-weight: bold;
-            position: relative;
             left: -13px;
+            position: relative;
+
             &:before {
-                content: '';
                 background-color: $secondaryTextColor;
-                position: absolute;
+                content: '';
+                height: 1px;
                 left: -5px;
+                padding: 0 5px;
+                position: absolute;
                 top: 14px;
                 width: 100%;
-                height: 1px;
-                padding: 0 5px;
             }
+
             .sale-swiper-card__subscription-cost-currency {
-                font-weight: bold;
                 font-size: 16px;
+                font-weight: bold;
             }
         }
     }
 
     .sale-swiper-card__image {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
         //background-color: #ccc;
         display: block;
-        width: 100%;
         height: 185px;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
         margin-bottom: 21px;
+        width: 100%;
     }
 
     .sale-swiper-card__training-image {
         @extend .sale-swiper-card__image;
-        height: 160px;
         background-size: cover;
-        position: relative;
-        margin-top: -65px;
+
+        height: 160px;
         margin-bottom: 26px;
+        margin-top: -65px;
+        position: relative;
+
         .sale-swiper-card__favorite-mark {
+            background-image: url('./../../style/i/club/heart.svg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            height: 44px;
             position: absolute;
             right: 9px;
             top: 10px;
-            width: 44px;
-            height: 44px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 24px 24px;
-            background-image: url('./../../style/i/club/heart.svg');
             transition: background ease-out 0.3s;
+            width: 44px;
+
             &.sale-swiper-card__favorite-mark--active {
                 background-image: url('./../../style/i/club/heart-filled.svg');
             }
@@ -305,19 +337,21 @@
         background-position: center center;
         background-repeat: no-repeat;
         height: 64px;
-        margin-top: -70px;
         margin-bottom: 25px;
+        margin-top: -70px;
+
         .sale-swiper-card__favorite-mark {
+            background-image: url('./../../style/i/club/dark-heart.svg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            height: 44px;
             position: absolute;
             right: 9px;
             top: 10px;
-            width: 44px;
-            height: 44px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 24px 24px;
-            background-image: url('./../../style/i/club/dark-heart.svg');
             transition: background ease-out 0.3s;
+            width: 44px;
+
             &.sale-swiper-card__favorite-mark--active {
                 background-image: url('./../../style/i/club/dark-heart-filled.svg');
             }
@@ -325,70 +359,74 @@
     }
 
     .sale-swiper-card__header {
-        font-weight: bold;
         font-size: 18px;
-        margin-bottom: 11px;
+        font-weight: bold;
         height: 60px;
+        margin-bottom: 11px;
     }
 
     .sale-swiper-card__description {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 20px;
-        color: $secondaryTextColor;
-        margin-bottom: 14px;
-        height: 78px;
+
         @include line-cap(4);
+        color: $secondaryTextColor;
+        font-size: 14px;
+        font-weight: normal;
+        height: 78px;
+        line-height: 20px;
+        margin-bottom: 14px;
     }
 
     .sale-swiper-card__details {
-        font-size: 14px;
         background-image: url('./../i/sale/details-tick.png');
-        background-repeat: no-repeat;
         background-position: -2px 0;
+        background-repeat: no-repeat;
+        font-size: 14px;
         padding-left: 18px;
     }
 
 }
 
 .sale-swiper-card__button {
-    transition: all ease-out 0.5s;
+    background: $mainColor;
+    border-radius: 25px;
     color: #fff;
-    padding: 14px 10px;
+    cursor: pointer;
+    display: block;
     font-size: 14px;
     line-height: 20px;
-    border-radius: 25px;
-    text-align: center;
-    display: block;
-    width: 166px;
     margin: 0 auto;
-    background: $mainColor;
-    cursor: pointer;
+    padding: 14px 10px;
+    text-align: center;
     text-decoration: none;
+    transition: all ease-out 0.5s;
+    width: 166px;
 }
 
 @media screen and (max-width: $tabletWidth) {
     .sale {
         .swiper-container {
             position: relative;
+
             &:after {
-                content: '';
-                width: 80px;
-                height: 100%;
                 background-image: linear-gradient(to right, hsla(0, 0%, 100%, 0), #fff);
+                content: '';
+                height: 100%;
+                pointer-events: none;
                 position: absolute;
                 right: 0;
                 top: 0;
+                width: 80px;
                 z-index: 1;
-                pointer-events: none;
             }
         }
+
         .section__header {
             .section__button {
                 margin-left: 37px;
                 top: 2px;
             }
         }
+
         .sale-slider {
             padding-top: 0;
         }

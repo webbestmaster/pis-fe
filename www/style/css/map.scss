@@ -1,56 +1,57 @@
-@import "helper";
+@import 'helper';
 
 .gm-fullscreen-control {
     display: none; // Hide default fullscreen button on react-google-maps
 }
 
 .map-point {
-    position: relative;
-    top: -32px;
-    left: 13px;
-    width: 26px;
-    height: 32px;
-    background-position: center bottom;
     background-image: url('./../i/map/map-pin.svg');
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: contain;
+    height: 32px;
+    left: 13px;
+    position: relative;
+    top: -32px;
+    width: 26px;
     z-index: 0;
 }
 
 .map-point__content {
-    display: none;
-    position: absolute;
-    bottom: 16px;
-    box-sizing: border-box;
-    padding: 17px 14px 8px;
-    width: 500px;
-    min-height: 200px;
     background-color: #fff;
+    bottom: 16px;
+    box-shadow: 0 -3px 9px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    display: none;
     //opacity: 0.5;
     margin: 0 0 0 -241px;
-    box-shadow: 0 -3px 9px rgba(0, 0, 0, 0.5);
+    min-height: 200px;
+    padding: 17px 14px 8px;
+    position: absolute;
+    width: 500px;
+
     &:after {
-        content: '';
-        position: absolute;
-        bottom: -16px;
-        left: 50%;
-        width: 0;
-        height: 0;
         border: 20px solid transparent;
-        border-top-color: #fff;
         border-bottom-width: 0;
+        border-top-color: #fff;
+        bottom: -16px;
+        content: '';
+        height: 0;
+        left: 50%;
         margin-left: -16px;
+        position: absolute;
+        width: 0;
     }
 
     .clubs-catalog-list-item__available-training-item {
-        float: left;
         clear: left;
+        float: left;
     }
 
     .clubs-catalog-list-item__header,
     .clubs-catalog-list-item__address {
-        margin-right: 0;
         margin-left: 180px;
+        margin-right: 0;
     }
 
     .clubs-catalog-list-item__address {
@@ -60,18 +61,19 @@
     .clubs-catalog-list-item__description {
         clear: both;
         padding-bottom: 2px;
+
         p {
             @include line-cap(4);
         }
     }
 
     .clubs-catalog-list-item__logo {
-        left: 18px;
-        top: 18px;
         background-position: left top;
-        position: static;
         float: left;
+        left: 18px;
         margin-bottom: 10px;
+        position: static;
+        top: 18px;
     }
 
     .clubs-catalog-list-item__available-training-club-address,
@@ -82,8 +84,9 @@
 }
 
 .map-point:hover {
-    z-index: 1;
     background-image: none;
+    z-index: 1;
+
     .map-point__content {
         display: block;
     }
@@ -93,6 +96,7 @@
     .clubs-catalog-list-item__available-training-item {
         padding-bottom: 28px;
     }
+
     .clubs-catalog-list-item__description {
         padding-bottom: 12px;
 

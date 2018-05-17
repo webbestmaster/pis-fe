@@ -1,51 +1,57 @@
-@import "../../../../style/css/aaa-var";
-@import "./style.m";
+@import '../../../../style/css/aaa-var';
+@import './style.m';
 
 body { // just add authority in front of swiper's classes
 
     .promo {
-        width: 1130px;
-        padding: 10px;
         height: 620px;
+        padding: 10px;
+        width: 1130px;
     }
 
     .left_block {
-        position: relative;
-        height: 100%;
-        float: left;
-        max-width: 204px;
-        border-radius: 4px;
         background-color: #192639;
+        border-radius: 4px;
         box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+        float: left;
+        height: 100%;
+        max-width: 204px;
+        position: relative;
         text-align: center;
+
         img {
             display: block;
             max-width: 100%;
         }
+
         h4 {
-            font-size: 14px;
-            line-height: 22px;
             color: #fff;
             display: block;
-            text-align: center;
-            font-weight: bold;
-        }
-        p {
-            text-align: center;
-            color: #b7c4d7;
             font-size: 14px;
+            font-weight: bold;
+            line-height: 22px;
+            text-align: center;
+        }
+
+        p {
+            color: #b7c4d7;
             display: block;
+            font-size: 14px;
+            text-align: center;
         }
     }
 
     .left_path_1 {
-        padding: 61px 0 48px 0;
+        padding: 61px 0 48px;
+
         img {
             padding-bottom: 24px;
         }
+
         h4 {
             //display: block;
         }
+
         p {
             //display: block;
         }
@@ -53,12 +59,15 @@ body { // just add authority in front of swiper's classes
 
     .left_path_2 {
         padding-bottom: 68px;
+
         img {
             padding-bottom: 6px;
         }
+
         h4 {
             padding-bottom: 9px;
         }
+
         p {
             //display: block;
         }
@@ -70,9 +79,11 @@ body { // just add authority in front of swiper's classes
             //display: block;
             padding-bottom: 9px;
         }
+
         h4 {
             //display: block;
         }
+
         p {
             //display: block;
         }
@@ -80,48 +91,48 @@ body { // just add authority in front of swiper's classes
 
     .right_block {
         background-color: #fff;
-        position: relative;
-        height: 100%;
-        margin-left: 220px;
         border-radius: 4px;
         box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+        height: 100%;
+        margin-left: 220px;
         overflow: hidden;
+        position: relative;
     }
 
     .banner {
         display: block;
-        width: 100%;
         padding-bottom: 58px;
+        width: 100%;
     }
 
     .promo_big_text {
         color: $mainTextColor;
-        font-weight: bold;
         font-size: 24px;
+        font-weight: bold;
+        padding-bottom: 40px;
         text-align: center;
         text-transform: uppercase;
-        padding-bottom: 40px;
     }
 
     .promo_button {
+        background-color: $mainColor;
+        border-radius: 50px;
+        color: #fff;
+        cursor: pointer;
         display: block;
         font-size: 14px;
-        text-transform: uppercase;
-        text-align: center;
-        cursor: pointer;
-        width: 236px;
-        background-color: $mainColor;
-        color: #FFFFFF;
         margin: 0 auto 31px;
         padding: 21px 0 19px;
-        border-radius: 50px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 236px;
     }
 
     .promo_text {
-        display: block;
-        text-align: center;
-        font-size: 16px;
         color: $mainTextColor;
+        display: block;
+        font-size: 16px;
+        text-align: center;
     }
 
     .promo_enter {

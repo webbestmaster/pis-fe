@@ -1,43 +1,46 @@
-@import "aaa-var";
+@import 'aaa-var';
 
 .top-big-banner {
-    height: 300px;
-    background-size: cover;
-    background-position: center center;
-    background-image: url('./../images/header/search.jpg');
-    position: relative;
-    overflow: hidden;
     background-color: #192739;
+    background-image: url('./../images/header/search.jpg');
+    background-position: center center;
+    background-size: cover;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
 
     .hug {
+        min-height: 200px;
         position: relative;
         z-index: 1;
-        min-height: 200px;
 
         .section__header {
             @extend .ellipsis;
+
             color: #fff;
-            text-transform: uppercase;
             letter-spacing: 5px;
+            text-transform: uppercase;
+
             &.section__header--training {
-                text-transform: none;
                 position: relative;
+                text-transform: none;
             }
         }
 
         .section__header-heart {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-            background-repeat: no-repeat;
             background-image: url('./../../style/i/club/heart.svg');
             background-position: center center;
+            background-repeat: no-repeat;
             background-size: contain;
+            cursor: pointer;
+            display: inline-block;
+            height: 24px;
+            left: 10px;
             position: relative;
             top: 3px;
-            left: 10px;
             transition: background ease-out 0.3s;
+            width: 24px;
+
             &.section__header-heart--marked {
                 background-image: url('./../../style/i/club/heart-filled.svg');
             }
@@ -46,24 +49,25 @@
 }
 
 .top-big-banner__overlay {
-    position: absolute;
-    z-index: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
     background: rgba(25, 39, 57, 0.35);
     background-image: url('./../i/header/pattern.png');
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
 }
 
 @media screen and (max-width: $tabletWidth) {
     .top-big-banner {
         height: 180px;
+
         .hug {
             .section__header {
                 font-size: 24px;
-                padding-top: 70px;
                 letter-spacing: 2px;
+                padding-top: 70px;
 
                 &.section__header--club {
                     padding-top: 51px;
@@ -77,27 +81,29 @@
                 .club-header__service {
                     font-size: 14px;
                     padding-left: 63px;
+
                     &:before {
-                        width: 50px;
                         height: 50px;
+                        width: 50px;
                     }
 
                     &.club-header__service--subscriptions {
                         &:before {
-                            background-size: 24px auto;
                             background-position: center 14px;
+                            background-size: 24px auto;
                         }
                     }
 
                     &.club-header__service--trainings {
                         &:before {
-                            background-size: 24px auto;
                             background-position: center 16px;
+                            background-size: 24px auto;
                         }
                     }
                 }
 
             }
+
             .bread-crumbs {
                 display: none;
             }
@@ -107,47 +113,47 @@
 
 @media screen and (max-width: $mobileWidth) {
     .top-big-banner {
-
         .hug {
             .section__header {
                 font-size: 24px;
-                padding-top: 70px;
                 letter-spacing: 2px;
+                padding-top: 70px;
 
                 &.section__header--club {
-                    padding-top: 25px;
                     padding-bottom: 32px;
+                    padding-top: 25px;
                 }
             }
+
             .club-header__services {
+                float: left;
                 margin-top: 37px;
                 padding-right: 0;
-                float: left;
 
                 .club-header__service {
                     float: left;
                     font-size: 14px;
-                    padding-left: 48px;
                     margin-left: 10px;
+                    padding-left: 48px;
                     width: 100px;
 
                     &:before {
+                        height: 42px;
                         top: -8px;
                         width: 42px;
-                        height: 42px;
                     }
 
                     &.club-header__service--subscriptions {
                         &:before {
-                            background-size: 20px auto;
                             background-position: center 12px;
+                            background-size: 20px auto;
                         }
                     }
 
                     &.club-header__service--trainings {
                         &:before {
-                            background-size: 20px auto;
                             background-position: center 14px;
+                            background-size: 20px auto;
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-@import "./../../../style/css/aaa-var";
+@import './../../../style/css/aaa-var';
 
 .main {
     padding-bottom: 77px;
@@ -6,40 +6,41 @@
 
 body {
     .tab_wrapper {
-        padding: 34px 0 28px;
         border-bottom: 1px solid $mainBorderColor;
         margin-bottom: 107px;
+        padding: 34px 0 28px;
     }
 
     .tab_button {
-        font-size: 14px;
         border: 1px solid $mainBorderColor;
-        padding: 15px 10px 14px;
         border-radius: 47px;
-        text-decoration: none;
+        box-sizing: border-box;
         color: $mainTextColor;
         cursor: pointer;
-        box-sizing: border-box;
-        width: 148px;
         float: left;
+        font-size: 14px;
         list-style: none;
-        text-align: center;
         margin-right: 63px;
+        padding: 15px 10px 14px;
         position: relative;
+        text-align: center;
+        text-decoration: none;
+        width: 148px;
 
         &:after {
+            background-image: url('./../../../style/i/user/arrow-from-to.png');
+            background-repeat: no-repeat;
+            content: '';
+            height: 4px;
             position: absolute;
             right: -45px;
             top: 21px;
-            content: '';
             width: 21px;
-            height: 4px;
-            background-repeat: no-repeat;
-            background-image: url('./../../../style/i/user/arrow-from-to.png');
         }
 
         &:last-child {
             margin-right: 0;
+
             &:after {
                 content: none;
             }
@@ -57,57 +58,58 @@ body {
     }
 
     .checkbox_label_phone {
-        display: block;
         clear: none;
-        margin-left: 105px;
-        position: relative;
-        z-index: 1;
-        margin-top: -18px;
+        display: block;
         margin-bottom: 41px;
+        margin-left: 105px;
+        margin-top: -18px;
+        position: relative;
         width: auto;
+        z-index: 1;
     }
 
     .checkbox_label_subscribe {
-        display: block;
         clear: none;
-        margin-left: 105px;
-        position: relative;
-        z-index: 1;
-        margin-top: -18px;
-        margin-bottom: 41px;
         color: $secondaryTextColor;
+        display: block;
+        margin-bottom: 41px;
+        margin-left: 105px;
+        margin-top: -18px;
+        position: relative;
         width: auto;
+        z-index: 1;
     }
 
     .radio_label_pay_type {
-        display: block;
         clear: none;
+        display: block;
+        margin-bottom: -8px;
+        margin-top: 37px;
         position: relative;
         z-index: 1;
-        margin-top: 37px;
-        margin-bottom: -8px;
     }
 }
 
 .line {
-    height: 1px;
     background-color: $mainBorderColor;
+    height: 1px;
     margin-left: 105px;
 }
 
 .line__margin_bottom {
-    height: 1px;
     background-color: $mainBorderColor;
-    margin-left: 105px;
+    height: 1px;
     margin-bottom: 28px;
+    margin-left: 105px;
 }
 
 .inner_link {
-    text-decoration: none;
-    display: inline-block;
     border-bottom: 1px dotted $mainColor;
-    padding-bottom: 2px;
     color: $mainColor;
+    display: inline-block;
+    padding-bottom: 2px;
+    text-decoration: none;
+
     &:hover {
         border-bottom-color: transparent;
     }
@@ -127,25 +129,26 @@ body {
 }
 
 .input_header_icon {
-    float: left;
-    width: 27px;
-    height: 19px;
     background-position: center left;
     background-repeat: no-repeat;
     background-size: contain;
+    float: left;
+    height: 19px;
     position: relative;
     top: 1px;
+    width: 27px;
 }
 
 .input_node {
-    font-size: 14px;
-    color: $mainTextColor;
-    padding: 19px 18px 16px;
     border: 1px solid $mainBorderColor;
     border-radius: 4px;
-    width: 100%;
-    display: block;
     box-sizing: border-box;
+    color: $mainTextColor;
+    display: block;
+    font-size: 14px;
+    padding: 19px 18px 16px;
+    width: 100%;
+
     &.input_text__invalid {
         border-color: $mainColor;
     }
@@ -156,18 +159,18 @@ body {
 }
 
 .input_block__phone_prefix {
-    position: absolute;
-    left: 19px;
-    top: 58px;
-    font-size: 14px;
     color: $mainTextColor;
+    font-size: 14px;
+    left: 19px;
+    position: absolute;
+    top: 58px;
 }
 
 .arrow_block_wrapper {
-    margin-left: 105px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 105px;
 }
 
 .input_block__arrow {
@@ -178,86 +181,91 @@ body {
 
 .input_node__number {
     display: block;
-    position: relative;
     max-width: 176px;
+    position: relative;
+
     .input_node {
-        display: block;
         box-sizing: border-box;
+        display: block;
         text-align: center;
     }
 }
 
 .input_node__number__plus,
 .input_node__number__minus {
-    width: 33.33333%;
     box-sizing: border-box;
-    position: absolute;
-    z-index: 1;
-    height: 100%;
     cursor: pointer;
+    height: 100%;
+    position: absolute;
     top: 0;
+    width: 33.33333%;
+    z-index: 1;
+
     &:before,
     &:after {
-        position: absolute;
-        content: '';
-        width: 16px;
-        height: 2px;
         background-color: $mainTextColor;
+        content: '';
+        height: 2px;
         left: 50%;
+        position: absolute;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
+        width: 16px;
     }
 
 }
 
 .required_note {
     color: $mainTextColor;
-    margin: 20px 0 8px 105px;
     font-size: 14px;
+    margin: 20px 0 8px 105px;
 }
 
 .input_node__number__plus {
-    display: block;
     border-left: 1px solid $mainBorderColor;
+    display: block;
     right: 0;
+
     &:before {
         transform: translate3d(-50%, -50%, 0) rotateZ(90deg);
     }
 }
 
 .input_node__number__minus {
-    display: block;
     border-right: 1px solid $mainBorderColor;
+    display: block;
     left: 0;
 }
 
 .navigate_button {
-    font-size: 14px;
     border: 1px solid #e8ecf0;
-    padding: 15px 56px 14px 28px;
     border-radius: 47px;
-    text-decoration: none;
+    box-sizing: border-box;
     color: #1a273b;
     cursor: pointer;
-    box-sizing: border-box;
     float: left;
-    text-align: left;
-    position: relative;
+    font-size: 14px;
     margin: 34px 0 0 102px;
+    padding: 15px 56px 14px 28px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+
     &:after {
+        background-image: url('./../../../style/i/user/arrow-from-to.png');
+        background-repeat: no-repeat;
+        content: '';
+        height: 4px;
         position: absolute;
         right: 26px;
         top: 21px;
-        content: '';
         width: 21px;
-        height: 4px;
-        background-repeat: no-repeat;
-        background-image: url('./../../../style/i/user/arrow-from-to.png');
     }
 
     &:hover {
-        color: #fff;
         background-color: $mainColor;
+        color: #fff;
+
         &:after {
             background-image: url('./../../../style/i/user/arrow-from-to--active.png');
         }
@@ -265,14 +273,14 @@ body {
 }
 
 .input_error_text {
+    background-color: $mainColor;
+    border-radius: 4px 0;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
     position: absolute;
     right: 0;
     top: 69px;
-    font-size: 12px;
-    padding: 4px 8px;
-    background-color: $mainColor;
-    color: #fff;
-    border-radius: 4px 0;
 }
 
 :global .lt-desktop-width {
@@ -287,13 +295,14 @@ body {
         }
 
         .input_block__arrow {
-            width: 45%;
             margin-left: 0;
+            width: 45%;
         }
 
         .input_block__arrow:first-child {
             width: 100%;
         }
+
         .navigate_button {
             margin-left: 15px;
         }
