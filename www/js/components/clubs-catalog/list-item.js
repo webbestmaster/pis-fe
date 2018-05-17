@@ -17,8 +17,13 @@ class ListItem extends Component {
         const {host} = appConst.pageDataUrl;
 
         return <div className="clubs-catalog-list-item clear-full">
+            <img className="clubs-catalog-list-item__image" src={host + data.image} alt=""/>
+
+            {/*
             <div className="clubs-catalog-list-item__image"
                 style={{backgroundImage: 'url(' + (host + data.image) + ')'}}/>
+            */}
+
             <div className="clubs-catalog-list-item__info">
                 <div className="clubs-catalog-list-item__logo"
                     style={{backgroundImage: 'url(' + (host + data.logo_image) + ')'}}/>

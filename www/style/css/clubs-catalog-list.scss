@@ -42,18 +42,23 @@
 }
 
 .clubs-catalog-list-item__image {
-    background-position: center center;
-    background-size: cover;
+    //background-position: center center;
+    //background-size: cover;
     border-radius: 5px;
-    height: 190px;
-    left: 0;
-    position: absolute;
-    top: 0;
+    //height: 500px;
+
+    //left: 0;
+    display: block;
+    float: left;
+    height: auto;
+    //position: absolute;
+    //top: 0;
     width: 270px;
 }
 
 .clubs-catalog-list-item__info {
     margin: 0 0 0 300px;
+    overflow: auto;
     position: relative;
 }
 

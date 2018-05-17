@@ -17,8 +17,10 @@ class ListItem extends Component {
         const promotion = row.promotion instanceof Array || !row.promotion ? null : row.promotion; // yes, if promotion is not exist: row.promotion === []
 
         return <div className="clubs-catalog-list-item clear-full">
-            <div className="clubs-catalog-list-item__image"
-                style={{backgroundImage: 'url(' + resolveImagePath(promotion ? promotion.image : data.image) + ')'}}/>
+            <img
+                className="clubs-catalog-list-item__image"
+                src={resolveImagePath(promotion ? promotion.image : data.image)}
+                alt=""/>
             <div className="clubs-catalog-list-item__info">
                 <h4 className="clubs-catalog-list-item__header">
                     <Link

@@ -11,6 +11,7 @@ import {prepareScheduleList} from '../training/date-filter';
 import {defaultDateFilter} from './reducer';
 import TextCap from './../util/text-cap';
 import {getCategoryNameFromRow} from './helper';
+
 const defaultItems = [defaultDateFilter];
 const millisecondsInOneDay = 24 * 60 * 60 * 1000;
 
@@ -36,8 +37,10 @@ class ListItem extends Component {
         const dayData = firstSchedule[firstDayIndex];
 
         return <div className="clubs-catalog-list-item clear-full">
-            <div className="clubs-catalog-list-item__image"
-                style={{backgroundImage: 'url(' + resolveImagePath(promotion ? promotion.image : data.image) + ')'}}/>
+            <img
+                className="clubs-catalog-list-item__image"
+                src={resolveImagePath(promotion ? promotion.image : data.image)}
+                alt=""/>
             <div className="clubs-catalog-list-item__info">
                 <h4 className={classnames('clubs-catalog-list-item__header',
                     'clubs-catalog-list-item__header--icon',

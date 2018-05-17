@@ -149,9 +149,9 @@
     }
 
     .clubs-catalog-list-item__image {
+        float: none;
         margin: 0 auto 17px;
-        position: static;
-        width: 300px;
+        max-width: 100%;
     }
 
     .clubs-catalog-list-item__info {

@@ -242,9 +242,9 @@ body { // just add authority in front of swiper's classes
         padding: 0 0 0 100px;
 
         :global {
-            .clubs-catalog-list-item__image {
-                left: 100px;
-            }
+            //.clubs-catalog-list-item__image {
+            //    left: 100px;
+            //}
 
             .clubs-catalog-list-item__header {
                 color: $mainTextColor;
@@ -321,9 +321,9 @@ body { // just add authority in front of swiper's classes
                 padding-right: 15px;
             }
 
-            :global.clubs-catalog-list-item__image {
-                left: 15px;
-            }
+            //:global.clubs-catalog-list-item__image {
+            //    left: 15px;
+            //}
         }
     }
 

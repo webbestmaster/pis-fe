@@ -57,7 +57,7 @@ class Filter extends Component {
 
     initialize() {
         const view = this;
-        const {filter} = store.getState().clubsCatalog;
+        const {filter} = store ? store.getState().clubsCatalog : {};
 
         view.state = Object.assign({}, view.getDefaultState(), filter || {});
 

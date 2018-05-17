@@ -30,7 +30,6 @@ export default class MapItemClub extends Component {
                     <p className="line-cap-4">{promotion ? promotion.description : data.description}</p>
                 </div>
 
-                {/* <div className="clubs-catalog-list-item__available-training clear-full">*/}
                 <p className="clubs-catalog-list-item__available-training-item
                      clubs-catalog-list-item__available-training-item--club-icon">
                     <span className="clubs-catalog-list-item__available-training-club-name">
