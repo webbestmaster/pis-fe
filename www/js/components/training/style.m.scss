@@ -38,9 +38,9 @@ body { // just add authority in front of swiper's classes
 
     .card_short_info_icon {
         @extend .card_short_info_number;
+
         background-position: center center;
         background-repeat: no-repeat;
-
         min-height: 41px;
         transform: scale(0.8);
     }

@@ -39,9 +39,9 @@
 
 .header-slider__slide-image {
     @extend .header-slider__slide;
+
     background-position: center center;
     background-size: cover;
-
     opacity: 0;
     transition: all 1s ease-out;
 }
@@ -164,8 +164,8 @@
 
 .header-slider__promo-texts {
     @extend .header-slider__navigation;
-    top: 415px;
 
+    top: 415px;
     z-index: 9; // to be under .header-slider__navigation
 
     .slider-navigation-item__button { // for mobile only

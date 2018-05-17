@@ -35,13 +35,13 @@
 
 .header-menu__button {
     @extend .header-menu__link;
+
     border-bottom: 1px dotted transparent;
     cursor: pointer;
     float: right;
     font-weight: bold;
     margin-left: 112px;
     margin-right: 25px;
-
     position: relative;
 
     &:hover {

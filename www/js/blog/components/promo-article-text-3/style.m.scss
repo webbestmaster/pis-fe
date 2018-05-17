@@ -72,11 +72,10 @@
     }
 
     .article_header {
-
         @include line-cap(2);
+
         bottom: 34px;
         font-size: 18px;
-
         height: 52px;
         line-height: 26px;
     }
@@ -113,13 +112,12 @@
 }
 
 .text {
-
     @include line-cap(4);
+
     bottom: 0;
     color: $mainTextColor;
     //height: 75%;
     font-size: 14px;
-
     height: 96px;
     left: 0;
     line-height: 24px;
@@ -147,10 +145,9 @@
             height: 100%;
 
             .article_header {
-
                 @include line-cap(3);
-                bottom: 35px;
 
+                bottom: 35px;
                 height: 75px;
                 //height: 56px;
             }

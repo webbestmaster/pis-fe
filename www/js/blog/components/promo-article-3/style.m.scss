@@ -134,10 +134,9 @@
 
         .article_1 {
             .article_header {
-
                 @include line-cap(2);
-                bottom: 69px;
 
+                bottom: 69px;
                 height: 56px;
             }
 

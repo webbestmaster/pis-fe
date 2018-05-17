@@ -98,12 +98,11 @@
 }
 
 .extra_article_header {
-
     @include line-cap(3);
+
     color: $mainHeaderColor;
     font-size: 16px;
     font-weight: bold;
-
     height: 72px;
     line-height: 24px;
     margin-bottom: 19px;

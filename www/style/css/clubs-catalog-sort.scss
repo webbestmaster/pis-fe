@@ -2,8 +2,8 @@
 
 .clubs-catalog-sort {
     @extend .clear-full;
-    border-bottom: 1px solid $mainBorderColor;
 
+    border-bottom: 1px solid $mainBorderColor;
     display: block;
     margin-bottom: 65px;
     padding: 34px 0;
@@ -36,8 +36,8 @@
 
 .clubs-catalog-sort__button-colored {
     @extend .clubs-catalog-sort__button;
-    border: 1px solid $mainBorderColor;
 
+    border: 1px solid $mainBorderColor;
     float: right;
     margin: 0 0 0 34px;
     opacity: 1;

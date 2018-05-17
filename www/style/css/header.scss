@@ -107,6 +107,7 @@
     min-height: 70px; // image height
     padding: 10px;
     text-decoration: none;
+
     &:hover {
         background-color: $mainBorderColor;
 
@@ -134,8 +135,8 @@
 }
 
 .header-slider__result-description {
-
     @include line-cap(3);
+
     height: 48px;
 }
 
