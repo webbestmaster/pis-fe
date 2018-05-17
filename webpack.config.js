@@ -188,10 +188,11 @@ const webpackConfig = {
         new CopyWebpackPlugin([
             {from: './www/favicon.ico', to: './../../public/favicon.ico'},
             {from: './www/robots.txt', to: './../../public/robots.txt'}
-        ], {debug: true})
+        ], {debug: true}),
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
     ]
 };
 
-// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
