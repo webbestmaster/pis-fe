@@ -97,20 +97,49 @@ const webpackConfig = {
             {
                 test: fileRETest,
                 use: IS_PRODUCTION ?
-                    {
-                        loader: 'base64-inline-loader',
-                        // - limit - The limit can be specified with a query parameter. (Defaults to no limit).
-                        // If the file is greater than the limit (in bytes) the file-loader is used and
-                        // all query parameters are passed to it.
-                        // - name - The name is a standard option.
-                        query: {
-                            limit: 3e3, // 50k bytes
-                            name: 'img/img-[name]-[hash:6].[ext]'
+                    [
+                        {
+                            loader: 'base64-inline-loader',
+                            // - limit - The limit can be specified with a query parameter. (Defaults to no limit).
+                            // If the file is greater than the limit (in bytes) the file-loader is used and
+                            // all query parameters are passed to it.
+                            // - name - The name is a standard option.
+                            query: {
+                                limit: 3e3, // 3k bytes
+                                name: 'img/img-[name]-[hash:6].[ext]'
+                            }
+                        },
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                mozjpeg: {
+                                    progressive: true,
+                                    quality: 80
+                                },
+                                optipng: {
+                                    enabled: true
+                                },
+                                pngquant: {
+                                    quality: '80',
+                                    speed: 1
+                                },
+                                gifsicle: {
+                                    interlaced: false
+                                },
+                                webp: {
+                                    quality: 75
+                                }
+                            }
                         }
-                    } :
-                    {
-                        loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'
-                    }
+                    ] :
+                    [
+                        {
+                            loader: 'file-loader',
+                            query: {
+                                name: 'img/img-[name]-[hash:6].[ext]'
+                            }
+                        }
+                    ]
             },
 
             // css module
