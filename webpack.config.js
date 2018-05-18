@@ -26,7 +26,7 @@ const definePluginParams = {
     // IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
 };
 
-const fileRETest = /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/;
+const imageRETest = /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/;
 
 const webpackConfig = {
 
@@ -65,11 +65,11 @@ const webpackConfig = {
                             reuseExistingChunk: true,
                             test: /(\.scss|\.css)$/
                         },
-                        file: {
+                        image: {
                             chunks: 'initial',
-                            name: 'file',
+                            name: 'image',
                             priority: -15,
-                            test: fileRETest
+                            test: imageRETest
                         },
                         vendor: {
                             chunks: 'initial',
@@ -95,7 +95,7 @@ const webpackConfig = {
             },
             // {test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'},
             {
-                test: fileRETest,
+                test: imageRETest,
                 use: IS_PRODUCTION ?
                     [
                         {
@@ -113,22 +113,25 @@ const webpackConfig = {
                             loader: 'image-webpack-loader',
                             options: {
                                 mozjpeg: {
-                                    progressive: true,
-                                    quality: 80
+                                    quality: 80, // 0..100
+                                    progressive: true
                                 },
                                 optipng: {
-                                    enabled: true
+                                    optimizationLevel: 7 // 0..7
                                 },
                                 pngquant: {
-                                    quality: '80',
-                                    speed: 1
+                                    quality: '60-80', // 0..100
+                                    speed: 1 // 1..10
                                 },
+                                svgo: {}, // no set up needed
                                 gifsicle: {
-                                    interlaced: false
-                                },
-                                webp: {
-                                    quality: 75
+                                    optimizationLevel: 3 // 1..3
                                 }
+                                // webp brake MS Edge
+                                // webp: {
+                                //     quality: 75,
+                                //     method: 6
+                                // }
                             }
                         }
                     ] :
@@ -137,6 +140,31 @@ const webpackConfig = {
                             loader: 'file-loader',
                             query: {
                                 name: 'img/img-[name]-[hash:6].[ext]'
+                            }
+                        },
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                mozjpeg: {
+                                    quality: 80,
+                                    progressive: true
+                                },
+                                optipng: {
+                                    optimizationLevel: 1
+                                },
+                                pngquant: {
+                                    quality: '60-80',
+                                    speed: 10
+                                },
+                                svgo: {}, // no set up needed
+                                gifsicle: {
+                                    optimizationLevel: 1
+                                }
+                                // webp brake MS Edge
+                                // webp: {
+                                //     quality: 75,
+                                //     method: 6
+                                // }
                             }
                         }
                     ]
