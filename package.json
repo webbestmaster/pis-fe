@@ -27,7 +27,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "blueimp-load-image": "^2.18.0",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
