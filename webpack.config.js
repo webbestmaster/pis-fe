@@ -96,18 +96,21 @@ const webpackConfig = {
             // {test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'},
             {
                 test: fileRETest,
-                use: {
-                    loader: 'base64-inline-loader',
-                    // - limit - The limit can be specified with a query parameter. (Defaults to no limit).
-                    // If the file is greater than the limit (in bytes) the file-loader is used and
-                    // all query parameters are passed to it.
-                    // - name - The name is a standard option.
-                    query: {
-                        limit: 3e3, // 10k bytes
-                        name: 'img/img-[name]-[hash:6].[ext]'
+                use: IS_PRODUCTION ?
+                    {
+                        loader: 'base64-inline-loader',
+                        // - limit - The limit can be specified with a query parameter. (Defaults to no limit).
+                        // If the file is greater than the limit (in bytes) the file-loader is used and
+                        // all query parameters are passed to it.
+                        // - name - The name is a standard option.
+                        query: {
+                            limit: 3e3, // 50k bytes
+                            name: 'img/img-[name]-[hash:6].[ext]'
+                        }
+                    } :
+                    {
+                        loader: 'file-loader?name=img/img-[name]-[hash:6].[ext]'
                     }
-
-                }
             },
 
             // css module
