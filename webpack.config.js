@@ -41,8 +41,18 @@ const webpackConfig = {
     ],
 
     output: IS_PRODUCTION ?
-        {path: path.join(CWD, './../public/assets'), publicPath: '/assets/'} :
-        {path: path.join(CWD, 'dist'), publicPath: '/'},
+        {
+            path: path.join(CWD, './../public/assets'),
+            publicPath: '/assets/',
+            filename: '[name].js',
+            chunkFilename: '[name].async-import.js'
+        } :
+        {
+            path: path.join(CWD, 'dist'),
+            publicPath: '/',
+            filename: '[name].js',
+            chunkFilename: '[name].async-import.js'
+        },
 
     devtool: IS_PRODUCTION ? false : 'source-map',
 
