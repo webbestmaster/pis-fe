@@ -36,7 +36,6 @@ const webpackConfig = {
         'babel-polyfill',
         'whatwg-fetch',
         './www/js/index.js',
-        'react-datepicker/dist/react-datepicker.css',
         './www/style/css/_root.scss'
     ],
 

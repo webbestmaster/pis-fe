@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import style from './../style.m.scss';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import RadioLabel from './../../util/radio';
 import CheckboxLabel from './../../util/checkbox';
@@ -24,6 +24,7 @@ class Settings extends Component {
         const view = this;
 
         view.state = {
+            DatePicker: null,
             snackbar: {
                 saveChanges: {
                     isOpen: false
@@ -90,6 +91,17 @@ class Settings extends Component {
                 }
             }
         };
+    }
+
+    componentDidMount() {
+        const view = this;
+
+        import(/* webpackChunkName: "react-datepicker" */ 'react-datepicker')
+            .then(DatePicker => {
+                view.setState({DatePicker: DatePicker.default});
+            });
+
+        import(/* webpackChunkName: "react-datepicker-css" */ 'react-datepicker/dist/react-datepicker.css');
     }
 
     onBlurValidateName() {
@@ -450,6 +462,11 @@ class Settings extends Component {
         const {props, state} = view;
         const {app, auth} = props;
         const {login} = auth;
+        const {DatePicker} = state;
+
+        if (!DatePicker) {
+            return null;
+        }
 
         const {user} = login.data;
 
