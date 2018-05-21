@@ -11,7 +11,6 @@ import Footer from './../../components/footer';
 import LazyLoad from 'react-lazy-load';
 import {connect} from 'react-redux';
 
-const appConst = require('./../../app-const');
 const lazyVerticalOffset = 300;
 const lazyThrottleTimeout = 100;
 
@@ -35,26 +34,16 @@ class Home extends Component {
         metaTagMaster.updateByUrl('/index');
     }
 
-    renderMobile() {
-        return <div>
-            <Header/>
-            <Sale/>
-            <PromoSteps/>
-            <OurPartners/>
-            <PromoInstagram/>
-            <Footer/>
-        </div>;
-    }
-
-    renderDesktop() {
+    render() {
         const view = this;
-        const {state} = view;
+        const {props, state} = view;
         const {isLoaded} = state;
 
         return <div>
             <Header/>
             <div className={classnames('fade-out', {'fade-out_visible': isLoaded.sale})}>
                 <LazyLoad
+                    debounce={false}
                     throttle={lazyThrottleTimeout}
                     height={isLoaded.sale ? 'auto' : 741}
                     offsetVertical={lazyVerticalOffset}
@@ -67,6 +56,7 @@ class Home extends Component {
             </div>
             <div className={classnames('fade-out', {'fade-out_visible': isLoaded.promoSteps})}>
                 <LazyLoad
+                    debounce={false}
                     throttle={lazyThrottleTimeout}
                     height={isLoaded.promoSteps ? 'auto' : 502}
                     offsetVertical={lazyVerticalOffset}
@@ -79,6 +69,7 @@ class Home extends Component {
             </div>
             <div className={classnames('fade-out', {'fade-out_visible': isLoaded.ourPartners})}>
                 <LazyLoad
+                    debounce={false}
                     throttle={lazyThrottleTimeout}
                     height={isLoaded.ourPartners ? 'auto' : 891}
                     offsetVertical={lazyVerticalOffset}
@@ -91,6 +82,7 @@ class Home extends Component {
             </div>
             <div className={classnames('fade-out', {'fade-out_visible': isLoaded.promoInstagram})}>
                 <LazyLoad
+                    debounce={false}
                     throttle={lazyThrottleTimeout}
                     height={isLoaded.promoInstagram ? 'auto' : 634}
                     offsetVertical={lazyVerticalOffset * 2}
@@ -103,14 +95,6 @@ class Home extends Component {
             </div>
             <Footer/>
         </div>;
-    }
-
-    render() {
-        const view = this;
-        const {props, state} = view;
-        const {app} = props;
-
-        return app.screen.width > appConst.tabletWidth ? view.renderDesktop() : view.renderMobile();
     }
 }
 
