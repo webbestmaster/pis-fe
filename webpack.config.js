@@ -256,7 +256,7 @@ const webpackConfig = {
             {from: './www/favicon.ico', to: './../../public/favicon.ico'},
             {from: './www/robots.txt', to: './../../public/robots.txt'}
         ], {debug: true}),
-        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|ru/)
     ]
 };
 

@@ -1,7 +1,8 @@
 // @flow
 /* global requestAnimationFrame, location, window, VK */
-import React, {Component} from 'react';
+
 import type {Node} from 'react';
+import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import style from './style.m.scss';
 import sectionStyle from './../../style/css/sercion.m.scss';
@@ -13,8 +14,7 @@ import {routeToSectionName} from '../bread-crumbs/helper';
 import {fetchX} from '../../../helper/fetch-x';
 import {dateToHuman} from '../../../helper/date';
 import {resolveImagePath} from '../../../helper/path-x';
-import {FacebookShareButton, VKShareButton, OKShareButton} from 'react-share';
-import {FacebookIcon, VKIcon, OKIcon} from 'react-share';
+import {FacebookIcon, FacebookShareButton, OKIcon, OKShareButton} from 'react-share';
 import * as appAction from '../../../components/app/action';
 
 const vkButton = require('./i/social/vk.svg.raw');
