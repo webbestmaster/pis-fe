@@ -12,3 +12,4 @@ Host: pis.by
 User-agent: *
 Disallow: /order/
 Disallow: /user/
+Disallow: /forgotPassword
