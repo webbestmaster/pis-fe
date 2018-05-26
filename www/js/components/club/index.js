@@ -27,7 +27,10 @@ class Club extends Component {
         };
 
         view.state = {
-            pageData: null
+            pageData: null,
+            trainingTab: {
+                openAs: 'card' // 'card' or 'schedule'
+            }
         };
     }
 
@@ -87,7 +90,14 @@ class Club extends Component {
                 <Subscriptions clubId={props.clubId}/>
             </TabPanel>
             <TabPanel>
-                <Trainings clubId={props.clubId}/>
+                <Trainings
+                    setOpenAs={openAs => view.setState(prevState => {
+                        prevState.trainingTab.openAs = openAs; // eslint-disable-line no-param-reassign
+
+                        return prevState;
+                    })}
+                    openAs={state.trainingTab.openAs}
+                    clubId={props.clubId}/>
             </TabPanel>
             <TabPanel>
                 <Discounts clubId={props.clubId}/>

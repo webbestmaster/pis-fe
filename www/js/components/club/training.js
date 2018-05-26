@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import cnx from '../../helper/cnx';
+// import cnx from '../../helper/cnx';
 import TrainingCard from './training-card';
+import TrainingSchedule from './training-schedule';
 
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 
-const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+// const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
 export default class Trainings extends Component {
     constructor() {
@@ -28,27 +29,29 @@ export default class Trainings extends Component {
             .catch(console.error);
     }
 
-    renderTrainingSchedule(training) {
-        const includedDays = weekDays.map(() => false);
+    /*
+        renderTrainingSchedule(training) {
+            const includedDays = weekDays.map(() => false);
 
-        training.schedule
-            .forEach(schedule => weekDays
-                .forEach((dayName, dayIi) => Object
-                    .assign(includedDays,
-                        {[dayIi]: Boolean(schedule.day & Math.pow(2, dayIi + 1)) || includedDays[dayIi]} // eslint-disable-line no-bitwise
+            training.schedule
+                .forEach(schedule => weekDays
+                    .forEach((dayName, dayIi) => Object
+                        .assign(includedDays,
+                            {[dayIi]: Boolean(schedule.day & Math.pow(2, dayIi + 1)) || includedDays[dayIi]} // eslint-disable-line no-bitwise
+                        )
                     )
-                )
-            );
+                );
 
-        return <div className="sale-swiper-card__week-schedule">
-            {weekDays.map((dayName, dayIi) => <span
-                key={dayIi} {...cnx('sale-swiper-card__week-day', {
-                    'sale-swiper-card__week-day--active': includedDays[dayIi]
-                })}>{dayName}</span>)}
-        </div>;
-    }
+            return <div className="sale-swiper-card__week-schedule">
+                {weekDays.map((dayName, dayIi) => <span
+                    key={dayIi} {...cnx('sale-swiper-card__week-day', {
+                        'sale-swiper-card__week-day--active': includedDays[dayIi]
+                    })}>{dayName}</span>)}
+            </div>;
+        }
+    */
 
-    render() {
+    renderCardList() {
         const view = this;
         const {props, state} = view;
         const {pageData} = state;
@@ -59,16 +62,38 @@ export default class Trainings extends Component {
 
         const {trainings} = pageData;
 
-        // trainings.push(...trainings);
-        // trainings.push(...trainings);
-        // trainings.push(...trainings);
+        return <div className="sale-card-container">
+            {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
+        </div>;
+    }
+
+    renderSchedule() {
+        const view = this;
+        const {props, state} = view;
+        const {pageData} = state;
+
+        if (pageData === null) {
+            return null;
+        }
+
+        const {trainings} = pageData;
+
+        return <TrainingSchedule trainings={trainings}/>;
+    }
+
+    render() {
+        const view = this;
+        const {props} = view;
+        const {openAs, setOpenAs} = props;
 
         return <div className="hug sale hug--section">
             <h3 className="section__header">Тренировки</h3>
 
-            <div className="sale-card-container">
-                {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
-            </div>
+            <div onClick={() => setOpenAs('card')}>{openAs === 'card' ? '+' : '-'} card</div>
+            <div onClick={() => setOpenAs('schedule')}>{openAs === 'schedule' ? '+' : '-'} schedule</div>
+
+            {openAs === 'card' ? view.renderCardList() : null}
+            {openAs === 'schedule' ? view.renderSchedule() : null}
         </div>;
     }
 }
