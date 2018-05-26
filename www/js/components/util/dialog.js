@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Dialog from 'material-ui/Dialog';
-import withStyles from 'material-ui/styles/withStyles';
+import Dialog from '@material-ui/core/Dialog';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = {
     paper: {

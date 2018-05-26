@@ -10,7 +10,7 @@ import * as authAction from './../../auth/action';
 import * as authApi from '../../auth/api';
 import {store} from '../../../index';
 import {ErrorLabel} from './../../auth/popup/register';
-import Snackbar from 'material-ui/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const authConst = require('./../../auth/const');
 const globalAppConst = require('./../../../app-const');
