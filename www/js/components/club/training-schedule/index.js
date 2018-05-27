@@ -137,14 +137,27 @@ class TrainingSchedule extends Component {
         return fullTrainingList;
     }
 
-    drawDesktopColumnCell(fullTrainingDataList, nodeKey) {
+    drawDesktopColumnCell(fullTrainingDataList, dayIndex, timeDataIndex) {
+        const view = this;
+        const {props, state} = view;
+        const {selectedDayIndex, selectedTimeIndex} = state;
+        const className = classnames({
+            [style.selected_in_line]:
+            selectedDayIndex === dayIndex ||
+            selectedTimeIndex === timeDataIndex
+        });
+
         if (fullTrainingDataList.length === 0) {
-            return <td key={nodeKey}/>;
+            return <td className={className} key={dayIndex}/>;
         }
 
-        return <td key={nodeKey}>{fullTrainingDataList.map((data, dataIndex) => <div key={dataIndex}>
-            {data.training.title}
-        </div>)}</td>;
+        return <td
+            className={className}
+            key={dayIndex}>
+            {fullTrainingDataList
+                .map((data, dataIndex) => <div key={dataIndex}>{data.training.title}</div>
+                )}
+        </td>;
     }
 
     drawDesktopTimeCell(timeData, indexTimeData) {
@@ -157,6 +170,8 @@ class TrainingSchedule extends Component {
             className={classnames(style.time_cell, {
                 [style.time_cell__selected]: selectedTimeIndex === indexTimeData
             })}>
+            <span className={style.time_cell__line}/>
+            <span className={style.time_cell__diamond}/>
             {String(timeData.begin.hour).padStart(2, '0')}
             :
             {String(timeData.begin.minute).padStart(2, '0')}
@@ -175,7 +190,7 @@ class TrainingSchedule extends Component {
         return dayIndex >= nowDayIndex;
     }
 
-    getPropsCell(dayIndex) {
+    getHeaderPropsCell(dayIndex) {
         const view = this;
         const {state} = view;
         const {selectedDayIndex} = state;
@@ -207,42 +222,56 @@ class TrainingSchedule extends Component {
                     <td className={classnames(style.head_cell, style.head_cell__empty)}>
                     &nbsp;
                     </td>
-                    <td {...view.getPropsCell(0)}>
+                    <td {...view.getHeaderPropsCell(0)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Понедельник
                     </td>
-                    <td {...view.getPropsCell(1)}>
+                    <td {...view.getHeaderPropsCell(1)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Вторник
                     </td>
-                    <td {...view.getPropsCell(2)}>
+                    <td {...view.getHeaderPropsCell(2)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Среда
                     </td>
-                    <td {...view.getPropsCell(3)}>
+                    <td {...view.getHeaderPropsCell(3)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Четверг
                     </td>
-                    <td {...view.getPropsCell(4)}>
+                    <td {...view.getHeaderPropsCell(4)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Пятница
                     </td>
-                    <td {...view.getPropsCell(5)}>
+                    <td {...view.getHeaderPropsCell(5)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Суббота
                     </td>
-                    <td {...view.getPropsCell(6)}>
+                    <td {...view.getHeaderPropsCell(6)}>
+                        <span className={style.head_cell__line}/>
+                        <span className={style.head_cell__diamond}/>
                     Воскресенье
                     </td>
                 </tr>
             </thead>
 
             <tbody>
-                {timeList.map((timeData, indexTimeData) => <tr
+                {timeList.map((timeData, timeDataIndex) => <tr
 
-                    key={indexTimeData}>
-                    {view.drawDesktopTimeCell(timeData, indexTimeData)}
+                    key={timeDataIndex}>
+                    {view.drawDesktopTimeCell(timeData, timeDataIndex)}
 
                     {[0, 1, 2, 3, 4, 5, 6]
                         .map(dayIndex => view.drawDesktopColumnCell(
                             fullTrainingList
                                 .filter(fullTraining => fullTraining.dayIndex === dayIndex &&
                                 timeData.begin.originalTime === fullTraining.time_from),
-                            dayIndex
+                            dayIndex, timeDataIndex
                         ))
                     }
                 </tr>)}
