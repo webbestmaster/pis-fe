@@ -1,0 +1,113 @@
+@import "./../../../../style/css/aaa-var";
+//@import "./../../../../style/css/aaa-class";
+
+.wrapper {
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid $mainBorderColor;
+    td {
+        box-sizing: border-box;
+        width: 12.5%;
+        //font-family: 'Trebuchet MS', sans-serif;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px dashed $mainBorderColor;
+        border-right: 1px solid $mainBorderColor;
+        padding: 18px 5px 16px;
+        font-size: 14px;
+        position: relative;
+        font-weight: normal;
+        z-index: 0;
+        &:last-child {
+            border-right-width: 0;
+        }
+        &:hover {
+            z-index: -1;
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                z-index: -2;
+                background-color: #c0c;
+            }
+            // vertical line
+            &:after {
+                width: 100%;
+                height: 100000%;
+                left: 0;
+                top: -50000%;
+            }
+            // horizontal line
+            &:before {
+                width: 100000%;
+                height: 100%;
+                left: -50000%;
+                top: 0;
+            }
+
+        }
+    }
+    tbody {
+        tr:last-child {
+            td {
+                border-bottom-width: 0;
+            }
+        }
+    }
+    td.head_cell {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        border: 1px solid $mainBorderColor;
+        border-top-width: 0;
+        border-right-width: 0;
+        cursor: pointer;
+
+        &.head_cell__disabled {
+            color: $secondaryTextColor;
+            cursor: default;
+        }
+
+        &:hover {
+            background-color: $mainColor;
+            &:before { // hide horizontal line
+                display: none;
+            }
+        }
+
+        &.head_cell__selected {
+            background-color: $mainColor;
+        }
+
+        &.head_cell__empty {
+            min-width: 110px;
+            border-left-width: 0;
+        }
+    }
+
+    .time_cell {
+        border-left-width: 0;
+        border-right-width: 1px;
+        border-bottom-style: solid;
+        cursor: pointer;
+        &:hover {
+            background-color: $mainColor;
+            &:after { // hide vertical line
+                display: none;
+            }
+        }
+
+        &.time_cell__selected {
+            background-color: $mainColor;
+        }
+    }
+
+    td.head_cell.head_cell__empty {
+        pointer-events: none;
+    }
+
+}
+

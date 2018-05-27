@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import cnx from '../../helper/cnx';
 import TrainingCard from './training-card';
-import TrainingSchedule from './training-schedule';
+import TrainingSchedule from './training-schedule/';
 import SwitchButtonRowsTable from './../ui/switch-button-rows-table';
 
 const appConst = require('./../../app-const');
@@ -96,6 +96,7 @@ export default class Trainings extends Component {
                     setList={() => setOpenAs('schedule')}
                 />
             </h3>
+
             {openAs === 'card' ? view.renderCardList() : null}
             {openAs === 'schedule' ? view.renderSchedule() : null}
         </div>;
