@@ -1,4 +1,5 @@
 @import "./../../../../style/css/aaa-var";
+@import "./../../../../style/css/aaa-class";
 
 $activeCellBgColor: #fbfcfe;
 
@@ -14,10 +15,10 @@ $activeCellBgColor: #fbfcfe;
         box-sizing: border-box;
         width: 12.5%;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: top;
         border-bottom: 1px dashed $mainBorderColor;
         border-right: 1px solid $mainBorderColor;
-        padding: 18px 5px 16px;
+        padding: 0;
         font-size: 14px;
         position: relative;
         font-weight: normal;
@@ -64,8 +65,7 @@ $activeCellBgColor: #fbfcfe;
     }
 
     td.head_cell {
-        padding-top: 17px;
-        padding-bottom: 17px;
+        padding: 17px 5px;
         border: 1px solid $mainBorderColor;
         border-top-width: 0;
         border-right-width: 0;
@@ -130,6 +130,7 @@ $activeCellBgColor: #fbfcfe;
     }
 
     .time_cell {
+        padding: 18px 5px 16px;
         border-left-width: 0;
         border-right-width: 1px;
         border-bottom-style: solid;
@@ -180,6 +181,14 @@ $activeCellBgColor: #fbfcfe;
 
     td.head_cell.head_cell__empty {
         pointer-events: none;
+    }
+
+    .schedule_item {
+        display: block;
+        padding: 17px 10px;
+        max-width: 100%;
+        box-sizing: border-box;
+        height: 66px;
     }
 
 }

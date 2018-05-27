@@ -12,6 +12,8 @@ const appConst = require('./../../../app-const');
 const find = require('lodash/find');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
+import {getCategoryNameFromRow, getCategoryColor} from './../../trainings-catalog/helper';
+
 class TrainingSchedule extends Component {
     constructor() {
         super();
@@ -155,7 +157,12 @@ class TrainingSchedule extends Component {
             className={className}
             key={dayIndex}>
             {fullTrainingDataList
-                .map((data, dataIndex) => <div key={dataIndex}>{data.training.title}</div>
+                .map((data, dataIndex) => <div
+                    className={style.schedule_item}
+                    style={{
+                        backgroundColor: '#' + getCategoryColor(getCategoryNameFromRow(data.training))
+                    }}
+                    key={dataIndex}>{data.training.title}</div>
                 )}
         </td>;
     }
