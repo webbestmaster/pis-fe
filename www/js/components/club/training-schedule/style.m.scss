@@ -1,5 +1,7 @@
 @import "./../../../../style/css/aaa-var";
 
+$activeCellBgColor: #fbfcfe;
+
 .wrapper {
     border-radius: 5px;
     box-sizing: border-box;
@@ -30,7 +32,7 @@
                 content: '';
                 position: absolute;
                 z-index: -2;
-                background-color: #fbfcfe;
+                background-color: $activeCellBgColor;
             }
             // vertical line
             &:after {
@@ -49,7 +51,7 @@
 
         }
         &.selected_in_line {
-            background-color: #fbfcfe;
+            background-color: $activeCellBgColor;
         }
     }
 
