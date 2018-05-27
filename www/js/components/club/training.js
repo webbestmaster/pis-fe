@@ -88,13 +88,13 @@ export default class Trainings extends Component {
         const {openAs, setOpenAs} = props;
 
         return <div className="hug sale hug--section">
-            <h3 className="section__header">
-                Тренировки
+            <h3 className="section__header section__header--with-switcher">
                 <SwitchButtonRowsTable
                     activeButton={openAs === 'schedule' ? 'list' : 'table'}
                     setTable={() => setOpenAs('card')}
                     setList={() => setOpenAs('schedule')}
                 />
+                Тренировки
             </h3>
 
             {openAs === 'card' ? view.renderCardList() : null}

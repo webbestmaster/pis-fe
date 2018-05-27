@@ -73,6 +73,17 @@
     }
 }
 
+:global {
+    .lt-desktop-width {
+        :local {
+            .wrapper {
+                float: none;
+                position: absolute;
+                top: auto;
+                bottom: 0;
+            }
+        }
 
+    }
 
-
+}
