@@ -14,6 +14,8 @@ const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
 import {getCategoryNameFromRow, getCategoryColor} from './../../trainings-catalog/helper';
 
+const categoryToHide = ['gym', 'after'];
+
 class TrainingSchedule extends Component {
     constructor() {
         super();
@@ -74,6 +76,10 @@ class TrainingSchedule extends Component {
         trainings.forEach(training => {
             const scheduleList = training.schedule || [];
 
+            if (categoryToHide.includes(getCategoryNameFromRow(training))) {
+                return;
+            }
+
             scheduleList
                 .forEach(({time_from, time_to}) => { // eslint-disable-line id-match, camelcase
                     const begin = time_from.split(':').map(timePart => parseInt(timePart, 10)); // eslint-disable-line id-match, camelcase
@@ -119,6 +125,10 @@ class TrainingSchedule extends Component {
 
         trainings.forEach(training => {
             const scheduleList = training.schedule || [];
+
+            if (categoryToHide.includes(getCategoryNameFromRow(training))) {
+                return;
+            }
 
             scheduleList
                 .forEach(schedule => {
