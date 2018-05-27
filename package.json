@@ -21,8 +21,6 @@
     "start-dev-server-hot-css": "webpack-dev-server --mode development --inline --hot --content-base dist/ --host 0.0.0.0 --port 8181 --progress --history-api-fallback",
     "eslint": "eslint .",
     "eslint-fix": "eslint . --fix",
-    "stylelint": "stylelint ./**/*.scss",
-    "stylelint-fix": "stylelint ./**/*.scss --fix",
     "flow": "flow",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -64,8 +62,6 @@
     "css-loader": "^0.28.11",
     "css-module-flow": "^1.0.0",
     "empty": "^0.10.1",
-    "eslint": "^4.19.1",
-    "eslint-plugin-flowtype": "^2.46.3",
     "flow-bin": "^0.73.0",
     "flow-typed": "^2.4.0",
     "html-webpack-plugin": "^3.2.0",

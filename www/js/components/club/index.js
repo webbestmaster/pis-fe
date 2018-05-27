@@ -29,7 +29,7 @@ class Club extends Component {
         view.state = {
             pageData: null,
             trainingTab: {
-                openAs: 'card' // 'card' or 'schedule'
+                openAs: 'schedule' // 'card' or 'schedule'
             }
         };
     }

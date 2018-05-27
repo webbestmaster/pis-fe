@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // import cnx from '../../helper/cnx';
 import TrainingCard from './training-card';
 import TrainingSchedule from './training-schedule';
+import SwitchButtonRowsTable from './../ui/switch-button-rows-table';
 
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
@@ -87,11 +88,14 @@ export default class Trainings extends Component {
         const {openAs, setOpenAs} = props;
 
         return <div className="hug sale hug--section">
-            <h3 className="section__header">Тренировки</h3>
-
-            <div onClick={() => setOpenAs('card')}>{openAs === 'card' ? '+' : '-'} card</div>
-            <div onClick={() => setOpenAs('schedule')}>{openAs === 'schedule' ? '+' : '-'} schedule</div>
-
+            <h3 className="section__header">
+                Тренировки
+                <SwitchButtonRowsTable
+                    activeButton={openAs === 'schedule' ? 'list' : 'table'}
+                    setTable={() => setOpenAs('card')}
+                    setList={() => setOpenAs('schedule')}
+                />
+            </h3>
             {openAs === 'card' ? view.renderCardList() : null}
             {openAs === 'schedule' ? view.renderSchedule() : null}
         </div>;

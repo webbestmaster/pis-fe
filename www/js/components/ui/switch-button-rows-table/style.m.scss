@@ -1,0 +1,78 @@
+@import './../../../../style/css/aaa-var';
+
+.wrapper {
+    display: block;
+    float: right;
+    height: 48px;
+    width: 96px;
+    margin-top: -6px;
+}
+
+.button {
+    box-sizing: border-box;
+    height: 100%;
+    width: 50%;
+    float: right;
+    background-color: #fff;
+    border: 1px solid $mainBorderColor;
+    position: relative;
+    cursor: pointer;
+    &:first-child {
+        border-left-width: 0;
+    }
+    &:last-child {
+        border-right-width: 0;
+    }
+    &.button__list:after {
+        content: '';
+        position: absolute;
+        width: 11px;
+        height: 2px;
+        background-color: $mainTextColor;
+        top: 19px;
+        left: 18px;
+        box-shadow: 0 4px $mainTextColor, 0 8px $mainTextColor;
+    }
+    &.button__table:after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background-color: $mainTextColor;
+        top: 19px;
+        left: 19px;
+        box-shadow: 0 4px $mainTextColor,
+        0 8px $mainTextColor,
+        4px 0 $mainTextColor,
+        4px 4px $mainTextColor,
+        4px 8px $mainTextColor,
+        8px 0 $mainTextColor,
+        8px 4px $mainTextColor,
+        8px 8px $mainTextColor;
+    }
+    &.button__active {
+        border-color: $mainColor;
+        background-color: $mainColor;
+
+        &.button__list:after {
+            background-color: #fff;
+            box-shadow: 0 4px #fff, 0 8px #fff;
+        }
+        &.button__table:after {
+            background-color: #fff;
+            box-shadow: 0 4px #fff,
+            0 8px #fff,
+            4px 0 #fff,
+            4px 4px #fff,
+            4px 8px #fff,
+            8px 0 #fff,
+            8px 4px #fff,
+            8px 8px #fff;
+        }
+
+    }
+}
+
+
+
+
