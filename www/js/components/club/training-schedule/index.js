@@ -12,7 +12,26 @@ const appConst = require('./../../../app-const');
 const find = require('lodash/find');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
-import {getCategoryNameFromRow, getCategoryColor} from './../../trainings-catalog/helper';
+import {getCategoryNameFromRow} from './../../trainings-catalog/helper';
+
+const categoryClassNameMap = {
+    yoga: style.category__yoga,
+    cardio: style.category__cardio,
+    combat: style.category__combat,
+    mind: style.category__mind,
+    strength: style.category__strength,
+    dancing: style.category__dancing,
+    games: style.category__games,
+    mothers: style.category__mothers
+};
+
+function getCategoryClassName(categoryName) {
+    if (categoryClassNameMap.hasOwnProperty(categoryName)) {
+        return categoryClassNameMap[categoryName];
+    }
+
+    return style.category__no_category;
+}
 
 const categoryToHide = ['gym', 'after'];
 
@@ -153,7 +172,7 @@ class TrainingSchedule extends Component {
         const view = this;
         const {props, state} = view;
         const {selectedDayIndex, selectedTimeIndex} = state;
-        const className = classnames({
+        const className = classnames(style.td, {
             [style.selected_in_line]:
             selectedDayIndex === dayIndex ||
             selectedTimeIndex === timeDataIndex
@@ -168,13 +187,39 @@ class TrainingSchedule extends Component {
             key={dayIndex}>
             {fullTrainingDataList
                 .map((data, dataIndex) => <div
-                    className={style.schedule_item}
-                    style={{
-                        backgroundColor: '#' + getCategoryColor(getCategoryNameFromRow(data.training))
-                    }}
+                    className={
+                        classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
+                    }
                     key={dataIndex}>{data.training.title}</div>
                 )}
         </td>;
+    }
+
+    drawMobileColumnCell(fullTrainingDataList, dayIndex, timeDataIndex) {
+        const view = this;
+        const {props, state} = view;
+        const {selectedDayIndex, selectedTimeIndex} = state;
+        const className = classnames(style.td, style.td_mobile_item_list, {
+            [style.selected_in_line]:
+            selectedDayIndex === dayIndex ||
+            selectedTimeIndex === timeDataIndex
+        });
+
+        if (fullTrainingDataList.length === 0) {
+            return <div className={className} key={dayIndex}/>;
+        }
+
+        return <div
+            className={className}
+            key={dayIndex}>
+            {fullTrainingDataList
+                .map((data, dataIndex) => <div
+                    className={
+                        classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
+                    }
+                    key={dataIndex}>{data.training.title}</div>
+                )}
+        </div>;
     }
 
     drawDesktopTimeCell(timeData, indexTimeData) {
@@ -184,7 +229,7 @@ class TrainingSchedule extends Component {
 
         return <td
             onClick={() => view.setState({selectedTimeIndex: indexTimeData})}
-            className={classnames(style.time_cell, {
+            className={classnames(style.time_cell, style.td, {
                 [style.time_cell__selected]: selectedTimeIndex === indexTimeData
             })}>
             <span className={style.time_cell__line}/>
@@ -193,6 +238,24 @@ class TrainingSchedule extends Component {
             :
             {String(timeData.begin.minute).padStart(2, '0')}
         </td>;
+    }
+
+    drawMobileTimeCell(timeData, indexTimeData) {
+        const view = this;
+        const {state} = view;
+        const {selectedTimeIndex} = state;
+
+        return <div
+            onClick={() => view.setState({selectedTimeIndex: indexTimeData})}
+            className={classnames(style.time_cell, style.td, {
+                [style.time_cell__selected]: selectedTimeIndex === indexTimeData
+            })}>
+            <span className={style.time_cell__line}/>
+            <span className={style.time_cell__diamond}/>
+            {String(timeData.begin.hour).padStart(2, '0')}
+            :
+            {String(timeData.begin.minute).padStart(2, '0')}
+        </div>;
     }
 
     hasActiveTrainingForDay(dayIndex) {
@@ -219,7 +282,7 @@ class TrainingSchedule extends Component {
                 }
                 view.setState({selectedDayIndex: dayIndex});
             },
-            className: classnames(style.head_cell, {
+            className: classnames(style.head_cell, style.td, {
                 [style.head_cell__disabled]: !view.hasActiveTrainingForDay(dayIndex),
                 [style.head_cell__selected]: selectedDayIndex === dayIndex
             })
@@ -235,8 +298,8 @@ class TrainingSchedule extends Component {
 
         return <table className={style.wrapper}>
             <thead>
-                <tr>
-                    <td className={classnames(style.head_cell, style.head_cell__empty)}>
+                <tr className={style.tr}>
+                    <td className={classnames(style.head_cell, style.head_cell__empty, style.td)}>
                     &nbsp;
                     </td>
                     <td {...view.getHeaderPropsCell(0)}>
@@ -277,9 +340,9 @@ class TrainingSchedule extends Component {
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody className={style.tbody}>
                 {timeList.map((timeData, timeDataIndex) => <tr
-
+                    className={style.tr}
                     key={timeDataIndex}>
                     {view.drawDesktopTimeCell(timeData, timeDataIndex)}
 
@@ -300,12 +363,45 @@ class TrainingSchedule extends Component {
 
     renderMobile() {
         const view = this;
-        const {props, state} = view;
-        const {trainings} = props;
+        const fullTrainingList = view.getFullTrainingList();
+        const timeList = view.getTimeList();
 
-        return <div>
-            mobile table
+        return <div className={style.wrapper}>
+            {['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+                .map((dayName, dayIndex) => view.renderMobileDay(dayName, dayIndex, fullTrainingList, timeList))}
         </div>;
+    }
+
+    renderMobileDay(dayName, dayIndex, fullTrainingList, timeList) {
+        const view = this;
+
+        return [
+            <div key={dayName + '__thead'} className={style.tr}>
+                <div {...view.getHeaderPropsCell(dayIndex)}>
+                    <span className={style.head_cell__line}/>
+                    <span className={style.head_cell__diamond}/>
+                    {dayName}
+                </div>
+            </div>,
+            <div key={dayName + '__tbody'} className={style.tbody}>
+                {timeList.map((timeData, timeDataIndex) => {
+                    const trainingListForDay = fullTrainingList
+                        .filter(fullTraining => fullTraining.dayIndex === dayIndex &&
+                            timeData.begin.originalTime === fullTraining.time_from);
+
+                    if (trainingListForDay.length === 0) {
+                        return null;
+                    }
+
+                    return <div
+                        className={classnames(style.tr, style.tr_mobile_item_list)}
+                        key={timeDataIndex}>
+                        {view.drawMobileTimeCell(timeData, timeDataIndex)}
+                        {view.drawMobileColumnCell(trainingListForDay, dayIndex, timeDataIndex)}
+                    </div>;
+                })}
+            </div>
+        ];
     }
 
     render() {

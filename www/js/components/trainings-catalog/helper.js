@@ -8,22 +8,3 @@ export function getCategoryNameFromRow(row) {
 
     return Object.keys(row.attributes)[0];
 }
-
-export function getCategoryColor(categoryName) {
-    const colorMap = {
-        yoga: 'eed3e6',
-        cardio: 'c8e0fc',
-        combat: 'c8d4f6',
-        mind: 'b4f0ba',
-        strength: 'fea8c2',
-        dancing: 'fbedb0',
-        games: 'bef5e9',
-        mothers: 'fce0c2'
-    };
-
-    if (colorMap.hasOwnProperty(categoryName)) {
-        return colorMap[categoryName];
-    }
-
-    return '000';
-}
