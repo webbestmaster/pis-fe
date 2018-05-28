@@ -187,6 +187,7 @@ class TrainingSchedule extends Component {
             key={dayIndex}>
             {fullTrainingDataList
                 .map((data, dataIndex) => <div
+                    onClick={() => console.log('click desktop')}
                     className={
                         classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
                     }
@@ -214,6 +215,7 @@ class TrainingSchedule extends Component {
             key={dayIndex}>
             {fullTrainingDataList
                 .map((data, dataIndex) => <div
+                    onClick={() => console.log('click mobile')}
                     className={
                         classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
                     }
