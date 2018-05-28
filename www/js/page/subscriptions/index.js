@@ -6,7 +6,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
-const topBanner = require('./../../../style/images/subscriptions/top-banner.png');
+const topBanner = require('./../../../style/images/subscriptions/top-banner.jpg');
 
 export default class Subscriptions extends Component {
     componentDidMount() {

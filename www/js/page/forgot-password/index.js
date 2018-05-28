@@ -10,7 +10,7 @@ import Footer from './../../components/footer';
 import * as authAction from '../../components/auth/action';
 
 const queryString = require('query-string');
-const topBanner = require('./../../../style/images/club/top-banner.png');
+const topBanner = require('./../../../style/images/club/top-banner.jpg');
 
 import style from './../../components/auth/popup/style.m.scss';
 import cnx from '../../helper/cnx';

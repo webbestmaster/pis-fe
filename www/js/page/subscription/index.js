@@ -14,7 +14,7 @@ const find = require('lodash/find');
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
-const topBanner = require('./../../../style/images/club/top-banner.png');
+const topBanner = require('./../../../style/images/club/top-banner.jpg');
 
 class SubscriptionPage extends Component {
     constructor() {

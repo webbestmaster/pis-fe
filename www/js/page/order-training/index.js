@@ -8,7 +8,7 @@ import Footer from './../../components/footer';
 import OrderTraining from './../../components/order-training';
 import {metaTagMaster} from '../../module/meta-tag';
 
-const topBanner = require('./../../../style/images/order/top-banner.png');
+const topBanner = require('./../../../style/images/order/top-banner.jpg');
 
 class OrderPage extends Component {
     componentDidMount() {

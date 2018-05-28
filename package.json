@@ -25,7 +25,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@material-ui/core": "^1.0.0",
+    "@material-ui/core": "^1.1.0",
     "blueimp-load-image": "^2.18.0",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
@@ -35,7 +35,7 @@
     "query-string": "^6.1.0",
     "rcn": "^0.2.0",
     "react": "^16.2.0",
-    "react-datepicker": "^1.2.2",
+    "react-datepicker": "^1.5.0",
     "react-dom": "^16.2.0",
     "react-images": "^0.5.17",
     "react-js-pagination": "^3.0.1",

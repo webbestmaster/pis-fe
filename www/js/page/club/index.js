@@ -13,7 +13,7 @@ import {metaTagMaster} from '../../module/meta-tag';
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
-const topBanner = require('./../../../style/images/club/top-banner.png');
+const topBanner = require('./../../../style/images/club/top-banner.jpg');
 
 export default class ClubPage extends Component {
     constructor() {

@@ -6,7 +6,7 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
-const topBanner = require('./../../../style/images/trainings/top-banner.png');
+const topBanner = require('./../../../style/images/trainings/top-banner.jpg');
 
 export default class Trainings extends Component {
     componentDidMount() {
