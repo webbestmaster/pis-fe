@@ -1,0 +1,18 @@
+.wrapper {
+    position: absolute;
+    z-index: 1;
+    left: 50px;
+    bottom: 100%;
+    width: 200px;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.category_icon {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+

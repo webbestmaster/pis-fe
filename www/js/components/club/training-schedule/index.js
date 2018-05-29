@@ -7,6 +7,7 @@ import {resolveImagePath} from './../../../helper/path-x';
 import {connect} from 'react-redux';
 import * as authAction from './../../auth/action';
 import style from './style.m.scss';
+import TrainingSchedulePopup from './popup';
 
 const appConst = require('./../../../app-const');
 const find = require('lodash/find');
@@ -43,7 +44,8 @@ class TrainingSchedule extends Component {
 
         view.state = {
             selectedDayIndex: view.getFirstActiveTrainingDay(),
-            selectedTimeIndex: -1
+            selectedTimeIndex: -1,
+            openInfoPopupId: null
         };
     }
 
@@ -141,6 +143,10 @@ class TrainingSchedule extends Component {
         const {trainings} = props;
 
         const fullTrainingList = [];
+        const now = Date.now();
+        const dateNow = new Date();
+        const nowDayIndex = (dateNow.getDay() || 7) - 1;
+        const oneDayLength = 24 * 60 * 60 * 1000;
 
         trainings.forEach(training => {
             const scheduleList = training.schedule || [];
@@ -157,7 +163,10 @@ class TrainingSchedule extends Component {
                         if (schedule.day & Math.pow(2, dayNumber)) { // eslint-disable-line no-bitwise
                             fullTrainingList.push({
                                 training,
+                                schedule,
                                 time_from: schedule.time_from, // eslint-disable-line id-match, camelcase
+                                time_to: schedule.time_to, // eslint-disable-line id-match, camelcase
+                                date: new Date(now + (dayNumber - nowDayIndex - 1) * oneDayLength),
                                 dayIndex: dayNumber - 1
                             });
                         }
@@ -185,14 +194,17 @@ class TrainingSchedule extends Component {
         return <td
             className={className}
             key={dayIndex}>
-            {fullTrainingDataList
-                .map((data, dataIndex) => <div
-                    onClick={() => console.log('click desktop')}
-                    className={
-                        classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
-                    }
-                    key={dataIndex}>{data.training.title}</div>
-                )}
+            {fullTrainingDataList.map((data, dataIndex) => <div
+                onClick={() => view.changeInfoPopup(data, dayIndex, dataIndex)}
+                className={classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))}
+                key={dataIndex}>
+                {data.training.title}
+                {view.isPopupOpen(data, dayIndex, dataIndex) ?
+                    <TrainingSchedulePopup
+                        data={data}
+                        onClickClose={() => view.changeInfoPopup(data, dayIndex, dataIndex)}/> :
+                    null}
+            </div>)}
         </td>;
     }
 
@@ -213,15 +225,36 @@ class TrainingSchedule extends Component {
         return <div
             className={className}
             key={dayIndex}>
-            {fullTrainingDataList
-                .map((data, dataIndex) => <div
-                    onClick={() => console.log('click mobile')}
-                    className={
-                        classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))
-                    }
-                    key={dataIndex}>{data.training.title}</div>
-                )}
+            {fullTrainingDataList.map((data, dataIndex) => <div
+                onClick={() => view.changeInfoPopup(data, dayIndex, dataIndex)}
+                className={classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))}
+                key={dataIndex}>
+                {data.training.title}
+                {view.isPopupOpen(data, dayIndex, dataIndex) ?
+                    <TrainingSchedulePopup
+                        data={data}
+                        onClickClose={() => view.changeInfoPopup(data, dayIndex, dataIndex)}/> :
+                    null}
+            </div>)}
         </div>;
+    }
+
+    changeInfoPopup(data, dayIndex, dataIndex) {
+        const view = this;
+        const newOpenInfoPopupId = view.getTableItemId(data, dayIndex, dataIndex);
+
+        view.setState({openInfoPopupId: view.isPopupOpen(data, dayIndex, dataIndex) ? null : newOpenInfoPopupId});
+    }
+
+    getTableItemId(data, dayIndex, dataIndex) {
+        return [data.time_from, data.dayIndex, dayIndex, dataIndex].join('--');
+    }
+
+    isPopupOpen(data, dayIndex, dataIndex) {
+        const view = this;
+        const {state} = view;
+
+        return state.openInfoPopupId === view.getTableItemId(data, dayIndex, dataIndex);
     }
 
     drawDesktopTimeCell(timeData, indexTimeData) {
@@ -261,7 +294,6 @@ class TrainingSchedule extends Component {
     }
 
     hasActiveTrainingForDay(dayIndex) {
-        // TODO: implement this!!!
         // const view = this;
         // const fullTrainingList = view.getFullTrainingList();
         // const timeList = view.getTimeList();
