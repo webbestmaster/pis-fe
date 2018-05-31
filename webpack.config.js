@@ -186,15 +186,17 @@ const webpackConfig = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader', options: {
+                        loader: 'css-loader',
+                        options: {
                             sourceMap: IS_DEVELOPMENT,
                             modules: true,
-                            localIdentName: '[local]----[path]--[name]--[hash:base64:5]',
+                            localIdentName: IS_DEVELOPMENT ? '[local]----[path]--[name]--[hash:6]' : '[hash:6]',
                             minimize: IS_PRODUCTION
                         }
                     },
                     {
-                        loader: 'postcss-loader', options: {
+                        loader: 'postcss-loader',
+                        options: {
                             sourceMap: true,
                             config: {
                                 path: './postcss.config.js'
@@ -211,7 +213,8 @@ const webpackConfig = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader', options: {
+                        loader: 'css-loader',
+                        options: {
                             sourceMap: IS_DEVELOPMENT,
                             modules: true,
                             localIdentName: '[local]',
@@ -219,7 +222,8 @@ const webpackConfig = {
                         }
                     },
                     {
-                        loader: 'postcss-loader', options: {
+                        loader: 'postcss-loader',
+                        options: {
                             sourceMap: true,
                             config: {
                                 path: './postcss.config.js'
