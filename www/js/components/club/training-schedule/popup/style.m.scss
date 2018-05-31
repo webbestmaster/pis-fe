@@ -1,19 +1,203 @@
+@import './../../../../../style/css/aaa-var';
+@import './../../../../../style/css/helper';
+
 .wrapper {
+    transform: translate3d(-50%, -110%, 0);
     position: absolute;
     z-index: 1;
-    left: 50px;
-    bottom: 100%;
-    width: 200px;
-    height: auto;
+    left: 50%;
+    top: 0;
+    width: 458px;
     background-color: #fff;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
     cursor: default;
+    box-sizing: border-box;
+    padding: 34px 27px 36px;
+    //margin-bottom: 25px;
+    overflow: visible;
+    border-radius: 6px;
+    text-align: left;
+    user-select: none;
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+    }
+
+    &:before {
+        width: 50px;
+        height: 25px;
+        z-index: 1;
+        background-color: #fff;
+        //border: 11px solid #c00;
+        bottom: 0;
+        transform: translate3d(-50%, 0, 0);
+    }
+    &:after {
+        width: 0;
+        height: 0;
+        z-index: 0;
+        border: 11px solid #fff;
+        bottom: -11px;
+        transform: translate3d(-50%, 0, 0) rotateZ(45deg);
+        box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
+    }
 }
 
 .category_icon {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
+    float: left;
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: 74%;
+    margin-right: 13px;
 }
 
+.header {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 17px;
+    color: $mainTextColor;
+}
+
+.work_time {
+    color: $mainColor;
+    font-size: 14px;
+    float: left;
+    clear: left;
+    padding-left: 2px;
+    padding-top: 3px;
+}
+
+.work_date {
+    color: $secondaryTextColor;
+    font-size: 14px;
+    float: left;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+
+.description {
+    @include line-cap(3);
+    clear: both;
+    color: $mainTextColor;
+    font-size: 14px;
+    padding-top: 15px;
+    margin-bottom: 28px;
+    line-height: 20px;
+}
+
+.button_order {
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid $mainColor;
+    background-color: $mainColor;
+    cursor: pointer;
+    width: 192px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 10px;
+    border-radius: 23px;
+    &:hover {
+        color: $mainTextColor;
+        background-color: #fff;
+    }
+}
+
+.button_more {
+    @extend .button_order;
+    color: $mainTextColor;
+    background-color: #fff;
+    border-color: $mainBorderColor;
+    float: right;
+    &:hover {
+        color: #fff;
+        background-color: $mainColor;
+    }
+}
+
+.close_button {
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    width: 40px;
+    z-index: 2;
+
+    &:before,
+    &:after {
+        background-color: $mainColor;
+        content: '';
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        width: 24px;
+    }
+
+    &:before {
+        transform: translate3d(-50%, -50%, 0) rotateZ(45deg);
+    }
+
+    &:after {
+        transform: translate3d(-50%, -50%, 0) rotateZ(-45deg);
+    }
+}
+
+td:last-child {
+    .wrapper {
+        left: -50px;
+        &:after,
+        &:before {
+            left: 78%;
+        }
+    }
+}
+
+:global {
+    .lt-desktop-width {
+        :local {
+            .wrapper {
+                transform: translate3d(-50%, -108%, 0);
+            }
+        }
+    }
+}
+
+:global {
+    .lt-tablet-width {
+        :local {
+            .wrapper {
+                left: 50%;
+                margin-left: -37px;
+                width: 300px;
+                &:after,
+                &:before {
+                    left: 35%;
+                }
+            }
+
+            .description {
+                @include line-cap(5);
+            }
+
+            .button_order,
+            .button_more {
+                float: none;
+                width: auto;
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .button_more {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

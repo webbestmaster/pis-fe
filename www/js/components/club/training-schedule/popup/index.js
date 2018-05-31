@@ -22,7 +22,7 @@ const monthsAfterDay = [
 const appConst = require('./../../../../app-const');
 const find = require('lodash/find');
 const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
-const weekDaysFull = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+const weekDaysFull = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
 import {getCategoryNameFromRow, getCategoryColor} from './../../../trainings-catalog/helper';
 
@@ -37,24 +37,40 @@ export class TrainingSchedulePopup extends Component {
         const dateNow = new Date();
 
         return <div className={style.wrapper} onClick={evt => evt.stopPropagation()}>
-            <div onClick={props.onClickClose}>close</div>
+            <div className={style.close_button} onClick={props.onClickClose}/>
             <div
                 className={classnames(
                     style.category_icon,
                     'clubs-catalog-list-item__header--icon-' + getCategoryNameFromRow(data.training)
                 )}/>
-            <div>{props.data.training.title}</div>
-            <div>{reduceSeconds(data.time_from)} {reduceSeconds(data.time_to)}</div>
+            <h4 className={style.header}>{props.data.training.title}</h4>
 
-            <div>{weekDaysFull[data.dayIndex]}</div>
-            <div>{data.date.getDate()}</div>
-            <div>{monthsAfterDay[data.date.getMonth()]}</div>
+            <p className={style.work_time}>{reduceSeconds(data.time_from)} - {reduceSeconds(data.time_to)}</p>
 
-            <div>isActive: {dateNow.getTime() < data.date.getTime() ? 'active' : 'too late'}</div>
-            <div>{training.description}</div>
+            <p className={style.work_date}>
+                {weekDaysFull[data.dayIndex]}
+                &nbsp;
+                {data.date.getDate()}
+                &nbsp;
+                {monthsAfterDay[data.date.getMonth()]}
+            </p>
 
-            <div>/order/training/{training.id}/{data.schedule.id}/{Math.pow(2, data.dayIndex + 1)}</div>
-            <div>/training/{training.id}</div>
+            <p className={style.description}>{training.description}</p>
+
+            <Link
+                to={['/order', 'training', training.id, data.schedule.id, Math.pow(2, data.dayIndex + 1)].join('/')}
+                className={classnames(
+                    style.button_order,
+                    {disabled: dateNow.getTime() > data.date.getTime()}
+                )}>
+                Забронировать
+            </Link>
+            <Link
+                to={'/training/' + training.id}
+                className={style.button_more}>Подробнее</Link>
+
+            {/* <div>/order/training/{training.id}/{data.schedule.id}/{Math.pow(2, data.dayIndex + 1)}</div>*/}
+            {/* <div>/training/{training.id}</div>*/}
         </div>;
     }
 }

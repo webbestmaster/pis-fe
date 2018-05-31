@@ -182,6 +182,8 @@ class TrainingSchedule extends Component {
         const {props, state} = view;
         const {selectedDayIndex, selectedTimeIndex} = state;
         const className = classnames(style.td, {
+            [style.td_selected]: fullTrainingDataList
+                .some((data, dataIndex) => view.isPopupOpen(data, dayIndex, dataIndex)),
             [style.selected_in_line]:
             selectedDayIndex === dayIndex ||
             selectedTimeIndex === timeDataIndex
@@ -196,7 +198,11 @@ class TrainingSchedule extends Component {
             key={dayIndex}>
             {fullTrainingDataList.map((data, dataIndex) => <div
                 onClick={() => view.changeInfoPopup(data, dayIndex, dataIndex)}
-                className={classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))}
+                className={classnames(
+                    style.schedule_item,
+                    getCategoryClassName(getCategoryNameFromRow(data.training)),
+                    {[style.schedule_item__selected]: view.isPopupOpen(data, dayIndex, dataIndex)}
+                )}
                 key={dataIndex}>
                 {data.training.title}
                 {view.isPopupOpen(data, dayIndex, dataIndex) ?
@@ -213,6 +219,8 @@ class TrainingSchedule extends Component {
         const {props, state} = view;
         const {selectedDayIndex, selectedTimeIndex} = state;
         const className = classnames(style.td, style.td_mobile_item_list, {
+            [style.td_selected]: fullTrainingDataList
+                .some((data, dataIndex) => view.isPopupOpen(data, dayIndex, dataIndex)),
             [style.selected_in_line]:
             selectedDayIndex === dayIndex ||
             selectedTimeIndex === timeDataIndex
@@ -227,7 +235,11 @@ class TrainingSchedule extends Component {
             key={dayIndex}>
             {fullTrainingDataList.map((data, dataIndex) => <div
                 onClick={() => view.changeInfoPopup(data, dayIndex, dataIndex)}
-                className={classnames(style.schedule_item, getCategoryClassName(getCategoryNameFromRow(data.training)))}
+                className={classnames(
+                    style.schedule_item,
+                    getCategoryClassName(getCategoryNameFromRow(data.training)),
+                    {[style.schedule_item__selected]: view.isPopupOpen(data, dayIndex, dataIndex)}
+                )}
                 key={dataIndex}>
                 {data.training.title}
                 {view.isPopupOpen(data, dayIndex, dataIndex) ?

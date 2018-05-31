@@ -11,7 +11,10 @@ $activeCellBgColor: #fbfcfe;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid $mainBorderColor;
+    position: relative;
+    z-index: 1;
     .td {
+        user-select: none;
         //td {
         box-sizing: border-box;
         width: 12.5%;
@@ -24,6 +27,9 @@ $activeCellBgColor: #fbfcfe;
         position: relative;
         font-weight: normal;
         z-index: 0;
+        &.td_selected {
+            z-index: 2;
+        }
         &:last-child {
             border-right-width: 0;
         }
@@ -138,6 +144,7 @@ $activeCellBgColor: #fbfcfe;
         border-right-width: 1px;
         border-bottom-style: solid;
         cursor: pointer;
+        overflow: hidden;
 
         .time_cell__line {
             position: absolute;
@@ -193,6 +200,10 @@ $activeCellBgColor: #fbfcfe;
         box-sizing: border-box;
         min-height: 66px;
         cursor: pointer;
+        &.schedule_item__selected {
+            position: relative;
+            color: #fff;
+        }
     }
 }
 
@@ -296,4 +307,78 @@ $activeCellBgColor: #fbfcfe;
     background-color: #fce0c2;
 }
 
+.schedule_item__selected {
+    &.category__no_category {
+        background-color: rgb(154, 0, 154);
+    }
 
+    &.category__yoga {
+        background-color: #F89834;
+    }
+
+    &.category__cardio {
+        background-color: #F89834;
+    }
+
+    &.category__combat {
+        background-color: #F89834;
+    }
+
+    &.category__mind {
+        background-color: #F89834;
+    }
+
+    &.category__strength {
+        background-color: #F89834;
+    }
+
+    &.category__dancing {
+        background-color: #F89834;
+    }
+
+    &.category__games {
+        background-color: #F89834;
+    }
+
+    &.category__mothers {
+        background-color: #F89834;
+    }
+
+    /*
+    &.category__no_category {
+        background-color: rgb(154, 0, 154);
+    }
+
+    &.category__yoga {
+        background-color: #bcabb4;
+    }
+
+    &.category__cardio {
+        background-color: #a2b1ca;
+    }
+
+    &.category__combat {
+        background-color: #a1acc4;
+    }
+
+    &.category__mind {
+        background-color: #93be93;
+    }
+
+    &.category__strength {
+        background-color: #cc8a9b;
+    }
+
+    &.category__dancing {
+        background-color: #c9bb91;
+    }
+
+    &.category__games {
+        background-color: #99c3b7;
+    }
+
+    &.category__mothers {
+        background-color: #cab5a1;
+    }
+    */
+}
