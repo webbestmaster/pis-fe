@@ -13,7 +13,7 @@ const find = require('lodash/find');
 
 const categoryToHide = ['gym', 'after'];
 
-class TrainingSchedule extends Component {
+class SubscriptionsSchedule extends Component {
     constructor() {
         super();
 
@@ -28,8 +28,18 @@ class TrainingSchedule extends Component {
 
     renderDesktop() {
         const view = this;
+        const {props, state} = view;
+        const {subscriptions} = props;
 
-        return <h1 className={style.wrapper}>desktop</h1>;
+        return <div className={style.wrapper}>
+
+            <h1>desktop</h1>
+
+            <div>
+                {JSON.stringify(subscriptions)}
+            </div>
+
+        </div>;
     }
 
     renderMobile() {
@@ -61,4 +71,4 @@ export default connect(
         // addToFavoriteTraining: authAction.addToFavoriteTraining,
         // addToFavoriteSubscription: authAction.addToFavoriteSubscription
     }
-)(TrainingSchedule);
+)(SubscriptionsSchedule);
