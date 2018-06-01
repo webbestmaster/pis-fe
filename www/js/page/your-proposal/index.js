@@ -27,7 +27,7 @@ class YourProposalPage extends Component {
                     <Link to="/your-proposal">Ваши предложения</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">Ваши предложения</h3>
+                <h1 className="section__header">Ваши предложения</h1>
             </TopBigBanner>
 
             <YourProposal/>

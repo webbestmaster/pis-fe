@@ -26,7 +26,7 @@ class AboutCashback extends Component {
                     <Link to="/about-cashback">Бонусы</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">Бонусы</h3>
+                <h1 className="section__header">Бонусы</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

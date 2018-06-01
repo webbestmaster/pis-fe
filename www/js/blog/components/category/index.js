@@ -99,7 +99,7 @@ class Category extends Component<PropsType, StateType> {
 
             <section key="page" className={sectionStyle.blog_section}>
                 <div className={sectionStyle.blog_section_content}>
-                    <h3 className={sectionStyle.blog_section_header}>{humanCategoryName}</h3>
+                    <h1 className={sectionStyle.blog_section_header}>{humanCategoryName}</h1>
 
                     <div className={articleCardStyle.block_list + ' ' + articleCardStyle.block_list__separated}>
                         {rows

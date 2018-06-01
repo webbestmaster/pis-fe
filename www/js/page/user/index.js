@@ -63,7 +63,7 @@ class UserPage extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/user">Личный кабинет</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
+                <h1 className="section__header">{[user.first_name, user.last_name].join(' ')}</h1>
             </TopBigBanner>
             {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
             <div {...cnx({
@@ -89,7 +89,7 @@ class UserPage extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/user">Личный кабинет</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">{[user.first_name, user.last_name].join(' ')}</h3>
+                <h1 className="section__header">{[user.first_name, user.last_name].join(' ')}</h1>
             </TopBigBanner>
             {app.screen.width <= globalAppConst.tabletWidth ? null : <UserShortInfo/>}
             <div {...cnx({

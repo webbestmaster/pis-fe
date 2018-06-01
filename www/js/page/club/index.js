@@ -76,7 +76,7 @@ export default class ClubPage extends Component {
                     <Link to="/clubs">Клубы</Link>
                     <Link to={'/club/' + row.id}>{row.title}</Link>
                 </BreadCrumbs>
-                <h3 className="section__header section__header--club">{row.title}</h3>
+                <h1 className="section__header section__header--club">{row.title}</h1>
                 <div className="club-header-rating">
                     <Rating
                         rating={row.rating}

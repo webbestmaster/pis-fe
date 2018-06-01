@@ -142,10 +142,10 @@ class SubscriptionPage extends Component {
                     <Link to="/subscriptions">Абонементы</Link>
                     <Link to={'/subscription/' + subscriptionId}>{pageData.row.title}</Link>
                 </BreadCrumbs>
-                <h3 className="section__header section__header--training">
+                <h1 className="section__header section__header--training">
                     {pageData.row.title}
                     {view.renderFavoriteMark()}
-                </h3>
+                </h1>
             </TopBigBanner>
             <Subscription {...{subscriptionId}}/>
             <Footer/>

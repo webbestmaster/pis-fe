@@ -25,7 +25,7 @@ export default class Trainings extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/trainings">Тренировки</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Тренировки в Минске</h3>
+                <h1 className="section__header">Тренировки в Минске</h1>
             </TopBigBanner>
             <TrainingsCatalog/>
             <Footer/>

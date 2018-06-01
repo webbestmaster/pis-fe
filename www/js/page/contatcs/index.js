@@ -25,7 +25,7 @@ class ContactsPage extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/contacts">Контакты</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Контакты</h3>
+                <h1 className="section__header">Контакты</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

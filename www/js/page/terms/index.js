@@ -30,7 +30,7 @@ class Terms extends Component {
                     <Link to="/terms">Пользовательское соглашение</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">Пользовательское соглашение</h3>
+                <h1 className="section__header">Пользовательское соглашение</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

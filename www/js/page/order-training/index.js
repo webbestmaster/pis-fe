@@ -29,7 +29,7 @@ class OrderPage extends Component {
                     <Link to="/trainings">Тренировки</Link>
                     <Link to={match.url}>Мой заказ</Link>
                 </BreadCrumbs>
-                <h3 className="section__header">Мой заказ</h3>
+                <h1 className="section__header">Мой заказ</h1>
             </TopBigBanner>
 
             <OrderTraining/>

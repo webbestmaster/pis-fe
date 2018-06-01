@@ -223,9 +223,9 @@ class Article extends Component<PropsType, StateType> {
 
             <section key="page" className={sectionStyle.blog_section + ' ' + sectionStyle.blog_section__article}>
                 <div className={sectionStyle.blog_section_content}>
-                    <h2 className={sectionStyle.blog_section_header + ' ' + sectionStyle.blog_section_header__article}>
+                    <h1 className={sectionStyle.blog_section_header + ' ' + sectionStyle.blog_section_header__article}>
                         {article.title}
-                    </h2>
+                    </h1>
 
                     <EyeCounter
                         className={style.eye_counter}

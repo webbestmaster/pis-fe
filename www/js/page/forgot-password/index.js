@@ -192,7 +192,7 @@ class ForgotPassword extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/forgotPassword">Сброс пароля</Link>
                 </BreadCrumbs>
-                <h3 className="section__header section__header--club">Сброс пароля</h3>
+                <h1 className="section__header section__header--club">Сброс пароля</h1>
             </TopBigBanner>
 
             <section className="section">

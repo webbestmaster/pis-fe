@@ -30,7 +30,7 @@ class PublicOffer extends Component {
                     <Link to="/public-offer">Публичная оферта</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">Публичная оферта</h3>
+                <h1 className="section__header">Публичная оферта</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

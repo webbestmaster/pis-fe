@@ -28,7 +28,7 @@ class AboutUs extends Component {
                     <Link to="/about-us">О нас</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">О нас</h3>
+                <h1 className="section__header">О нас</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

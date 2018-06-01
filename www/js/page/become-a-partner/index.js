@@ -27,7 +27,7 @@ class BecomeAPartnerPage extends Component {
                     <Link to="/become-a-partner">Стать партнером</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h3 className="section__header">Стать партнером</h3>
+                <h1 className="section__header">Стать партнером</h1>
             </TopBigBanner>
 
             <BecomeAPartner/>

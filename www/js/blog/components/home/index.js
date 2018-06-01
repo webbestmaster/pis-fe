@@ -179,45 +179,45 @@ export default class Home extends Component<{}, StateType> {
             {view.renderList(
                 pageData.data.indexRows.fitness,
                 {
-                    header: <h3 className={sectionStyle.blog_section_header}>
+                    header: <h2 className={sectionStyle.blog_section_header}>
                         <Link className={sectionStyle.blog_section_header_link} to="/category/fitness">
                             Фитнес
                         </Link>
-                    </h3>
+                    </h2>
                 },
                 find(ads.data[0], {size: '300x600'})
             )}
 
             <PromoArticleText3
-                header={<h3 className={sectionStyle.blog_section_header}>
+                header={<h2 className={sectionStyle.blog_section_header}>
                     <Link className={sectionStyle.blog_section_header_link} to="/category/food">Питание</Link>
-                </h3>}
+                </h2>}
                 list={pageData.data.indexRows.food}/>
 
             {view.renderList(
                 pageData.data.indexRows.motivation,
                 {
-                    header: <h3 className={sectionStyle.blog_section_header}>
+                    header: <h2 className={sectionStyle.blog_section_header}>
                         <Link className={sectionStyle.blog_section_header_link} to="/category/motivation">
                             Мотивация
                         </Link>
-                    </h3>
+                    </h2>
                 },
                 findLast(ads.data[0], {size: '300x600'})
             )}
 
             <PromoArticleRow3
-                header={<h3 className={sectionStyle.blog_section_header}>
+                header={<h2 className={sectionStyle.blog_section_header}>
                     <Link className={sectionStyle.blog_section_header_link} to="/category/event">События</Link>
-                </h3>}
+                </h2>}
                 list={pageData.data.indexRows.event}/>
 
             {view.renderRow(pageData.data.indexRows.knowledge, {
-                header: <h3 className={sectionStyle.blog_section_header}>
+                header: <h2 className={sectionStyle.blog_section_header}>
                     <Link className={sectionStyle.blog_section_header_link} to="/category/knowledge">
                         Знания
                     </Link>
-                </h3>
+                </h2>
             })}
 
         </div>;

@@ -143,10 +143,10 @@ class TrainingPage extends Component {
                     <Link to="/trainings">Тренировки</Link>
                     <Link to={'/training/' + trainingId}>{pageData.row.title}</Link>
                 </BreadCrumbs>
-                <h3 className="section__header section__header--training">
+                <h1 className="section__header section__header--training">
                     {pageData.row.title}
                     {view.renderFavoriteMark()}
-                </h3>
+                </h1>
             </TopBigBanner>
             <Training {...{trainingId}}/>
             <Footer/>
