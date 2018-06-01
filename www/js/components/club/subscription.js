@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import SubscriptionCard from './subscription-card';
+import SwitchButtonRowsTable from './../ui/switch-button-rows-table';
+import SubscriptionsSchedule from './subscription-schedule';
 
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
@@ -29,7 +31,7 @@ export default class Subscriptions extends Component {
             .catch(console.error);
     }
 
-    render() {
+    renderCardList() {
         const view = this;
         const {props, state} = view;
         const {pageData} = state;
@@ -40,13 +42,47 @@ export default class Subscriptions extends Component {
 
         const {subscriptions} = pageData;
 
+        return <div className="sale-card-container">
+            {subscriptions.map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
+        </div>;
+    }
+
+    renderSchedule() {
+        const view = this;
+        const {props, state} = view;
+        const {pageData} = state;
+
+        if (pageData === null) {
+            return null;
+        }
+
+        const {subscriptions} = pageData;
+
+        return <SubscriptionsSchedule subscriptions={subscriptions}/>;
+    }
+
+    render() {
+        const view = this;
+        const {props, state} = view;
+        const {pageData} = state;
+        const {openAs, setOpenAs} = props;
+
+        if (pageData === null) {
+            return null;
+        }
+
         return <div className="hug sale hug--section">
-            <h2 className="section__header">Абонементы</h2>
+            <h3 className="section__header section__header--with-switcher">
+                <SwitchButtonRowsTable
+                    activeButton={openAs === 'schedule' ? 'list' : 'table'}
+                    setTable={() => setOpenAs('card')}
+                    setList={() => setOpenAs('schedule')}
+                />
+                Абонементы
+            </h3>
 
-            <div className="sale-card-container">
-                {subscriptions.map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
-            </div>
-
+            {openAs === 'card' ? view.renderCardList() : null}
+            {openAs === 'schedule' ? view.renderSchedule() : null}
         </div>;
     }
 }
