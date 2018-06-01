@@ -11,7 +11,36 @@ import style from './style.m.scss';
 const appConst = require('./../../../app-const');
 const find = require('lodash/find');
 
-const categoryToHide = ['gym', 'after'];
+import {reduceSeconds} from './../../../helper/date';
+
+// const categoryToHide = ['gym', 'after'];
+
+const partList = [
+    {
+        name: 'Персональное занятие',
+        filter: subscription => {
+            return true;
+        }
+    },
+    {
+        name: 'Тренажерный зал',
+        filter: subscription => {
+            return true;
+        }
+    },
+    {
+        name: 'Фитнес',
+        filter: subscription => {
+            return true;
+        }
+    },
+    {
+        name: 'После спорта',
+        filter: subscription => {
+            return true;
+        }
+    }
+];
 
 class SubscriptionsSchedule extends Component {
     constructor() {
@@ -31,14 +60,58 @@ class SubscriptionsSchedule extends Component {
         const {props, state} = view;
         const {subscriptions} = props;
 
+        if (!subscriptions) {
+            return null;
+        }
+
         return <div className={style.wrapper}>
 
-            <h1>desktop</h1>
+            {partList
+                .map(part => {
+                    const subscriptionList = subscriptions.filter(part.filter);
 
-            <div>
-                {JSON.stringify(subscriptions)}
-            </div>
+                    if (subscriptionList.length === 0) {
+                        return null;
+                    }
 
+                    return <div className={style.part} key={part.name}>
+                        <div className={style.table_header}>
+                            <h3 className={style.table_header__name}>{part.name}</h3>
+                            <p className={style.table_header__time}>Время</p>
+                            <p className={style.table_header__cost}>Стоимость</p>
+                        </div>
+                        <div className={style.table_body}>
+                            {subscriptionList
+                                .map(subscription => <Link
+                                    to={'/subscription/' + subscription.id}
+                                    key={subscription.id}
+                                    className={style.table_body__line}>
+
+                                    {/* <div>{JSON.stringify(subscription)}</div>*/}
+
+                                    <div
+                                        className={style.table_body__name}>
+                                        {subscription.title}
+                                    </div>
+                                    <div
+                                        className={style.table_body__time}>
+                                        {reduceSeconds(subscription.work_from)}
+                                        {' - '}
+                                        {reduceSeconds(subscription.work_to)}
+                                    </div>
+                                    <div
+                                        className={style.table_body__cost}>
+                                        {subscription.price}
+                                    </div>
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                </Link>)}
+                        </div>
+                    </div>;
+                })}
         </div>;
     }
 
