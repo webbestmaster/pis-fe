@@ -214,52 +214,52 @@ class Description extends Component {
                                 key="title"
                                 className={style.filial_info_image}
                                 style={{backgroundImage: 'url(' + resolveImagePath(filial.image) + ')'}}/>,
-                            <div
-                                key="info"
-                                className={style.filial_details_block_wrapper}>
-                                <div className={style.filial_details_block}>
-                                    <h3 className={style.filial_details_block_h}>Адрес:</h3>
-                                    <p className={style.filial_details_block_p}>{filial.address}</p>
-                                </div>
-                                <div className={style.filial_details_block}>
-                                    <h3 className={style.filial_details_block_h}>Время работы:</h3>
-                                    <p className={style.filial_details_block_p}>
+                                <div
+                                    key="info"
+                                    className={style.filial_details_block_wrapper}>
+                                    <div className={style.filial_details_block}>
+                                        <h3 className={style.filial_details_block_h}>Адрес:</h3>
+                                        <p className={style.filial_details_block_p}>{filial.address}</p>
+                                    </div>
+                                    <div className={style.filial_details_block}>
+                                        <h3 className={style.filial_details_block_h}>Время работы:</h3>
+                                        <p className={style.filial_details_block_p}>
                                             Пн-Пт:&nbsp;
-                                        {reduceSeconds(filial.work_from)}
+                                            {reduceSeconds(filial.work_from)}
                                             &nbsp;-&nbsp;
-                                        {reduceSeconds(filial.work_to)}
-                                        <br/>
+                                            {reduceSeconds(filial.work_to)}
+                                            <br/>
                                             Сб:&nbsp;
-                                        {isDayOff(filial.weekend_worktime.saturday.from,
-                                            filial.weekend_worktime.saturday.to) ?
-                                            'выходной' :
-                                            reduceSeconds(filial.weekend_worktime.saturday.from) +
+                                            {isDayOff(filial.weekend_worktime.saturday.from,
+                                                filial.weekend_worktime.saturday.to) ?
+                                                'выходной' :
+                                                reduceSeconds(filial.weekend_worktime.saturday.from) +
                                                 ' - ' +
                                                 reduceSeconds(filial.weekend_worktime.saturday.to)}
-                                        <br/>
+                                            <br/>
                                             Вс:&nbsp;
-                                        {isDayOff(filial.weekend_worktime.sunday.from,
-                                            filial.weekend_worktime.sunday.to) ?
-                                            'выходной' :
-                                            reduceSeconds(filial.weekend_worktime.sunday.from) +
+                                            {isDayOff(filial.weekend_worktime.sunday.from,
+                                                filial.weekend_worktime.sunday.to) ?
+                                                'выходной' :
+                                                reduceSeconds(filial.weekend_worktime.sunday.from) +
                                                 ' - ' +
                                                 reduceSeconds(filial.weekend_worktime.sunday.to)}
-                                    </p>
-                                </div>
-                                <div className={style.filial_details_block__w100}>
-                                    <h3 className={style.filial_details_block_h}>Удобства/услуги:</h3>
-                                    <div className={style.filial_details_block_ul}>
-                                        {Object
-                                            .keys(additionalInfo.comfort.items)
-                                            .map(key => <p
-                                                key={key}
-                                                {...cnx(style.filial_details_block_li, {
-                                                    [style.filial_details_block_li__active]:
-                                                            Boolean(filial.attributes.comfort & Number(key)) // eslint-disable-line no-bitwise
-                                                })}>{additionalInfo.comfort.items[key]}</p>)}
+                                        </p>
                                     </div>
-                                </div>
-                            </div>]}
+                                    <div className={style.filial_details_block__w100}>
+                                        <h3 className={style.filial_details_block_h}>Удобства/услуги:</h3>
+                                        <div className={style.filial_details_block_ul}>
+                                            {Object
+                                                .keys(additionalInfo.comfort.items)
+                                                .map(key => <p
+                                                    key={key}
+                                                    {...cnx(style.filial_details_block_li, {
+                                                        [style.filial_details_block_li__active]:
+                                                            Boolean(filial.attributes.comfort & Number(key)) // eslint-disable-line no-bitwise
+                                                    })}>{additionalInfo.comfort.items[key]}</p>)}
+                                        </div>
+                                    </div>
+                                </div>]}
                     </TabPanel>)}
             </Tabs>
         </div>;
@@ -282,7 +282,7 @@ class Description extends Component {
 
             <div className="sale-slider">
                 <div ref="swiperSubscription"
-                    className="swiper-container">
+                     className="swiper-container">
                     <div className="swiper-wrapper">
                         {subscriptions
                             .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
@@ -303,19 +303,28 @@ class Description extends Component {
         return <div className="hug sale hug--section">
             <h2 className="section__header section__header--plus-swiper">
                 Тренировки
-                <Link to={'/club/' + props.clubId + '/tab-index/3'} className="section__button">
+                <Link
+                    to={'/club/' + props.clubId + '/tab-index/3'}
+                    className="section__button">
                     Смотреть все тренировки
                 </Link>
             </h2>
 
             <div className="sale-slider">
-                <div ref="swiperTrainings"
+                <div
+                    ref="swiperTrainings"
                     className="swiper-container swiper-container-horizontal swiper-container-free-mode">
                     <div className="swiper-wrapper">
                         {trainings.map((training, ii) => <TrainingCard training={training} key={ii}/>)}
                     </div>
-                    {/* <div className="swiper__arrow"/>*/}
                 </div>
+            </div>
+            <div className="ta-center mobile-only">
+                <Link
+                    to={'/club/' + props.clubId + '/tab-index/3'}
+                    className="section__button section__button--active">
+                    Смотреть все тренировки
+                </Link>
             </div>
         </div>;
     }
