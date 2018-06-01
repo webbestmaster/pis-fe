@@ -200,6 +200,7 @@ $activeCellBgColor: #fbfcfe;
         box-sizing: border-box;
         min-height: 66px;
         cursor: pointer;
+        transition: color 0.3s linear, background-color 0.3s linear;
         &.schedule_item__selected {
             position: relative;
             color: #fff;

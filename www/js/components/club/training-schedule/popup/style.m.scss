@@ -1,12 +1,23 @@
 @import './../../../../../style/css/aaa-var';
 @import './../../../../../style/css/helper';
 
+@keyframes appear {
+    0%   {
+        opacity: 0;
+        transform: translate3d(-50%, -80%, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(-50%, -100%, 0);
+    }
+}
+
 .wrapper {
-    transform: translate3d(-50%, -110%, 0);
+    transform: translate3d(-50%, -100%, 0);
     position: absolute;
     z-index: 1;
     left: 50%;
-    top: 0;
+    top: -25px;
     width: 458px;
     background-color: #fff;
     box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
@@ -18,6 +29,10 @@
     border-radius: 6px;
     text-align: left;
     user-select: none;
+    animation-name: appear;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+
     &:before,
     &:after {
         content: '';
@@ -164,7 +179,7 @@ td:last-child {
     .lt-desktop-width {
         :local {
             .wrapper {
-                transform: translate3d(-50%, -108%, 0);
+                top: -20px;
             }
         }
     }
