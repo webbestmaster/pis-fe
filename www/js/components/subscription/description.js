@@ -89,9 +89,8 @@ class Description extends Component {
 
             {promotion ?
                 <div>
-                    <p
-                        className={style.card_cost}>Цена со скидкой:&nbsp;
-                        {(row.price - promotion.discount).toFixed(2)} руб.
+                    <p className={style.card_cost}>
+                        Цена со скидкой: {(row.price - promotion.discount).toFixed(2)}&nbsp;руб.
                     </p>
                     <p className={style.card_old_cost}>&nbsp;&nbsp;{row.price}&nbsp;&nbsp;</p>
                 </div> :
