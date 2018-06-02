@@ -68,9 +68,6 @@ export class TrainingSchedulePopup extends Component {
             <Link
                 to={'/training/' + training.id}
                 className={style.button_more}>Подробнее</Link>
-
-            {/* <div>/order/training/{training.id}/{data.schedule.id}/{Math.pow(2, data.dayIndex + 1)}</div>*/}
-            {/* <div>/training/{training.id}</div>*/}
         </div>;
     }
 }
@@ -78,7 +75,6 @@ export class TrainingSchedulePopup extends Component {
 export default connect(
     state => ({
         app: state.app
-        // auth: state.auth
     }),
     {
         // closePopup: authAction.closePopup,

@@ -166,7 +166,12 @@ class TrainingSchedule extends Component {
                                 schedule,
                                 time_from: schedule.time_from, // eslint-disable-line id-match, camelcase
                                 time_to: schedule.time_to, // eslint-disable-line id-match, camelcase
-                                date: new Date(now + (dayNumber - nowDayIndex - 1) * oneDayLength),
+                                date: new Date(
+                                    now +
+                                    (dayNumber - nowDayIndex - 1) * oneDayLength -
+                                    dateNow.getHours() * 60 * 60 * 1e3 +
+                                    parseInt(schedule.time_from, 10) * 60 * 60 * 1e3 -
+                                    dateNow.getMinutes() * 60 * 1e3),
                                 dayIndex: dayNumber - 1
                             });
                         }
