@@ -12,6 +12,7 @@ const appConst = require('./../../../app-const');
 const find = require('lodash/find');
 
 import {reduceSeconds} from './../../../helper/date';
+import {getCategoryNameFromRow} from './../../trainings-catalog/helper';
 
 // const categoryToHide = ['gym', 'after'];
 
@@ -19,25 +20,47 @@ const partList = [
     {
         name: 'Персональное занятие',
         filter: subscription => {
-            return true;
+            const neededCategoryName = 'gym';
+            const categoryName = getCategoryNameFromRow(subscription);
+            const {attributes} = subscription;
+
+            if (categoryName !== neededCategoryName) {
+                return false;
+            }
+
+            return attributes[neededCategoryName] === 4;
         }
     },
     {
         name: 'Тренажерный зал',
         filter: subscription => {
-            return true;
+            const neededCategoryName = 'gym';
+            const categoryName = getCategoryNameFromRow(subscription);
+            const {attributes} = subscription;
+
+            if (categoryName !== neededCategoryName) {
+                return false;
+            }
+
+            return attributes[neededCategoryName] === 2;
         }
     },
     {
         name: 'Фитнес',
         filter: subscription => {
-            return true;
+            const excludedCategoryList = ['gym', 'after'];
+            const categoryName = getCategoryNameFromRow(subscription);
+
+            return !excludedCategoryList.includes(categoryName);
         }
     },
     {
         name: 'После спорта',
         filter: subscription => {
-            return true;
+            const neededCategoryName = 'after';
+            const categoryName = getCategoryNameFromRow(subscription);
+
+            return categoryName === neededCategoryName;
         }
     }
 ];
