@@ -6,11 +6,16 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import ClubsCatalog from './../../components/clubs-catalog';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
+
 const topBanner = require('./../../../style/images/clubs/top-banner.jpg');
+
+const defaultMetaData = {
+    title: 'Фитнес-клубы Минска'
+};
 
 export default class Clubs extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/clubs');
+        metaTagMaster.updateByUrl('/clubs', defaultMetaData);
     }
 
     render() {
@@ -27,7 +32,7 @@ export default class Clubs extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/clubs">Клубы</Link>
                 </BreadCrumbs>
-                <h1 className="section__header">Фитнес-клубы Минска</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
             <ClubsCatalog/>
             <Footer/>

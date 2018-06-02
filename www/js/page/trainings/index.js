@@ -6,11 +6,16 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import TrainingsCatalog from './../../components/trainings-catalog';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
+
 const topBanner = require('./../../../style/images/trainings/top-banner.jpg');
+
+const defaultMetaData = {
+    title: 'Тренировки в Минске'
+};
 
 export default class Trainings extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/trainings');
+        metaTagMaster.updateByUrl('/trainings', defaultMetaData);
     }
 
     render() {
@@ -25,7 +30,7 @@ export default class Trainings extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/trainings">Тренировки</Link>
                 </BreadCrumbs>
-                <h1 className="section__header">Тренировки в Минске</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
             <TrainingsCatalog/>
             <Footer/>

@@ -6,11 +6,16 @@ import BreadCrumbs from './../../components/bread-crumbs';
 import SubscriptionsCatalog from './../../components/subscriptions-catalog';
 import Footer from './../../components/footer';
 import {metaTagMaster} from '../../module/meta-tag';
+
 const topBanner = require('./../../../style/images/subscriptions/top-banner.jpg');
+
+const defaultMetaData = {
+    title: 'Абонементы в Минске'
+};
 
 export default class Subscriptions extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/subscriptions');
+        metaTagMaster.updateByUrl('/subscriptions', defaultMetaData);
     }
 
     render() {
@@ -25,7 +30,7 @@ export default class Subscriptions extends Component {
                     <Link to="/">Главная</Link>
                     <Link to="/subscriptions">Абонементы</Link>
                 </BreadCrumbs>
-                <h1 className="section__header">Абонементы в Минске</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
             <SubscriptionsCatalog/>
             <Footer/>
