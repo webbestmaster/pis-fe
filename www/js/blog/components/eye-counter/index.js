@@ -7,10 +7,10 @@ import style from './style.m.scss';
 import classnames from 'classnames';
 
 type PropsType = {|
-    className?: string;
-    dateClassName?: string;
-    style?: { [key: string]: string | number };
-    date: string;
+    className?: string,
+    dateClassName?: string,
+    style?: { [key: string]: string | number },
+    date: string,
     count: number
 |};
 

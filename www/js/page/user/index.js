@@ -12,15 +12,20 @@ import cnx from './../../helper/cnx';
 import User from './../../components/user';
 import UserClub from './../../components/user/user-club';
 import * as authAction from '../../components/auth/action';
+import {metaTagMaster} from '../../module/meta-tag';
 // import {metaTagMaster} from '../../module/meta-tag';
 
 const globalAppConst = require('./../../app-const');
 const topBanner = require('./../../../style/images/user/top-banner.jpg');
 const authConst = require('./../../components/auth/const');
 
+const defaultMetaData = {
+    title: 'Личный кабинет'
+};
+
 class UserPage extends Component {
     componentDidMount() {
-        // metaTagMaster.updateByUrl('/user');
+        metaTagMaster.updateByUrl('/user', defaultMetaData);
 
         const view = this;
         const {props, state} = view;
@@ -61,7 +66,7 @@ class UserPage extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/user">Личный кабинет</Link>
+                    <Link to="/user">{defaultMetaData.title}</Link>
                 </BreadCrumbs>
                 <h1 className="section__header">{[user.first_name, user.last_name].join(' ')}</h1>
             </TopBigBanner>

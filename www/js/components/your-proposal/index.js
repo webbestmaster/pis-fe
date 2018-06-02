@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {metaTagMaster} from '../../module/meta-tag';
 import Form from './form';
 
 class YourProposal extends Component {
-    componentDidMount() {
-        metaTagMaster.updateByUrl('/your-proposal');
-    }
-
     render() {
         const view = this;
         const {props, state} = view;

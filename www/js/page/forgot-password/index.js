@@ -16,10 +16,13 @@ import style from './../../components/auth/popup/style.m.scss';
 import cnx from '../../helper/cnx';
 import {metaTagMaster} from '../../module/meta-tag';
 
+const defaultMetaData = {
+    title: 'Сброс пароля'
+};
 
 class ForgotPassword extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/forgot-password');
+        metaTagMaster.updateByUrl('/forgot-password', defaultMetaData);
     }
 
     constructor() {
@@ -190,9 +193,9 @@ class ForgotPassword extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/forgotPassword">Сброс пароля</Link>
+                    <Link to="/forgotPassword">{defaultMetaData.title}</Link>
                 </BreadCrumbs>
-                <h1 className="section__header section__header--club">Сброс пароля</h1>
+                <h1 className="section__header section__header--club">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <section className="section">

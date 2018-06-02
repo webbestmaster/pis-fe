@@ -9,9 +9,13 @@ import {metaTagMaster} from '../../module/meta-tag';
 
 const topBanner = require('./../../../style/images/contacts/top-banner.jpg');
 
+const defaultMetaData = {
+    title: 'Контакты'
+};
+
 class ContactsPage extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/contacts');
+        metaTagMaster.updateByUrl('/contacts', defaultMetaData);
     }
 
     render() {
@@ -23,9 +27,9 @@ class ContactsPage extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/contacts">Контакты</Link>
+                    <Link to="/contacts">{defaultMetaData.title}</Link>
                 </BreadCrumbs>
-                <h1 className="section__header">Контакты</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

@@ -10,9 +10,13 @@ import {metaTagMaster} from '../../module/meta-tag';
 
 const topBanner = require('./../../../style/images/order/top-banner.jpg');
 
+const defaultMetaData = {
+    title: 'Стать партнером'
+};
+
 class OrderPage extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/make-order');
+        metaTagMaster.updateByUrl('/make-order', defaultMetaData);
     }
 
     render() {
@@ -27,9 +31,9 @@ class OrderPage extends Component {
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
                     <Link to="/trainings">Тренировки</Link>
-                    <Link to={match.url}>Мой заказ</Link>
+                    <Link to={match.url}>{defaultMetaData.title}</Link>
                 </BreadCrumbs>
-                <h1 className="section__header">Мой заказ</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <OrderTraining/>

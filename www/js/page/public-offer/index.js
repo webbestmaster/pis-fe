@@ -11,9 +11,13 @@ import style from './../terms/style.m.scss';
 
 const topBanner = require('./../../../style/images/public-offer/top-banner.jpg');
 
+const defaultMetaData = {
+    title: 'Публичная оферта'
+};
+
 class PublicOffer extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/public-offer');
+        metaTagMaster.updateByUrl('/public-offer', defaultMetaData);
     }
 
     render() {
@@ -27,10 +31,10 @@ class PublicOffer extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/public-offer">Публичная оферта</Link>
+                    <Link to="/public-offer">{defaultMetaData.title}</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h1 className="section__header">Публичная оферта</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

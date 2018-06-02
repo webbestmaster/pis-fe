@@ -11,9 +11,13 @@ import style from './style.m.scss';
 
 const topBanner = require('./../../../style/images/terms/top-banner.jpg');
 
+const defaultMetaData = {
+    title: 'Пользовательское соглашение'
+};
+
 class Terms extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/terms');
+        metaTagMaster.updateByUrl('/terms', defaultMetaData);
     }
 
     render() {
@@ -27,10 +31,10 @@ class Terms extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/terms">Пользовательское соглашение</Link>
+                    <Link to="/terms">{defaultMetaData.title}</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h1 className="section__header">Пользовательское соглашение</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

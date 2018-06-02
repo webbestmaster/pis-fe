@@ -2,7 +2,7 @@
 
 export type AppType = {
     screen: {
-        width: number;
+        width: number,
         height: number
     },
     window: {

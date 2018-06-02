@@ -22,7 +22,7 @@ const appConst = require('./../../../app-const');
 // import {Link} from 'react-router-dom';
 
 type StateType = {
-    pageData: mixed;
+    pageData: mixed,
     ads: {
         data: Array<{}>
     }

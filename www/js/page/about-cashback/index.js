@@ -9,9 +9,13 @@ import {metaTagMaster} from '../../module/meta-tag';
 
 const topBanner = require('./../../../style/images/about-cashback/top-banner.jpg');
 
+const defaultMetaData = {
+    title: 'Бонусы'
+};
+
 class AboutCashback extends Component {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/about-cashback');
+        metaTagMaster.updateByUrl('/about-cashback', defaultMetaData);
     }
 
     render() {
@@ -23,10 +27,10 @@ class AboutCashback extends Component {
             <TopBigBanner backgroundImage={topBanner}>
                 <BreadCrumbs>
                     <Link to="/">Главная</Link>
-                    <Link to="/about-cashback">Бонусы</Link>
+                    <Link to="/about-cashback">{defaultMetaData.title}</Link>
                     {/* <Link to="/trainings">Мой заказ</Link>*/}
                 </BreadCrumbs>
-                <h1 className="section__header">Бонусы</h1>
+                <h1 className="section__header">{defaultMetaData.title}</h1>
             </TopBigBanner>
 
             <div className="hug hug--simple-page">

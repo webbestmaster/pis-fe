@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {metaTagMaster} from '../../module/meta-tag';
 import Form from './form';
 
 class BecomeAPartner extends Component {
-    componentDidMount() {
-        metaTagMaster.updateByUrl('/become-a-partner');
-    }
-
     render() {
         const view = this;
         const {props, state} = view;

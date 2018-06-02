@@ -4,8 +4,8 @@
 const promiseCache = {};
 
 type OptionsType = {
-    credentials?: 'include';
-    method?: 'GET' | 'POST';
+    credentials?: 'include',
+    method?: 'GET' | 'POST',
     body?: FormData
 };
 

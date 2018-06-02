@@ -10,6 +10,7 @@ import PromoInstagram from './../../components/promo-instagram';
 import Footer from './../../components/footer';
 import LazyLoad from 'react-lazy-load';
 import {connect} from 'react-redux';
+import appMetaData from './../../module/meta-tag/const';
 
 const lazyVerticalOffset = 300;
 const lazyThrottleTimeout = 100;
@@ -31,7 +32,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        metaTagMaster.updateByUrl('/index');
+        metaTagMaster.updateByUrl('/index', appMetaData.default);
     }
 
     render() {

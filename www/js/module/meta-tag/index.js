@@ -14,7 +14,7 @@ export default class MetaTagMaster {
         };
     }
 
-    updateByUrl(url) {
+    updateByUrl(url, defaultMetaData = {}) {
         if (globalAppConst.isTest) {
             return Promise.resolve();
         }
@@ -22,12 +22,21 @@ export default class MetaTagMaster {
         const master = this; // eslint-disable-line consistent-this
 
         return fetchX(globalAppConst.pageDataUrl.host + globalAppConst.pageDataUrl.metaTag.replace('{{url}}', url))
-            .then(reaponse => {
-                const {page} = reaponse.data;
+            .then(response => { // eslint-disable-line complexity
+                const {page} = response.data;
 
-                master.setTitle(page.meta_title || metaTagConst.default.title);
-                master.setDescription(page.meta_description || metaTagConst.default.description);
-                master.setKeywords(page.meta_keywords || metaTagConst.default.keywords);
+                master
+                    .setTitle(page.meta_title ||
+                        defaultMetaData.title ||
+                        metaTagConst.default.title);
+                master
+                    .setDescription(page.meta_description ||
+                        defaultMetaData.description ||
+                        metaTagConst.default.description);
+                master
+                    .setKeywords(page.meta_keywords ||
+                        defaultMetaData.keywords ||
+                        metaTagConst.default.keywords);
             });
     }
 
