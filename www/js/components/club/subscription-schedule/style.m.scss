@@ -120,6 +120,20 @@ $headerBgColor: #f3f5f7;
             }
         }
     }
+
+    .table_body__line_header {
+        @extend .table_body__line;
+        .table_body__name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        &:hover {
+            background-color: #fff;
+            .table_body__name {
+                color: $mainTextColor;
+            }
+        }
+    }
 }
 
 :global {
@@ -159,6 +173,8 @@ $headerBgColor: #f3f5f7;
                 .table_body__label {
                     color: $secondaryTextColor;
                 }
+
+
                 .table_body__line {
                     display: block;
                     padding-bottom: 9px;
@@ -193,6 +209,12 @@ $headerBgColor: #f3f5f7;
                         .table_body__label {
                             color: #fff;
                         }
+                    }
+                }
+
+                .table_body__line_header {
+                    .table_body__name {
+                        padding-bottom: 5px;
                     }
                 }
             }
