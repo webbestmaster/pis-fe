@@ -65,7 +65,6 @@ class SubscriptionsSchedule extends Component {
         }
 
         return <div className={style.wrapper}>
-
             {partList
                 .map(part => {
                     const subscriptionList = subscriptions.filter(part.filter);
@@ -117,7 +116,6 @@ class SubscriptionsSchedule extends Component {
         }
 
         return <div className={style.wrapper}>
-
             {partList
                 .map(part => {
                     const subscriptionList = subscriptions.filter(part.filter);
@@ -129,8 +127,6 @@ class SubscriptionsSchedule extends Component {
                     return <div className={style.part} key={part.name}>
                         <div className={style.table_header}>
                             <h3 className={style.table_header__name}>{part.name}</h3>
-                            <p className={style.table_header__time}>Время</p>
-                            <p className={style.table_header__cost}>Стоимость</p>
                         </div>
                         <div className={style.table_body}>
                             {subscriptionList
@@ -144,12 +140,14 @@ class SubscriptionsSchedule extends Component {
                                     </div>
                                     <div
                                         className={style.table_body__time}>
+                                        <span className={style.table_body__label}>Время:</span>
                                         {reduceSeconds(subscription.work_from)}
                                         {' - '}
                                         {reduceSeconds(subscription.work_to)}
                                     </div>
                                     <div
                                         className={style.table_body__cost}>
+                                        <span className={style.table_body__label}>Цена:</span>
                                         <span className="bold">{subscription.price}&nbsp;</span>руб.
                                     </div>
                                 </Link>)}
@@ -164,7 +162,7 @@ class SubscriptionsSchedule extends Component {
         const {props, state} = view;
         const {app} = props;
 
-        return app.screen.width > appConst.tabletWidth ? view.renderDesktop() : view.renderMobile();
+        return app.screen.width > appConst.mobileWidth ? view.renderDesktop() : view.renderMobile();
     }
 }
 

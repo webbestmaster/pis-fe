@@ -56,7 +56,9 @@ export default class Subscriptions extends Component {
             return null;
         }
 
-        const {subscriptions} = pageData;
+        const subscriptions = pageData.subscriptions.sort((subscriptionA, subscriptionB) => {
+            return parseFloat(subscriptionA.price) - parseFloat(subscriptionB.price);
+        });
 
         return <SubscriptionsSchedule subscriptions={subscriptions}/>;
     }
