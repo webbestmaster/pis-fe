@@ -8,6 +8,7 @@ import Footer from './../../components/footer';
 import Subscription from './../../components/subscription';
 import * as appAction from '../../components/app/action';
 import {metaTagMaster} from '../../module/meta-tag';
+import appMetaData from './../../module/meta-tag/const';
 import * as authAction from '../../components/auth/action';
 
 const find = require('lodash/find');
@@ -15,6 +16,10 @@ const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const topBanner = require('./../../../style/images/club/top-banner.jpg');
+
+const defaultMetaData = {
+    ...appMetaData.default
+};
 
 class SubscriptionPage extends Component {
     constructor() {
@@ -120,7 +125,13 @@ class SubscriptionPage extends Component {
 
         return fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.subscription
             .replace('{{subscriptionId}}', subscriptionId))
-            .then(({data}) => view.setState({pageData: data})).catch(console.error);
+            .then(({data}) => {
+                view.setState({pageData: data});
+
+                defaultMetaData.title = data.row.title;
+                metaTagMaster.updateByUrl('/subscription/' + subscriptionId, defaultMetaData);
+            })
+            .catch(console.error);
     }
 
     render() {

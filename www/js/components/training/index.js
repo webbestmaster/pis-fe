@@ -4,9 +4,15 @@ import tabsStyle from './../../../style/css/tabs.m.scss';
 import classnames from 'classnames';
 import Description from './description';
 import Reviews from './reviews';
+import {metaTagMaster} from '../../module/meta-tag';
+import appMetaData from './../../module/meta-tag/const';
 
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
+
+const defaultMetaData = {
+    ...appMetaData.default
+};
 
 export default class Training extends Component {
     constructor() {
@@ -29,7 +35,12 @@ export default class Training extends Component {
         const {trainingId} = props;
 
         fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.training.replace('{{trainingId}}', trainingId))
-            .then(({data}) => view.setState({pageData: data}))
+            .then(({data}) => {
+                view.setState({pageData: data});
+
+                defaultMetaData.title = data.row.title;
+                metaTagMaster.updateByUrl('/training/' + trainingId, defaultMetaData);
+            })
             .catch(console.error);
     }
 

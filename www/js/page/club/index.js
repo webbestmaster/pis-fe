@@ -9,11 +9,16 @@ import {plural} from './../../helper/plural';
 import Club from './../../components/club';
 import * as appAction from './../../components/app/action';
 import {metaTagMaster} from '../../module/meta-tag';
+import appMetaData from './../../module/meta-tag/const';
 
 const isEqual = require('lodash/isEqual');
 const appConst = require('./../../app-const');
 const {fetchX} = require('./../../helper/fetch-x');
 const topBanner = require('./../../../style/images/club/top-banner.jpg');
+
+const defaultMetaData = {
+    ...appMetaData.default
+};
 
 export default class ClubPage extends Component {
     constructor() {
@@ -42,8 +47,6 @@ export default class ClubPage extends Component {
     }
 
     componentDidMount() {
-        metaTagMaster.updateByUrl('/club');
-
         const view = this;
         const {props, state} = view;
         const {clubId} = props.match.params;
@@ -51,7 +54,13 @@ export default class ClubPage extends Component {
         appAction.scrollToTop();
 
         return fetchX(appConst.pageDataUrl.host + appConst.pageDataUrl.club.replace('{{clubId}}', clubId))
-            .then(({data}) => view.setState({pageData: data})).catch(console.error);
+            .then(({data}) => {
+                view.setState({pageData: data});
+
+                defaultMetaData.title = data.row.title;
+                metaTagMaster.updateByUrl('/club/' + clubId, defaultMetaData);
+            })
+            .catch(console.error);
     }
 
     render() {
