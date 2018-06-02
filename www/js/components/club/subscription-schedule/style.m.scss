@@ -13,7 +13,7 @@ $headerBgColor: #f3f5f7;
 .table_header {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: auto;
     background-color: $headerBgColor;
     color: $mainTextColor;
     padding: 0 33px;
@@ -34,19 +34,21 @@ $headerBgColor: #f3f5f7;
     }
 
     .table_header__name {
-        width: 633px;
+        flex-grow: 1;
     }
 
     .table_header__time {
         border-left: 2px solid #fff;
         padding-left: 33px;
         width: 247px;
+        min-width: 247px;
     }
 
     .table_header__cost {
-        flex-grow: 1;
-        padding-left: 33px;
         border-left: 2px solid #fff;
+        padding-left: 33px;
+        width: 224px;
+        min-width: 247px;
     }
 }
 
@@ -106,7 +108,6 @@ $headerBgColor: #f3f5f7;
 
         .table_body__time {
             @extend .table_header__time;
-            //font-size: 15px;
         }
 
         .table_body__cost {
@@ -117,9 +118,43 @@ $headerBgColor: #f3f5f7;
                     font-size: 16px;
                 }
             }
-            //font-size: 11px;
         }
 
     }
+}
 
+:global {
+    .lt-desktop-width {
+        :local {
+            .wrapper {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .table_header {
+                padding-left: 25px;
+                padding-right: 25px;
+
+                .table_header__time {
+                    padding-left: 20px;
+                    width: 215px;
+                    min-width: 215px;
+                }
+
+                .table_header__cost {
+                    padding-left: 20px;
+                    width: 135px;
+                    min-width: 135px;
+                }
+            }
+        }
+    }
+
+    .lt-tablet-width {
+        :local {
+            .wrapper {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
 }
