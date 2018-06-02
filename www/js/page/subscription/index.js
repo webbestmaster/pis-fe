@@ -115,8 +115,6 @@ class SubscriptionPage extends Component {
     }
 
     componentDidMount() {
-        metaTagMaster.updateByUrl('/subscription');
-
         const view = this;
         const {props, state} = view;
         const {subscriptionId} = props.match.params;

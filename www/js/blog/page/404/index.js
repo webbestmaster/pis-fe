@@ -11,9 +11,13 @@ import style from './../../../page/404/style.m.scss';
 
 const image404 = require('./../../../page/404/images/404.png');
 
+const defaultMetaData = {
+    title: 'Страница не найдена'
+};
+
 export default class NotFoundPage extends Component<{}> {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/page-404');
+        metaTagMaster.updateByUrl('/blog/page-404', defaultMetaData);
     }
 
     render(): Node {
@@ -23,7 +27,7 @@ export default class NotFoundPage extends Component<{}> {
 
             <div className={style.main}>
                 <img className={style.image} src={image404} alt=""/>
-                <h1 className={style.header}>Страница не найдена</h1>
+                <h1 className={style.header}>{defaultMetaData.title}</h1>
                 <p className={style.text}>Запрашиваемая страница не найдена или была перемещена по другому адресу</p>
                 <Link to="/" className={style.button}>перейти на главную</Link>
             </div>

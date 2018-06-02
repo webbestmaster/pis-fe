@@ -8,7 +8,6 @@ import Footer from './../../components/footer';
 import Training from './../../components/training';
 import * as appAction from '../../components/app/action';
 import * as authAction from '../../components/auth/action';
-import {metaTagMaster} from '../../module/meta-tag';
 
 const find = require('lodash/find');
 const isEqual = require('lodash/isEqual');
@@ -43,8 +42,6 @@ class TrainingPage extends Component {
     }
 
     componentDidMount() {
-        metaTagMaster.updateByUrl('/training');
-
         const view = this;
         const {props, state} = view;
         const {trainingId} = props.match.params;

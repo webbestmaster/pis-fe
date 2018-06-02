@@ -2,10 +2,15 @@
 import React, {Component} from 'react';
 import type {Node} from 'react';
 import {metaTagMaster} from './../../../module/meta-tag';
+import appMetaData from './../../../module/meta-tag/const';
 import Header from './../../components/header';
 import TopBanner from './../../components/top-banner';
 import Footer from './../../components/footer';
 import Home from './../../components/home';
+
+const defaultMetaData = {
+    ...appMetaData.default
+};
 
 /*
 import Sale from './../../components/sale';
@@ -17,7 +22,7 @@ import Footer from './../../components/footer';
 
 export default class HomePage extends Component<{}> {
     componentDidMount() {
-        metaTagMaster.updateByUrl('/blog/index');
+        metaTagMaster.updateByUrl('/blog/index', defaultMetaData);
     }
 
     render(): Node {
