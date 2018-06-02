@@ -1,29 +1,52 @@
 @import "./../../../../style/css/aaa-var";
 
+$headerBgColor: #f3f5f7;
+
 .wrapper {
     display: block;
 }
 
 .part {
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .table_header {
-    display: block;
-    background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: $headerBgColor;
     color: $mainTextColor;
-    font-size: 14px;
+    padding: 0 33px;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    .table_header__name,
+    .table_header__time,
+    .table_header__cost {
+        color: $mainTextColor;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: block;
+        box-sizing: border-box;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: left;
+    }
 
     .table_header__name {
-        display: block;
+        width: 633px;
     }
 
     .table_header__time {
-        display: block;
+        border-left: 2px solid #fff;
+        padding-left: 33px;
+        width: 247px;
     }
 
     .table_header__cost {
-        display: block;
+        flex-grow: 1;
+        padding-left: 33px;
+        border-left: 2px solid #fff;
     }
 }
 
@@ -33,18 +56,70 @@
     font-size: 14px;
 
     .table_body__line {
-        padding-bottom: 20px;
+        @extend .table_header;
+        background-color: #fff;
+        border-bottom: 1px solid $headerBgColor;
+
+        &:hover {
+            background-color: $mainColor;
+            border-bottom-color: transparent;
+            .table_body__name,
+            .table_body__time,
+            .table_body__cost {
+                color: #fff;
+            }
+            .table_body__cost:after {
+                content: '';
+                position: absolute;
+                width: 38px;
+                height: 38px;
+                right: -23px;
+                top: 50%;
+                margin-top: -18px;
+                background-color: #ed0e4a;
+                border-radius: 50%;
+                z-index: 1;
+                background-image: url('./i/right-arrow.png');
+                background-repeat: no-repeat;
+                background-size: 6px 9px;
+                background-position: center center;
+            }
+        }
+
+        .table_body__name,
+        .table_body__time,
+        .table_body__cost {
+            color: $mainTextColor;
+            padding-top: 16px;
+            padding-bottom: 14px;
+            display: block;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-weight: normal;
+            text-align: left;
+            border-left-color: transparent;
+        }
+
+        .table_body__name {
+            @extend .table_header__name;
+        }
+
+        .table_body__time {
+            @extend .table_header__time;
+            //font-size: 15px;
+        }
+
+        .table_body__cost {
+            @extend .table_header__cost;
+            position: relative;
+            :global {
+                .bold {
+                    font-size: 16px;
+                }
+            }
+            //font-size: 11px;
+        }
+
     }
 
-    .table_body__name {
-        display: block;
-    }
-
-    .table_body__time {
-        display: block;
-    }
-
-    .table_body__cost {
-        display: block;
-    }
 }

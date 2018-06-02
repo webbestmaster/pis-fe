@@ -86,9 +86,6 @@ class SubscriptionsSchedule extends Component {
                                     to={'/subscription/' + subscription.id}
                                     key={subscription.id}
                                     className={style.table_body__line}>
-
-                                    {/* <div>{JSON.stringify(subscription)}</div>*/}
-
                                     <div
                                         className={style.table_body__name}>
                                         {subscription.title}
@@ -101,13 +98,8 @@ class SubscriptionsSchedule extends Component {
                                     </div>
                                     <div
                                         className={style.table_body__cost}>
-                                        {subscription.price}
+                                        <span className="bold">{subscription.price}&nbsp;</span>руб.
                                     </div>
-
-                                    <br/>
-                                    <br/>
-                                    <br/>
-
                                 </Link>)}
                         </div>
                     </div>;
