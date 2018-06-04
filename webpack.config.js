@@ -30,10 +30,7 @@ const definePluginParams = {
 const imageRETest = /\.(png|jpg|jpeg|gif|svg)(\?[a-z0-9=&.]+)?$/;
 
 const webpackConfig = {
-
-    // context: path.join(CWD, 'www'),
     entry: [
-        // common: './js/common.js',
         'babel-polyfill',
         'whatwg-fetch',
         './www/js/index.js',
