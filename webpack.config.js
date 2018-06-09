@@ -279,8 +279,8 @@ const webpackConfig = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: IS_DEVELOPMENT ? '[name].css' : '[name].[hash:6].css',
-            chunkFilename: IS_DEVELOPMENT ? '[id].css' : '[id].[hash:6].css'
+            filename: '[name].css',
+            chunkFilename: '[id].css'
         }),
         new CopyWebpackPlugin([
             {from: './www/favicon.ico', to: './../../public/favicon.ico'},
