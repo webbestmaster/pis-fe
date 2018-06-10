@@ -20,7 +20,7 @@ import {getCategoryNameFromRow} from './../../trainings-catalog/helper';
 const partList = [
     {
         id: 'personal',
-        name: 'Персональное занятие',
+        name: 'Персональное занятие (тренажерный зал)',
         filter: subscription => {
             const neededCategoryName = 'gym';
             const categoryName = getCategoryNameFromRow(subscription);
