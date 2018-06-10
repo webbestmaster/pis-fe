@@ -118,6 +118,7 @@ class SubscriptionsSchedule extends Component {
                         return null;
                     }
 
+                    /*
                     if (part.id === 'fitness') {
                         return <div className={style.part} key={part.name}>
                             <div className={style.table_header}>
@@ -130,6 +131,7 @@ class SubscriptionsSchedule extends Component {
                             </div>
                         </div>;
                     }
+                    */
 
                     return <div className={style.part} key={part.name}>
                         <div className={style.table_header}>
@@ -182,6 +184,7 @@ class SubscriptionsSchedule extends Component {
                         return null;
                     }
 
+                    /*
                     if (part.id === 'fitness') {
                         return <div className={style.part} key={part.name}>
                             <div className={style.table_header}>
@@ -192,6 +195,7 @@ class SubscriptionsSchedule extends Component {
                             </div>
                         </div>;
                     }
+                    */
 
                     return <div className={style.part} key={part.name}>
                         <div className={style.table_header}>
