@@ -287,9 +287,14 @@ class Description extends Component {
                         {subscriptions
                             .map((subscription, ii) => <SubscriptionCard subscription={subscription} key={ii}/>)}
                     </div>
-                    {/* <div className="swiper__arrow"/>*/}
-
                 </div>
+            </div>
+            <div className="ta-center mobile-only">
+                <Link
+                    to={'/club/' + props.clubId + '/tab-index/2'}
+                    className="section__button section__button--active">
+                    Смотреть все абонементы
+                </Link>
             </div>
         </div>;
     }
