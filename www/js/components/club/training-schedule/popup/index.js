@@ -57,6 +57,7 @@ export class TrainingSchedulePopup extends Component {
 
             <p className={style.description}>{training.description}</p>
 
+            {/*
             <Link
                 to={['/order', 'training', training.id, data.schedule.id, Math.pow(2, data.dayIndex + 1)].join('/')}
                 className={classnames(
@@ -65,6 +66,8 @@ export class TrainingSchedulePopup extends Component {
                 )}>
                 Забронировать
             </Link>
+            */}
+
             <Link
                 to={'/training/' + training.id}
                 className={style.button_more}>Подробнее</Link>

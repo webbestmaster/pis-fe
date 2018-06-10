@@ -76,6 +76,7 @@
     font-size: 18px;
     padding-top: 17px;
     color: $mainTextColor;
+    padding-bottom: 10px;
 }
 
 .work_time {
@@ -128,7 +129,13 @@
     color: $mainTextColor;
     background-color: #fff;
     border-color: $mainBorderColor;
-    float: right;
+    //float: right;
+
+    float: none;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+
     &:hover {
         color: #fff;
         background-color: $mainColor;

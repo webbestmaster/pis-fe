@@ -205,6 +205,9 @@ $activeCellBgColor: #fbfcfe;
             position: relative;
             color: #fff;
         }
+        & + .schedule_item {
+            border-top: 1px solid $mainBorderColor;
+        }
     }
 }
 
