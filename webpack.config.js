@@ -10,6 +10,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
@@ -87,7 +88,17 @@ const webpackConfig = {
                     }
                 }
             } :
-            null
+            {
+                minimizer: [
+                    new UglifyJsPlugin({
+                        uglifyOptions: {
+                            compress: {
+                                drop_console: true // eslint-disable-line camelcase
+                            }
+                        }
+                    })
+                ]
+            }
     ),
 
     module: {
